@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Mindobix</title>
+  <meta name="description" content="Ganesh Subramanian — Chief Vibe Coding Officer. 32 years across three computing revolutions. Now building AI-powered software at the speed of thought." />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── PROFILE HERO ── */
+    .profile-hero {
+      padding: 80px 0 70px; position: relative; z-index: 1; overflow: hidden;
+    }
+    .profile-hero::before {
+      content: '';
+      position: absolute; top: -100px; right: -100px;
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse at center, rgba(16,185,129,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .profile-layout { display: grid; grid-template-columns: 1fr 360px; gap: 56px; align-items: start; }
+    @media (max-width: 900px) { .profile-layout { grid-template-columns: 1fr; } }
+
+    .profile-eyebrow { margin-bottom: 20px; }
+    .profile-name { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.15; margin-bottom: 8px; }
+    .profile-title {
+      font-size: 13px; font-weight: 700; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; display: block;
+    }
+    .profile-bio { font-size: 1rem; line-height: 1.8; max-width: 620px; }
+
+    .profile-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 28px; position: sticky; top: 80px;
+    }
+    .profile-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--accent-dim); border: 2px solid rgba(16,185,129,0.30);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; margin-bottom: 16px;
+    }
+    .profile-card-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .profile-card-title { font-size: 11px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
+    .profile-card-divider { height: 1px; background: var(--border); margin: 16px 0; }
+    .profile-detail { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 12px; }
+    .profile-detail-icon { color: var(--muted); flex-shrink: 0; width: 16px; text-align: center; }
+    .profile-detail-text { color: var(--text2); }
+    .profile-detail-text strong { color: var(--text); }
+
+    /* ── THREE REVOLUTIONS ── */
+    .revolutions-section { padding: 80px 0; }
+    .rev-timeline { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+    .rev-item {
+      display: grid; grid-template-columns: 120px 1fr; gap: 0;
+      position: relative;
+    }
+    .rev-item:not(:last-child)::after {
+      content: '';
+      position: absolute; left: 56px; top: 56px; bottom: 0;
+      width: 2px; background: var(--border2);
+    }
+    .rev-year-col { display: flex; flex-direction: column; align-items: center; padding-top: 14px; }
+    .rev-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid var(--accent); background: var(--bg);
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .rev-num { font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: 0.06em; margin-top: 8px; text-align: center; }
+    .rev-content {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px 28px 32px; margin: 0 0 24px 20px;
+    }
+    .rev-era {
+      font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase;
+      letter-spacing: 0.10em; margin-bottom: 10px; display: block;
+    }
+    .rev-content h3 { font-size: 1.2rem; margin-bottom: 12px; }
+    .rev-content p { font-size: 13px; line-height: 1.75; margin-bottom: 16px; }
+    .rev-content p:last-of-type { margin-bottom: 0; }
+    .rev-companies { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .rev-company {
+      font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 4px;
+      background: var(--surface2); color: var(--text2); border: 1px solid var(--border);
+    }
+
+    /* ── WORK HISTORY ── */
+    .work-history { padding-bottom: 80px; }
+    .work-item {
+      display: grid; grid-template-columns: 160px 1fr; gap: 28px;
+      padding: 28px 0; border-bottom: 1px solid var(--border);
+    }
+    .work-item:last-child { border-bottom: none; }
+    .work-period { font-size: 11px; color: var(--muted); font-weight: 700; line-height: 1.5; }
+    .work-company { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+    .work-role { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .work-location { font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+    .work-desc { font-size: 12px; line-height: 1.75; }
+    @media (max-width: 640px) { .work-item { grid-template-columns: 1fr; gap: 8px; } }
+
+    /* ── VISION / MISSION ── */
+    .mission-section {
+      background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 80px 0;
+    }
+    .mission-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
+    @media (max-width: 680px) { .mission-grid { grid-template-columns: 1fr; } }
+    .mission-card { padding: 28px; border-radius: 12px; background: var(--surface2); border: 1px solid var(--border); }
+    .mission-card-icon { font-size: 24px; margin-bottom: 14px; }
+    .mission-card h4 { margin-bottom: 10px; }
+    .mission-card p { font-size: 13px; margin: 0; }
+
+    /* ── CONTACT CTA ── */
+    .contact-cta {
+      text-align: center; padding: 80px 0;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
+      border-top: 1px solid var(--border);
+    }
+    .contact-cta h2 { margin-bottom: 16px; }
+    .contact-cta p { max-width: 520px; margin: 0 auto 28px; }
+    .contact-email { font-size: 1.2rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; display: block; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="apps.html">Web Apps</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── PROFILE HERO ── -->
+<section class="profile-hero">
+  <div class="container">
+    <div class="profile-layout">
+      <div>
+        <div class="profile-eyebrow">
+          <span class="badge badge-accent">Mindobix Founder</span>
+        </div>
+        <h1 class="profile-name">Ganesh<br>Subramanian</h1>
+        <span class="profile-title">Chief Vibe Coding Officer · Mindobix</span>
+        <p class="profile-bio">
+          I have lived through three major revolutions in software — the PC era, the mobile era, and now the AI era. Each time, the rules changed. The tools changed. What it meant to build software changed.
+          <br><br>
+          The AI Revolution feels different because the AI isn't just a tool — it's the one writing the code. My 32 years of experience across enterprise systems, mobile platforms, and digital payments isn't background anymore. <strong>It is the competitive advantage.</strong> I direct the AI with precision, context, and judgment that comes only from having built things that worked and things that failed at scale.
+          <br><br>
+          Mindobix is the experiment: what can one person with deep experience and AI Agents accomplish? The answer, so far, is more than most teams.
+        </p>
+        <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="apps.html" class="btn btn-primary">See What We Built</a>
+          <a href="mailto:ganesh@mindobix.com" class="btn btn-ghost">Get in Touch</a>
+        </div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-avatar">G</div>
+        <div class="profile-card-name">Ganesh Subramanian</div>
+        <div class="profile-card-title">Chief Vibe Coding Officer</div>
+        <div class="profile-card-divider"></div>
+        <div class="profile-detail">
+          <span class="profile-detail-icon">📍</span>
+          <span class="profile-detail-text">Cincinnati, Ohio</span>
+        </div>
+        <div class="profile-detail">
+          <span class="profile-detail-icon">⏱️</span>
+          <span class="profile-detail-text"><strong>32+ years</strong> in software &amp; IT</span>
+        </div>
+        <div class="profile-detail">
+          <span class="profile-detail-icon">🔄</span>
+          <span class="profile-detail-text">3 major computing revolutions</span>
+        </div>
+        <div class="profile-detail">
+          <span class="profile-detail-icon">🏢</span>
+          <span class="profile-detail-text">Kroger · Sogeti · Cincinnati Bell · LexisNexis · Oracle</span>
+        </div>
+        <div class="profile-detail">
+          <span class="profile-detail-icon">📱</span>
+          <span class="profile-detail-text">Best Western · Chick-fil-A mobile platforms</span>
+        </div>
+        <div class="profile-card-divider"></div>
+        <a href="mailto:ganesh@mindobix.com" class="btn btn-primary" style="width:100%; justify-content:center;">ganesh@mindobix.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VISION & MISSION ── -->
+<div class="mission-section">
+  <div class="container">
+    <span class="section-label">Vision &amp; Mission</span>
+    <h2 class="section-title">What Mindobix Exists to Do</h2>
+    <p class="section-sub">Mindobix is built around one core belief: the AI revolution is real, it's here, and the people who combine deep domain expertise with AI-Agent development will deliver extraordinary value.</p>
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mission-card-icon">📈</div>
+        <h4>Generate &amp; Accelerate Revenue</h4>
+        <p>Help businesses and individuals build new revenue streams and accelerate existing ones. From new product lines to customer-facing tools, we deliver working software that creates real business value.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-card-icon">💰</div>
+        <h4>Save Money &amp; Time</h4>
+        <p>Automate what's manual. Replace expensive SaaS tools with software you own. AI-powered development delivers faster at a fraction of traditional cost — and we pass those savings on.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-card-icon">🔧</div>
+        <h4>Build Personal Best-in-Class Software</h4>
+        <p>Build apps that are the best version of what they need to be — local, private, free to use. If it works for me, it might work for you. Everything in our portfolio is open-source and free forever.</p>
+      </div>
+      <div class="mission-card">
+        <div class="mission-card-icon">⚡</div>
+        <h4>Brainstorm at the Speed of Reality</h4>
+        <p>Bring us your most ambitious idea. We will have a plan, an architecture, and often a working prototype before the conversation ends. It sounds impossible — until you see it happen.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── THREE REVOLUTIONS ── -->
+<section class="revolutions-section">
+  <div class="container">
+    <span class="section-label">Career &amp; Experience</span>
+    <h2 class="section-title">Three Revolutions.<br>32 Years of Pattern Recognition.</h2>
+    <p class="section-sub">Most developers have seen one or two technology shifts. Surviving three — and thriving in each — builds a kind of judgment that can't be acquired any other way.</p>
+
+    <div class="rev-timeline">
+
+      <!-- Revolution 3 -->
+      <div class="rev-item">
+        <div class="rev-year-col">
+          <div class="rev-dot" style="border-color:var(--accent); background:var(--accent);"></div>
+          <div class="rev-num">2026<br>NOW</div>
+        </div>
+        <div class="rev-content">
+          <span class="rev-era">Revolution Three · AI Era · 2026 →</span>
+          <h3>The AI Revolution — This One Is Different</h3>
+          <p>This one feels fundamentally different from the other two, because the AI isn't assisting development — <strong>it is writing the code</strong>. Flawless, consistent, rapid code. The developer's role has shifted from craftsperson to architect, director, and problem definer.</p>
+          <p>Mindobix is the experiment: one person with deep experience, directing AI Agents to deliver software at the speed of thought. Individual creativity, domain expertise, and clear thinking are the new differentiators. Not typing speed. Not framework knowledge. <strong>Judgment.</strong></p>
+          <p>Every app in our portfolio was built using Claude Code AI Agents — conceived by a human with 32 years of context, built by an AI with limitless patience and zero ego.</p>
+          <div class="rev-companies">
+            <span class="rev-company">Claude Code</span>
+            <span class="rev-company">AI Agents</span>
+            <span class="rev-company">Vibe Coding</span>
+            <span class="rev-company">Mindobix (2026)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Revolution 2 -->
+      <div class="rev-item">
+        <div class="rev-year-col">
+          <div class="rev-dot"></div>
+          <div class="rev-num">2014<br>–2025</div>
+        </div>
+        <div class="rev-content">
+          <span class="rev-era">Revolution Two · Mobile Era · 2014–2025</span>
+          <h3>The Mobile Revolution — From PC to Phone</h3>
+          <p>The shift from PC software to mobile-first changed everything about how users expected software to behave. I made the transition early — building native iOS and Android apps before most enterprise teams understood what was happening — and used that expertise to help three major companies transform their mobile presence.</p>
+
+          <p><strong>Engineering Manager — Digital Payments &amp; Accounts, Kroger Technology</strong> (Oct 2018 – Apr 2025, 6.5 years)<br>Cincinnati, Ohio. Led digital payments engineering for one of the largest retailers in the US. Managed native solutions architecture (2018–2022) before leading the full engineering organization for Digital Payments (2022–2025).</p>
+
+          <p><strong>Senior Solutions Architect, Sogeti</strong> (Dec 2013 – Oct 2018)<br>Cincinnati, Ohio. Led sales and delivery of mobile transformation solutions. Architected and managed iOS and Android platform refreshes for Chick-fil-A and Best Western — including m-site, iOS, and Android — alongside 50+ onshore and offshore consultants. Also served Ameritas, Cintas, Cengage, and Simon Property Group.</p>
+
+          <div class="rev-companies">
+            <span class="rev-company">Kroger</span>
+            <span class="rev-company">Chick-fil-A</span>
+            <span class="rev-company">Best Western</span>
+            <span class="rev-company">iOS &amp; Android</span>
+            <span class="rev-company">Digital Payments</span>
+            <span class="rev-company">Sogeti</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Revolution 1 -->
+      <div class="rev-item">
+        <div class="rev-year-col">
+          <div class="rev-dot"></div>
+          <div class="rev-num">1994<br>–2013</div>
+        </div>
+        <div class="rev-content">
+          <span class="rev-era">Revolution One · PC &amp; Web Era · 1994–2013</span>
+          <h3>The PC Revolution — Where It All Started</h3>
+          <p>I started my career in 1994 building Windows applications in Visual Basic, then transitioned into web development with Microsoft ASP.NET and C# as the web became the platform. Nearly two decades of building enterprise software across New York and Cincinnati.</p>
+
+          <p><strong>Senior Business Technology Consultant, Cincinnati Bell</strong> (Dec 2008 – Jun 2013, 4+ years)<br>Created custom enterprise web applications automating Sales, Marketing, Professional Services, Billing, and Purchasing. Built the end-to-end professional services billing system processing approximately $40M+ annually. Designed full-featured marketing automation handling campaigns, leads, ticketing, email marketing, landing pages, and web content management.</p>
+
+          <p><strong>Senior Consultant, LexisNexis via Knowl Corporation</strong> (Jul 2002 – Apr 2008, 5+ years)<br>Dayton, Ohio. Architected and developed custom Market &amp; Sales Force Automation for the LexisNexis sales organization. Redesigned the LexisNexis intranet into a full information portal using custom architecture. Bridged .NET and Java environments.</p>
+
+          <p><strong>Director of IT, TripleHop Technologies (acquired by Oracle)</strong> (Jan 2000 – Mar 2002)<br>New York, NY. Network infrastructure using Cisco Routers &amp; Firewall. Front-end presentation layer for the TripleHop search engine (ASP, DHTML, JavaScript). Installation, testing, and operation of the Crawler, Extractor &amp; Classification Engine (Java). Core business logic via Oracle &amp; SQL Server stored procedures.</p>
+
+          <p><strong>Principal Consultant, Systems Evolution Inc.</strong> (April 1996 – Mar 1999)<br>Mason, Ohio. Clients included Lenscrafters (Luxottica Retail), Cincom, and LexisNexis. Enterprise reporting for Lenscrafters store managers, custom manufacturing UI toolkits for Cincom, and integrated order processing systems.</p>
+
+          <p><strong>Programmer Analyst, Keane (acquired by NTT Data Corp.)</strong> (Oct 1994 – Jun 1995)<br>New York &amp; Ohio. Estée Lauder Research &amp; Development systems. Ethicon (Johnson &amp; Johnson) enterprise reporting and custom front-end UI development. First role, first exposure to what enterprise-scale software truly requires.</p>
+
+          <div class="rev-companies">
+            <span class="rev-company">Cincinnati Bell</span>
+            <span class="rev-company">LexisNexis</span>
+            <span class="rev-company">Oracle/TripleHop</span>
+            <span class="rev-company">Estée Lauder</span>
+            <span class="rev-company">ASP.NET / C#</span>
+            <span class="rev-company">VB / SQL Server</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONSULTING TEASER ── -->
+<section style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:72px 0; position:relative; z-index:1;">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; flex-wrap:wrap;">
+      <div>
+        <span class="section-label">How We Work</span>
+        <h2 class="section-title" style="margin-bottom:14px;">Fixed-Bid &amp; Monthly Retainer.<br>No Hourly Billing. Ever.</h2>
+        <p style="font-size:13px; max-width:580px; margin-bottom:0;">AI Agents have changed the cost structure of building software permanently. We offer two simple engagement models — fixed-bid projects and monthly retainers — both priced for the outcomes we deliver, not the hours we spend. Learn why hourly billing is obsolete, how our process works, and what we can build for you.</p>
+      </div>
+      <div style="flex-shrink:0;">
+        <a href="consulting.html" class="btn btn-primary">View Consulting Details →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT CTA ── -->
+<div class="contact-cta">
+  <div class="container">
+    <h2>Let's Build Something Together</h2>
+    <p>Tell us your problem, your idea, or your opportunity. We will respond with a plan, a price, and often a working prototype faster than you expect.</p>
+    <a href="mailto:ganesh@mindobix.com" class="btn btn-primary">Send Ganesh a Message</a>
+    <a href="mailto:ganesh@mindobix.com" class="contact-email">ganesh@mindobix.com</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
+      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
+    </div>
+    <div>
+      <div class="footer-nav-label">Navigation</div>
+      <nav class="footer-nav">
+        <a href="apps.html">Web Apps</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="about.html">About Ganesh</a>
+        <a href="mailto:ganesh@mindobix.com">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Contact</div>
+      <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
+      <div style="font-size:11px; color:var(--muted); margin-top:6px; line-height:1.6;">Ganesh Subramanian<br>Chief Vibe Coding Officer<br>Cincinnati, Ohio</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
+    <span class="footer-copy">Vibe Coded at the speed of thought.</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Apps — Mindobix</title>
+  <meta name="description" content="12 production-quality apps built with Claude Code AI Agents. Free, local-first, no subscriptions. Developer tools, finance, career intelligence, and personal apps." />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .page-hero {
+      padding: 72px 0 56px; position: relative; z-index: 1; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .page-hero h1 { margin-bottom: 14px; }
+    .page-hero p { font-size: 1rem; max-width: 600px; }
+
+    /* ── FILTER TABS ── */
+    .filter-bar {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin: 36px 0 36px;
+      padding-bottom: 24px; border-bottom: 1px solid var(--border);
+    }
+    .filter-btn {
+      padding: 7px 18px; border-radius: 20px;
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      border: 1px solid var(--border2); background: transparent;
+      color: var(--text2); transition: all 0.15s; letter-spacing: 0.03em;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+
+    /* ── APPS GRID ── */
+    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 960px) { .apps-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .apps-grid { grid-template-columns: 1fr; } }
+
+    .app-item { text-decoration: none; display: flex; flex-direction: column; }
+    .app-item.hidden { display: none; }
+
+    .app-card-body { flex: 1; }
+    .app-icon-row { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .app-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .app-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .app-category { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+    .app-desc { font-size: 12px; color: var(--text2); line-height: 1.65; margin-bottom: 16px; }
+    .app-features { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .app-feature-tag {
+      font-size: 10px; padding: 3px 9px; border-radius: 4px;
+      background: var(--surface3); color: var(--muted); border: 1px solid var(--border);
+    }
+    .app-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); }
+    .app-cta { font-size: 12px; font-weight: 700; color: var(--accent); }
+    .app-item:hover .app-cta { color: var(--accent2); }
+    .app-free-badge { font-size: 10px; font-weight: 700; color: var(--accent2); background: var(--accent-dim); border: 1px solid rgba(16,185,129,0.2); border-radius: 10px; padding: 2px 8px; }
+
+    /* ── SECTION DIVIDER ── */
+    .category-divider {
+      display: flex; align-items: center; gap: 14px;
+      margin: 44px 0 24px;
+    }
+    .category-divider h3 { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.10em; white-space: nowrap; }
+    .category-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex; gap: 0; margin-bottom: 0;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; flex-wrap: wrap;
+    }
+    .stats-bar-item {
+      flex: 1; min-width: 140px; padding: 20px 24px;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .stats-bar-item:last-child { border-right: none; }
+    .stats-bar-num { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+    .stats-bar-label { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    /* ── ALL APPS HIDDEN BY FILTER ── */
+    .no-results { text-align: center; padding: 60px 0; color: var(--muted); display: none; }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="apps.html" class="active">Web Apps</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── PAGE HERO ── -->
+<div class="page-hero">
+  <div class="container">
+    <span class="section-label">Software Portfolio</span>
+    <h1>Apps Built by AI.<br>Proven by Real Use.</h1>
+    <p>Every app was built with Claude Code AI Agents, directed by 32 years of domain expertise. No cloud. No subscriptions. No accounts. Open the file and go.</p>
+  </div>
+</div>
+
+<div class="container" style="position:relative; z-index:1;">
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stats-bar-item">
+      <div class="stats-bar-num">12+</div>
+      <div class="stats-bar-label">Production Apps</div>
+    </div>
+    <div class="stats-bar-item">
+      <div class="stats-bar-num">$0</div>
+      <div class="stats-bar-label">Subscription Fees</div>
+    </div>
+    <div class="stats-bar-item">
+      <div class="stats-bar-num">100%</div>
+      <div class="stats-bar-label">Local / Offline</div>
+    </div>
+    <div class="stats-bar-item">
+      <div class="stats-bar-num">AI</div>
+      <div class="stats-bar-label">Built with Claude Code</div>
+    </div>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All Apps</button>
+    <button class="filter-btn" data-filter="developer">Developer Tools</button>
+    <button class="filter-btn" data-filter="finance">Finance &amp; Trading</button>
+    <button class="filter-btn" data-filter="career">Career &amp; Productivity</button>
+    <button class="filter-btn" data-filter="personal">Personal</button>
+  </div>
+
+  <!-- ─ DEVELOPER TOOLS ─ -->
+  <div class="category-divider" data-section="developer">
+    <h3>Developer Tools</h3>
+  </div>
+  <div class="apps-grid">
+
+    <a href="app.html?id=filesync" class="card card-link app-item" data-cat="developer">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-dev">⟲</div>
+          <div>
+            <div class="app-name">FileSync</div>
+            <div class="app-category">Developer Tool</div>
+          </div>
+        </div>
+        <p class="app-desc">Zero-config LAN file sync for developers across Windows, macOS, and Linux. Peer discovery via UDP, file transfer via WebSocket, system tray integration. No cloud required.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Electron</span>
+          <span class="app-feature-tag">React</span>
+          <span class="app-feature-tag">WebSocket</span>
+          <span class="app-feature-tag">LAN / Offline</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+    <a href="app.html?id=keywords-finder" class="card card-link app-item" data-cat="developer">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-dev">🔍</div>
+          <div>
+            <div class="app-name">Keywords Files Finder</div>
+            <div class="app-category">Developer Tool</div>
+          </div>
+        </div>
+        <p class="app-desc">Find any file on your machine instantly by what's inside it. Crawls your filesystem, reads column headers in spreadsheets, surfaces the right file the moment you need it.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">File System</span>
+          <span class="app-feature-tag">Real-time Indexing</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+    <a href="app.html?id=shareanyjson" class="card card-link app-item" data-cat="developer">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-dev" style="font-size:14px; font-weight:700;">{ }</div>
+          <div>
+            <div class="app-name">ShareAnyJSON</div>
+            <div class="app-category">Developer Tool</div>
+          </div>
+        </div>
+        <p class="app-desc">Zero-backend JSON configuration manager for dev teams. Create, edit, version, template, and promote configs across environments. File explorer, form view, version history — one HTML file.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">localStorage</span>
+          <span class="app-feature-tag">No Server</span>
+          <span class="app-feature-tag">Team Friendly</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+    <a href="app.html?id=api-proxy" class="card card-link app-item" data-cat="developer">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-dev">⇄</div>
+          <div>
+            <div class="app-name">Local API Web Proxy</div>
+            <div class="app-category">Developer Tool</div>
+          </div>
+        </div>
+        <p class="app-desc">Zero-config HTTP/HTTPS proxy with a real-time dashboard. Inspect, debug, and export API traffic from any device on your network — like Charles Proxy, but open-source and a single npm start.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Node.js</span>
+          <span class="app-feature-tag">HTTP/HTTPS</span>
+          <span class="app-feature-tag">Real-time</span>
+          <span class="app-feature-tag">Network</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+    <a href="app.html?id=vibecoding-ideas" class="card card-link app-item" data-cat="career">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-career">💡</div>
+          <div>
+            <div class="app-name">VibeCoding App Ideas</div>
+            <div class="app-category">Developer / Productivity</div>
+          </div>
+        </div>
+        <p class="app-desc">Your private idea workspace. Notion-style editor for vibe coders who generate ideas faster than they can ship them. Rich text, categories, status workflow (Idea → Shipped), GitHub links. Zero cloud.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">Notion-style</span>
+          <span class="app-feature-tag">Offline</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ─ FINANCE & TRADING ─ -->
+  <div class="category-divider" data-section="finance">
+    <h3>Finance &amp; Trading</h3>
+  </div>
+  <div class="apps-grid">
+
+    <a href="app.html?id=trading-journal" class="card card-link app-item" data-cat="finance">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-finance">📊</div>
+          <div>
+            <div class="app-name">Trading Journal</div>
+            <div class="app-category">Finance</div>
+          </div>
+        </div>
+        <p class="app-desc">Full-featured, privacy-first trading journal that runs entirely in your browser. Log trades, track P&amp;L, analyze performance, save LLM prompts, manage options plans. Replaces $300–600/year of SaaS.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">IndexedDB</span>
+          <span class="app-feature-tag">Signal News</span>
+          <span class="app-feature-tag">FIFO P&L</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free — No SaaS</span>
+      </div>
+    </a>
+
+    <a href="app.html?id=weekly-options" class="card card-link app-item" data-cat="finance">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-finance">📅</div>
+          <div>
+            <div class="app-name">Weekly Options Trade Plan</div>
+            <div class="app-category">Finance</div>
+          </div>
+        </div>
+        <p class="app-desc">Plan and track weekly options trades across monthly, weekly, and daily views. Log calls and puts with strike, expiry, trigger, targets, and stop. Status workflow, filter, color-coded cards.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">localStorage</span>
+          <span class="app-feature-tag">Offline</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+    <a href="app.html?id=billpay" class="card card-link app-item" data-cat="finance">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-finance">💳</div>
+          <div>
+            <div class="app-name">Monthly BillPay Tracker</div>
+            <div class="app-category">Finance</div>
+          </div>
+        </div>
+        <p class="app-desc">Track monthly bills and subscriptions on a calendar view. Filter by category and payment method, mark bills paid, and stay on top of due dates — all stored locally in your browser.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">Calendar View</span>
+          <span class="app-feature-tag">Offline</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ─ CAREER & PRODUCTIVITY ─ -->
+  <div class="category-divider" data-section="career">
+    <h3>Career &amp; Productivity</h3>
+  </div>
+  <div class="apps-grid">
+
+    <a href="app.html?id=mycareerpulse" class="card card-link app-item" data-cat="career">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-career">🧠</div>
+          <div>
+            <div class="app-name">MyCareerPulse</div>
+            <div class="app-category">Career Intelligence</div>
+          </div>
+        </div>
+        <p class="app-desc">Fully local AI career intelligence platform. Builds a living Synthetic Career Profile from your resume and GitHub. Scores job postings, tailors resumes, runs Kanban pipeline — no cloud, no API keys.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Ollama</span>
+          <span class="app-feature-tag">Python</span>
+          <span class="app-feature-tag">ChromaDB</span>
+          <span class="app-feature-tag">AI/LLM</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free — No API Keys</span>
+      </div>
+    </a>
+
+    <a href="app.html?id=habit-calendar" class="card card-link app-item" data-cat="career">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-career">✅</div>
+          <div>
+            <div class="app-name">Habit Calendar</div>
+            <div class="app-category">Productivity</div>
+          </div>
+        </div>
+        <p class="app-desc">Track daily habits on a visual monthly calendar. Custom habit names and colors, log completions, review streaks — simple, private, and completely local. No backend, no accounts.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">localStorage</span>
+          <span class="app-feature-tag">Visual</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ─ PERSONAL ─ -->
+  <div class="category-divider" data-section="personal">
+    <h3>Personal</h3>
+  </div>
+  <div class="apps-grid">
+
+    <a href="app.html?id=myfamilytree" class="card card-link app-item" data-cat="personal">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-personal">🌳</div>
+          <div>
+            <div class="app-name">MyFamilyTree</div>
+            <div class="app-category">Personal</div>
+          </div>
+        </div>
+        <p class="app-desc">Build, visualize, and preserve your family history entirely in your browser. Interactive drag-and-drop editor with rich profiles, photos, relationships, and generational views — no internet required.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">Drag &amp; Drop</span>
+          <span class="app-feature-tag">Photos</span>
+          <span class="app-feature-tag">Offline</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+    <a href="app.html?id=medreview" class="card card-link app-item" data-cat="personal">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-personal">🏥</div>
+          <div>
+            <div class="app-name">MedReview</div>
+            <div class="app-category">Medical / Education</div>
+          </div>
+        </div>
+        <p class="app-desc">Free, offline-first flashcard and annotation app for USMLE Step 1, Step 2 CK, and Step 3 prep. Pre-loaded with high-yield content organized by organ system. No account, no subscription.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">Flashcards</span>
+          <span class="app-feature-tag">USMLE</span>
+          <span class="app-feature-tag">Offline</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+    <a href="app.html?id=recipebook" class="card card-link app-item" data-cat="personal">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-personal">🍳</div>
+          <div>
+            <div class="app-name">Recipe Book</div>
+            <div class="app-category">Personal</div>
+          </div>
+        </div>
+        <p class="app-desc">Store and organize recipes by category — ingredients, instructions, and notes — all saved locally in your browser. No account needed, no cloud sync, just your recipes exactly where you left them.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">localStorage</span>
+          <span class="app-feature-tag">Offline</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Bottom CTA -->
+  <div style="margin:60px 0; text-align:center; padding:48px 32px; background:var(--surface); border:1px solid var(--border); border-radius:14px;">
+    <span class="section-label" style="justify-content:center; display:block;">Need Something Custom?</span>
+    <h2 style="margin-bottom:14px;">We Build Software That Doesn't Exist Yet</h2>
+    <p style="max-width:540px; margin:0 auto 28px;">If you see an app here that's close to what you need, or if you have an idea that no one has built yet — that's exactly what we do. Fixed-bid, AI-powered, delivered fast.</p>
+    <a href="mailto:ganesh@mindobix.com" class="btn btn-primary">Talk to Ganesh</a>
+  </div>
+
+</div><!-- end container -->
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
+      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
+    </div>
+    <div>
+      <div class="footer-nav-label">Navigation</div>
+      <nav class="footer-nav">
+        <a href="apps.html">Web Apps</a>
+        <a href="about.html">About Ganesh</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="mailto:ganesh@mindobix.com">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Contact</div>
+      <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
+      <div style="font-size:11px; color:var(--muted); margin-top:6px; line-height:1.6;">Ganesh Subramanian<br>Chief Vibe Coding Officer</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
+    <span class="footer-copy">Vibe Coded at the speed of thought.</span>
+  </div>
+</footer>
+
+<script>
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const appItems = document.querySelectorAll('.app-item');
+  const categoryDividers = document.querySelectorAll('.category-divider');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      // Update active button
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Filter app items
+      appItems.forEach(item => {
+        if (filter === 'all' || item.dataset.cat === filter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      // Show/hide category dividers
+      categoryDividers.forEach(div => {
+        const section = div.dataset.section;
+        if (filter === 'all' || filter === section) {
+          div.style.display = '';
+          // Show the following grid
+          const nextGrid = div.nextElementSibling;
+          if (nextGrid) nextGrid.style.display = '';
+        } else {
+          div.style.display = 'none';
+          const nextGrid = div.nextElementSibling;
+          if (nextGrid) nextGrid.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

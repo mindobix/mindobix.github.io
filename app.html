@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">App Detail — Mindobix</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .app-hero {
+      padding: 72px 0 60px; position: relative; z-index: 1; overflow: hidden;
+    }
+    .app-hero::before {
+      content: '';
+      position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse at center, var(--hero-glow, rgba(16,185,129,0.08)) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .app-hero-header { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; flex-wrap: wrap; }
+    .app-hero-icon { width: 64px; height: 64px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+    .app-hero-meta { display: flex; flex-direction: column; gap: 6px; }
+    .app-hero-title { font-size: clamp(1.5rem, 3.5vw, 2.4rem); font-weight: 700; color: var(--text); line-height: 1.2; }
+    .app-hero-cat { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .app-hero-tagline { font-size: 1.05rem; color: var(--text2); max-width: 680px; line-height: 1.7; margin-bottom: 28px; }
+    .app-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ── CONTENT LAYOUT ── */
+    .app-content { display: grid; grid-template-columns: 1fr 320px; gap: 36px; align-items: start; margin: 56px 0; }
+    @media (max-width: 900px) { .app-content { grid-template-columns: 1fr; } }
+
+    /* Main content */
+    .app-main h2 { font-size: 1.3rem; margin-bottom: 20px; }
+    .app-main > * + * { margin-top: 40px; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
+
+    .feature-item {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 20px;
+    }
+    .feature-item-icon { font-size: 20px; margin-bottom: 10px; }
+    .feature-item h4 { margin-bottom: 6px; font-size: 0.9rem; }
+    .feature-item p { font-size: 12px; margin: 0; }
+
+    /* Sidebar */
+    .app-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    .sidebar-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px;
+    }
+    .sidebar-card h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 14px; }
+    .sidebar-tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .sidebar-tag {
+      padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;
+      background: var(--surface3); color: var(--text2); border: 1px solid var(--border);
+    }
+    .sidebar-stat { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+    .sidebar-stat:last-child { border-bottom: none; }
+    .sidebar-stat-label { color: var(--muted); }
+    .sidebar-stat-value { color: var(--text); font-weight: 700; }
+
+    .who-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .who-list li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 12px; color: var(--text2);
+    }
+    .who-list li::before { content: '→'; color: var(--accent); font-weight: 700; }
+
+    /* Related apps */
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .related-grid { grid-template-columns: 1fr; } }
+
+    .related-card { text-decoration: none; }
+    .related-card h4 { font-size: 0.85rem; margin-bottom: 6px; color: var(--text); }
+    .related-card p { font-size: 11px; margin: 0; }
+    .related-card .r-icon { font-size: 18px; margin-bottom: 10px; }
+
+    /* Not found */
+    .not-found { text-align: center; padding: 100px 0; }
+    .not-found h2 { margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="apps.html" class="active">Web Apps</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="app-root">
+  <!-- Content injected by JS -->
+</div>
+
+<section class="section" style="background:var(--surface); border-top:1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">More Apps</span>
+    <h2 class="section-title" style="margin-bottom:28px;">Explore the Portfolio</h2>
+    <div class="related-grid" id="related-apps"></div>
+    <div style="text-align:center; margin-top:32px;">
+      <a href="apps.html" class="btn btn-ghost">View All Apps →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
+      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
+    </div>
+    <div>
+      <div class="footer-nav-label">Navigation</div>
+      <nav class="footer-nav">
+        <a href="apps.html">Web Apps</a>
+        <a href="about.html">About Ganesh</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="mailto:ganesh@mindobix.com">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Contact</div>
+      <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
+  </div>
+</footer>
+
+<script>
+const APPS = {
+  'filesync': {
+    name: 'FileSync',
+    tagline: 'Zero-config LAN file sync across all your machines. No cloud. No accounts. No conflicts.',
+    category: 'Developer Tool',
+    catClass: 'dev',
+    icon: '⟲',
+    iconClass: 'icon-dev',
+    badge: 'Developer Tool',
+    badgeClass: 'badge-dev',
+    github: 'https://github.com/mindobix/local-filesync',
+    description: `You're working across machines. A config file on your Mac needs to reach your Windows dev box and your Linux server. You're tired of emailing files to yourself, fighting Dropbox sync conflicts, setting up SSH or SMB shares, or waiting for cloud roundtrips on your own LAN.\n\nFileSync runs as a lightweight system tray app on all your machines. Point it at a folder. Everything stays in sync — automatically, instantly, offline.`,
+    stack: ['Electron', 'React', 'Node.js', 'WebSocket', 'UDP', 'System Tray'],
+    highlights: [
+      { icon: '🔍', title: 'Automatic Peer Discovery', desc: 'Devices on the same LAN find each other without any configuration. No IP addresses to type, no server to set up.' },
+      { icon: '⚡', title: 'Real-time File Sync', desc: 'Changes are detected the moment you save a file and pushed to all connected peers immediately over WebSocket. Supports files up to 100 MB.' },
+      { icon: '📁', title: 'Full Folder Structure Sync', desc: 'Entire folder hierarchies sync, not just flat files. Subfolders, nested structures — all preserved exactly.' },
+      { icon: '💻', title: 'Cross-Platform', desc: 'Works natively on Windows, macOS, and Linux. All three can sync to each other simultaneously.' },
+      { icon: '🔒', title: 'Completely Private', desc: 'No cloud server. No relay. Peer-to-peer over your local network. Your files never leave your network.' },
+      { icon: '🖥️', title: 'System Tray Integration', desc: 'Lives quietly in your system tray. Set it and forget it — sync happens automatically in the background.' },
+    ],
+    stats: [
+      { label: 'Max File Size', value: '100 MB' },
+      { label: 'Protocol', value: 'WebSocket / UDP' },
+      { label: 'Platform', value: 'Win / Mac / Linux' },
+      { label: 'Server Required', value: 'None' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Developers working across multiple machines',
+      'Teams sharing config files on a local network',
+      'Anyone tired of cloud sync delays and conflicts',
+      'Privacy-conscious users who want zero cloud exposure',
+    ],
+  },
+
+  'mycareerpulse': {
+    name: 'MyCareerPulse',
+    tagline: 'Your AI career twin. Local. Private. Free. Scores every job posting against your actual skills.',
+    category: 'Career Intelligence',
+    catClass: 'career',
+    icon: '🧠',
+    iconClass: 'icon-career',
+    badge: 'Career Intelligence',
+    badgeClass: 'badge-career',
+    github: 'https://github.com/mindobix/MyCareerPulse',
+    description: `MyCareerPulse is a fully local AI career intelligence platform. It builds a living Synthetic Career Profile (SCP) from your resume and GitHub, then continuously scouts job boards, scores every opening against your actual skills, and gives you a personal career twin that gets smarter every time you use it.\n\nNo data leaves your machine. No API keys required. No monthly fees. Powered by Ollama running locally on your hardware.`,
+    stack: ['Python', 'Ollama', 'ChromaDB', 'llama3.2', 'nomic-embed-text', 'FastAPI'],
+    highlights: [
+      { icon: '🧬', title: 'Synthetic Career Profile (SCP)', desc: 'Not a copy of your resume — an AI-synthesised representation of who you are professionally. Skills with depth scores 0–100, career DNA, transferable strengths.' },
+      { icon: '📋', title: 'Job Intelligence Board', desc: 'Multi-source job crawling (Indeed, LinkedIn). Semantic scoring — every job gets a match score 0–100 with natural-language explanation and red flags summary.' },
+      { icon: '📝', title: 'Tailored Resume Builder', desc: 'Generate a resume precisely targeted at a specific job description. The AI rewrites emphasis, reorders bullet points, and mirrors the job\'s language.' },
+      { icon: '💎', title: 'Hidden Gems Detector', desc: 'Surfaces high-scoring jobs at small/unknown companies buried in normal search results. The best opportunities often aren\'t at the obvious names.' },
+      { icon: '📊', title: 'Career Timeline', desc: 'Longitudinal view of role changes, promotions, pivots, and skill growth derived from your profile snapshots over time.' },
+      { icon: '🔒', title: 'Fully Local — Zero Cloud', desc: 'Runs on your hardware with Ollama. No OpenAI API keys, no sending your resume to any server, no subscriptions. Your career data stays yours.' },
+    ],
+    stats: [
+      { label: 'Requires', value: 'Python 3.11+ & Ollama' },
+      { label: 'AI Model', value: 'llama3.2 (local)' },
+      { label: 'Cloud Required', value: 'None' },
+      { label: 'API Keys', value: 'None' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Active job seekers wanting a smarter edge',
+      'Professionals tracking career growth over time',
+      'Anyone tired of manually tailoring resumes',
+      'Privacy-conscious users uncomfortable uploading resumes to SaaS',
+    ],
+  },
+
+  'trading-journal': {
+    name: 'Trading Journal',
+    tagline: 'Stop paying $300–600/year for a trading journal. Full-featured, private, and runs in your browser.',
+    category: 'Finance',
+    catClass: 'finance',
+    icon: '📊',
+    iconClass: 'icon-finance',
+    badge: 'Finance',
+    badgeClass: 'badge-finance',
+    github: 'https://github.com/mindobix/local-trading-journal',
+    description: `Your trade data is sensitive. Position sizes, entry timing, win rate, P&L — this is information you don't need to hand to a SaaS company. Local Trading Journal stores everything in your own browser's IndexedDB — a built-in database that grows with your data.\n\nThere is no server. There is no account. There is no subscription. And it beats the paid tools on features.`,
+    stack: ['Browser', 'IndexedDB', 'Vanilla JS', 'RSS Feeds', 'Local Server (Signal News)'],
+    highlights: [
+      { icon: '📈', title: 'Multi-Leg Trade Logging', desc: 'Record every buy and sell leg individually, exactly as your broker executes them. Partial fills, scaled exits, multi-day holds — all supported. FIFO P&L calculated automatically.' },
+      { icon: '📡', title: 'Signal News Intelligence', desc: 'Live market intelligence feed with AI-powered signal analysis, real-time stock prices, and RSS news aggregation running on a local background server.' },
+      { icon: '🤖', title: 'LLM Prompts Library', desc: 'Save, organize, and launch AI market analysis prompts. Build your personal library of proven prompts for market analysis, trade review, and journal reflection.' },
+      { icon: '📋', title: 'Options Trade Plans', desc: 'Create and manage option trade plan cards generated by any LLM. Track hypothesis, triggers, targets, and outcomes in a structured format.' },
+      { icon: '📊', title: 'Performance Analytics', desc: 'Win rate, average R, drawdown, streak analysis, P&L by ticker and strategy. Every metric a serious trader needs.' },
+      { icon: '🔒', title: 'Absolute Privacy', desc: 'Data lives in your browser\'s IndexedDB. No third-party servers ever see your positions, win rate, or P&L.' },
+    ],
+    stats: [
+      { label: 'vs Tradervue', value: 'Free vs $300+/yr' },
+      { label: 'vs TraderSync', value: 'Free vs $600+/yr' },
+      { label: 'P&L Calculation', value: 'FIFO Multi-Leg' },
+      { label: 'Storage', value: 'IndexedDB (unlimited)' },
+      { label: 'Cloud Required', value: 'Never' },
+    ],
+    forWho: [
+      'Active traders tired of expensive journal subscriptions',
+      'Options traders needing structured trade plan management',
+      'Traders who value absolute privacy of their data',
+      'Anyone who wants to use LLM analysis without SaaS overhead',
+    ],
+  },
+
+  'keywords-finder': {
+    name: 'Keywords Files Finder',
+    tagline: 'Find any file on your machine instantly — by what\'s inside it, not just its name.',
+    category: 'Developer Tool',
+    catClass: 'dev',
+    icon: '🔍',
+    iconClass: 'icon-dev',
+    badge: 'Developer Tool',
+    badgeClass: 'badge-dev',
+    github: 'https://github.com/mindobix/local-keywords-files-finder',
+    description: `You have hundreds of spreadsheets, CSVs, and documents scattered across Downloads, Desktop, and project folders. You remember a file had a "salary" column or was named something like "payroll" — but you can't find it. Spotlight doesn't look inside files. Finder search is slow.\n\nKeywords Files Finder crawls your filesystem continuously, reads column headers in spreadsheets, and surfaces the right file the moment you need it.`,
+    stack: ['Browser', 'File System API', 'WebWorkers', 'XLSX Parser', 'localStorage'],
+    highlights: [
+      { icon: '🔄', title: 'Continuous Filesystem Crawl', desc: 'Watches for new and changed files automatically. Results stay current without manual rescanning.' },
+      { icon: '📋', title: 'Reads File Contents', desc: 'Column headers in spreadsheets, text in documents. Goes beyond filename matching to surface files by what they contain.' },
+      { icon: '🗂️', title: 'Keyword Categories', desc: 'Organise your keywords into named categories — Financial, Tax, Payroll, anything. Matches are grouped and filtered by your categories.' },
+      { icon: '👁️', title: 'Live File Preview', desc: 'Scroll through rows, search columns, paginate large files — all in a preview panel without opening the file.' },
+      { icon: '💾', title: 'Backup & Restore', desc: 'Export your entire keyword configuration as a portable JSON file. Restore it on any machine in seconds.' },
+      { icon: '🔒', title: 'Zero Cloud', desc: 'Everything runs locally. Your files and their contents are never sent anywhere.' },
+    ],
+    stats: [
+      { label: 'Supported Types', value: 'XLSX, CSV, TXT, PDF' },
+      { label: 'Search Mode', value: 'Content + Filename' },
+      { label: 'Server Required', value: 'None' },
+      { label: 'Cloud Required', value: 'Never' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Knowledge workers managing large document libraries',
+      'Finance teams searching across hundreds of spreadsheets',
+      'Developers tracking down config files across projects',
+      'Anyone who has ever lost a file they know exists',
+    ],
+  },
+
+  'shareanyjson': {
+    name: 'ShareAnyJSON',
+    tagline: 'Zero-backend JSON configuration manager for development teams. No server, no login, one HTML file.',
+    category: 'Developer Tool',
+    catClass: 'dev',
+    icon: '{ }',
+    iconClass: 'icon-dev',
+    badge: 'Developer Tool',
+    badgeClass: 'badge-dev',
+    github: 'https://github.com/mindobix/local-shareanyjson',
+    description: `Every development team manages environment-specific configuration — API endpoints, feature flags, service URLs, app settings. These configs live in JSON files scattered across repos, Slack messages, wikis, and local machines.\n\nShareAnyJSON gives them a home. No backend required. No accounts. No cloud. Everything runs in the browser and persists in localStorage. Works offline. Open the HTML file — that's it.`,
+    stack: ['Browser', 'localStorage', 'Vanilla JS', 'JSON', 'No Server'],
+    highlights: [
+      { icon: '📁', title: 'Folder-Based File Explorer', desc: 'Organised folder tree — create up to 6 named folders matching your workflow (Dev, Stage, Cert, Prod, QA). Template folder for reusable JSON schemas.' },
+      { icon: '📝', title: 'Dual Edit Modes', desc: 'Raw JSON editor and a structured UI form view — switch between them for any file. The form view is perfect for non-technical team members.' },
+      { icon: '🕐', title: 'Version History', desc: 'Every save creates a version. Browse, compare, and restore any previous state. Never lose a config change.' },
+      { icon: '🚀', title: 'Environment Promotion', desc: 'Promote a config from Dev → Stage → Cert → Prod with one click. Removes human error from config deployments.' },
+      { icon: '📦', title: 'Backup & Restore', desc: 'Export your entire config library as a single JSON backup. Restore on any machine — or share with a colleague.' },
+      { icon: '🔒', title: 'Zero Backend', desc: 'Data stays in localStorage. No server to maintain, no security surface to protect, no vendor to trust.' },
+    ],
+    stats: [
+      { label: 'Environments', value: 'Up to 6 per project' },
+      { label: 'Storage', value: 'localStorage (browser)' },
+      { label: 'Backend', value: 'None required' },
+      { label: 'Install', value: 'Open HTML file' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Dev teams managing multi-environment JSON configs',
+      'Frontend teams tracking API endpoints across environments',
+      'Startups wanting config management without DevOps overhead',
+      'Anyone who has lost a config in a Slack thread',
+    ],
+  },
+
+  'api-proxy': {
+    name: 'Local API Web Proxy',
+    tagline: 'Zero-config HTTP/HTTPS proxy with a real-time dashboard. Like Charles Proxy, but open-source.',
+    category: 'Developer Tool',
+    catClass: 'dev',
+    icon: '⇄',
+    iconClass: 'icon-dev',
+    badge: 'Developer Tool',
+    badgeClass: 'badge-dev',
+    github: 'https://github.com/mindobix/local-api-web-proxy',
+    description: `Inspect, debug, and export API traffic from any device on your network. Charles Proxy costs $50+ and requires installation. Local API Web Proxy is open-source, starts with a single npm start, and gives you a real-time traffic dashboard in your browser.\n\nPoint any device on your network at the proxy and see every request and response in real time.`,
+    stack: ['Node.js', 'Express', 'HTTP-Proxy', 'WebSocket', 'Browser UI'],
+    highlights: [
+      { icon: '📡', title: 'Real-time Traffic Dashboard', desc: 'See every HTTP/HTTPS request and response in real time as they flow through the proxy. Filter, search, and inspect any request.' },
+      { icon: '🔍', title: 'Deep Request Inspection', desc: 'Full headers, body, timing, status codes. See exactly what your app is sending and receiving.' },
+      { icon: '💾', title: 'Export Traffic', desc: 'Export captured requests for debugging, documentation, or sharing with colleagues.' },
+      { icon: '📱', title: 'Any Device on Network', desc: 'Proxy any device on your local network — mobile apps, IoT devices, other computers. Not just localhost.' },
+      { icon: '⚡', title: 'Single Command Start', desc: 'npm start — that\'s it. No configuration files, no SSL certificate installation, no GUI setup.' },
+      { icon: '🆓', title: 'Open Source', desc: 'Free forever. No Charles Proxy license. Modify and extend as needed for your workflow.' },
+    ],
+    stats: [
+      { label: 'vs Charles Proxy', value: 'Free vs $50+' },
+      { label: 'Setup', value: 'npm start' },
+      { label: 'Protocols', value: 'HTTP & HTTPS' },
+      { label: 'Device Support', value: 'Any LAN device' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Mobile developers debugging API traffic',
+      'Backend developers inspecting third-party API calls',
+      'QA engineers capturing traffic for test documentation',
+      'Anyone who needs Charles Proxy functionality without the price tag',
+    ],
+  },
+
+  'vibecoding-ideas': {
+    name: 'VibeCoding App Ideas',
+    tagline: 'Your private idea workspace. Capture every app idea the moment it hits — no cloud, no friction.',
+    category: 'Developer / Productivity',
+    catClass: 'career',
+    icon: '💡',
+    iconClass: 'icon-career',
+    badge: 'Productivity',
+    badgeClass: 'badge-career',
+    github: 'https://github.com/mindobix/local-vibecoding-appideas',
+    description: `You're in the zone. An app idea hits. You need somewhere to capture it right now — not a Notion workspace that needs loading, not a Notes app with no structure.\n\nVibeCoding App Ideas is a single HTML file. Open it. Start writing. Close the tab. It's still there next time. Built specifically for vibe coders who generate ideas faster than they can ship them.`,
+    stack: ['Browser', 'localStorage', 'Rich Text', 'Drag & Drop', 'No Server'],
+    highlights: [
+      { icon: '📋', title: 'Notion-Style Editor', desc: 'Rich text formatting with block types (H1–H3, lists, quotes, code), text and background colors, floating selection toolbar. Distraction-free writing.' },
+      { icon: '🗂️', title: 'Idea Organization', desc: '5 built-in categories plus your own. Drag ideas between categories. Status workflow: Idea → In Progress → Shipped → Archived.' },
+      { icon: '📷', title: 'Version Snapshots', desc: 'Named version snapshots let you capture a moment in your idea\'s evolution. Full backup and restore.' },
+      { icon: '🔗', title: 'GitHub Repo Links', desc: 'Attach the repo URL to each idea once it\'s alive. Track what shipped and what\'s still in the pipeline.' },
+      { icon: '⚡', title: 'Instant Access', desc: 'Single HTML file. No loading, no login, no sync required. Your idea workspace is always exactly one double-click away.' },
+      { icon: '🔒', title: 'Completely Private', desc: 'Ideas stay in your browser\'s localStorage. No cloud backup means no cloud access — your intellectual property stays yours.' },
+    ],
+    stats: [
+      { label: 'Format', value: 'Single HTML file' },
+      { label: 'Categories', value: '5 built-in + custom' },
+      { label: 'Status Workflow', value: 'Idea → Shipped' },
+      { label: 'Storage', value: 'localStorage + backup' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Vibe coders who generate more ideas than they can ship',
+      'Indie developers tracking their project pipeline',
+      'Anyone building a personal software portfolio',
+      'Consultants brainstorming client solutions',
+    ],
+  },
+
+  'weekly-options': {
+    name: 'Weekly Options Trade Plan',
+    tagline: 'Plan and track weekly options trades with structured workflows across monthly, weekly, and daily views.',
+    category: 'Finance',
+    catClass: 'finance',
+    icon: '📅',
+    iconClass: 'icon-finance',
+    badge: 'Finance',
+    badgeClass: 'badge-finance',
+    github: 'https://github.com/mindobix/local-weekly-options-trade-plan',
+    description: `A local, offline-first web app for planning and tracking weekly options trades. No server, no login — all data lives in your browser's localStorage.\n\nDesigned for traders who want a structured planning workflow without paying for another subscription tool.`,
+    stack: ['Browser', 'localStorage', 'Vanilla JS', 'No Server'],
+    highlights: [
+      { icon: '📅', title: 'Three View Levels', desc: 'Navigate trades by month, week, or day. See your full options activity at any granularity.' },
+      { icon: '📋', title: 'Structured Trade Fields', desc: 'Log calls and puts with strike, expiry, trigger price, up to 3 targets, stop price, symbol, and notes.' },
+      { icon: '🔄', title: 'Status Workflow', desc: 'Mark trades as Active, Triggered, Target Hit, or Stopped. Track your plan vs. execution.' },
+      { icon: '🔍', title: 'Filter & Search', desc: 'Filter by option type, status, or ticker symbol. Find any trade in your history instantly.' },
+      { icon: '🎨', title: 'Color-Coded Cards', desc: 'Assign card colors for quick visual grouping. See your full plan at a glance.' },
+      { icon: '💾', title: 'Backup & Restore', desc: 'Export all trades to JSON and restore anytime. Your trade history is portable.' },
+    ],
+    stats: [
+      { label: 'Views', value: 'Monthly / Weekly / Daily' },
+      { label: 'Option Types', value: 'Calls & Puts' },
+      { label: 'Target Levels', value: 'T1, T2, T3' },
+      { label: 'Storage', value: 'localStorage' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Weekly options traders who plan ahead',
+      'Traders wanting structured call/put tracking',
+      'Anyone building a systematic options trading practice',
+      'Traders tired of messy spreadsheet trade plans',
+    ],
+  },
+
+  'billpay': {
+    name: 'Monthly BillPay Tracker',
+    tagline: 'Never miss a bill. Track subscriptions on a calendar view — all stored locally in your browser.',
+    category: 'Finance',
+    catClass: 'finance',
+    icon: '💳',
+    iconClass: 'icon-finance',
+    badge: 'Finance',
+    badgeClass: 'badge-finance',
+    github: 'https://github.com/mindobix/local-billpay-tracker',
+    description: `Keep track of every monthly bill and subscription in one clean calendar view. Mark bills as paid, filter by category and payment method, and know exactly what's due and when — all without handing your financial data to any third party.`,
+    stack: ['Browser', 'localStorage', 'Calendar UI', 'No Server'],
+    highlights: [
+      { icon: '📅', title: 'Calendar View', desc: 'See all bills laid out on a monthly calendar. Due dates are immediately visible. No more mental calendar math.' },
+      { icon: '✅', title: 'Mark as Paid', desc: 'One click to mark a bill as paid. See at a glance what\'s done and what\'s still outstanding for the month.' },
+      { icon: '🗂️', title: 'Category Filtering', desc: 'Filter bills by category (utilities, subscriptions, insurance, etc.) and payment method.' },
+      { icon: '🔔', title: 'Due Date Awareness', desc: 'Always know what\'s coming up. Upcoming due dates are prominently highlighted so nothing sneaks up on you.' },
+      { icon: '💾', title: 'Local Storage', desc: 'All data lives in your browser. Private, offline, and accessible without any account or sync service.' },
+      { icon: '🆓', title: 'Free Forever', desc: 'No subscription to a subscription tracker. The irony of paying to track your subscriptions ends here.' },
+    ],
+    stats: [
+      { label: 'Views', value: 'Monthly Calendar' },
+      { label: 'Filters', value: 'Category + Payment Method' },
+      { label: 'Storage', value: 'localStorage' },
+      { label: 'Server Required', value: 'None' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Anyone managing multiple recurring bills',
+      'Households wanting a shared bill calendar',
+      'Budget-conscious individuals tracking subscription creep',
+      'Anyone who has ever paid a late fee by accident',
+    ],
+  },
+
+  'habit-calendar': {
+    name: 'Habit Calendar',
+    tagline: 'Track daily habits on a visual calendar. Streaks, completions, and custom colors — fully local.',
+    category: 'Productivity',
+    catClass: 'career',
+    icon: '✅',
+    iconClass: 'icon-career',
+    badge: 'Productivity',
+    badgeClass: 'badge-career',
+    github: 'https://github.com/mindobix/local-habit-calendar',
+    description: `A clean, visual habit tracker that respects your privacy. Create habits with custom names and colors, log daily completions, and review your streaks on a monthly calendar — no backend, no account, no gamification tricks designed to keep you addicted to an app.`,
+    stack: ['Browser', 'localStorage', 'Calendar UI', 'No Server'],
+    highlights: [
+      { icon: '📅', title: 'Monthly Calendar View', desc: 'Your entire month of habit completions in one visual layout. See patterns and streaks at a glance.' },
+      { icon: '🎨', title: 'Custom Names & Colors', desc: 'Name habits exactly what they are. Color-code them for visual separation. Make the tracker yours.' },
+      { icon: '🔥', title: 'Streak Tracking', desc: 'Review your current and longest streaks for each habit. The simplest motivation is seeing the chain you built.' },
+      { icon: '⚡', title: 'One-Click Logging', desc: 'Log today\'s completion in a single click. No friction between you and the record.' },
+      { icon: '🔒', title: 'Private by Default', desc: 'Your habits are personal. They stay in your browser, not in a Silicon Valley analytics database.' },
+      { icon: '🆓', title: 'No Gamification Tax', desc: 'No premium streaks, no streak freezes to purchase, no social features designed to create pressure. Just tracking.' },
+    ],
+    stats: [
+      { label: 'View', value: 'Monthly Calendar' },
+      { label: 'Storage', value: 'localStorage' },
+      { label: 'Server Required', value: 'None' },
+      { label: 'Account Required', value: 'None' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Anyone building daily habits without app store incentives',
+      'People who want simple tracking without gamification',
+      'Privacy-conscious users who don\'t want habit data in the cloud',
+      'Anyone paying for Streaks, Habitica, or similar apps',
+    ],
+  },
+
+  'myfamilytree': {
+    name: 'MyFamilyTree',
+    tagline: 'Build, visualize, and preserve your family history entirely in your browser. No accounts. No internet.',
+    category: 'Personal',
+    catClass: 'personal',
+    icon: '🌳',
+    iconClass: 'icon-personal',
+    badge: 'Personal',
+    badgeClass: 'badge-personal',
+    github: 'https://github.com/mindobix/myfamilytree',
+    description: `A beautiful, interactive family tree editor that runs 100% locally. Drag cards, draw connections, upload photos, and explore generations of your family — all stored safely on your own device. No cloud subscription, no privacy concerns, no vendor dependency for your family's history.`,
+    stack: ['Browser', 'Canvas/SVG', 'Drag & Drop', 'Photo Compression', 'localStorage'],
+    highlights: [
+      { icon: '👤', title: 'Rich Person Profiles', desc: 'Store name, gender, birthday, city, country, and profile photo for each family member. Age calculated automatically.' },
+      { icon: '🔗', title: 'Four Relationship Types', desc: 'Parent→Child (elbow lines), Spouse (heart symbol), Sibling (curved dashes), and drag-to-connect for instant relationship creation.' },
+      { icon: '🖱️', title: 'Intuitive Drag-to-Connect', desc: 'Drag from any card and drop on another to create the right relationship. Drop zones highlight automatically — no dialogs needed.' },
+      { icon: '🖼️', title: 'Photos with Auto-Compression', desc: 'Upload profile photos that are automatically compressed and resized for fast performance. Keep your tree visually rich without bloat.' },
+      { icon: '🔍', title: 'Generational Views', desc: 'Explore family history across generations. See the full tree and navigate to individual profiles.' },
+      { icon: '🔒', title: 'Your Family\'s Privacy', desc: 'Family data is deeply personal. It lives in your browser only. No genealogy service owns your family\'s story.' },
+    ],
+    stats: [
+      { label: 'Relationship Types', value: '4 (Parent, Spouse, Sibling, Child)' },
+      { label: 'Photos', value: 'Supported (auto-compressed)' },
+      { label: 'Storage', value: 'localStorage (browser)' },
+      { label: 'Internet Required', value: 'Never' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Families wanting to document their history privately',
+      'Genealogy enthusiasts who won\'t subscribe to Ancestry.com',
+      'Anyone preserving family stories for future generations',
+      'People with complex family structures needing flexible visualization',
+    ],
+  },
+
+  'medreview': {
+    name: 'MedReview',
+    tagline: 'Free, offline USMLE flashcard app. Pre-loaded with high-yield content. No account. No subscription.',
+    category: 'Medical / Education',
+    catClass: 'personal',
+    icon: '🏥',
+    iconClass: 'icon-personal',
+    badge: 'Education',
+    badgeClass: 'badge-personal',
+    github: 'https://github.com/mindobix/medreview',
+    description: `Medical school is relentless. Between lectures, shelf exams, and clinical rotations, the last thing you need is a study tool that fights you — subscription paywalls, internet requirements, bloated interfaces, or content that doesn\'t match what\'s actually tested.\n\nMedReview lives entirely in your browser, stores everything locally, and ships pre-loaded with high-yield content organized exactly the way USMLE prep demands.`,
+    stack: ['Browser', 'localStorage', 'Flashcard Engine', 'No Server', 'Pre-loaded Content'],
+    highlights: [
+      { icon: '📚', title: 'Pre-Loaded High-Yield Content', desc: 'Don\'t start from a blank page. Ships with curated, exam-focused cards for Step 1, Step 2 CK, and Step 3 — organized by organ system and discipline.' },
+      { icon: '📝', title: 'Active Recall Engine', desc: 'Spaced repetition scheduling with confidence ratings. Study smarter by focusing on what you don\'t know.' },
+      { icon: '✍️', title: 'Annotation System', desc: 'Add personal notes and mnemonics directly to any card. Your annotations survive app updates and backups.' },
+      { icon: '📊', title: 'Progress Tracking', desc: 'See your completion rate and confidence distribution by system and discipline. Know exactly where to focus.' },
+      { icon: '🔌', title: 'Fully Offline', desc: 'Airplane mode, hospital Wi-Fi dead zones, library quiet sections — study anywhere. No connection required, ever.' },
+      { icon: '🆓', title: 'Free vs. $50/Month Tools', desc: 'Replaces expensive Step review subscriptions. The content is yours permanently — not rented month to month.' },
+    ],
+    stats: [
+      { label: 'Steps Covered', value: 'Step 1, 2 CK, Step 3' },
+      { label: 'Content', value: 'Pre-loaded high-yield' },
+      { label: 'Storage', value: 'localStorage (browser)' },
+      { label: 'Internet Required', value: 'Never' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'MS1 & MS2 students preparing for Step 1',
+      'MS3 students grinding Step 2 CK during clerkships',
+      'Residents preparing for Step 3 between overnight calls',
+      'Anyone paying $50/month for a flashcard app',
+    ],
+  },
+
+  'recipebook': {
+    name: 'Recipe Book',
+    tagline: 'Store and organize all your recipes locally. Categories, ingredients, instructions — no cloud needed.',
+    category: 'Personal',
+    catClass: 'personal',
+    icon: '🍳',
+    iconClass: 'icon-personal',
+    badge: 'Personal',
+    badgeClass: 'badge-personal',
+    github: 'https://github.com/mindobix/local-recipebook',
+    description: `A clean, local recipe organizer. Store recipes by category with ingredients, step-by-step instructions, and notes. Everything is saved in your browser's localStorage — private, offline, and always where you left it.`,
+    stack: ['Browser', 'localStorage', 'No Server'],
+    highlights: [
+      { icon: '🗂️', title: 'Category Organization', desc: 'Organize recipes by category — Breakfast, Dinner, Desserts, whatever fits your kitchen.' },
+      { icon: '📋', title: 'Structured Recipe Format', desc: 'Ingredients with quantities, step-by-step instructions, and free-form notes per recipe.' },
+      { icon: '🔍', title: 'Quick Search', desc: 'Find any recipe by name or ingredient instantly.' },
+      { icon: '💾', title: 'Backup & Restore', desc: 'Export your recipe collection and restore it anytime.' },
+      { icon: '🔒', title: 'Completely Private', desc: 'Your family recipes stay in your browser. Not in a startup\'s database.' },
+      { icon: '🆓', title: 'Free Forever', desc: 'No premium tier, no ads, no subscription for basic features.' },
+    ],
+    stats: [
+      { label: 'Storage', value: 'localStorage' },
+      { label: 'Server Required', value: 'None' },
+      { label: 'Account Required', value: 'None' },
+      { label: 'Subscription', value: 'Free forever' },
+    ],
+    forWho: [
+      'Home cooks organizing family recipes',
+      'Anyone who wants recipes private and local',
+      'People tired of recipe apps with paywalls',
+      'Those preserving generational family recipes',
+    ],
+  },
+};
+
+function getQueryParam(name) {
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
+
+function renderApp(app) {
+  const root = document.getElementById('app-root');
+
+  const featuresHTML = app.highlights.map(h => `
+    <div class="feature-item">
+      <div class="feature-item-icon">${h.icon}</div>
+      <h4>${h.title}</h4>
+      <p>${h.desc}</p>
+    </div>
+  `).join('');
+
+  const statsHTML = app.stats.map(s => `
+    <div class="sidebar-stat">
+      <span class="sidebar-stat-label">${s.label}</span>
+      <span class="sidebar-stat-value">${s.value}</span>
+    </div>
+  `).join('');
+
+  const stackHTML = app.stack.map(t => `<span class="sidebar-tag">${t}</span>`).join('');
+
+  const forWhoHTML = app.forWho.map(w => `<li>${w}</li>`).join('');
+
+  const descHTML = app.description.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+  root.innerHTML = `
+    <div class="app-hero">
+      <div class="container">
+        <a href="apps.html" class="back-link">Back to All Apps</a>
+        <div class="app-hero-header">
+          <div class="app-hero-icon ${app.iconClass}">${app.icon}</div>
+          <div class="app-hero-meta">
+            <span class="badge ${app.badgeClass}">${app.badge}</span>
+            <h1 class="app-hero-title" style="margin-top:8px;">${app.name}</h1>
+          </div>
+        </div>
+        <p class="app-hero-tagline">${app.tagline}</p>
+        <div class="app-hero-actions">
+          <a href="${app.github}" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub →</a>
+          <a href="apps.html" class="btn btn-ghost">All Apps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="position:relative; z-index:1;">
+      <div class="app-content">
+        <div class="app-main">
+          <div>
+            <h2>What It Does</h2>
+            <div style="font-size:13px; color:var(--text2);">${descHTML}</div>
+          </div>
+
+          <div>
+            <h2>Key Features</h2>
+            <div class="features-grid">${featuresHTML}</div>
+          </div>
+
+          <div>
+            <h2>Who Is This For?</h2>
+            <div class="highlight-box">
+              <ul class="who-list">${forWhoHTML}</ul>
+            </div>
+          </div>
+
+          <div style="background:var(--surface2); border:1px solid var(--border2); border-radius:12px; padding:28px; text-align:center;">
+            <div style="font-size:28px; margin-bottom:14px;">🏗️</div>
+            <h3 style="margin-bottom:10px;">Built 100% with Claude Code AI Agents</h3>
+            <p style="font-size:13px; max-width:500px; margin:0 auto 20px;">This app was designed, directed, and shipped using Vibe Coding — organized thinking and 32 years of experience translated into production software by AI. No manual code editing required.</p>
+            <a href="about.html" class="btn btn-ghost btn-sm">Learn About Our Process</a>
+          </div>
+        </div>
+
+        <div class="app-sidebar">
+          <div class="sidebar-card">
+            <h4>Tech Stack</h4>
+            <div class="sidebar-tag-list">${stackHTML}</div>
+          </div>
+          <div class="sidebar-card">
+            <h4>Details</h4>
+            ${statsHTML}
+          </div>
+          <div class="sidebar-card" style="background:var(--accent-dim); border-color:rgba(16,185,129,0.25);">
+            <h4 style="color:var(--accent);">Need a Custom Version?</h4>
+            <p style="font-size:12px; margin-bottom:16px;">Want this app modified for your business, with your branding, integrated into your systems, or extended with new features? That's exactly what we do.</p>
+            <a href="mailto:ganesh@mindobix.com" class="btn btn-primary btn-sm" style="width:100%; justify-content:center;">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.title = `${app.name} — Mindobix`;
+}
+
+function renderRelated(currentId) {
+  const allIds = Object.keys(APPS).filter(id => id !== currentId);
+  const pick = allIds.sort(() => 0.5 - Math.random()).slice(0, 3);
+  const container = document.getElementById('related-apps');
+  container.innerHTML = pick.map(id => {
+    const a = APPS[id];
+    return `
+      <a href="app.html?id=${id}" class="card card-link related-card">
+        <div class="r-icon">${a.icon}</div>
+        <h4>${a.name}</h4>
+        <p>${a.tagline.split('.')[0]}.</p>
+      </a>
+    `;
+  }).join('');
+}
+
+function renderNotFound(id) {
+  document.getElementById('app-root').innerHTML = `
+    <div class="container section not-found">
+      <h2>App Not Found</h2>
+      <p>No app with id "${id}" exists in our portfolio.</p>
+      <a href="apps.html" class="btn btn-primary" style="margin-top:20px;">View All Apps</a>
+    </div>
+  `;
+}
+
+const id = getQueryParam('id');
+if (id && APPS[id]) {
+  renderApp(APPS[id]);
+  renderRelated(id);
+} else {
+  renderNotFound(id || '(none)');
+}
+</script>
+</body>
+</html>

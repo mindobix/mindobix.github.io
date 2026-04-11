@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mindobix — AI-Powered Software Development Consulting</title>
+  <meta name="description" content="One expert with 32 years of experience, now amplified by AI Agents. Fixed-bid software development for businesses of all sizes. Vibe Coding at the speed of thought." />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 0 90px;
+      position: relative; z-index: 1; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
+      width: 1000px; height: 700px;
+      background: radial-gradient(ellipse at center, rgba(16,185,129,0.10) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-dim); border: 1px solid rgba(16,185,129,0.25);
+      border-radius: 20px; padding: 6px 16px;
+      font-size: 11px; font-weight: 700; color: var(--accent2);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero h1 { max-width: 820px; margin-bottom: 22px; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 1.05rem; max-width: 640px; margin-bottom: 38px; line-height: 1.8; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 60px; }
+    .hero-proof {
+      display: flex; gap: 36px; flex-wrap: wrap;
+      padding-top: 36px; border-top: 1px solid var(--border);
+    }
+    .hero-proof-item { display: flex; flex-direction: column; gap: 4px; }
+    .hero-proof-num { font-size: 1.6rem; font-weight: 700; color: var(--text); }
+    .hero-proof-num span { color: var(--accent); }
+    .hero-proof-label { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+
+    /* ── MANIFESTO ── */
+    .manifesto { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .manifesto-inner { padding: 48px 0; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+    .manifesto-quote { flex: 1; min-width: 280px; }
+    .manifesto-quote blockquote {
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 700; color: var(--text);
+      line-height: 1.5; border-left: 4px solid var(--accent); padding-left: 24px;
+    }
+    .manifesto-quote blockquote em { color: var(--accent2); font-style: normal; }
+    .manifesto-quote p { margin-top: 12px; font-size: 13px; }
+    .manifesto-author { display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
+    .manifesto-name { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .manifesto-title { font-size: 11px; color: var(--accent); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .manifesto-yrs { font-size: 11px; color: var(--muted); }
+
+    /* ── VALUE PILLARS ── */
+    .pillar-card { position: relative; }
+    .pillar-num {
+      font-size: 3.5rem; font-weight: 700; color: var(--border2);
+      position: absolute; top: 20px; right: 24px; line-height: 1;
+      pointer-events: none;
+    }
+    .pillar-icon { font-size: 28px; margin-bottom: 18px; }
+    .pillar-card h3 { margin-bottom: 10px; }
+    .pillar-card p { font-size: 13px; }
+
+    /* ── HOW IT WORKS ── */
+    .how-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .how-visual {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+      padding: 36px; display: flex; flex-direction: column; gap: 16px;
+    }
+    .how-step {
+      display: flex; gap: 16px; align-items: flex-start; padding: 16px;
+      background: var(--surface2); border-radius: 10px; border: 1px solid var(--border);
+    }
+    .how-step-num {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--accent-dim); border: 1px solid rgba(16,185,129,0.25);
+      color: var(--accent); font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .how-step-text h4 { margin-bottom: 4px; }
+    .how-step-text p { font-size: 12px; margin: 0; }
+
+/* ── FEATURED APPS ── */
+    .app-card-hero { text-decoration: none; display: block; }
+    .app-card-cat { margin-bottom: 16px; }
+    .app-card-hero h3 { margin-bottom: 8px; color: var(--text); font-size: 1.05rem; }
+    .app-card-hero p { font-size: 12px; margin-bottom: 16px; }
+    .app-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .app-card-tag {
+      font-size: 10px; padding: 3px 8px; border-radius: 4px;
+      background: var(--surface3); color: var(--muted); border: 1px solid var(--border);
+    }
+    .app-card-cta { margin-top: 20px; font-size: 12px; font-weight: 700; color: var(--accent); }
+    .app-card-cta::after { content: ' →'; }
+
+    /* ── CONSULTING STRIP ── */
+    .consulting-strip {
+      background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .consulting-inner { padding: 56px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .consulting-type { display: flex; align-items: flex-start; gap: 16px; }
+    .consulting-type-icon {
+      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+      background: var(--accent-dim); border: 1px solid rgba(16,185,129,0.25);
+    }
+    .consulting-type h4 { margin-bottom: 6px; }
+    .consulting-type p { font-size: 12px; margin: 0; }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      padding: 80px 0; text-align: center;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
+      border-top: 1px solid var(--border);
+    }
+    .cta-band h2 { margin-bottom: 16px; }
+    .cta-band p { margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-band .cta-email {
+      font-size: 1.1rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em;
+      display: block; margin-top: 20px;
+    }
+
+@media (max-width: 768px) {
+      .how-row, .consulting-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero { padding: 70px 0 60px; }
+      .manifesto-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="apps.html">Web Apps</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">
+      <span class="dot"></span> AI Revolution 2026 — Vibe Coding Is Here
+    </div>
+    <h1>Software Development<br>Has Changed <em>Forever.</em></h1>
+    <p class="hero-sub">
+      One expert. 32 years of experience across three computing revolutions. Now amplified by AI Agents that write flawless code at machine speed. <strong>Your ideas ship at the speed of thought.</strong>
+    </p>
+    <div class="hero-actions">
+      <a href="apps.html" class="btn btn-primary">Explore Our Apps</a>
+      <a href="consulting.html" class="btn btn-ghost">How We Work</a>
+    </div>
+    <div class="hero-proof">
+      <div class="hero-proof-item">
+        <span class="hero-proof-num">32<span>+</span></span>
+        <span class="hero-proof-label">Years of Industry Experience</span>
+      </div>
+      <div class="hero-proof-item">
+        <span class="hero-proof-num">3<span></span></span>
+        <span class="hero-proof-label">Computing Revolutions Survived</span>
+      </div>
+      <div class="hero-proof-item">
+        <span class="hero-proof-num">12<span>+</span></span>
+        <span class="hero-proof-label">Production Apps Built with AI</span>
+      </div>
+      <div class="hero-proof-item">
+        <span class="hero-proof-num">$0</span>
+        <span class="hero-proof-label">Subscription Fees — All Free</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MANIFESTO ── -->
+<div class="manifesto">
+  <div class="container">
+    <div class="manifesto-inner">
+      <div class="manifesto-quote">
+        <blockquote>
+          "Writing code is no longer the skill. <em>Organizing your thoughts, applying your experience, and directing AI with precision</em> — that is what delivers value now."
+        </blockquote>
+        <p>The developer who understands the problem most deeply wins. Domain expertise and clear thinking are the new competitive advantage. AI handles the keystrokes.</p>
+      </div>
+      <div class="manifesto-author">
+        <span class="manifesto-name">Ganesh Subramanian</span>
+        <span class="manifesto-title">Chief Vibe Coding Officer</span>
+        <span class="manifesto-yrs">Mindobix · 2026</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── VALUE PILLARS ── -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">What We Deliver</span>
+    <h2 class="section-title">Four Ways We Create Value</h2>
+    <p class="section-sub" style="margin-bottom:44px;">We focus on outcomes that matter — revenue, savings, software that improves your life and business, and ideas that become real before the meeting ends.</p>
+    <div class="grid-2">
+
+      <div class="card pillar-card">
+        <span class="pillar-num">01</span>
+        <div class="pillar-icon">📈</div>
+        <h3>Generate & Accelerate Revenue</h3>
+        <p>New product lines, customer-facing features, automation that unlocks growth. Whether you're a startup or an enterprise, we move from idea to deployed software before the competition blinks.</p>
+        <ul class="check-list" style="margin-top:16px;">
+          <li>Customer-facing web applications</li>
+          <li>Internal tools that multiply team output</li>
+          <li>Integration and automation pipelines</li>
+          <li>AI-powered product features</li>
+        </ul>
+      </div>
+
+      <div class="card pillar-card">
+        <span class="pillar-num">02</span>
+        <div class="pillar-icon">💰</div>
+        <h3>Save Money & Time</h3>
+        <p>Replace expensive SaaS subscriptions with software you own. Automate the manual processes that drain hours every week. AI-assisted development costs a fraction of traditional consulting.</p>
+        <ul class="check-list" style="margin-top:16px;">
+          <li>Custom tools that replace costly subscriptions</li>
+          <li>Workflow automation and process optimization</li>
+          <li>Fixed-bid pricing — no hourly clock surprises</li>
+          <li>Delivered faster than traditional development</li>
+        </ul>
+      </div>
+
+      <div class="card pillar-card">
+        <span class="pillar-num">03</span>
+        <div class="pillar-icon">🔧</div>
+        <h3>Personal Software, Best-in-Class</h3>
+        <p>Every app in our portfolio was built because a subscription tool didn't exist, was too expensive, or sent your private data to the cloud. We build for ourselves first — then share it free.</p>
+        <ul class="check-list" style="margin-top:16px;">
+          <li>Runs locally — your data never leaves your machine</li>
+          <li>No accounts, no subscriptions, no upsells</li>
+          <li>Open source — modify as you need</li>
+          <li>Built to last, not to generate recurring revenue</li>
+        </ul>
+      </div>
+
+      <div class="card pillar-card">
+        <span class="pillar-num">04</span>
+        <div class="pillar-icon">⚡</div>
+        <h3>Brainstorm to Blueprint — Before the Meeting Ends</h3>
+        <p>Bring us your idea — a problem, an opportunity, a rough sketch. We will have a working plan, a technical architecture, and in many cases a working prototype before the conversation is over.</p>
+        <ul class="check-list" style="margin-top:16px;">
+          <li>Concept to architecture in a single session</li>
+          <li>Working prototypes that prove the idea is real</li>
+          <li>No discovery fees — thinking happens live</li>
+          <li>The scary part: it's real before you leave the room</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="how-row">
+      <div>
+        <span class="section-label">How We Work</span>
+        <h2 class="section-title">From Thought to Shipped Software</h2>
+        <p class="section-sub" style="margin-bottom:28px;">The old model of software development — lengthy discovery, sprint cycles, hourly billing — was designed for a world where writing code was the bottleneck. That world is gone.</p>
+        <p style="font-size:13px; margin-bottom:28px;">Today, with AI Agents doing the writing, the bottleneck is <strong>clarity of thought</strong> and <strong>depth of experience</strong>. Mindobix brings both.</p>
+        <a href="consulting.html" class="btn btn-ghost btn-sm">See Consulting Details →</a>
+      </div>
+      <div class="how-visual">
+        <div class="how-step">
+          <div class="how-step-num">1</div>
+          <div class="how-step-text">
+            <h4>You Share Your Vision</h4>
+            <p>A problem you want solved. A product you want built. An opportunity you want to capture. No technical spec required — just your thinking.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">2</div>
+          <div class="how-step-text">
+            <h4>We Architect the Solution</h4>
+            <p>32 years of pattern recognition translates your vision into a precise technical plan. AI Agents begin building immediately.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">3</div>
+          <div class="how-step-text">
+            <h4>Fixed Price. No Surprises.</h4>
+            <p>We quote fixed-bid or monthly retainer only. No hourly billing because AI has changed the cost structure of software development entirely.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">4</div>
+          <div class="how-step-text">
+            <h4>You Receive Working Software</h4>
+            <p>Production-quality code, delivered. Try it, use it, adapt it. No vendor lock-in. You own everything.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURED APPS ── -->
+<section class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">Our Software Portfolio</span>
+    <h2 class="section-title">Apps Built by AI. Proven in the Real World.</h2>
+    <p class="section-sub" style="margin-bottom:44px;">Every app in our portfolio was built using Claude Code AI Agents — designed, directed, and validated by 32 years of domain knowledge. Use them free. They prove what's possible.</p>
+    <div class="grid-4">
+
+      <a href="app.html?id=mycareerpulse" class="card card-link app-card-hero">
+        <div class="icon-box icon-career">🧠</div>
+        <div class="app-card-cat"><span class="badge badge-career">Career Intelligence</span></div>
+        <h3>MyCareerPulse</h3>
+        <p>Your AI career twin. Scores job postings against your actual skills, tailors resumes, builds a living profile — all local, no subscriptions.</p>
+        <div class="app-card-tags">
+          <span class="app-card-tag">Ollama</span>
+          <span class="app-card-tag">Python</span>
+          <span class="app-card-tag">AI/LLM</span>
+        </div>
+        <div class="app-card-cta">View Details</div>
+      </a>
+
+      <a href="app.html?id=trading-journal" class="card card-link app-card-hero">
+        <div class="icon-box icon-finance">📊</div>
+        <div class="app-card-cat"><span class="badge badge-finance">Finance</span></div>
+        <h3>Trading Journal</h3>
+        <p>Replace $300–600/year of SaaS trading journals. Full P&amp;L tracking, signal intelligence, and LLM prompts — runs in your browser.</p>
+        <div class="app-card-tags">
+          <span class="app-card-tag">Browser</span>
+          <span class="app-card-tag">IndexedDB</span>
+          <span class="app-card-tag">Offline</span>
+        </div>
+        <div class="app-card-cta">View Details</div>
+      </a>
+
+      <a href="app.html?id=filesync" class="card card-link app-card-hero">
+        <div class="icon-box icon-dev">⟲</div>
+        <div class="app-card-cat"><span class="badge badge-dev">Developer Tool</span></div>
+        <h3>FileSync</h3>
+        <p>Zero-config LAN file sync for developers across Windows, macOS and Linux. No cloud. No accounts. Peer discovery, WebSocket transfer, system tray.</p>
+        <div class="app-card-tags">
+          <span class="app-card-tag">Electron</span>
+          <span class="app-card-tag">React</span>
+          <span class="app-card-tag">WebSocket</span>
+        </div>
+        <div class="app-card-cta">View Details</div>
+      </a>
+
+      <a href="app.html?id=shareanyjson" class="card card-link app-card-hero">
+        <div class="icon-box icon-dev">{ }</div>
+        <div class="app-card-cat"><span class="badge badge-dev">Developer Tool</span></div>
+        <h3>ShareAnyJSON</h3>
+        <p>Zero-backend JSON configuration manager for dev teams. Version control, environment promotion, and backup — all in one HTML file.</p>
+        <div class="app-card-tags">
+          <span class="app-card-tag">Browser</span>
+          <span class="app-card-tag">localStorage</span>
+          <span class="app-card-tag">No Server</span>
+        </div>
+        <div class="app-card-cta">View Details</div>
+      </a>
+
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="apps.html" class="btn btn-ghost">View All 12 Apps →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONSULTING TYPES ── -->
+<div class="consulting-strip">
+  <div class="container">
+    <div class="consulting-inner">
+      <div>
+        <span class="section-label">Consulting Arrangements</span>
+        <h2 class="section-title">No Hourly Billing. Ever.</h2>
+        <p style="font-size:13px; margin-bottom:20px;">AI Agent development has fundamentally changed the cost structure of building software. Hourly billing made sense when developers typed every character. It doesn't anymore. We offer two simple structures:</p>
+        <a href="consulting.html" class="btn btn-primary btn-sm">Learn More</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="consulting-type">
+          <div class="consulting-type-icon">🎯</div>
+          <div>
+            <h4>Fixed-Bid Projects</h4>
+            <p>Clear scope, defined deliverable, one price. You know exactly what you're getting and what it costs before a single line is written. No scope creep surprises, no billing disputes.</p>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="consulting-type">
+          <div class="consulting-type-icon">🔄</div>
+          <div>
+            <h4>Monthly Retainer</h4>
+            <p>Ongoing development, enhancements, and strategic guidance on a predictable monthly investment. Ideal for organizations that want a dedicated AI-powered development capacity without hiring overhead.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA BAND ── -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to Build at the Speed of Thought?</h2>
+    <p>Tell us what you need. We will have a plan, a price, and often a prototype before the conversation ends.</p>
+    <a href="mailto:ganesh@mindobix.com" class="btn btn-primary">Start the Conversation</a>
+    <a href="mailto:ganesh@mindobix.com" class="cta-email">ganesh@mindobix.com</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
+      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
+    </div>
+    <div>
+      <div class="footer-nav-label">Navigation</div>
+      <nav class="footer-nav">
+        <a href="apps.html">Web Apps</a>
+        <a href="about.html">About Ganesh</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="mailto:ganesh@mindobix.com">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Featured Apps</div>
+      <nav class="footer-nav">
+        <a href="app.html?id=mycareerpulse">MyCareerPulse</a>
+        <a href="app.html?id=trading-journal">Trading Journal</a>
+        <a href="app.html?id=filesync">FileSync</a>
+        <a href="app.html?id=shareanyjson">ShareAnyJSON</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Contact</div>
+      <div style="margin-bottom:8px;">
+        <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
+      </div>
+      <div style="font-size:11px; color:var(--muted); line-height:1.6;">
+        Ganesh Subramanian<br>
+        Chief Vibe Coding Officer<br>
+        Cincinnati, Ohio
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
+    <span class="footer-copy">Vibe Coded at the speed of thought.</span>
+  </div>
+</footer>
+
+</body>
+</html>
