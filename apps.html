@@ -3,19 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Apps — Mindobix</title>
+  <title>Vibe Apps — Mindobix</title>
   <meta name="description" content="12 production-quality apps built with Claude Code AI Agents. Free, local-first, no subscriptions. Developer tools, finance, career intelligence, and personal apps." />
   <link rel="stylesheet" href="css/main.css" />
   <style>
     .page-hero {
-      padding: 72px 0 56px; position: relative; z-index: 1; overflow: hidden;
-    }
-    .page-hero::before {
-      content: '';
-      position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
-      width: 900px; height: 600px;
-      background: radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, transparent 65%);
-      pointer-events: none;
+      padding: 72px 0 56px; position: relative; z-index: 1;
+      background: linear-gradient(160deg, rgba(14,138,110,0.04) 0%, rgba(11,29,58,0.02) 40%, transparent 70%);
+      border-bottom: 1px solid var(--border);
     }
     .page-hero h1 { margin-bottom: 14px; }
     .page-hero p { font-size: 1rem; max-width: 600px; }
@@ -34,7 +29,7 @@
       color: var(--text2); transition: all 0.15s; letter-spacing: 0.03em;
     }
     .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .filter-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+    .filter-btn.active { background: var(--navy); color: #ffffff; border-color: var(--navy); }
 
     /* ── APPS GRID ── */
     .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -80,7 +75,7 @@
       text-align: center;
     }
     .stats-bar-item:last-child { border-right: none; }
-    .stats-bar-num { font-size: 1.6rem; font-weight: 700; color: var(--accent); }
+    .stats-bar-num { font-size: 1.6rem; font-weight: 700; color: var(--navy); }
     .stats-bar-label { font-size: 11px; color: var(--muted); margin-top: 3px; }
 
     /* ── ALL APPS HIDDEN BY FILTER ── */
@@ -93,7 +88,7 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
     <ul class="nav-links" id="nav-links">
-      <li><a href="apps.html" class="active">Web Apps</a></li>
+      <li><a href="apps.html" class="active">Vibe Apps</a></li>
       <li><a href="consulting.html">Consulting</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
@@ -470,11 +465,11 @@
   </div>
 
   <!-- Bottom CTA -->
-  <div style="margin:60px 0; text-align:center; padding:48px 32px; background:var(--surface); border:1px solid var(--border); border-radius:14px;">
+  <div style="margin:60px 0; text-align:center; padding:48px 32px; background:var(--navy); border-radius:14px;">
     <span class="section-label" style="justify-content:center; display:block;">Need Something Custom?</span>
-    <h2 style="margin-bottom:14px;">We Build Software That Doesn't Exist Yet</h2>
-    <p style="max-width:540px; margin:0 auto 28px;">If you see an app here that's close to what you need, or if you have an idea that no one has built yet — that's exactly what we do. Fixed-bid, AI-powered, delivered fast.</p>
-    <a href="mailto:ganesh@mindobix.com" class="btn btn-primary">Talk to Ganesh</a>
+    <h2 style="margin-bottom:14px; color:#ffffff;">We Build Software That Doesn't Exist Yet</h2>
+    <p style="max-width:540px; margin:0 auto 28px; color:rgba(255,255,255,0.65);">If you see an app here that's close to what you need, or if you have an idea that no one has built yet — that's exactly what we do. Fixed-bid, AI-powered, delivered fast.</p>
+    <a href="mailto:ganesh@mindobix.com" class="btn btn-accent">Talk to Ganesh</a>
   </div>
 
 </div><!-- end container -->
@@ -488,7 +483,7 @@
     <div>
       <div class="footer-nav-label">Navigation</div>
       <nav class="footer-nav">
-        <a href="apps.html">Web Apps</a>
+        <a href="apps.html">Vibe Apps</a>
         <a href="about.html">About Ganesh</a>
         <a href="consulting.html">Consulting</a>
         <a href="mailto:ganesh@mindobix.com">Contact</a>

@@ -11,20 +11,15 @@
     .hero {
       padding: 100px 0 90px;
       position: relative; z-index: 1; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; top: -120px; left: 50%; transform: translateX(-50%);
-      width: 1000px; height: 700px;
-      background: radial-gradient(ellipse at center, rgba(16,185,129,0.10) 0%, transparent 65%);
-      pointer-events: none;
+      background: linear-gradient(160deg, rgba(14,138,110,0.04) 0%, rgba(11,29,58,0.02) 40%, transparent 70%);
+      border-bottom: 1px solid var(--border);
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent-dim); border: 1px solid rgba(16,185,129,0.25);
-      border-radius: 20px; padding: 6px 16px;
-      font-size: 11px; font-weight: 700; color: var(--accent2);
-      letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--accent-dim); border: 1px solid rgba(14,138,110,0.22);
+      border-radius: 3px; padding: 6px 16px;
+      font-size: 11px; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.08em; text-transform: uppercase;
       margin-bottom: 28px;
     }
     .hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
@@ -43,7 +38,7 @@
     .hero-proof-label { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
 
     /* ── MANIFESTO ── */
-    .manifesto { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .manifesto { background: var(--surface2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .manifesto-inner { padding: 48px 0; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
     .manifesto-quote { flex: 1; min-width: 280px; }
     .manifesto-quote blockquote {
@@ -79,9 +74,9 @@
       background: var(--surface2); border-radius: 10px; border: 1px solid var(--border);
     }
     .how-step-num {
-      width: 32px; height: 32px; border-radius: 8px;
-      background: var(--accent-dim); border: 1px solid rgba(16,185,129,0.25);
-      color: var(--accent); font-size: 13px; font-weight: 700;
+      width: 32px; height: 32px; border-radius: 6px;
+      background: var(--navy); color: #ffffff;
+      font-size: 13px; font-weight: 700;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .how-step-text h4 { margin-bottom: 4px; }
@@ -107,9 +102,9 @@
     .consulting-inner { padding: 56px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
     .consulting-type { display: flex; align-items: flex-start; gap: 16px; }
     .consulting-type-icon {
-      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      width: 44px; height: 44px; border-radius: 8px; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center; font-size: 20px;
-      background: var(--accent-dim); border: 1px solid rgba(16,185,129,0.25);
+      background: var(--accent-dim); border: 1px solid rgba(14,138,110,0.2);
     }
     .consulting-type h4 { margin-bottom: 6px; }
     .consulting-type p { font-size: 12px; margin: 0; }
@@ -117,13 +112,13 @@
     /* ── CTA BAND ── */
     .cta-band {
       padding: 80px 0; text-align: center;
-      background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
-      border-top: 1px solid var(--border);
+      background: var(--navy);
+      border-top: none;
     }
-    .cta-band h2 { margin-bottom: 16px; }
-    .cta-band p { margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-band h2 { margin-bottom: 16px; color: #ffffff; }
+    .cta-band p { margin-bottom: 32px; max-width: 520px; margin-left: auto; margin-right: auto; color: rgba(255,255,255,0.65); }
     .cta-band .cta-email {
-      font-size: 1.1rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em;
+      font-size: 1.1rem; font-weight: 700; color: var(--accent2); letter-spacing: 0.02em;
       display: block; margin-top: 20px;
     }
 
@@ -141,7 +136,7 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
     <ul class="nav-links" id="nav-links">
-      <li><a href="apps.html">Web Apps</a></li>
+      <li><a href="apps.html">Vibe Apps</a></li>
       <li><a href="consulting.html">Consulting</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
@@ -418,7 +413,7 @@
   <div class="container">
     <h2>Ready to Build at the Speed of Thought?</h2>
     <p>Tell us what you need. We will have a plan, a price, and often a prototype before the conversation ends.</p>
-    <a href="mailto:ganesh@mindobix.com" class="btn btn-primary">Start the Conversation</a>
+    <a href="mailto:ganesh@mindobix.com" class="btn btn-accent">Start the Conversation</a>
     <a href="mailto:ganesh@mindobix.com" class="cta-email">ganesh@mindobix.com</a>
   </div>
 </div>
@@ -433,7 +428,7 @@
     <div>
       <div class="footer-nav-label">Navigation</div>
       <nav class="footer-nav">
-        <a href="apps.html">Web Apps</a>
+        <a href="apps.html">Vibe Apps</a>
         <a href="about.html">About Ganesh</a>
         <a href="consulting.html">Consulting</a>
         <a href="mailto:ganesh@mindobix.com">Contact</a>

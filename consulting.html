@@ -9,14 +9,9 @@
   <style>
     /* ── PAGE HERO ── */
     .consulting-hero {
-      padding: 80px 0 70px; position: relative; z-index: 1; overflow: hidden;
-    }
-    .consulting-hero::before {
-      content: '';
-      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
-      width: 900px; height: 600px;
-      background: radial-gradient(ellipse at center, rgba(16,185,129,0.09) 0%, transparent 65%);
-      pointer-events: none;
+      padding: 80px 0 70px; position: relative; z-index: 1;
+      background: linear-gradient(160deg, rgba(14,138,110,0.04) 0%, rgba(11,29,58,0.02) 40%, transparent 70%);
+      border-bottom: 1px solid var(--border);
     }
     .consulting-hero h1 { max-width: 780px; margin-bottom: 18px; }
     .consulting-hero h1 em { font-style: normal; color: var(--accent); }
@@ -32,11 +27,11 @@
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .arrangement-card:hover {
-      border-color: rgba(16,185,129,0.40);
-      box-shadow: 0 4px 24px rgba(16,185,129,0.06);
+      border-color: rgba(14,138,110,0.40);
+      box-shadow: 0 4px 24px rgba(14,138,110,0.06);
     }
     .arrangement-card.featured {
-      background: var(--surface2); border-color: rgba(16,185,129,0.30);
+      background: var(--surface2); border-color: rgba(14,138,110,0.30);
     }
     .arrangement-icon { font-size: 32px; margin-bottom: 20px; }
     .arrangement-card h3 { font-size: 1.3rem; margin-bottom: 12px; }
@@ -45,7 +40,7 @@
     .arrangement-note {
       display: inline-block; font-size: 11px; font-weight: 700;
       color: var(--accent2); background: var(--accent-dim);
-      border: 1px solid rgba(16,185,129,0.22);
+      border: 1px solid rgba(14,138,110,0.22);
       border-radius: 20px; padding: 4px 14px; letter-spacing: 0.04em;
     }
 
@@ -138,7 +133,7 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
     <ul class="nav-links" id="nav-links">
-      <li><a href="apps.html">Web Apps</a></li>
+      <li><a href="apps.html">Vibe Apps</a></li>
       <li><a href="consulting.html" class="active">Consulting</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
@@ -362,7 +357,7 @@
     <p>Tell us what you need. We respond fast. A plan and a price follow shortly after. No obligation, no discovery fee, no RFP required.</p>
     <div class="contact-box">
       <div style="font-size:13px; color:var(--muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.08em; font-weight:700;">Contact Directly</div>
-      <a href="mailto:ganesh@mindobix.com" class="btn btn-primary" style="width:100%; justify-content:center; font-size:14px; margin-bottom:14px;">ganesh@mindobix.com</a>
+      <a href="mailto:ganesh@mindobix.com" class="btn btn-accent" style="width:100%; justify-content:center; font-size:14px; margin-bottom:14px;">ganesh@mindobix.com</a>
       <div style="font-size:12px; color:var(--muted); line-height:1.7; text-align:center;">
         Ganesh Subramanian<br>
         Chief Vibe Coding Officer<br>
@@ -381,7 +376,7 @@
     <div>
       <div class="footer-nav-label">Navigation</div>
       <nav class="footer-nav">
-        <a href="apps.html">Web Apps</a>
+        <a href="apps.html">Vibe Apps</a>
         <a href="consulting.html">Consulting</a>
         <a href="about.html">About Ganesh</a>
         <a href="mailto:ganesh@mindobix.com">Contact</a>
