@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Analysis — MindObix</title>
+  <meta name="description" content="In-depth AI-powered analysis of enterprise technology landscapes, architecture decisions, and software strategy." />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── HERO ── */
+    .analysis-hero {
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(160deg, rgba(14,138,110,0.04) 0%, rgba(11,29,58,0.02) 40%, transparent 70%);
+    }
+    .analysis-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-dim); border: 1px solid rgba(14,138,110,0.22);
+      border-radius: 3px; padding: 6px 16px;
+      font-size: 11px; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .analysis-eyebrow .spark { font-size: 14px; }
+    .analysis-hero h1 { max-width: 720px; margin-bottom: 18px; }
+    .analysis-hero h1 em { font-style: normal; color: var(--accent); }
+    .analysis-hero-sub { font-size: 1rem; max-width: 580px; color: var(--text2); line-height: 1.8; }
+
+    /* ── ARTICLE GRID ── */
+    .articles-section { padding: 60px 0 80px; }
+    .articles-label {
+      font-size: 11px; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
+    }
+    .articles-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 32px;
+      margin-bottom: 24px;
+      transition: border-color 0.18s, box-shadow 0.18s;
+      cursor: pointer;
+    }
+    .article-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(14,138,110,0.08);
+    }
+    .article-meta {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 14px; flex-wrap: wrap;
+    }
+    .article-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 3px;
+      background: var(--accent-dim); color: var(--accent);
+      border: 1px solid rgba(14,138,110,0.18);
+    }
+    .article-date { font-size: 11px; color: var(--muted); }
+    .article-card h2 { font-size: 1.25rem; margin-bottom: 10px; color: var(--text); }
+    .article-card p { font-size: 13px; color: var(--text2); line-height: 1.7; margin-bottom: 18px; }
+    .article-companies {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
+    }
+    .co-chip {
+      font-size: 11px; padding: 3px 10px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 20px; color: var(--text2);
+    }
+    .read-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 700; color: var(--accent);
+      text-decoration: none; letter-spacing: 0.04em;
+    }
+    .read-link:hover { color: var(--accent2); }
+    .read-link svg { transition: transform 0.15s; }
+    .read-link:hover svg { transform: translateX(3px); }
+
+    /* ── INTERACTIVE ARTICLE ── */
+    .article-full {
+      border-top: 3px solid var(--accent);
+      background: var(--surface);
+      border-radius: 0 0 6px 6px;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 40px;
+      margin-top: 0;
+    }
+    .article-full-header { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .article-full-header h2 {
+      font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+      color: var(--text); margin-bottom: 8px;
+    }
+    .article-full-header p { font-size: 13px; color: var(--text2); }
+
+    /* ── ARTICLE INTERACTIVE CSS (adapted to MindObix theme) ── */
+    .art-root { padding: 0; }
+    .art-layout { display: grid; grid-template-columns: 200px 1fr; gap: 16px; }
+    @media (max-width: 680px) { .art-layout { grid-template-columns: 1fr; } }
+    .art-company-list { display: flex; flex-direction: column; gap: 4px; }
+    .art-co-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 5px;
+      border: 1px solid transparent; cursor: pointer;
+      background: transparent; text-align: left;
+      transition: background .15s, border-color .15s; width: 100%;
+    }
+    .art-co-btn:hover { background: var(--surface2); }
+    .art-co-btn.active {
+      background: var(--surface2);
+      border-color: var(--border2);
+    }
+    .art-co-logo {
+      width: 30px; height: 30px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+    .art-co-name { font-size: 13px; color: var(--text); font-weight: 600; line-height: 1.2; }
+    .art-co-sub { font-size: 11px; color: var(--muted); }
+    .art-panel { display: flex; flex-direction: column; gap: 12px; }
+    .art-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px 20px;
+    }
+    .art-card-title {
+      font-size: 10px; color: var(--muted); text-transform: uppercase;
+      letter-spacing: .08em; margin-bottom: 12px; font-weight: 700;
+    }
+    .art-company-header { display: flex; align-items: flex-start; gap: 14px; }
+    .art-big-logo {
+      width: 46px; height: 46px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; flex-shrink: 0;
+    }
+    .art-co-info h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .art-co-info p { font-size: 13px; color: var(--text2); line-height: 1.5; }
+    .art-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    .art-tag { font-size: 11px; padding: 3px 9px; border-radius: 20px; font-weight: 600; }
+    .art-tag-blue { background: rgba(14,138,110,0.1); color: var(--accent); border: 1px solid rgba(14,138,110,0.2); }
+    .art-tag-green { background: rgba(14,138,110,0.08); color: #0e8a6e; border: 1px solid rgba(14,138,110,0.15); }
+    .art-tag-amber { background: rgba(200,140,0,0.08); color: #a87000; border: 1px solid rgba(200,140,0,0.2); }
+    .art-tag-red { background: rgba(180,40,40,0.08); color: #b02020; border: 1px solid rgba(180,40,40,0.15); }
+    .art-stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .art-stack-item { display: flex; flex-direction: column; gap: 4px; }
+    .art-stack-label { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .art-stack-pills { display: flex; flex-wrap: wrap; gap: 4px; }
+    .art-pill {
+      font-size: 11px; padding: 2px 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; color: var(--text2);
+    }
+    .art-arch-bar { margin: 7px 0; display: flex; align-items: center; gap: 10px; }
+    .art-arch-label { font-size: 12px; color: var(--text2); min-width: 120px; flex-shrink: 0; }
+    .art-bar-track {
+      flex: 1; height: 7px; background: var(--surface3);
+      border-radius: 3px; overflow: hidden;
+    }
+    .art-bar-fill { height: 100%; border-radius: 3px; transition: width .4s; }
+    .art-bar-val { font-size: 11px; min-width: 28px; text-align: right; font-weight: 700; }
+    .art-debate { font-size: 13px; line-height: 1.75; color: var(--text2); }
+    .art-verdict {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; padding: 4px 12px; border-radius: 20px;
+      font-weight: 700; margin-top: 12px;
+    }
+    .art-insights-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .art-insights-list li {
+      font-size: 13px; color: var(--text2); padding-left: 16px;
+      position: relative; line-height: 1.55;
+    }
+    .art-insights-list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .art-tab-row {
+      display: flex; gap: 0; margin-bottom: 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .art-tab {
+      background: transparent; border: none;
+      padding: 8px 16px; font-size: 12px; font-weight: 600;
+      color: var(--muted); cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      letter-spacing: 0.02em;
+      transition: color .15s;
+    }
+    .art-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .art-tab:hover:not(.active) { color: var(--text); }
+    .art-tab-panel { display: none; }
+    .art-tab-panel.active { display: block; }
+    .art-pos-map {
+      position: relative; width: 100%; height: 180px;
+      border: 1px solid var(--border); border-radius: 5px;
+      margin-top: 10px; overflow: hidden;
+      background: var(--surface);
+    }
+    .art-axis-h {
+      position: absolute; top: 50%; left: 0; right: 0;
+      height: 1px; background: var(--border);
+    }
+    .art-axis-v {
+      position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .art-axis-label {
+      position: absolute; font-size: 9px; color: var(--muted);
+    }
+
+
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="apps.html">Web Apps</a></li>
+      <li><a href="android.html">Android Apps</a></li>
+      <li><a href="ios.html">iOS Apps</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section class="analysis-hero">
+  <div class="container">
+    <div class="analysis-eyebrow"><span class="spark">✦</span> AI Analysis</div>
+    <h1>Enterprise Technology <em>Intelligence</em></h1>
+    <p class="analysis-hero-sub">
+      Deep-dive analyses of enterprise architecture decisions, API strategy, and technology landscapes — powered by 32 years of software engineering experience combined with AI-driven research.
+    </p>
+  </div>
+</section>
+
+<!-- ── ARTICLES ── -->
+<section class="articles-section">
+  <div class="container">
+    <div class="articles-label">Published Analysis</div>
+
+    <!-- Article 1 Card -->
+    <div class="article-card" onclick="document.getElementById('article-1').scrollIntoView({behavior:'smooth'})">
+      <div class="article-meta">
+        <span class="article-tag">Architecture</span>
+        <span class="article-tag">API Strategy</span>
+        <span class="article-date">April 2026</span>
+      </div>
+      <h2>Enterprise API Architecture Landscape</h2>
+      <p>
+        A comparative analysis of how 10 major organizations — from Meta and Google to Chick-fil-A and Capital One — approach API architecture, the monolith vs. distributed services debate, and the real engineering trade-offs behind technology choices that move markets.
+      </p>
+      <div class="article-companies">
+        <span class="co-chip">Meta</span>
+        <span class="co-chip">Google</span>
+        <span class="co-chip">Netflix</span>
+        <span class="co-chip">Amazon</span>
+        <span class="co-chip">Microsoft</span>
+        <span class="co-chip">Capital One</span>
+        <span class="co-chip">Tesla</span>
+        <span class="co-chip">SpaceX</span>
+        <span class="co-chip">Chick-fil-A</span>
+        <span class="co-chip">Kroger</span>
+      </div>
+      <a href="#article-1" class="read-link" onclick="event.stopPropagation()">
+        Read the analysis
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- ── FULL ARTICLE ── -->
+    <div id="article-1" style="margin-top:56px;">
+      <div style="padding-bottom:20px; border-bottom:1px solid var(--border); margin-bottom:32px;">
+        <div class="article-meta" style="margin-bottom:12px;">
+          <span class="article-tag">Architecture</span>
+          <span class="article-tag">API Strategy</span>
+          <span class="article-date">April 2026 · Interactive</span>
+        </div>
+        <h2 style="font-size:clamp(1.25rem,2.8vw,1.75rem); color:var(--text); margin-bottom:10px;">Enterprise API Architecture Landscape</h2>
+        <p style="font-size:13px; color:var(--text2); max-width:640px; line-height:1.7;">
+          Tech stack, architecture philosophy, and the monolith vs. distributed debate across 10 major organizations. Select a company to explore their engineering decisions in depth.
+        </p>
+      </div>
+
+      <div class="art-root">
+        <div class="art-layout">
+          <div class="art-company-list" id="artCoList"></div>
+          <div class="art-panel" id="artPanel"></div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; margin-top:32px; padding-top:20px; border-top:1px solid var(--border);">
+        <span style="font-family:'Georgia','Times New Roman',serif; font-size:12px; font-style:italic; color:var(--muted); letter-spacing:0.01em;">
+          &#9670; Researched &amp; written by <span style="color:var(--accent); font-style:normal; font-weight:600;">Claude Code</span>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
+      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
+    </div>
+    <div>
+      <div class="footer-nav-label">Navigation</div>
+      <nav class="footer-nav">
+        <a href="apps.html">Web Apps</a>
+        <a href="android.html">Android Apps</a>
+        <a href="ios.html">iOS Apps</a>
+        <a href="about.html">About Ganesh</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="analysis.html">AI Analysis</a>
+        <a href="mailto:ganesh@mindobix.com">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Featured Apps</div>
+      <nav class="footer-nav">
+        <a href="app.html?id=mycareerpulse">MyCareerPulse</a>
+        <a href="app.html?id=trading-journal">Trading Journal</a>
+        <a href="app.html?id=filesync">FileSync</a>
+        <a href="app.html?id=shareanyjson">ShareAnyJSON</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Contact</div>
+      <div style="margin-bottom:8px;">
+        <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
+      </div>
+      <div style="font-size:11px; color:var(--muted); line-height:1.6;">
+        Ganesh Subramanian<br>
+        Chief Vibe Coding Officer<br>
+        Cincinnati, Ohio
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
+    <span class="footer-copy">Vibe Coded at the speed of thought.</span>
+  </div>
+</footer>
+
+<script>
+const companies = [
+  {
+    id:"meta", name:"Meta", sub:"Social / AI", color:"#1877F2", textColor:"#fff",
+    initials:"M",
+    tagline:"Invented GraphQL. Runs the world's largest social graph on distributed infrastructure with a monorepo philosophy.",
+    sector:"Social Media & AI",
+    tags:[{label:"GraphQL Pioneer",t:"blue"},{label:"PyTorch",t:"green"},{label:"Monorepo",t:"amber"}],
+    stack:{
+      Languages:["Hack/PHP","Python","C++","Java","Rust"],
+      APIs:["GraphQL","Thrift RPC","gRPC"],
+      Data:["Cassandra","RocksDB","TAO","MySQL"],
+      Infra:["Tupperware","FBOSS","Katran","Zippydb"],
+      AI:["PyTorch","FBLearner","Llama infra"]
+    },
+    archScores:{Distributed:88,EventDriven:70,Observability:95,DeveloperExp:80,APIMaturity:92},
+    position:{x:82,y:25},
+    verdict:"Distributed microservices",verdictT:"blue",
+    debate:`Meta is a distributed systems powerhouse but uses a massive monorepo — all code lives in one repository. They invented GraphQL in 2012 to solve client-server API complexity at Facebook scale. Internally, services communicate via Thrift RPC or newer gRPC wiring. The tension: their data layer (TAO social graph, Cassandra, MySQL) is highly distributed, but engineering culture centralizes via shared tooling and the monorepo. Meta's "microservices done right" model means teams own small services with strict SLAs, but share infrastructure primitives. In 2024–25, they're leaning harder into AI infra, with PyTorch as the de facto standard and LLM serving requiring new orchestration layers.`,
+    insights:["Monorepo + distributed services is Meta's defining pattern","TAO graph DB is custom-built for social graph traversal","React + GraphQL form a full-stack ownership model","Ranking and ML infra are tightly integrated with service mesh"]
+  },
+  {
+    id:"google", name:"Google", sub:"Cloud / Search", color:"#4285F4", textColor:"#fff",
+    initials:"G",
+    tagline:"Invented gRPC and Protocol Buffers. The original internal microservices company with the world's largest monorepo.",
+    sector:"Cloud / Search / AI",
+    tags:[{label:"gRPC Origin",t:"blue"},{label:"Spanner",t:"green"},{label:"Monorepo (Piper)",t:"amber"}],
+    stack:{
+      Languages:["Go","C++","Java","Python","Kotlin"],
+      APIs:["gRPC","Protocol Buffers","REST (external)"],
+      Data:["Spanner","Bigtable","Colossus","Firestore"],
+      Infra:["Borg/GKE","Bazel","Borgmon","Chubby"],
+      AI:["TPUs","JAX","TensorFlow","Gemini infra"]
+    },
+    archScores:{Distributed:95,EventDriven:75,Observability:98,DeveloperExp:85,APIMaturity:96},
+    position:{x:88,y:18},
+    verdict:"Extreme distributed + monorepo",verdictT:"blue",
+    debate:`Google is the archetype of large-scale distributed computing with a paradoxical monorepo. The Piper monorepo holds billions of lines of code. Borg (predecessor to Kubernetes) has orchestrated Google's microservices since ~2003. Internally gRPC and Protocol Buffers are universal — externally, Google Cloud surfaces REST APIs. Their SRE culture pioneered error budgets and SLOs, which is inseparable from their microservices strategy. The burning debate at Google is now AI infra: do you build monolithic training pipelines (simpler, faster iteration) or decompose them into services? TPU pods represent a return to tightly coupled systems for ML workloads, creating an interesting counterpoint to their distributed dogma.`,
+    insights:["Borg preceded Kubernetes by a decade","Spanner solved distributed transactions at planetary scale","Every team must write a design doc before building","Go was created internally to solve C++ compile times"]
+  },
+  {
+    id:"netflix", name:"Netflix", sub:"Streaming", color:"#E50914", textColor:"#fff",
+    initials:"N",
+    tagline:"Microservices pioneer. Built Chaos Engineering and GraphQL Federation. The cautionary and inspirational tale.",
+    sector:"Entertainment / Streaming",
+    tags:[{label:"Microservices pioneer",t:"blue"},{label:"Chaos Engineering",t:"red"},{label:"GraphQL Federation",t:"green"}],
+    stack:{
+      Languages:["Java","Kotlin","Node.js","Python"],
+      APIs:["GraphQL Federation","gRPC","REST"],
+      Data:["Cassandra","DynamoDB","EVCache","Iceberg"],
+      Infra:["AWS","Spinnaker","Zuul","Eureka","Conductor"],
+      AI:["Recommendation ML","Metaflow","Spark"]
+    },
+    archScores:{Distributed:92,EventDriven:85,Observability:90,DeveloperExp:88,APIMaturity:90},
+    position:{x:85,y:22},
+    verdict:"Distributed federation model",verdictT:"blue",
+    debate:`Netflix is both the inspiration and cautionary tale for microservices. They migrated from monolith to 700+ microservices after the 2008 database corruption incident. But by 2020 they recognized coordination costs were killing velocity. Their answer: GraphQL Studio Edge — a federated GraphQL gateway where each team owns a subgraph. This is architecturally a middle ground — federated rather than fully decentralized or monolithic. Chaos Engineering (Chaos Monkey) was invented to force resilience into the distributed model. The current debate at Netflix is whether AI workloads (personalization, content recommendation) should live inside the federation or as isolated ML systems. Metaflow, their ML platform, is essentially a workflow monolith for data science.`,
+    insights:["Invented Chaos Monkey to test distributed resilience","Zuul API gateway handles 2M+ req/sec edge traffic","Spinnaker (open sourced) is their CD platform","Conductor workflow engine orchestrates microservice pipelines"]
+  },
+  {
+    id:"cfa", name:"Chick-fil-A", sub:"QSR / Edge", color:"#DD0031", textColor:"#fff",
+    initials:"CFA",
+    tagline:"The most surprising edge computing story in enterprise tech. Kubernetes in every restaurant.",
+    sector:"Quick Service Restaurant",
+    tags:[{label:"Edge Kubernetes",t:"red"},{label:"AWS",t:"blue"},{label:"Offline-first",t:"green"}],
+    stack:{
+      Languages:["Go","Node.js","Python"],
+      APIs:["REST","Event-driven messaging","MQTT"],
+      Data:["PostgreSQL","Redis","AWS IoT","Kafka"],
+      Infra:["K8s per restaurant","AWS","Raspberry Pi cluster"],
+      AI:["Order prediction","Demand forecasting"]
+    },
+    archScores:{Distributed:75,EventDriven:80,Observability:70,DeveloperExp:65,APIMaturity:68},
+    position:{x:68,y:40},
+    verdict:"Distributed edge-first",verdictT:"amber",
+    debate:`Chick-fil-A runs Kubernetes clusters inside each restaurant — a 3-node Raspberry Pi cluster that processes orders, kitchen displays, and loyalty data locally. This is offline-first design: if internet goes down, the restaurant keeps operating. APIs communicate between the edge cluster and AWS cloud through message queues. The burning debate is maintenance burden: 2,000+ restaurants each running their own cluster means fleet management is a serious operational challenge. They've essentially built a mini data center in each kitchen. Their approach inverts the traditional monolith vs. microservices debate — it's about centralized cloud vs. distributed edge. For a QSR, it's architecturally radical and genuinely impressive.`,
+    insights:["Each restaurant runs its own Kubernetes cluster","Offline-first design means cloud outages don't stop service","Loyalty and ordering data syncs when connectivity returns","Fleet management of 2,000+ edge clusters is their unique challenge"]
+  },
+  {
+    id:"kroger", name:"Kroger", sub:"Retail / Grocery", color:"#00549E", textColor:"#fff",
+    initials:"KR",
+    tagline:"Legacy retailer on an active cloud-native transformation — the reality of modernizing decades of mainframe code.",
+    sector:"Retail / Grocery",
+    tags:[{label:"Azure-first",t:"blue"},{label:"Legacy modernization",t:"amber"},{label:"84.51° data co",t:"green"}],
+    stack:{
+      Languages:[".NET / C#","Java","Python","SQL"],
+      APIs:["REST","OData","Event-driven"],
+      Data:["Azure SQL","Cosmos DB","Kafka","Databricks"],
+      Infra:["Azure","AKS","84.51° analytics","COTS ERP"],
+      AI:["Personalization ML","Demand forecasting","84.51°"]
+    },
+    archScores:{Distributed:55,EventDriven:60,Observability:58,DeveloperExp:55,APIMaturity:62},
+    position:{x:48,y:60},
+    verdict:"Hybrid — modernizing monolith",verdictT:"amber",
+    debate:`Kroger represents the majority of enterprise reality: decades of mainframe and on-prem systems being slowly migrated to cloud. Their partnership with Microsoft (Azure) is strategic, and 84.51° (their data analytics subsidiary) runs sophisticated ML for personalization and demand forecasting. The monolith vs. microservices debate here is existential — you can't just rewrite $137B in annual revenue's worth of supply chain systems. The approach is strangler-fig: wrap legacy systems with APIs, extract services incrementally, avoid the big-bang rewrite. Kroger's digital business grew massively through COVID, forcing faster API-first modernization. But grocery retail has razor-thin margins, so tech investment is always weighed against ROI carefully.`,
+    insights:["84.51° subsidiary handles petabytes of retail analytics","Strangler-fig pattern: wrap legacy, extract incrementally","Fuel points and loyalty APIs are among their most-trafficked","Pharmacy systems require HIPAA-compliant API design"]
+  },
+  {
+    id:"microsoft", name:"Microsoft", sub:"Cloud / Enterprise", color:"#00A4EF", textColor:"#fff",
+    initials:"MS",
+    tagline:"The reformed monolith. Windows is a 40M LOC monolith; Azure is microservices. Both live under one roof.",
+    sector:"Cloud & Enterprise Software",
+    tags:[{label:"Azure microservices",t:"blue"},{label:"Windows monolith",t:"amber"},{label:".NET / TypeScript",t:"green"}],
+    stack:{
+      Languages:["C#","TypeScript","C++","Python","Rust"],
+      APIs:["REST (Azure)","gRPC","SignalR","OData"],
+      Data:["Cosmos DB","SQL Server","Azure Data Lake","Fabric"],
+      Infra:["Azure","Service Fabric","AKS","GitHub Actions"],
+      AI:["Azure OpenAI","Phi models","Copilot infra","ONNX"]
+    },
+    archScores:{Distributed:80,EventDriven:78,Observability:85,DeveloperExp:90,APIMaturity:88},
+    position:{x:75,y:35},
+    verdict:"Hybrid at massive scale",verdictT:"blue",
+    debate:`Microsoft is the most interesting hybrid case: Windows is arguably the world's largest maintained monolith (tens of millions of lines of C/C++), while Azure is a best-practice microservices platform. This isn't contradiction — it's product reality. Nadella's cloud-first pivot meant Azure teams build with Service Fabric and AKS, shipping dozens of microservices per region. Meanwhile, Windows still ships as a giant integrated release. Microsoft 365 is somewhere between: a modular-monolith where Teams, Word, and Outlook share deep services but deploy mostly independently. The current burning debate is Copilot integration — should AI be a cross-cutting service (microservice) or deeply embedded in each product (modular additions to existing monoliths)? They're doing both.`,
+    insights:["Windows and Azure represent opposite ends of the spectrum","TypeScript is now the lingua franca of Microsoft frontend","Service Fabric underpins many Azure services behind the scenes","GitHub Actions has become a CI/CD standard across the industry"]
+  },
+  {
+    id:"tesla", name:"Tesla", sub:"EVs / AI", color:"#CC0000", textColor:"#fff",
+    initials:"T",
+    tagline:"Vertical integration as a software philosophy. From chip design to the fleet API, Tesla controls the stack.",
+    sector:"Automotive / AI / Energy",
+    tags:[{label:"Vertically integrated",t:"red"},{label:"OTA updates",t:"green"},{label:"Fleet API",t:"blue"}],
+    stack:{
+      Languages:["Python","C++","Rust","CUDA"],
+      APIs:["Vehicle REST API","Fleet API","Internal CAN bus"],
+      Data:["Custom time-series","PostgreSQL","Kafka"],
+      Infra:["Custom silicon (D1)","AWS","On-device inference"],
+      AI:["Autopilot","Dojo training cluster","FSD stack"]
+    },
+    archScores:{Distributed:62,EventDriven:72,Observability:80,DeveloperExp:60,APIMaturity:65},
+    position:{x:55,y:45},
+    verdict:"Vertically integrated hybrid",verdictT:"amber",
+    debate:`Tesla's architecture philosophy mirrors their manufacturing: own everything. Their Autopilot/FSD stack is a tightly coupled system running on custom inference hardware in the car. The vehicle API is purposefully limited externally while being deeply instrumented internally — every car is a sensor node feeding fleet telemetry. The Dojo supercomputer (custom D1 chips) is a monolithic training cluster, not a distributed cloud service. Internally, the tight coupling enables rapid iteration (OTA software updates to 5M+ cars simultaneously) but creates risk when changes propagate. The burning debate: as Tesla becomes a software company (Optimus, energy), do they need to decompose the monolithic vehicle software stack, or does tight integration remain a competitive advantage?`,
+    insights:["Every vehicle is a data collection node in a global fleet","OTA updates changed the automotive software model industry-wide","Dojo training cluster uses custom silicon, not commodity GPUs","Fleet API launched in 2023 to formalize third-party access"]
+  },
+  {
+    id:"spacex", name:"SpaceX", sub:"Aerospace", color:"#005288", textColor:"#fff",
+    initials:"SX",
+    tagline:"Safety-critical systems demand reliability over elegance. Flight software is closer to a monolith by necessity.",
+    sector:"Aerospace / Defense",
+    tags:[{label:"Safety-critical",t:"red"},{label:"Real-time C++",t:"blue"},{label:"Ground microservices",t:"green"}],
+    stack:{
+      Languages:["C++","Python","LabVIEW (legacy)","Rust (emerging)"],
+      APIs:["Internal mission APIs","REST (ground ops)","Custom telemetry"],
+      Data:["Time-series DB","PostgreSQL","Custom telemetry store"],
+      Infra:["On-prem (flight-critical)","AWS (Starlink ops)","Linux RTOS"],
+      AI:["Trajectory optimization","Anomaly detection","Starlink ML"]
+    },
+    archScores:{Distributed:45,EventDriven:55,Observability:88,DeveloperExp:58,APIMaturity:52},
+    position:{x:38,y:50},
+    verdict:"Monolith-leaning (flight), distributed (ground)",verdictT:"amber",
+    debate:`SpaceX illustrates why the monolith vs. microservices debate can't be dogmatic. Flight software (Falcon 9, Dragon, Starship) runs on deterministic real-time systems where network partitions are unacceptable failure modes. A distributed microservices architecture introduces network latency and partial failure scenarios that are simply incompatible with landing a booster on a drone ship. Ground systems (launch control, Starlink operations, mission planning) can be — and are — more distributed and cloud-leveraged. Starlink operations at 6,000+ satellites requires distributed systems thinking. The burning question: as reusability scales, does ground-side automation need more sophisticated API-driven orchestration to handle launch cadence?`,
+    insights:["Flight software runs on Linux with real-time extensions","Starlink ground ops is a genuinely large distributed system","Telemetry data rates are in the gigabits per second range","Strong preference for in-house tooling over commercial SaaS"]
+  },
+  {
+    id:"amazon", name:"Amazon", sub:"E-commerce / Cloud", color:"#FF9900", textColor:"#232F3E",
+    initials:"A",
+    tagline:"Bezos's 2002 API mandate created the microservices playbook the world now follows. Also runs AWS.",
+    sector:"E-commerce / Cloud / Logistics",
+    tags:[{label:"API mandate origin",t:"amber"},{label:"Lambda/serverless",t:"blue"},{label:"Event-driven",t:"green"}],
+    stack:{
+      Languages:["Java","Kotlin","Python","Rust","TypeScript"],
+      APIs:["REST (AWS)","GraphQL (AppSync)","gRPC","Event-driven"],
+      Data:["DynamoDB","Aurora","S3","Redshift","ElastiCache"],
+      Infra:["AWS Lambda","ECS/EKS","SQS/SNS","Step Functions"],
+      AI:["Alexa","Bedrock","SageMaker","Rufus (retail AI)"]
+    },
+    archScores:{Distributed:95,EventDriven:92,Observability:88,DeveloperExp:82,APIMaturity:94},
+    position:{x:90,y:20},
+    verdict:"Microservices — the original",verdictT:"blue",
+    debate:`Amazon's 2002 API mandate from Bezos is the founding document of modern microservices: "All teams will expose their data and functionality through service interfaces. There will be no other form of interprocess communication allowed." This shaped AWS — every AWS product is the externalized version of an internal Amazon service. The "two-pizza team" model aligns with microservices ownership. But Amazon now grapples with the costs of their own prescription: service mesh complexity, distributed tracing overhead, and the infamous "latency tax" of hitting 10+ services to render a product page. Lambda/serverless partially addresses this. The burning debate internally: Prime Video infra team published in 2023 that they moved back from microservices to a monolith and cut costs 90% — causing massive industry discourse.`,
+    insights:["Bezos 2002 API mandate is the origin of the microservices movement","Each AWS service started as an internal Amazon tool","Prime Video's 2023 monolith blog post shook the industry","DynamoDB was built because S3+SimpleDB couldn't handle scale"]
+  },
+  {
+    id:"capitalone", name:"Capital One", sub:"Fintech / Banking", color:"#D03027", textColor:"#fff",
+    initials:"C1",
+    tagline:"First major US bank to go all-in on cloud. Shut down data centers. Full AWS-native microservices in regulated finance.",
+    sector:"Financial Services",
+    tags:[{label:"Cloud-native bank",t:"blue"},{label:"AWS-only",t:"green"},{label:"DevSecOps",t:"red"}],
+    stack:{
+      Languages:["Python","Java","Node.js","Scala"],
+      APIs:["REST","GraphQL (emerging)","Event-driven","Open Banking APIs"],
+      Data:["DynamoDB","Aurora","S3","Kafka","Snowflake"],
+      Infra:["AWS (exclusive)","Lambda","EKS","API Gateway"],
+      AI:["Fraud detection ML","Eno chatbot","Credit risk models"]
+    },
+    archScores:{Distributed:85,EventDriven:82,Observability:88,DeveloperExp:80,APIMaturity:85},
+    position:{x:80,y:30},
+    verdict:"Cloud-native microservices",verdictT:"blue",
+    debate:`Capital One's cloud story is remarkable: in 2020 they closed their last data center, going 100% AWS. For a federally regulated bank handling $30B+ in deposits, this was an extraordinary bet. Their microservices model is domain-driven — each banking product (checking, credit cards, auto lending) is an independent bounded context with its own API surface. The DevSecOps integration is critical: security gates are automated into CI/CD because a data breach in banking is existential. The burning tension: Open Banking regulations (CFPB Rule 1033) now require banks to expose customer-permissioned data via standardized APIs, which means Capital One's internal microservices must surface through standardized external API contracts. Financial compliance (SOC2, PCI-DSS) adds overhead that makes the microservices vs. monolith debate more nuanced — sometimes a simpler, auditable monolith is actually easier to certify.`,
+    insights:["First major bank to exit all data centers for public cloud","Eno AI assistant runs on their own ML infra, not pure OpenAI","CFPB Rule 1033 is reshaping their external API strategy","Security is embedded in pipelines — not bolted on at the end"]
+  }
+];
+
+let active = 0;
+
+function arcColor(s) {
+  if (s >= 85) return 'var(--accent)';
+  if (s >= 70) return '#a87000';
+  return '#b02020';
+}
+
+function renderList() {
+  const el = document.getElementById('artCoList');
+  el.innerHTML = companies.map((c, i) => `
+    <button class="art-co-btn ${i === active ? 'active' : ''}" onclick="select(${i})">
+      <div class="art-co-logo" style="background:${c.color};color:${c.textColor}">${c.initials}</div>
+      <div>
+        <div class="art-co-name">${c.name}</div>
+        <div class="art-co-sub">${c.sub}</div>
+      </div>
+    </button>`).join('');
+}
+
+function renderPanel() {
+  const c = companies[active];
+  const stackRows = Object.entries(c.stack).map(([k, v]) => `
+    <div class="art-stack-item">
+      <div class="art-stack-label">${k}</div>
+      <div class="art-stack-pills">${v.map(p => `<span class="art-pill">${p}</span>`).join('')}</div>
+    </div>`).join('');
+  const bars = Object.entries(c.archScores).map(([k, v]) => `
+    <div class="art-arch-bar">
+      <div class="art-arch-label">${k}</div>
+      <div class="art-bar-track"><div class="art-bar-fill" style="width:${v}%;background:${arcColor(v)}"></div></div>
+      <div class="art-bar-val" style="color:${arcColor(v)}">${v}</div>
+    </div>`).join('');
+  const tagMap = { blue: 'art-tag-blue', green: 'art-tag-green', amber: 'art-tag-amber', red: 'art-tag-red' };
+
+  const posMap = companies.map((co, i) => {
+    const isActive = i === active;
+    return `<div style="position:absolute;left:${co.position.x}%;top:${co.position.y}%;transform:translate(-50%,-50%)">
+      <div style="width:${isActive ? 13 : 8}px;height:${isActive ? 13 : 8}px;border-radius:50%;background:${co.color};opacity:${isActive ? 1 : 0.5};transition:all .3s;cursor:pointer;border:${isActive ? '2px solid var(--accent)' : 'none'}" title="${co.name}" onclick="select(${i})"></div>
+      ${isActive ? `<div style="position:absolute;white-space:nowrap;font-size:9px;color:var(--text);top:14px;left:50%;transform:translateX(-50%);font-weight:700">${co.name}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  document.getElementById('artPanel').innerHTML = `
+    <div class="art-card">
+      <div class="art-company-header">
+        <div class="art-big-logo" style="background:${c.color};color:${c.textColor}">${c.initials}</div>
+        <div class="art-co-info">
+          <h3>${c.name}</h3>
+          <p>${c.tagline}</p>
+          <div class="art-tags">${c.tags.map(t => `<span class="art-tag ${tagMap[t.t] || 'art-tag-blue'}">${t.label}</span>`).join('')}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="art-tab-row" id="artTabRow">
+      <button class="art-tab active" onclick="showTab('stack', event)">Tech stack</button>
+      <button class="art-tab" onclick="showTab('arch', event)">Architecture</button>
+      <button class="art-tab" onclick="showTab('debate', event)">The debate</button>
+      <button class="art-tab" onclick="showTab('insights', event)">Key insights</button>
+    </div>
+
+    <div class="art-card art-tab-panel active" id="art-tab-stack">
+      <div class="art-card-title">Technology stack</div>
+      <div class="art-stack-grid">${stackRows}</div>
+    </div>
+
+    <div class="art-card art-tab-panel" id="art-tab-arch">
+      <div class="art-card-title">Architecture maturity scores</div>
+      ${bars}
+    </div>
+
+    <div class="art-card art-tab-panel" id="art-tab-debate">
+      <div class="art-card-title">Monolith vs. distributed — the debate</div>
+      <div class="art-debate">${c.debate}</div>
+      <div class="art-verdict art-tag-${c.verdictT}">${c.verdict}</div>
+    </div>
+
+    <div class="art-card art-tab-panel" id="art-tab-insights">
+      <div class="art-card-title">Engineering insights</div>
+      <ul class="art-insights-list">${c.insights.map(i => `<li>${i}</li>`).join('')}</ul>
+      <div style="margin-top:18px">
+        <div class="art-card-title">Industry position map</div>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:8px">X = distributed maturity · Y (top = less distributed)</p>
+        <div class="art-pos-map">
+          <div class="art-axis-h"></div>
+          <div class="art-axis-v"></div>
+          <div class="art-axis-label" style="bottom:5px;left:6px">Monolith-leaning</div>
+          <div class="art-axis-label" style="bottom:5px;right:6px">Distributed</div>
+          ${posMap}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function showTab(id, e) {
+  document.querySelectorAll('.art-tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.art-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('art-tab-' + id).classList.add('active');
+  e.target.classList.add('active');
+}
+
+function select(i) {
+  active = i;
+  renderList();
+  renderPanel();
+}
+
+renderList();
+renderPanel();
+</script>
+
+</body>
+</html>
