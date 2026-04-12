@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">Library Detail — MindObix</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    .android-page h1,.android-page h2,.android-page h3,.android-page h4,
+    .stat-big,.feature-title { font-family:'Roboto',Verdana,Arial,sans-serif; }
+
+    .lib-hero {
+      padding: 72px 0 60px; position: relative; z-index: 1;
+      background: linear-gradient(160deg, rgba(61,220,132,0.05) 0%, rgba(14,138,110,0.03) 35%, transparent 70%);
+      border-bottom: 1px solid var(--border);
+    }
+    .lib-hero-header { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+    .lib-hero-icon { width: 64px; height: 64px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; background: rgba(61,220,132,0.08); border: 1px solid rgba(61,220,132,0.18); }
+    .lib-hero-title { font-size: clamp(1.5rem,3.5vw,2.2rem); font-weight: 700; color: var(--navy); line-height: 1.2; }
+    .lib-hero-sub { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+    .lib-hero-tagline { font-size: 1.05rem; color: var(--text2); max-width: 680px; line-height: 1.7; margin-bottom: 28px; }
+    .lib-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .lib-content { display: grid; grid-template-columns: 1fr 320px; gap: 36px; align-items: start; margin: 56px 0; }
+    @media (max-width: 900px) { .lib-content { grid-template-columns: 1fr; } }
+
+    .lib-main > * + * { margin-top: 40px; }
+    .lib-main h2 { font-size: 1.25rem; margin-bottom: 20px; }
+
+    /* Key features grid */
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
+
+    .feature-item {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 22px;
+    }
+    .feature-item:nth-child(odd) { background: linear-gradient(145deg, rgba(61,220,132,0.03) 0%, var(--surface2) 60%); }
+    .feature-item-icon { font-size: 20px; margin-bottom: 10px; }
+    .feature-title { font-size: 0.85rem; margin-bottom: 6px; font-weight: 700; color: var(--navy); }
+    .feature-item p { font-size: 12px; margin: 0; line-height: 1.65; }
+
+    /* Sidebar */
+    .lib-sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px; box-shadow: 0 1px 4px rgba(11,29,58,0.04); }
+    .sidebar-card h4 { font-family: 'Roboto', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.10em; color: var(--muted); margin-bottom: 14px; }
+    .sidebar-tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .sidebar-tag { padding: 4px 10px; border-radius: 3px; font-size: 11px; font-weight: 600; background: var(--surface2); color: var(--text2); border: 1px solid var(--border); font-family: 'Roboto', sans-serif; }
+    .sidebar-stat { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+    .sidebar-stat:last-child { border-bottom: none; }
+    .sidebar-stat-label { color: var(--muted); font-family: 'Roboto', sans-serif; }
+    .sidebar-stat-value { color: var(--navy); font-weight: 700; font-family: 'Roboto', sans-serif; }
+
+    /* Test suites table */
+    .test-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .test-table th { text-align: left; padding: 10px 12px; font-family: 'Roboto', sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border-bottom: 2px solid var(--border); }
+    .test-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .test-table td:last-child { text-align: right; font-family: 'Roboto', sans-serif; font-weight: 700; color: var(--accent); }
+    .test-table tr:last-child td { border-bottom: none; font-weight: 700; color: var(--navy); }
+    .test-table tr:last-child td:last-child { color: var(--accent); }
+
+    /* Architecture */
+    .arch-tree { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 22px; font-family: 'Roboto Mono', monospace; font-size: 12px; color: var(--text2); line-height: 1.7; white-space: pre-wrap; }
+    .arch-tree strong { color: var(--navy); font-weight: 700; }
+
+    /* Related libs */
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .related-grid { grid-template-columns: 1fr; } }
+    .related-card { text-decoration: none; }
+    .related-card h4 { font-family: 'Roboto', sans-serif; font-size: 0.85rem; margin-bottom: 6px; color: var(--navy); }
+    .related-card p { font-size: 11px; margin: 0; }
+    .related-card .r-icon { font-size: 18px; margin-bottom: 10px; }
+
+    .not-found { text-align: center; padding: 100px 0; }
+    .not-found h2 { margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+<div class="android-page">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="apps.html">Web Apps</a></li>
+      <li><a href="android.html" class="active">Android Apps</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="lib-root"></div>
+
+<section class="section" style="background:var(--surface2); border-top:1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">Android Libraries</span>
+    <h2 class="section-title" style="font-family:'Roboto',Verdana,sans-serif; margin-bottom:28px;">Explore the Stack</h2>
+    <div class="related-grid" id="related-libs"></div>
+    <div style="text-align:center; margin-top:32px;">
+      <a href="android.html" class="btn btn-ghost">Back to Android Overview →</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
+      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
+    </div>
+    <div>
+      <div class="footer-nav-label">Navigation</div>
+      <nav class="footer-nav">
+        <a href="apps.html">Web Apps</a>
+        <a href="android.html">Android Apps</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="about.html">About Ganesh</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Contact</div>
+      <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MindObix. Built entirely with Claude Code AI Agents.</span>
+  </div>
+</footer>
+
+<script>
+const LIBS = {
+  'networking': {
+    name: 'CCKotlinNetworking',
+    tagline: 'Everything an Android app needs to talk to REST APIs — token management, retry, certificate pinning, logging redaction, multipart uploads, and request deduplication. One builder. Complete control.',
+    icon: '🌐',
+    github: 'https://github.com/mindobix/CCKotlinNetworking',
+    subtitle: 'Retrofit + OkHttp · OAuth · Retry · Certificate Pinning',
+    description: 'An Android Kotlin networking library built on top of Retrofit and OkHttp. Provides a single fluent builder that configures every aspect of API communication — from authentication and error handling to security and observability. Designed so that every developer on the team writes consistent, safe API calls without boilerplate.\n\nBuilt 100% with Claude Code AI Agents. Every interceptor, every edge case, every concurrency scenario is tested.',
+    stack: ['Kotlin', 'Retrofit', 'OkHttp', 'Moshi', 'Coroutines', 'MockWebServer'],
+    features: [
+      { icon: '📦', title: 'ApiResponse Sealed Class', desc: 'Every API call returns Success, Error, or NetworkError. No uncaught exceptions, no boilerplate try-catch. Pattern matching gives you type-safe access to status codes, headers, parsed error bodies, and network error classification.' },
+      { icon: '🔑', title: 'Automatic Token Management', desc: 'Bearer token injected on every request via AuthInterceptor. On 401, TokenAuthenticator locks, refreshes once, and replays all blocked requests with the new token. Multiple concurrent 401s trigger only one refresh.' },
+      { icon: '🔒', title: 'Certificate Pinning', desc: 'Optional SHA-256 pin validation to prevent man-in-the-middle attacks. Supports multiple backup pins per hostname. One builder call to enable across the entire app.' },
+      { icon: '🔄', title: 'RetryInterceptor', desc: 'Automatic retry on 5xx, 408, 429, and network errors with configurable max retries, initial delay, and exponential backoff. Idempotency-safe — non-idempotent methods skip retry by default.' },
+      { icon: '🛡️', title: 'RedactingInterceptor', desc: 'Masks sensitive headers (Authorization, Cookie, Set-Cookie) and JSON body fields (password, ssn, credit_card) in log output. The actual request is never modified — only the logged representation.' },
+      { icon: '⚡', title: 'DeduplicatingInterceptor', desc: 'Collapses concurrent identical GET requests into a single HTTP call. All callers receive independent response clones. Eliminates redundant network traffic when multiple screens request the same data.' },
+      { icon: '📤', title: 'MultipartHelper', desc: 'File and byte array upload helpers with automatic MIME type detection for 30+ file extensions. Upload single files, multiple files, or combine files with form data fields.' },
+      { icon: '⚠️', title: 'NetworkErrorKind Classification', desc: 'Network failures classified into NO_CONNECTION, TIMEOUT, DNS_FAILURE, SSL_ERROR, or UNKNOWN. Map directly to user-facing messages without parsing exception types yourself.' },
+    ],
+    tests: [
+      { suite: 'ApiResponse, ApiError & safeApiCall', count: 29 },
+      { suite: 'TokenAuthenticator & AuthInterceptor', count: 27 },
+      { suite: 'NetworkErrorKind', count: 28 },
+      { suite: 'MultipartHelper & MimeType', count: 26 },
+      { suite: 'RetryInterceptor', count: 23 },
+      { suite: 'RedactingInterceptor', count: 20 },
+      { suite: 'DeduplicatingInterceptor', count: 15 },
+      { suite: 'Certificate Pinning', count: 12 },
+      { suite: 'NetworkingClient.Builder', count: 12 },
+      { suite: 'HeaderInterceptor', count: 7 },
+    ],
+    totalTests: 199,
+    stats: [
+      { label: 'Language', value: 'Kotlin' },
+      { label: 'Min SDK', value: 'Android 30' },
+      { label: 'HTTP Client', value: 'OkHttp + Retrofit' },
+      { label: 'JSON', value: 'Moshi' },
+      { label: 'Unit Tests', value: '199' },
+      { label: 'Test Suites', value: '10' },
+      { label: 'License', value: 'MIT' },
+    ],
+    architecture: `networking/src/main/java/com/mindobix/networking/
+├── <strong>NetworkingClient.kt</strong>         Builder for Retrofit + OkHttp
+├── <strong>ApiResponse.kt</strong>              Sealed class: Success / Error / NetworkError
+├── <strong>ApiError.kt</strong>                 Standard error body with JSON parsing
+├── <strong>NetworkErrorKind.kt</strong>         Classifies network errors
+├── <strong>SafeApiCall.kt</strong>              safeApiCall {} suspend wrapper
+├── <strong>RetryInterceptor.kt</strong>         Auto retry on 5xx/408/429
+├── <strong>HeaderInterceptor.kt</strong>        Default headers on every request
+├── <strong>RedactingInterceptor.kt</strong>     Masks sensitive data in logs
+├── <strong>DeduplicatingInterceptor.kt</strong> Collapses concurrent GETs
+├── <strong>MultipartHelper.kt</strong>          File upload helpers + MIME types
+└── auth/
+    ├── <strong>TokenProvider.kt</strong>        Interface for token storage
+    ├── <strong>RefreshTokenConfig.kt</strong>   Refresh URL + header config
+    ├── <strong>AuthInterceptor.kt</strong>      Injects Bearer token
+    └── <strong>TokenAuthenticator.kt</strong>   401 → refresh → replay`,
+  },
+
+  'cache': {
+    name: 'CCKotlinAPICache',
+    tagline: 'File-based JSON caching for OkHttp with three intelligent strategies. Plug it into any OkHttpClient with one line — every GET is cached according to your rules.',
+    icon: '💾',
+    github: 'https://github.com/mindobix/CCKotlinAPICache',
+    subtitle: 'OkHttp Interceptor · 3 Strategies · LRU · Auto-Invalidation',
+    description: 'An Android Kotlin API response caching library built on OkHttp. Three caching strategies (CACHE_FIRST, NETWORK_FIRST, CACHE_ONLY_IF_OFFLINE), wildcard path rules for granular configuration, LRU eviction to manage disk space, and automatic invalidation when mutations (POST/PUT/DELETE) hit cached endpoints.\n\nNo more stale data surprises. No more manual cache management. Configure once, and every API response is handled correctly.',
+    stack: ['Kotlin', 'OkHttp', 'Moshi', 'File I/O', 'SHA-256', 'MockWebServer'],
+    features: [
+      { icon: '🎯', title: 'Three Cache Strategies', desc: 'CACHE_FIRST returns cached data instantly (background refresh when stale). NETWORK_FIRST always hits the network but falls back to cache on failure. CACHE_ONLY_IF_OFFLINE serves cache only when the device has no connectivity.' },
+      { icon: '🔍', title: 'Wildcard Path Rules', desc: 'Configure cache behavior per URL pattern. Exact paths, single-segment wildcards (/users/*/profile), and double-star wildcards (/products/**). Each rule specifies strategy and TTL independently.' },
+      { icon: '♻️', title: 'LRU Eviction', desc: 'Configurable maximum cache size (default 50 MB). When the limit is reached, least-recently-used entries are automatically evicted. No disk bloat, no manual cleanup required.' },
+      { icon: '🔄', title: 'Auto-Invalidation on Mutations', desc: 'POST, PUT, and DELETE requests automatically invalidate cached GET responses for the same URL path. Cache stays consistent after mutations without any manual invalidation calls.' },
+      { icon: '📊', title: 'X-Cache Response Headers', desc: 'Every response includes X-Cache (HIT, MISS, STALE, BYPASS, OFFLINE) and X-Cache-Age headers. Full observability into cache behavior for debugging and analytics.' },
+      { icon: '⚡', title: 'Background Refresh on Stale', desc: 'When CACHE_FIRST encounters stale data, it returns the stale response immediately (zero UI lag) while refreshing in the background. The next request gets fresh data.' },
+    ],
+    tests: [
+      { suite: 'CacheStoreTest', count: 20 },
+      { suite: 'CacheInterceptorTest', count: 16 },
+      { suite: 'CacheRuleTest', count: 12 },
+      { suite: 'CacheManagerTest', count: 10 },
+    ],
+    totalTests: 58,
+    stats: [
+      { label: 'Language', value: 'Kotlin' },
+      { label: 'Min SDK', value: 'Android 30' },
+      { label: 'HTTP Client', value: 'OkHttp' },
+      { label: 'JSON', value: 'Moshi' },
+      { label: 'Unit Tests', value: '58' },
+      { label: 'Test Suites', value: '4' },
+      { label: 'License', value: 'MIT' },
+    ],
+    architecture: `apicache/src/main/java/com/mindobix/apicache/
+├── <strong>CacheConfig.kt</strong>        Builder pattern + rule lookup
+├── <strong>CacheStrategy.kt</strong>      Enum: CACHE_FIRST / NETWORK_FIRST / OFFLINE
+├── <strong>CacheRule.kt</strong>          Path pattern matching (*, **)
+├── <strong>CacheEntry.kt</strong>         Metadata per cached response
+├── <strong>CacheStore.kt</strong>         File storage + LRU eviction + SHA-256 keys
+├── <strong>CacheInterceptor.kt</strong>   OkHttp Interceptor — all 3 strategies
+└── <strong>CacheManager.kt</strong>       Public API: interceptor, invalidation, stats`,
+  },
+
+  'featureconfig': {
+    name: 'CCKotlinFeatureConfig',
+    tagline: 'Feature flags, targeting rules, A/B testing, and bundled defaults for offline resilience. Control what your users see — without deploying a new build.',
+    icon: '⚙️',
+    github: 'https://github.com/mindobix/CCKotlinFeatureConfig',
+    subtitle: 'Feature Flags · Targeting Rules · A/B Variants · Offline Defaults',
+    description: 'An Android Kotlin feature configuration library built on top of CCKotlinNetworking. Full JSON schema for defining features with typed values, platform-aware evaluation, percentage rollouts, user segment targeting, A/B testing variants, and bundled defaults that guarantee your app works even when the network doesn\'t.\n\nDesigned for organizations that need to control feature availability across user segments, countries, platforms, and app versions — all from a static JSON file hosted on any server.',
+    stack: ['Kotlin', 'CCKotlinNetworking', 'Moshi', 'JSON Schema', 'Coroutines'],
+    features: [
+      { icon: '🎚️', title: '8-Rule Evaluation Chain', desc: 'Features are evaluated through enabled → platform → minVersion → userIds → userSegments → countries → deviceTypes → percentage. All checks must pass. Deterministic, predictable, auditable.' },
+      { icon: '📱', title: 'Platform-Aware Features', desc: 'Features can be enabled per-platform (android, ios, web) with independent minimum version requirements. Roll out a feature on iOS first, then Android at a later version.' },
+      { icon: '🎯', title: 'Targeting Rules', desc: 'Gradual rollout by percentage (deterministic user hashing). Target by user IDs, user segments (beta, premium, enterprise), countries (ISO codes), and device types.' },
+      { icon: '🔤', title: 'Typed Value Access', desc: 'getBoolean(), getString(), getNumber() with compile-time defaults. Features carry typed values (boolean, string, number, json) — not just on/off switches.' },
+      { icon: '🧪', title: 'A/B Testing Variants', desc: 'Built-in variant support (control, treatmentA, treatmentB). Variants carry their own values. Assign users deterministically by hash for consistent experiences.' },
+      { icon: '📦', title: 'Bundled Defaults for Offline', desc: 'Ship a fallback config JSON in your app assets. Works immediately on first launch, before any network call. Server config takes over after successful fetch.' },
+    ],
+    tests: [
+      { suite: 'FeatureEvaluator', count: 47 },
+      { suite: 'FeatureConfigManager & Client', count: 25 },
+      { suite: 'FeatureConfig JSON Parsing', count: 16 },
+      { suite: 'VersionComparator', count: 11 },
+    ],
+    totalTests: 99,
+    stats: [
+      { label: 'Language', value: 'Kotlin' },
+      { label: 'Min SDK', value: 'Android 30' },
+      { label: 'Depends On', value: 'CCKotlinNetworking' },
+      { label: 'Config Format', value: 'JSON Schema' },
+      { label: 'Unit Tests', value: '99' },
+      { label: 'Test Suites', value: '4' },
+      { label: 'License', value: 'MIT' },
+    ],
+    architecture: `featureconfig/src/main/java/com/mindobix/featureconfig/
+├── <strong>FeatureConfigManager.kt</strong>   Main entry point: fetch + evaluate
+├── <strong>FeatureConfigClient.kt</strong>    Fetches config via CCKotlinNetworking
+├── <strong>FeatureEvaluator.kt</strong>       Evaluates features against context
+├── <strong>VersionComparator.kt</strong>      Semantic version comparison
+└── model/
+    ├── <strong>FeatureConfig.kt</strong>      All data classes
+    └── <strong>EvaluationContext.kt</strong>  User/device context for evaluation`,
+  },
+
+  'showcase': {
+    name: 'CCKotlinLibsDemoApp',
+    tagline: 'A Jetpack Compose Material 3 demo app that demonstrates all 3 CC Kotlin libraries working together with visual toast feedback and a scrollable log.',
+    icon: '📱',
+    github: 'https://github.com/mindobix/CCKotlinLibsDemoApp',
+    subtitle: 'Jetpack Compose · Material 3 · All 3 Libraries',
+    description: 'A complete demo application built with Jetpack Compose and Material 3 that showcases every feature across all three CC Kotlin libraries. Tap demo buttons to see real API calls (via jsonplaceholder), cache hits and misses with X-Cache headers, and feature flag evaluations — all with visual toast feedback and a scrollable execution log.\n\nDesigned as both a proof-of-concept and a reference implementation for teams adopting the CC library stack.',
+    stack: ['Jetpack Compose', 'Material 3', 'Kotlin Coroutines', 'CCKotlinNetworking', 'CCKotlinAPICache', 'CCKotlinFeatureConfig'],
+    features: [
+      { icon: '🌐', title: 'Networking Demos', desc: 'Fetch a single API resource, fetch a list, and trigger a DNS failure — see ApiResponse.Success, ApiResponse.Error, and NetworkErrorKind in action.' },
+      { icon: '💾', title: 'Cache Demos', desc: 'Cache MISS on first fetch, Cache HIT on second, clear cache and see entry count and byte size. X-Cache and X-Cache-Age headers displayed in the log.' },
+      { icon: '⚙️', title: 'Feature Config Demos', desc: 'Load bundled config from assets, evaluate 4 feature flags (enabled/disabled/string/number), and inspect global settings — all without a server.' },
+      { icon: '📋', title: 'Scrollable Execution Log', desc: 'Every demo button logs its result to a scrollable text log at the bottom of the screen. Full transparency into what each library returns.' },
+      { icon: '🎨', title: 'Material 3 Design', desc: 'Clean Material 3 interface with organized button groups by library category. Professional, readable, and easy to extend.' },
+      { icon: '🔧', title: 'Reference Implementation', desc: 'Shows the correct way to initialize all 3 libraries, wire them together, and handle every response type. Copy patterns directly into your own app.' },
+    ],
+    tests: [],
+    totalTests: 0,
+    stats: [
+      { label: 'UI Framework', value: 'Jetpack Compose' },
+      { label: 'Design System', value: 'Material 3' },
+      { label: 'Libraries Used', value: 'All 3 CC Libs' },
+      { label: 'API Source', value: 'jsonplaceholder' },
+      { label: 'License', value: 'MIT' },
+    ],
+    architecture: `CCKotlinLibsDemoApp/
+├── app/
+│   └── src/main/java/.../
+│       └── <strong>MainActivity.kt</strong>      Compose UI + demo logic
+├── <strong>settings.gradle.kts</strong>          Includes all 3 library modules
+└── assets/
+    └── <strong>default_config.json</strong>      Bundled feature config`,
+  },
+};
+
+function getQueryParam(name) {
+  return new URL(window.location.href).searchParams.get(name);
+}
+
+function renderLib(lib) {
+  const root = document.getElementById('lib-root');
+  const featuresHTML = lib.features.map(f => `
+    <div class="feature-item">
+      <div class="feature-item-icon">${f.icon}</div>
+      <div class="feature-title">${f.title}</div>
+      <p>${f.desc}</p>
+    </div>`).join('');
+
+  const statsHTML = lib.stats.map(s => `
+    <div class="sidebar-stat">
+      <span class="sidebar-stat-label">${s.label}</span>
+      <span class="sidebar-stat-value">${s.value}</span>
+    </div>`).join('');
+
+  const stackHTML = lib.stack.map(t => `<span class="sidebar-tag">${t}</span>`).join('');
+
+  let testsHTML = '';
+  if (lib.tests.length > 0) {
+    const rows = lib.tests.map(t => `<tr><td>${t.suite}</td><td>${t.count}</td></tr>`).join('');
+    testsHTML = `<div>
+      <h2>Test Coverage</h2>
+      <table class="test-table">
+        <thead><tr><th>Test Suite</th><th style="text-align:right">Tests</th></tr></thead>
+        <tbody>${rows}<tr><td><strong>Total</strong></td><td><strong>${lib.totalTests}</strong></td></tr></tbody>
+      </table>
+    </div>`;
+  }
+
+  const descHTML = lib.description.split('\\n\\n').map(p => `<p>${p}</p>`).join('');
+
+  root.innerHTML = `
+    <div class="lib-hero">
+      <div class="container">
+        <a href="android.html" class="back-link">Back to Android Apps</a>
+        <div class="lib-hero-header">
+          <div class="lib-hero-icon">${lib.icon}</div>
+          <div>
+            <div class="lib-hero-sub">${lib.subtitle}</div>
+            <h1 class="lib-hero-title">${lib.name}</h1>
+          </div>
+        </div>
+        <p class="lib-hero-tagline">${lib.tagline}</p>
+        <div class="lib-hero-actions">
+          <a href="${lib.github}" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub →</a>
+          <a href="android.html" class="btn btn-ghost">All Android Libraries</a>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="position:relative; z-index:1;">
+      <div class="lib-content">
+        <div class="lib-main">
+          <div>
+            <h2>What It Does</h2>
+            <div style="font-size:13px; color:var(--text2);">${descHTML}</div>
+          </div>
+          <div>
+            <h2>Key Features</h2>
+            <div class="features-grid">${featuresHTML}</div>
+          </div>
+          ${testsHTML}
+          <div>
+            <h2>Architecture</h2>
+            <div class="arch-tree">${lib.architecture}</div>
+          </div>
+          <div style="background:var(--navy); border-radius:12px; padding:28px; text-align:center;">
+            <div style="font-size:28px; margin-bottom:14px;">🤖</div>
+            <h3 style="margin-bottom:10px; color:#ffffff;">Built 100% with Claude Code AI Agents</h3>
+            <p style="font-size:13px; max-width:500px; margin:0 auto 20px; color:rgba(255,255,255,0.65);">This library was architected, implemented, and tested using Vibe Coding — organized thinking and enterprise experience translated into production-quality Kotlin by AI.</p>
+            <a href="consulting.html" class="btn btn-accent btn-sm">Learn About Our Process</a>
+          </div>
+        </div>
+        <div class="lib-sidebar">
+          <div class="sidebar-card">
+            <h4>Tech Stack</h4>
+            <div class="sidebar-tag-list">${stackHTML}</div>
+          </div>
+          <div class="sidebar-card">
+            <h4>Details</h4>
+            ${statsHTML}
+          </div>
+          <div class="sidebar-card" style="background:var(--navy);">
+            <h4 style="color:rgba(255,255,255,0.4);">Need This Integrated?</h4>
+            <p style="font-size:12px; margin-bottom:16px; color:rgba(255,255,255,0.70);">We can help integrate these libraries into your existing Android app, customize them for your architecture, or build a complete Android platform on this foundation.</p>
+            <a href="mailto:ganesh@mindobix.com" class="btn btn-accent btn-sm" style="width:100%; justify-content:center;">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  document.title = lib.name + ' — MindObix';
+}
+
+function renderRelated(currentId) {
+  const allIds = Object.keys(LIBS).filter(id => id !== currentId);
+  const container = document.getElementById('related-libs');
+  container.innerHTML = allIds.map(id => {
+    const l = LIBS[id];
+    return `<a href="android-lib.html?id=${id}" class="card card-link related-card">
+      <div class="r-icon">${l.icon}</div>
+      <h4>${l.name}</h4>
+      <p>${l.tagline.split('.')[0]}.</p>
+    </a>`;
+  }).join('');
+}
+
+function renderNotFound(id) {
+  document.getElementById('lib-root').innerHTML = `
+    <div class="container section not-found">
+      <h2>Library Not Found</h2>
+      <p>No library with id "${id}" exists.</p>
+      <a href="android.html" class="btn btn-primary" style="margin-top:20px;">View Android Libraries</a>
+    </div>`;
+}
+
+const id = getQueryParam('id');
+if (id && LIBS[id]) { renderLib(LIBS[id]); renderRelated(id); }
+else { renderNotFound(id || '(none)'); }
+</script>
+</body>
+</html>
