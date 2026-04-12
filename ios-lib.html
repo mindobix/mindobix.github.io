@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">iOS Library Detail — MindObix</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── iOS THEME VARIABLES ── */
+    :root {
+      --ios-swift:    #F05138;
+      --ios-swift2:   #FA7343;
+      --ios-blue:     #007AFF;
+      --ios-blue2:    #5AC8FA;
+      --ios-indigo:   #5856D6;
+      --ios-green:    #34C759;
+    }
+
+    .ios-page h1,.ios-page h2,.ios-page h3,.ios-page h4,
+    .ios-stat-big,.ios-feature-title {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', Verdana, Arial, sans-serif;
+    }
+
+    /* ── HERO ── */
+    .ios-lib-hero {
+      padding: 72px 0 60px; position: relative; z-index: 1; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .ios-lib-hero-header { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+    .ios-lib-hero-icon {
+      width: 72px; height: 72px; border-radius: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .icon-swift  { background: linear-gradient(145deg, rgba(240,81,56,0.14) 0%, rgba(240,81,56,0.04) 100%); border: 1px solid rgba(240,81,56,0.25); }
+    .icon-blue   { background: linear-gradient(145deg, rgba(0,122,255,0.14) 0%, rgba(0,122,255,0.04) 100%); border: 1px solid rgba(0,122,255,0.25); }
+    .icon-indigo { background: linear-gradient(145deg, rgba(88,86,214,0.14) 0%, rgba(88,86,214,0.04) 100%); border: 1px solid rgba(88,86,214,0.25); }
+    .icon-green  { background: linear-gradient(145deg, rgba(52,199,89,0.14) 0%, rgba(52,199,89,0.04) 100%); border: 1px solid rgba(52,199,89,0.25); }
+
+    .ios-lib-hero-title { font-size: clamp(1.6rem,3.5vw,2.3rem); font-weight: 800; color: var(--navy); line-height: 1.2; }
+    .ios-lib-hero-sub { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.09em; margin-top: 4px; }
+    .ios-lib-hero-tagline { font-size: 1.05rem; color: var(--text2); max-width: 720px; line-height: 1.75; margin-bottom: 22px; }
+    .ios-lib-hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 26px; }
+
+    /* Badge row */
+    .ios-lib-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .ios-lib-badge { padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 600; font-family: 'Inter', -apple-system, Verdana, sans-serif; }
+    .badge-platform { background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.10); color: var(--text2); }
+    .badge-zero-dep { background: rgba(52,199,89,0.10); border: 1px solid rgba(52,199,89,0.25); color: #1a8a3a; }
+    .badge-swift6   { background: rgba(240,81,56,0.10); border: 1px solid rgba(240,81,56,0.22); color: var(--ios-swift); }
+    .badge-mit      { background: rgba(11,29,58,0.06);  border: 1px solid rgba(11,29,58,0.12);  color: var(--navy); }
+
+    /* Pill action buttons */
+    .btn-swift        { background: var(--ios-swift);  color: #fff; border-radius: 100px; padding: 11px 24px; font-family: 'Inter', -apple-system, Verdana, sans-serif; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 7px; text-decoration: none; transition: all 0.18s; white-space: nowrap; }
+    .btn-swift:hover  { background: var(--ios-swift2); color: #fff; transform: translateY(-1px); box-shadow: 0 5px 16px rgba(240,81,56,0.25); }
+    .btn-swift.blue   { background: var(--ios-blue);   }
+    .btn-swift.blue:hover   { background: var(--ios-blue2); box-shadow: 0 5px 16px rgba(0,122,255,0.25); }
+    .btn-swift.indigo { background: var(--ios-indigo); }
+    .btn-swift.indigo:hover { background: #7B79E8; box-shadow: 0 5px 16px rgba(88,86,214,0.25); }
+    .btn-swift.green  { background: var(--ios-green);  }
+    .btn-swift.green:hover  { background: #28b44a; box-shadow: 0 5px 16px rgba(52,199,89,0.25); }
+    .btn-ios-ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--border2); border-radius: 100px; padding: 11px 24px; font-family: 'Inter', -apple-system, Verdana, sans-serif; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 7px; text-decoration: none; transition: all 0.18s; }
+    .btn-ios-ghost:hover { border-color: var(--ios-swift); color: var(--ios-swift); transform: translateY(-1px); }
+
+    /* ── CONTENT LAYOUT ── */
+    .ios-lib-content { display: grid; grid-template-columns: 1fr 300px; gap: 36px; align-items: start; margin: 56px 0; }
+    @media (max-width: 900px) { .ios-lib-content { grid-template-columns: 1fr; } }
+
+    .ios-lib-main > * + * { margin-top: 48px; }
+    .ios-lib-main h2 {
+      font-size: 1.2rem; margin-bottom: 20px;
+      font-family: 'Inter', -apple-system, Verdana, sans-serif;
+    }
+    .ios-lib-main p { font-size: 13px; line-height: 1.8; }
+
+    /* ── KEY FEATURES GRID ── */
+    .ios-features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (max-width: 600px) { .ios-features-grid { grid-template-columns: 1fr; } }
+
+    .ios-feature-item {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; position: relative; overflow: hidden;
+    }
+    .ios-feature-item::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      border-radius: 14px 14px 0 0;
+    }
+    .ios-feature-item.c-swift::before  { background: var(--ios-swift); }
+    .ios-feature-item.c-blue::before   { background: var(--ios-blue); }
+    .ios-feature-item.c-indigo::before { background: var(--ios-indigo); }
+    .ios-feature-item.c-green::before  { background: var(--ios-green); }
+
+    .ios-feature-item-icon { font-size: 22px; margin-bottom: 12px; margin-top: 4px; }
+    .ios-feature-title { font-size: 0.85rem; margin-bottom: 8px; font-weight: 700; color: var(--navy); font-family: 'Inter', -apple-system, Verdana, sans-serif; }
+    .ios-feature-item p { font-size: 12px; margin: 0; line-height: 1.65; color: var(--text2); }
+
+    /* ── CODE BLOCKS ── */
+    .ios-code-block {
+      background: #0d1117; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; overflow: hidden; margin-bottom: 16px;
+    }
+    .ios-code-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 18px; border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+    }
+    .ios-code-label {
+      font-family: 'Inter', -apple-system, Verdana, sans-serif;
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.09em; color: rgba(255,255,255,0.35);
+    }
+    .ios-code-lang {
+      font-family: 'Inter', -apple-system, Verdana, sans-serif;
+      font-size: 10px; color: rgba(255,255,255,0.25);
+    }
+    .ios-code-body {
+      padding: 20px 20px; overflow-x: auto;
+      font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+      font-size: 12.5px; line-height: 1.75; color: #c9d1d9;
+      white-space: pre;
+    }
+    /* Syntax colors */
+    .ios-code-body .kw  { color: #ff7b72; }   /* keywords: let, var, func, class, etc */
+    .ios-code-body .ty  { color: #79c0ff; }   /* type names */
+    .ios-code-body .st  { color: #a5d6ff; }   /* strings */
+    .ios-code-body .cm  { color: #8b949e; font-style: italic; }  /* comments */
+    .ios-code-body .fn  { color: #d2a8ff; }   /* function calls */
+    .ios-code-body .nu  { color: #f0883e; }   /* numbers */
+    .ios-code-body .pn  { color: #e3b341; }   /* punctuation/operators */
+    .ios-code-body .pl  { color: #ffa657; }   /* property access */
+
+    /* ── BUILDER OPTIONS TABLE ── */
+    .ios-options-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px; }
+    .ios-options-table th {
+      text-align: left; padding: 10px 12px;
+      font-family: 'Inter', -apple-system, Verdana, sans-serif;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--muted); border-bottom: 2px solid var(--border);
+      background: var(--surface2);
+    }
+    .ios-options-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .ios-options-table td:first-child { font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--ios-blue); font-weight: 500; white-space: nowrap; }
+    .ios-options-table td:nth-child(2) { font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--ios-indigo); }
+    .ios-options-table td:nth-child(3) { font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace; font-size: 11px; color: var(--muted); }
+    .ios-options-table td:last-child { color: var(--text2); font-size: 11px; }
+    .ios-options-table tr:last-child td { border-bottom: none; }
+    .ios-options-table-wrap { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+
+    /* ── TEST TABLE ── */
+    .ios-test-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .ios-test-table th { text-align: left; padding: 10px 12px; font-family: 'Inter', -apple-system, Verdana, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); border-bottom: 2px solid var(--border); }
+    .ios-test-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text2); }
+    .ios-test-table td:nth-child(2) { font-size: 11px; color: var(--muted); }
+    .ios-test-table td:last-child { text-align: right; font-family: 'Inter', -apple-system, Verdana, sans-serif; font-weight: 700; white-space: nowrap; }
+    .ios-test-table tr.total-row td { border-bottom: none; font-weight: 700; color: var(--navy); }
+    .ios-test-table tr:hover td { background: var(--surface2); }
+
+    /* ── ARCH TREE ── */
+    .ios-arch-tree {
+      background: #0d1117; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 22px 24px;
+      font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+      font-size: 12px; color: #c9d1d9; line-height: 1.8; white-space: pre-wrap;
+    }
+    .ios-arch-tree strong { color: #79c0ff; font-weight: 500; }
+
+    /* ── EVALUATION PIPELINE ── */
+    .ios-eval-pipeline { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .ios-eval-step { display: flex; gap: 16px; align-items: flex-start; padding: 16px 20px; border-bottom: 1px solid var(--border); background: var(--surface); }
+    .ios-eval-step:last-child { border-bottom: none; }
+    .ios-eval-step:nth-child(odd) { background: var(--surface2); }
+    .ios-eval-num { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Inter', -apple-system, Verdana, sans-serif; font-size: 11px; font-weight: 800; margin-top: 2px; }
+    .ios-eval-step h5 { font-family: 'Inter', -apple-system, Verdana, sans-serif; font-size: 0.85rem; margin-bottom: 3px; }
+    .ios-eval-step p { font-size: 12px; margin: 0; }
+
+    /* ── CACHE FLOW DIAGRAM ── */
+    .ios-cache-flow {
+      background: #0d1117; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 22px 24px;
+      font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+      font-size: 12px; color: #c9d1d9; line-height: 1.9; white-space: pre-wrap;
+    }
+    .ios-cache-flow strong { color: var(--ios-swift2); font-weight: 600; }
+    .ios-cache-flow .strategy { color: #79c0ff; }
+    .ios-cache-flow .hit    { color: #56d364; }
+    .ios-cache-flow .miss   { color: #f0883e; }
+    .ios-cache-flow .stale  { color: #e3b341; }
+
+    /* ── DEMO SCREENS ── */
+    .ios-screens-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    @media (max-width: 600px) { .ios-screens-grid { grid-template-columns: 1fr; } }
+    .ios-screen-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px; display: flex; gap: 14px; align-items: flex-start;
+    }
+    .ios-screen-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .ios-screen-card h5 { font-family: 'Inter', -apple-system, Verdana, sans-serif; font-size: 0.85rem; margin-bottom: 5px; color: var(--navy); }
+    .ios-screen-card p { font-size: 12px; margin: 0; }
+
+    /* ── SIDEBAR ── */
+    .ios-lib-sidebar { display: flex; flex-direction: column; gap: 20px; }
+    .ios-sidebar-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; box-shadow: 0 1px 6px rgba(11,29,58,0.05); }
+    .ios-sidebar-card h4 { font-family: 'Inter', -apple-system, Verdana, sans-serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.11em; color: var(--muted); margin-bottom: 14px; }
+    .ios-sidebar-tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
+    .ios-sidebar-tag { padding: 4px 11px; border-radius: 100px; font-size: 11px; font-weight: 600; background: var(--surface2); color: var(--text2); border: 1px solid var(--border); font-family: 'Inter', -apple-system, Verdana, sans-serif; }
+    .ios-sidebar-stat { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+    .ios-sidebar-stat:last-child { border-bottom: none; }
+    .ios-sidebar-stat-label { color: var(--muted); font-family: 'Inter', -apple-system, Verdana, sans-serif; }
+    .ios-sidebar-stat-value { color: var(--navy); font-weight: 700; font-family: 'Inter', -apple-system, Verdana, sans-serif; }
+
+    /* ── RELATED ── */
+    .ios-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 768px) { .ios-related-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .ios-related-grid { grid-template-columns: 1fr; } }
+    .ios-related-card { text-decoration: none; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; display: block; }
+    .ios-related-card:hover { border-color: var(--ios-swift); box-shadow: 0 6px 20px rgba(240,81,56,0.10); transform: translateY(-3px); }
+    .ios-related-card h4 { font-family: 'Inter', -apple-system, Verdana, sans-serif; font-size: 0.85rem; margin-bottom: 6px; color: var(--navy); }
+    .ios-related-card p { font-size: 11px; margin: 0; }
+    .ios-related-card .r-icon { font-size: 20px; margin-bottom: 10px; }
+
+    .not-found { text-align: center; padding: 100px 0; }
+
+    /* ── AI BUILT CALLOUT ── */
+    .ios-ai-callout {
+      background: linear-gradient(145deg, #0b1d3a 0%, #12254a 100%);
+      border-radius: 16px; padding: 32px; text-align: center;
+    }
+    .ios-ai-callout .ai-icon { font-size: 32px; margin-bottom: 14px; }
+    .ios-ai-callout h3 { color: #ffffff; margin-bottom: 10px; font-family: 'Inter', -apple-system, Verdana, sans-serif; font-size: 1.1rem; }
+    .ios-ai-callout p { font-size: 13px; max-width: 500px; margin: 0 auto 22px; color: rgba(255,255,255,0.65); line-height: 1.75; }
+
+    /* inline code */
+    code.il { font-family: 'JetBrains Mono','SF Mono',Menlo,monospace; font-size: 11px; background: rgba(0,0,0,0.06); padding: 2px 6px; border-radius: 4px; color: var(--navy); }
+  </style>
+</head>
+<body>
+<div class="ios-page">
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="apps.html">Web Apps</a></li>
+      <li><a href="android.html">Android Apps</a></li>
+      <li><a href="ios.html" class="active">iOS Apps</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="lib-root"></div>
+
+<!-- ── EXPLORE THE STACK ── -->
+<section class="section" style="background:var(--surface2); border-top:1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">iOS Swift Libraries</span>
+    <h2 class="section-title" style="font-family:'Inter',-apple-system,Verdana,sans-serif; margin-bottom:28px;">Explore the Full iOS Stack</h2>
+    <div class="ios-related-grid" id="related-libs"></div>
+    <div style="text-align:center; margin-top:32px;">
+      <a href="ios.html" class="btn-ios-ghost">Back to iOS Overview →</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
+      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
+    </div>
+    <div>
+      <div class="footer-nav-label">Navigation</div>
+      <nav class="footer-nav">
+        <a href="apps.html">Web Apps</a>
+        <a href="android.html">Android Apps</a>
+        <a href="ios.html">iOS Apps</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="about.html">About Ganesh</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">iOS Libraries</div>
+      <nav class="footer-nav">
+        <a href="ios-lib.html?id=networking">CCSwiftNetworking</a>
+        <a href="ios-lib.html?id=cache">CCSwiftAPICache</a>
+        <a href="ios-lib.html?id=featureconfig">CCSwiftFeatureConfig</a>
+        <a href="ios-lib.html?id=showcase">Demo App</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Contact</div>
+      <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 MindObix. Built entirely with Claude Code AI Agents.</span>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   SHARED HELPERS
+   ═══════════════════════════════════════════════════════════════ */
+function code(label, langTag, body) {
+  return `<div class="ios-code-block">
+    <div class="ios-code-header">
+      <span class="ios-code-label">${label}</span>
+      <span class="ios-code-lang">${langTag}</span>
+    </div>
+    <div class="ios-code-body">${body}</div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIBRARY DATA
+   ═══════════════════════════════════════════════════════════════ */
+const IOS_LIBS = {
+
+/* ─────────────────────────────────────────────────────────────
+   CCSwiftNetworking
+   ───────────────────────────────────────────────────────────── */
+networking: {
+  name: 'CCSwiftNetworking',
+  icon: '🌐',
+  iconClass: 'icon-swift',
+  accentClass: 'c-swift',
+  btnClass: 'btn-swift',
+  github: 'https://github.com/mindobix/CCSwiftNetworking',
+  subtitle: 'URLSession · OAuth · Retry · Certificate Pinning · Swift 6',
+  tagline: 'A production-ready, zero-dependency Swift networking client built entirely on URLSession. Type-safe responses, actor-based OAuth, automatic retry, certificate pinning, request deduplication, and a composable interceptor chain — for iPhone, iPad, and Mac.',
+  platforms: ['iOS 16+', 'macOS 13+', 'tvOS 16+', 'watchOS 9+'],
+  stack: ['Swift 6', 'URLSession', 'Foundation', 'CommonCrypto', 'Swift Testing'],
+  description: `CCSwiftNetworking is the networking backbone for Apple platform apps. Built entirely on URLSession with zero third-party dependencies, it provides a single fluent builder that configures every aspect of API communication — authentication, error handling, security, observability, and retry.\n\nEvery API call returns a typed <code class="il">APIResponse&lt;T&gt;</code> enum — no uncaught exceptions, no force-unwrapping, no boilerplate try-catch. Pattern matching gives you type-safe access to every outcome: success payloads, parsed error bodies, network error classification, and decoding failures.\n\nBuilt 100% with Claude Code AI Agents. Every interceptor, every edge case, every Swift 6 concurrency scenario is captured in 207 unit tests across 13 test suites.`,
+  features: [
+    { icon: '📦', title: 'APIResponse&lt;T&gt; — Type-Safe from the First Line', colorClass: 'c-swift',
+      desc: 'Every API call returns <code class="il">APIResponse&lt;T&gt;</code> — a typed enum with <code class="il">.success(T, Int, [String:String])</code>, <code class="il">.error(Int, APIError?, String?)</code>, <code class="il">.networkError(Error, NetworkErrorKind)</code>, and <code class="il">.decodingError(Error, Int, String?)</code>. Full exhaustive pattern matching. No uncaught exceptions. No force-unwrapping.' },
+    { icon: '🔑', title: 'Actor-Based Token Refresh — Zero Race Conditions', colorClass: 'c-swift',
+      desc: 'When a 401 arrives, <code class="il">TokenAuthenticator</code> (a Swift actor) acquires a lock and refreshes once — collapsing all concurrent 401 responses into a single refresh call. Every blocked request replays automatically with the new token. Thread-safe by construction under Swift 6 strict concurrency.' },
+    { icon: '🔒', title: 'SHA-256 Certificate Pinning', colorClass: 'c-blue',
+      desc: 'SHA-256 public key pinning via URLSession delegate. Supports multiple backup pins per hostname for certificate rotation without downtime. Protects against man-in-the-middle attacks on corporate networks and public Wi-Fi. One property to enable across every request in the app.' },
+    { icon: '🔄', title: 'Retry with Exponential Backoff', colorClass: 'c-blue',
+      desc: 'Automatic retry on 5xx, 408, and 429 responses with configurable <code class="il">maxRetries</code> and exponential backoff. Idempotency-aware — POST, PATCH, and non-idempotent methods skip retry by default, preventing duplicate side-effects in production at 2 AM.' },
+    { icon: '🛡️', title: 'Logging with PII Redaction', colorClass: 'c-indigo',
+      desc: 'Full request/response logging with configurable redaction of sensitive headers (Authorization, Cookie, Set-Cookie) and JSON body fields (password, ssn, credit_card, token — plus any custom fields). The actual request is never modified — only the logged representation, ensuring App Store privacy compliance.' },
+    { icon: '⚡', title: 'Request Deduplication', colorClass: 'c-indigo',
+      desc: 'Collapses concurrent identical GET requests into a single network call. All callers receive independent response clones. Eliminates redundant network traffic when multiple SwiftUI views or ViewModels request the same data simultaneously — especially common in iPad split-view and multi-column layouts.' },
+    { icon: '🔗', title: 'flatMap Chaining for Dependent Calls', colorClass: 'c-green',
+      desc: 'Chain dependent API calls with proper error propagation using <code class="il">.flatMap { user in await client.get("/users/\\(user.id)/orders") }</code>. Short-circuits on the first failure. Eliminates nested callbacks and pyramid-of-doom async patterns in complex multi-step enterprise workflows.' },
+    { icon: '📤', title: 'Multipart Uploads with MIME Auto-Detection', colorClass: 'c-green',
+      desc: 'File and byte array upload helpers via <code class="il">MultipartFormData</code>. Auto-detects MIME types for 30+ file extensions from a URL — JPEG, PNG, PDF, MOV, and more. Mix files with form fields. Per-request timeout override for long uploads (300 s) vs. health checks (5 s) without reconfiguring the client.' },
+  ],
+  usage: `
+<span class="cm">// 1. Create the client — one builder, complete control</span>
+<span class="kw">let</span> client = <span class="ty">NetworkingClient</span>(<span class="pl">baseURL</span>: <span class="st">"https://api.example.com"</span>) { config <span class="kw">in</span>
+    config.<span class="pl">defaultHeaders</span> = [<span class="st">"X-App-Version"</span>: <span class="st">"2.5.0"</span>]
+    config.<span class="pl">retryConfig</span>    = <span class="ty">RetryConfig</span>(<span class="pl">maxRetries</span>: <span class="nu">2</span>)
+    config.<span class="pl">enableDeduplication</span> = <span class="kw">true</span>
+    config.<span class="pl">loggingConfig</span>  = <span class="ty">LoggingConfig</span>(
+        <span class="pl">level</span>: .body,
+        <span class="pl">redactHeaders</span>: [<span class="st">"X-Custom-Secret"</span>],
+        <span class="pl">redactBodyFields</span>: [<span class="st">"password"</span>, <span class="st">"ssn"</span>]
+    )
+}
+
+<span class="cm">// 2. Make requests — GET, POST, PUT, DELETE</span>
+<span class="kw">let</span> response: <span class="ty">APIResponse</span>&lt;<span class="ty">User</span>&gt; = <span class="kw">await</span> client.<span class="fn">get</span>(<span class="st">"/users/me"</span>)
+
+<span class="kw">let</span> created: <span class="ty">APIResponse</span>&lt;<span class="ty">User</span>&gt; = <span class="kw">await</span> client.<span class="fn">post</span>(<span class="st">"/users"</span>,
+    <span class="pl">body</span>: <span class="ty">CreateUserRequest</span>(<span class="pl">name</span>: <span class="st">"Alice"</span>, <span class="pl">email</span>: <span class="st">"alice@example.com"</span>))
+
+<span class="cm">// 3. Handle responses — exhaustive switch, no surprises</span>
+<span class="kw">switch</span> response {
+<span class="kw">case</span> .success(<span class="kw">let</span> user, <span class="kw">_</span>, <span class="kw">_</span>):
+    <span class="fn">updateUI</span>(<span class="pl">with</span>: user)
+
+<span class="kw">case</span> .error(<span class="kw">let</span> statusCode, <span class="kw">let</span> apiError, <span class="kw">_</span>):
+    <span class="fn">showError</span>(apiError?.<span class="pl">displayMessage</span> ?? <span class="st">"Request failed (\(statusCode))"</span>)
+
+<span class="kw">case</span> .networkError(<span class="kw">_</span>, <span class="kw">let</span> kind):
+    <span class="kw">switch</span> kind {
+    <span class="kw">case</span> .noConnection: <span class="fn">showOfflineBanner</span>()
+    <span class="kw">case</span> .timeout:      <span class="fn">showRetryButton</span>()
+    <span class="kw">case</span> .sslError:     <span class="fn">showSecurityWarning</span>()
+    <span class="kw">default</span>:           <span class="fn">showGenericError</span>()
+    }
+
+<span class="kw">case</span> .decodingError(<span class="kw">let</span> error, <span class="kw">_</span>, <span class="kw">_</span>):
+    <span class="fn">logDecodingFailure</span>(error)
+}`.trim(),
+
+  usageExtra: `
+<span class="cm">// Chain dependent calls with flatMap</span>
+<span class="kw">let</span> orders: <span class="ty">APIResponse</span>&lt;[<span class="ty">Order</span>]&gt; = <span class="kw">await</span> client.<span class="fn">get</span>(<span class="st">"/users/me"</span>)
+    .<span class="fn">flatMap</span> { user <span class="kw">in</span>
+        <span class="kw">await</span> client.<span class="fn">get</span>(<span class="st">"/users/\(user.id)/orders"</span>)
+    }
+
+<span class="cm">// Per-request timeout — override without reconfiguring the client</span>
+<span class="kw">let</span> health = <span class="kw">await</span> client.<span class="fn">get</span>(<span class="st">"/health"</span>, <span class="pl">timeoutInterval</span>: <span class="nu">5</span>)
+<span class="kw">let</span> upload = <span class="kw">await</span> client.<span class="fn">upload</span>(<span class="st">"/avatars"</span>, <span class="pl">multipart</span>: multipart, <span class="pl">timeoutInterval</span>: <span class="nu">300</span>)
+
+<span class="cm">// Multipart file upload with auto-detected MIME type</span>
+<span class="kw">let</span> multipart = <span class="ty">MultipartFormData</span>()
+multipart.<span class="fn">addFile</span>(<span class="pl">data</span>: imageData, <span class="pl">name</span>: <span class="st">"avatar"</span>,
+                  <span class="pl">fileName</span>: <span class="st">"photo.jpg"</span>, <span class="pl">mimeType</span>: <span class="ty">MIMEType</span>.<span class="pl">imageJPEG</span>)
+multipart.<span class="fn">addField</span>(<span class="pl">name</span>: <span class="st">"caption"</span>, <span class="pl">value</span>: <span class="st">"Profile photo"</span>)
+<span class="kw">let</span> result: <span class="ty">APIResponse</span>&lt;<span class="ty">UploadResult</span>&gt; = <span class="kw">await</span> client.<span class="fn">upload</span>(<span class="st">"/avatars"</span>, <span class="pl">multipart</span>: multipart)
+
+<span class="cm">// OAuth — implement TokenProvider, wire to client</span>
+<span class="kw">final class</span> <span class="ty">MyTokenProvider</span>: <span class="ty">TokenProvider</span> {
+    <span class="kw">func</span> <span class="fn">getAccessToken</span>()  <span class="kw">async</span> -> <span class="ty">String</span>? { keychain.<span class="fn">get</span>(<span class="st">"accessToken"</span>) }
+    <span class="kw">func</span> <span class="fn">getRefreshToken</span>() <span class="kw">async</span> -> <span class="ty">String</span>? { keychain.<span class="fn">get</span>(<span class="st">"refreshToken"</span>) }
+    <span class="kw">func</span> <span class="fn">onTokensUpdated</span>(<span class="pl">accessToken</span>: <span class="ty">String</span>, <span class="pl">refreshToken</span>: <span class="ty">String</span>) <span class="kw">async</span> {
+        keychain.<span class="fn">set</span>(<span class="st">"accessToken"</span>, accessToken)
+    }
+    <span class="kw">func</span> <span class="fn">onAuthenticationFailed</span>() <span class="kw">async</span> {
+        <span class="kw">await</span> router.<span class="fn">navigateToLogin</span>()
+    }
+}`.trim(),
+
+  builderOptions: [
+    { option: 'baseURL',              type: 'String',                   default: 'Required', desc: 'Base URL prefixed on every request' },
+    { option: 'tokenProvider',        type: 'TokenProvider?',            default: 'nil',      desc: 'OAuth token storage (keychain integration)' },
+    { option: 'refreshTokenConfig',   type: 'RefreshTokenConfig?',       default: 'nil',      desc: 'Refresh endpoint URL + header names' },
+    { option: 'maxAuthRetries',       type: 'Int',                       default: '1',        desc: 'Max 401 refresh attempts before failing' },
+    { option: 'defaultHeaders',       type: '[String: String]',          default: '[:]',      desc: 'Headers added to every request' },
+    { option: 'retryConfig',          type: 'RetryConfig?',              default: 'nil',      desc: 'maxRetries, initialDelay, backoff factor' },
+    { option: 'enableDeduplication',  type: 'Bool',                      default: 'false',    desc: 'Collapse concurrent identical GET requests' },
+    { option: 'loggingConfig',        type: 'LoggingConfig?',            default: 'nil',      desc: 'Log level + header/body field redaction list' },
+    { option: 'certificatePins',      type: '[String: [String]]',        default: '[:]',      desc: 'SHA-256 pins by hostname (supports backups)' },
+    { option: 'connectTimeout',       type: 'TimeInterval',              default: '30',       desc: 'Connection timeout in seconds' },
+    { option: 'resourceTimeout',      type: 'TimeInterval',              default: '30',       desc: 'Resource/read timeout in seconds' },
+    { option: 'interceptors',         type: '[Interceptor]',             default: '[]',       desc: 'Custom interceptor chain (added after built-ins)' },
+    { option: 'jsonDecoder',          type: 'JSONDecoder',               default: 'Default',  desc: 'Custom JSON decoder for response parsing' },
+    { option: 'jsonEncoder',          type: 'JSONEncoder',               default: 'Default',  desc: 'Custom JSON encoder for request bodies' },
+  ],
+  tests: [
+    { suite: 'APIResponseTests',             count: 33, covers: 'success/error/networkError/decodingError, map, flatMap, callbacks' },
+    { suite: 'APIErrorTests',                count: 15, covers: 'JSON parsing, displayMessage, field errors' },
+    { suite: 'NetworkErrorKindTests',        count: 27, covers: 'URLError classification, NSError patterns, user messages' },
+    { suite: 'RetryInterceptorTests',        count: 21, covers: '5xx/408/429 retry, backoff, idempotency, recovery' },
+    { suite: 'HeaderInterceptorTests',       count: 6,  covers: 'Default headers, precedence, passthrough' },
+    { suite: 'LoggingInterceptorTests',      count: 15, covers: 'Levels, header/body redaction, timing' },
+    { suite: 'DeduplicatingInterceptorTests',count: 8,  covers: 'Concurrent GETs, POST bypass, query params' },
+    { suite: 'InterceptorChainTests',        count: 5,  covers: 'Ordering, modification, short-circuit, errors' },
+    { suite: 'NetworkingClientBuilderTests', count: 12, covers: 'Configuration, defaults, custom options' },
+    { suite: 'AuthInterceptorTests',         count: 5,  covers: 'Token injection, skip existing auth headers, nil token' },
+    { suite: 'TokenAuthenticatorTests',      count: 10, covers: 'Token refresh, config, failure callbacks, concurrency' },
+    { suite: 'MIMETypeTests',                count: 35, covers: 'All 30+ extensions, case insensitivity, URL detection' },
+    { suite: 'MultipartFormDataTests',       count: 16, covers: 'Fields, files, encoding, binary data, boundary' },
+  ],
+  totalTests: 207,
+  stats: [
+    { label: 'Language',      value: 'Swift 6' },
+    { label: 'iOS Support',   value: 'iOS 16+' },
+    { label: 'macOS Support', value: 'macOS 13+' },
+    { label: 'HTTP Client',   value: 'URLSession' },
+    { label: 'Dependencies',  value: 'Zero' },
+    { label: 'Unit Tests',    value: '207' },
+    { label: 'Test Suites',   value: '13' },
+    { label: 'License',       value: 'MIT' },
+  ],
+  architecture: `<strong>Sources/CCSwiftNetworking/</strong>
+├── <strong>NetworkingClient.swift</strong>          Main client · config · request execution
+├── <strong>APIResponse.swift</strong>               Type-safe response enum (4 cases)
+├── <strong>APIError.swift</strong>                  Standard error body model (Codable)
+├── <strong>NetworkErrorKind.swift</strong>          Network error classification (5 kinds)
+├── <strong>HTTPMethod.swift</strong>                HTTP method enum
+├── <strong>Interceptor.swift</strong>               Interceptor protocol + chain runner
+├── <strong>RetryInterceptor.swift</strong>          Auto-retry with exponential backoff
+├── <strong>HeaderInterceptor.swift</strong>         Default headers on every request
+├── <strong>LoggingInterceptor.swift</strong>        Full request/response logging + redaction
+├── <strong>DeduplicatingInterceptor.swift</strong>  Collapse concurrent identical GETs
+├── <strong>CertificatePinning.swift</strong>        SHA-256 pin validation (URLSession delegate)
+├── <strong>MultipartFormData.swift</strong>         Multipart upload builder
+├── <strong>MIMEType.swift</strong>                  30+ MIME type constants + auto-detection
+└── <strong>Auth/</strong>
+    ├── <strong>AuthInterceptor.swift</strong>        Bearer token injection interceptor
+    ├── <strong>TokenProvider.swift</strong>          Token storage protocol (implement w/ keychain)
+    ├── <strong>RefreshTokenConfig.swift</strong>     Refresh endpoint configuration
+    └── <strong>TokenAuthenticator.swift</strong>     Actor-based 401 → refresh → replay`,
+},
+
+/* ─────────────────────────────────────────────────────────────
+   CCSwiftAPICache
+   ───────────────────────────────────────────────────────────── */
+cache: {
+  name: 'CCSwiftAPICache',
+  icon: '💾',
+  iconClass: 'icon-blue',
+  accentClass: 'c-blue',
+  btnClass: 'btn-swift blue',
+  github: 'https://github.com/mindobix/CCSwiftAPICache',
+  subtitle: 'URLSession Interceptor · 3 Strategies · LRU Eviction · Auto-Invalidation',
+  tagline: 'Intelligent API response caching for Swift. File-based, strategy-driven, and built entirely on Apple frameworks. One interceptor — every GET is cached according to your rules, with zero third-party dependencies.',
+  platforms: ['iOS 16+', 'macOS 13+', 'tvOS 16+', 'watchOS 9+'],
+  stack: ['Swift 6', 'Foundation', 'CommonCrypto', 'File I/O', 'SHA-256'],
+  description: `CCSwiftAPICache is a drop-in API response caching layer for any URLSession-based networking client. Three intelligent caching strategies — <code class="il">cacheFirst</code>, <code class="il">networkFirst</code>, <code class="il">cacheOnlyIfOffline</code> — configurable per URL path pattern with wildcard matching. File-based storage with SHA-256 hashed filenames, LRU eviction, stale-while-revalidate, automatic cache invalidation on mutations, and X-Cache response headers for full observability.\n\nBuilt entirely on Foundation and CommonCrypto. No Alamofire. No SDWebImage. No third-party caching framework. 60 unit tests across 5 suites prove every strategy, every eviction path, and every wildcard edge case.`,
+  features: [
+    { icon: '🎯', title: 'Three Cache Strategies — One for Every Use Case', colorClass: 'c-blue',
+      desc: '<strong>cacheFirst</strong>: Returns cached data immediately, refreshes in background when stale — zero perceived latency. <strong>networkFirst</strong>: Always tries the network, falls back to cache on failure — ideal for real-time feeds. <strong>cacheOnlyIfOffline</strong>: Always network when connected, cache is the absolute last resort for critical data.' },
+    { icon: '🔍', title: 'Wildcard Path Pattern Matching', colorClass: 'c-blue',
+      desc: 'Configure strategy and TTL per URL path pattern. Exact paths (<code class="il">/users/me</code>), single-segment wildcards (<code class="il">/users/*/profile</code>), and double-star wildcards (<code class="il">/products/**</code> matches any depth). First matching rule wins. A sensible default applies to all unmatched paths.' },
+    { icon: '♻️', title: 'LRU Eviction — Automatic Disk Management', colorClass: 'c-swift',
+      desc: 'Configurable maximum cache size (default 50 MB). When the limit is reached, least-recently-used entries are automatically evicted — no disk bloat, no manual cleanup. Critical for enterprise iOS apps distributed via MDM with storage constraints on managed devices.' },
+    { icon: '🔄', title: 'Auto-Invalidation on Mutations', colorClass: 'c-swift',
+      desc: 'POST, PUT, and DELETE requests automatically invalidate cached GET responses for matching URL paths. Cache stays consistent after mutations without a single manual call. Wildcard patterns mean <code class="il">/users/**</code> is invalidated when you POST to <code class="il">/users/123/update</code>.' },
+    { icon: '📊', title: 'X-Cache Response Headers', colorClass: 'c-indigo',
+      desc: 'Every response includes <code class="il">X-Cache</code> (HIT, STALE, MISS, BYPASS, OFFLINE) and <code class="il">X-Cache-Age</code> (milliseconds since stored). Integrate with your analytics layer to measure real-world cache hit rates. Debug cache behavior without Instruments.' },
+    { icon: '⚡', title: 'Stale-While-Revalidate', colorClass: 'c-indigo',
+      desc: 'When <code class="il">cacheFirst</code> encounters stale data, it returns the cached response immediately to the UI — zero network wait — while refreshing in the background. The next request gets fresh data. Users on cellular never feel the latency of a network round-trip for cached resources.' },
+  ],
+  usage: `
+<span class="cm">// 1. Configure the cache — fluent builder with path rules</span>
+<span class="kw">let</span> config = <span class="ty">CacheConfig</span>.<span class="ty">Builder</span>(<span class="pl">cacheDir</span>: <span class="ty">FileManager</span>.default.<span class="pl">temporaryDirectory</span>)
+    .<span class="fn">addRule</span>(<span class="st">"/users/**"</span>,      <span class="pl">maxAgeMs</span>: <span class="nu">60_000</span>,    <span class="pl">strategy</span>: .networkFirst)
+    .<span class="fn">addRule</span>(<span class="st">"/products/**"</span>,   <span class="pl">maxAgeMs</span>: <span class="nu">300_000</span>)   <span class="cm">// 5 min, default strategy</span>
+    .<span class="fn">addRule</span>(<span class="st">"/config"</span>,        <span class="pl">maxAgeMs</span>: <span class="nu">3_600_000</span>) <span class="cm">// 1 hour</span>
+    .<span class="fn">defaultMaxAgeMs</span>(<span class="nu">120_000</span>)                       <span class="cm">// 2 min for everything else</span>
+    .<span class="fn">defaultStrategy</span>(.cacheFirst)
+    .<span class="fn">maxCacheSizeBytes</span>(<span class="nu">100</span> * <span class="nu">1024</span> * <span class="nu">1024</span>)           <span class="cm">// 100 MB cap</span>
+    .<span class="fn">build</span>()
+
+<span class="kw">let</span> cacheManager = <span class="ty">CacheManager</span>(<span class="pl">config</span>: config)
+
+<span class="cm">// 2. Wire into CCSwiftNetworking via CacheBridgeInterceptor</span>
+<span class="kw">struct</span> <span class="ty">CacheBridgeInterceptor</span>: <span class="ty">Interceptor</span> {
+    <span class="kw">let</span> cacheInterceptor: <span class="ty">CacheInterceptor</span>
+    <span class="kw">func</span> <span class="fn">intercept</span>(<span class="kw">_</span> request: <span class="ty">URLRequest</span>, <span class="pl">next</span>: <span class="ty">InterceptorNext</span>) <span class="kw">async throws</span> -> (<span class="ty">Data</span>, <span class="ty">HTTPURLResponse</span>) {
+        <span class="kw">try await</span> <span class="fn">withoutActuallyEscaping</span>(next) { escapableNext <span class="kw">in</span>
+            <span class="kw">try await</span> cacheInterceptor.<span class="fn">intercept</span>(request, <span class="pl">next</span>: escapableNext)
+        }
+    }
+}
+<span class="kw">let</span> client = <span class="ty">NetworkingClient</span>(<span class="pl">baseURL</span>: <span class="st">"https://api.example.com"</span>) { config <span class="kw">in</span>
+    config.<span class="pl">interceptors</span> = [<span class="ty">CacheBridgeInterceptor</span>(<span class="pl">cacheInterceptor</span>: cacheManager.<span class="pl">interceptor</span>)]
+}`.trim(),
+
+  usageExtra: `
+<span class="cm">// Inspect X-Cache headers to observe cache behavior</span>
+<span class="kw">let</span> response: <span class="ty">APIResponse</span>&lt;<span class="ty">User</span>&gt; = <span class="kw">await</span> client.<span class="fn">get</span>(<span class="st">"/users/me"</span>)
+<span class="kw">if case</span> .success(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">let</span> headers) = response {
+    <span class="kw">let</span> cacheStatus = headers[<span class="st">"X-Cache"</span>]  <span class="cm">// HIT | STALE | MISS | BYPASS | OFFLINE</span>
+    <span class="kw">let</span> cacheAge    = headers[<span class="st">"X-Cache-Age"</span>] <span class="cm">// Age in milliseconds</span>
+    <span class="fn">print</span>(<span class="st">"Cache: \(cacheStatus ?? "?") (age \(cacheAge ?? "0") ms)"</span>)
+}
+
+<span class="cm">// Manual invalidation — by pattern, exact URL, or clear all</span>
+cacheManager.<span class="fn">invalidate</span>(<span class="st">"/users/**"</span>)
+cacheManager.<span class="fn">invalidateUrl</span>(<span class="st">"https://api.example.com/users/123"</span>)
+cacheManager.<span class="fn">clearAll</span>()
+
+<span class="cm">// Cache statistics</span>
+<span class="kw">let</span> entryCount = cacheManager.<span class="fn">cacheEntryCount</span>()
+<span class="kw">let</span> sizeBytes  = cacheManager.<span class="fn">cacheSizeBytes</span>()
+<span class="fn">print</span>(<span class="st">"Cache: \(entryCount) entries, \(sizeBytes / 1024) KB"</span>)`.trim(),
+
+  builderOptions: [
+    { option: 'cacheDir',          type: 'URL',           default: 'Required', desc: 'Base directory — creates api_cache subdirectory' },
+    { option: 'addRule()',         type: '—',             default: '—',        desc: 'Add a cache rule: path pattern + maxAgeMs + strategy' },
+    { option: 'defaultMaxAgeMs',  type: 'Int64',         default: '300_000',  desc: 'Default TTL (5 min) for paths without a matching rule' },
+    { option: 'defaultStrategy',  type: 'CacheStrategy', default: '.cacheFirst', desc: 'Strategy for paths without a matching rule' },
+    { option: 'maxCacheSizeBytes',type: 'Int64',         default: '52_428_800', desc: 'Max cache size before LRU eviction (50 MB default)' },
+  ],
+  cacheFlow: `<span class="strategy">GET</span> /products/123
+  │
+  ├─ Find matching CacheRule (first match wins, or default rule)
+  │
+  ├─ <span class="strategy">cacheFirst</span>
+  │    Cache fresh?  → <span class="hit">HIT</span>     (return immediately)
+  │    Cache stale?  → <span class="stale">STALE</span>   (return stale + background refresh)
+  │    No cache?     → <span class="miss">MISS</span>    (fetch network, store, return)
+  │
+  ├─ <span class="strategy">networkFirst</span>
+  │    Network OK?   → <span class="miss">MISS</span>    (return fresh, store)
+  │    Network fail? → <span class="stale">STALE</span>   (cache exists → return)
+  │                  → throw   (no cache → propagate error)
+  │
+  └─ <span class="strategy">cacheOnlyIfOffline</span>
+       Network OK?   → <span class="miss">MISS</span>    (return fresh, store)
+       Network fail? → OFFLINE (cache exists → return)
+                     → throw   (no cache → propagate error)
+
+<span class="strategy">POST / PUT / DELETE</span> /products/123
+  └─ Auto-invalidate matching cached paths → BYPASS to network`,
+  tests: [
+    { suite: 'CacheRuleTests',        count: 12, covers: 'Exact match, double-star, single-star wildcards, no match' },
+    { suite: 'CacheEntryTests',       count: 5,  covers: 'Expiry, age, defaults, Codable round-trip' },
+    { suite: 'CacheStoreTests',       count: 17, covers: 'Put/get, remove, invalidation, clear, stats, LRU eviction, SHA-256 hashing' },
+    { suite: 'CacheInterceptorTests', count: 16, covers: 'All three strategies, POST/PUT/DELETE bypass, auto-invalidation, wildcards, error responses' },
+    { suite: 'CacheManagerTests',     count: 10, covers: 'Interceptor integration, manual invalidation, clear, stats, config builder' },
+  ],
+  totalTests: 60,
+  stats: [
+    { label: 'Language',      value: 'Swift 6' },
+    { label: 'iOS Support',   value: 'iOS 16+' },
+    { label: 'macOS Support', value: 'macOS 13+' },
+    { label: 'Storage',       value: 'File-based JSON' },
+    { label: 'Key Hashing',   value: 'SHA-256' },
+    { label: 'Dependencies',  value: 'Zero' },
+    { label: 'Unit Tests',    value: '60' },
+    { label: 'Test Suites',   value: '5' },
+    { label: 'Default Cache', value: '50 MB LRU' },
+    { label: 'License',       value: 'MIT' },
+  ],
+  architecture: `<strong>Sources/CCSwiftAPICache/</strong>
+├── <strong>CacheStrategy.swift</strong>      Three-strategy enum (cacheFirst / networkFirst / cacheOnlyIfOffline)
+├── <strong>CacheEntry.swift</strong>         Codable metadata for each cached response (body + meta files)
+├── <strong>CacheRule.swift</strong>          Path pattern matching with *, ** wildcard support
+├── <strong>CacheConfig.swift</strong>        Configuration with fluent Builder — rules + defaults + size limit
+├── <strong>CacheStore.swift</strong>         File-based storage · SHA-256 keys · LRU eviction
+├── <strong>CacheInterceptor.swift</strong>   URLSession interceptor implementing all three strategies
+└── <strong>CacheManager.swift</strong>       Public API: .interceptor property · invalidation · stats`,
+},
+
+/* ─────────────────────────────────────────────────────────────
+   CCSwiftFeatureConfig
+   ───────────────────────────────────────────────────────────── */
+featureconfig: {
+  name: 'CCSwiftFeatureConfig',
+  icon: '⚙️',
+  iconClass: 'icon-indigo',
+  accentClass: 'c-indigo',
+  btnClass: 'btn-swift indigo',
+  github: 'https://github.com/mindobix/CCSwiftFeatureConfig',
+  subtitle: 'Feature Flags · Platform Targeting · A/B Variants · Offline Resilience',
+  tagline: 'Feature flag management built natively for the Apple platform family. JSON-based configuration with an 8-step evaluation pipeline, percentage rollouts, user segment targeting, A/B test variants, and bundled fallbacks that guarantee your app works offline.',
+  platforms: ['iOS 16+', 'macOS 13+', 'tvOS 16+', 'watchOS 9+'],
+  stack: ['Swift 6', 'Foundation', 'URLSession'],
+  description: `CCSwiftFeatureConfig is a lightweight, zero-dependency feature flag manager for iOS, iPadOS, and macOS. Features are evaluated through an 8-step pipeline — platform, version, userId, segments, country, device type, and percentage rollout — in strict order. The first failing step short-circuits to disabled.\n\nJSON-based configuration means your feature flags live in a static file you can host anywhere — S3, CloudFront, your CDN. Ship a bundled fallback config in your app bundle so features work even when the network is unavailable at app launch. Full Swift 6 <code class="il">Sendable</code> conformance. 94 tests across 4 suites.`,
+  features: [
+    { icon: '🎯', title: '8-Step Evaluation Pipeline', colorClass: 'c-indigo',
+      desc: 'Every <code class="il">isFeatureEnabled()</code> call runs through 8 ordered checks: enabled → platform → version → userId → segments → country → device type → percentage. The first failing step short-circuits to <code class="il">false</code>. Targeting arrays that are empty or nil are skipped (permissive by default). Deterministic, auditable, no surprises.' },
+    { icon: '📊', title: 'Typed Value Access', colorClass: 'c-indigo',
+      desc: 'Beyond boolean on/off flags: <code class="il">getBoolean("darkMode", default: false)</code>, <code class="il">getString("theme", default: "system")</code>, <code class="il">getNumber("maxItems", default: 25.0)</code>. Feature configs carry typed values for UI configuration, API endpoint overrides, and behavior tuning — all without a new App Store submission.' },
+    { icon: '🧪', title: 'A/B Testing with Named Variants', colorClass: 'c-swift',
+      desc: 'Define named treatment arms — "control", "treatmentA", "treatmentB" — each with their own typed value. Retrieve variant values for any arm. Your analytics layer owns the measurement; the library owns the assignment. No third-party experiment framework required.' },
+    { icon: '📦', title: 'Bundled Fallback Config', colorClass: 'c-swift',
+      desc: 'Ship a <code class="il">features.json</code> in your app bundle as a safety net. If the remote fetch fails at app launch — no connectivity, CDN outage, cold start — the bundled config is used automatically. When remote fetch succeeds, it takes priority. Your app is never feature-blind, even on first launch with no internet.' },
+    { icon: '📱', title: 'Cross-Platform in One Config File', colorClass: 'c-green',
+      desc: 'A single JSON config controls iOS, Android, and web simultaneously. Each platform defines its own <code class="il">minVersion</code> and can have different feature values. Your server team manages one endpoint; each platform SDK evaluates its own slice. Roll out on iOS 2.5+ while Android waits for 2.4+.' },
+    { icon: '🌍', title: 'Deterministic Percentage Rollouts', colorClass: 'c-green',
+      desc: '<code class="il">hash(userId) % 100 &lt; percentage</code> is deterministic — the same user always falls in the same cohort across launches, devices, and reinstalls. Gradually ramp 1% → 10% → 100% with confidence that users never flip between enabled and disabled mid-session.' },
+  ],
+  usage: `
+<span class="cm">// 1. Create an evaluation context for the current user/device</span>
+<span class="kw">let</span> context = <span class="ty">EvaluationContext</span>(
+    <span class="pl">platform</span>:     <span class="st">"ios"</span>,
+    <span class="pl">appVersion</span>:   <span class="st">"2.5.0"</span>,
+    <span class="pl">userId</span>:       <span class="st">"user-123"</span>,
+    <span class="pl">userSegments</span>: [<span class="st">"beta"</span>, <span class="st">"premium"</span>],
+    <span class="pl">country</span>:      <span class="st">"US"</span>,
+    <span class="pl">deviceType</span>:   <span class="st">"mobile"</span>
+)
+
+<span class="cm">// 2. Initialize — with optional bundled fallback config</span>
+<span class="kw">let</span> bundledConfig = <span class="kw">try</span> <span class="ty">JSONDecoder</span>().<span class="fn">decode</span>(
+    <span class="ty">FeatureConfig</span>.<span class="kw">self</span>,
+    <span class="pl">from</span>: <span class="ty">Data</span>(<span class="pl">contentsOf</span>: <span class="ty">Bundle</span>.main.<span class="fn">url</span>(<span class="pl">forResource</span>: <span class="st">"features"</span>, <span class="pl">withExtension</span>: <span class="st">"json"</span>)!)
+)
+<span class="kw">let</span> manager = <span class="ty">FeatureConfigManager</span>(
+    <span class="pl">configURL</span>:     <span class="ty">URL</span>(<span class="pl">string</span>: <span class="st">"https://config.example.com/features.json"</span>)!,
+    <span class="pl">context</span>:       context,
+    <span class="pl">bundledConfig</span>: bundledConfig  <span class="cm">// used until first successful fetch</span>
+)
+
+<span class="cm">// 3. Fetch latest config from server</span>
+<span class="kw">await</span> manager.<span class="fn">refresh</span>()
+
+<span class="cm">// 4. Evaluate features — typed, safe, with defaults</span>
+<span class="kw">if</span> manager.<span class="fn">isFeatureEnabled</span>(<span class="st">"newDashboard"</span>) {
+    <span class="fn">showNewDashboard</span>()
+}
+<span class="kw">let</span> theme    = manager.<span class="fn">getString</span>(<span class="st">"darkModeTheme"</span>, <span class="pl">default</span>: <span class="st">"system"</span>)
+<span class="kw">let</span> maxItems = manager.<span class="fn">getNumber</span>(<span class="st">"maxItems"</span>,      <span class="pl">default</span>: <span class="nu">25</span>)`.trim(),
+
+  usageExtra: `
+<span class="cm">// A/B variant access</span>
+<span class="kw">if let</span> variant = manager.<span class="fn">getFeature</span>(<span class="st">"checkoutExperiment"</span>)?.<span class="pl">variants</span>?[<span class="st">"treatmentA"</span>] {
+    <span class="kw">switch</span> variant {
+    <span class="kw">case</span> .bool(<span class="kw">let</span> v):   <span class="fn">configureCheckout</span>(<span class="pl">newFlow</span>: v)
+    <span class="kw">case</span> .string(<span class="kw">let</span> v): <span class="fn">setCheckoutTheme</span>(v)
+    <span class="kw">case</span> .number(<span class="kw">let</span> v): <span class="fn">setMaxSteps</span>(<span class="ty">Int</span>(v))
+    <span class="kw">case</span> .null:          <span class="fn">useDefaultCheckout</span>()
+    }
+}
+
+<span class="cm">// Global settings — runtime config for the entire app</span>
+<span class="kw">if let</span> settings = manager.<span class="fn">globalSettings</span>() {
+    <span class="ty">APIConfig</span>.<span class="pl">baseURL</span>    = settings.<span class="pl">apiBaseUrl</span>
+    <span class="ty">APIConfig</span>.<span class="pl">refreshInterval</span> = settings.<span class="pl">featureRefreshIntervalSeconds</span>
+}
+
+<span class="cm">// Update context mid-session (e.g. after login)</span>
+manager.<span class="fn">updateContext</span>(<span class="ty">EvaluationContext</span>(
+    <span class="pl">platform</span>: <span class="st">"ios"</span>, <span class="pl">appVersion</span>: <span class="st">"2.5.0"</span>,
+    <span class="pl">userId</span>: <span class="st">"user-456"</span>, <span class="pl">userSegments</span>: [<span class="st">"enterprise"</span>]
+))`.trim(),
+
+  evaluationSteps: [
+    { num: 1, title: 'Master Switch',    desc: 'feature.enabled must be true. If false, the feature is immediately off for everyone, no further checks.' },
+    { num: 2, title: 'Platform Check',   desc: 'The current platform ("ios", "android", "web") must appear in feature.platforms. Absent = disabled.' },
+    { num: 3, title: 'Minimum Version',  desc: 'App version must be ≥ platform.minVersion (semantic comparison). Gate new features behind minimum app version floors across App Store release channels.' },
+    { num: 4, title: 'User ID Targeting',desc: 'If targeting.userIds is set and non-empty, current userId must be in the list. Enables targeting specific employees, QA testers, or beta users by ID.' },
+    { num: 5, title: 'User Segments',    desc: 'If targeting.userSegments is set, at least one segment must match. Target "beta", "premium", "enterprise", "internal" groups independently.' },
+    { num: 6, title: 'Country Targeting',desc: 'If targeting.countries is set, user\'s country (ISO 3166-1 code) must be in the list. For GDPR-gated features, regional rollouts, or locale-specific UI.' },
+    { num: 7, title: 'Device Type',      desc: 'If targeting.deviceTypes is set, device type must match "mobile", "tablet", or "desktop". Control iPad-specific features or Mac-only capabilities.' },
+    { num: 8, title: 'Percentage Rollout', desc: 'hash(userId) % 100 < percentage threshold. Deterministic — same user always gets same result. Gradually ramp from 0% to 100% without user experience flipping.' },
+  ],
+  tests: [
+    { suite: 'VersionComparatorTests',        count: 11, covers: 'Semantic version comparisons, edge cases, equality, malformed strings' },
+    { suite: 'FeatureEvaluatorTests',         count: 44, covers: 'All 8 evaluation steps, short-circuit behavior, nil/empty targeting, edge cases' },
+    { suite: 'FeatureConfigParsingTests',     count: 17, covers: 'JSON parsing, variants, global settings, all value types' },
+    { suite: 'FeatureConfigManagerTests',     count: 22, covers: 'Fetch, bundled fallback, context update, all typed accessors, FetchResult cases' },
+  ],
+  totalTests: 94,
+  stats: [
+    { label: 'Language',         value: 'Swift 6' },
+    { label: 'iOS Support',      value: 'iOS 16+' },
+    { label: 'macOS Support',    value: 'macOS 13+' },
+    { label: 'Dependencies',     value: 'Zero' },
+    { label: 'Config Format',    value: 'JSON' },
+    { label: 'Evaluation Steps', value: '8' },
+    { label: 'Unit Tests',       value: '94' },
+    { label: 'Test Suites',      value: '4' },
+    { label: 'License',          value: 'MIT' },
+  ],
+  architecture: `<strong>Sources/CCSwiftFeatureConfig/</strong>
+├── <strong>FeatureValue.swift</strong>          Type-safe JSON value enum (bool / string / number / null)
+├── <strong>FeatureConfig.swift</strong>         Data models — Feature · Targeting · Variants · GlobalSettings (Codable + Sendable)
+├── <strong>EvaluationContext.swift</strong>     Runtime context — platform · appVersion · userId · segments · country · deviceType
+├── <strong>VersionComparator.swift</strong>     Semantic version comparison (e.g. "2.5.0" >= "2.4.0")
+├── <strong>FeatureEvaluator.swift</strong>      8-step evaluation engine — pure function, fully testable
+└── <strong>FeatureConfigManager.swift</strong>  High-level API · remote fetch via URLSession · bundled fallback`,
+},
+
+/* ─────────────────────────────────────────────────────────────
+   CCSwiftLibsDemoApp
+   ───────────────────────────────────────────────────────────── */
+showcase: {
+  name: 'CCSwiftLibsDemoApp',
+  icon: '📱',
+  iconClass: 'icon-green',
+  accentClass: 'c-green',
+  btnClass: 'btn-swift green',
+  github: 'https://github.com/mindobix/CCSwiftLibsDemoApp',
+  subtitle: 'SwiftUI · @Observable / @MainActor · iOS 17+ · macOS 14+',
+  tagline: 'A production-quality SwiftUI demo app that showcases all three iOS libraries working together. Four interactive screens, real API calls, live cache behavior, context-switching feature flags, and the canonical CacheBridgeInterceptor integration pattern.',
+  platforms: ['iOS 17+', 'macOS 14+'],
+  stack: ['Swift 6', 'SwiftUI', '@Observable', '@MainActor', 'structured concurrency'],
+  description: `CCSwiftLibsDemoApp is a SwiftUI reference implementation that shows exactly how CCSwiftNetworking, CCSwiftAPICache, and CCSwiftFeatureConfig work together in a real app. Each library gets its own dedicated demo screen, plus an integration screen that demonstrates the CacheBridgeInterceptor pattern — the recommended way to compose CCSwiftAPICache with CCSwiftNetworking.\n\nBuilt with the modern SwiftUI architecture: <code class="il">@Observable</code> / <code class="il">@MainActor</code> inline ViewModels, <code class="il">async/await</code> structured concurrency throughout, and Swift 6 strict concurrency compliance. Runs natively on iPhone, iPad, and Mac.`,
+  features: [
+    { icon: '🔗', title: 'CacheBridgeInterceptor — The Composition Pattern', colorClass: 'c-green',
+      desc: 'The key integration insight: CCSwiftAPICache\'s <code class="il">CacheInterceptor</code> is adapted into CCSwiftNetworking\'s <code class="il">Interceptor</code> protocol via a thin bridge struct. This is the recommended pattern — each library stays independent, but they compose cleanly. One 8-line struct, used consistently across your entire codebase.' },
+    { icon: '🎨', title: 'Modern @Observable / @MainActor Architecture', colorClass: 'c-green',
+      desc: 'Each screen uses inline ViewModels with <code class="il">@Observable</code> and <code class="il">@MainActor</code> — the architecture Apple recommends for iOS 17+. No <code class="il">ObservableObject</code>, no <code class="il">@Published</code>, no <code class="il">EnvironmentObject</code> boilerplate. Clean, minimal, and fully compatible with Swift 6 strict concurrency.' },
+    { icon: '📱', title: 'Universal: iPhone + iPad + Mac', colorClass: 'c-swift',
+      desc: 'The same SwiftUI codebase runs natively on iPhone, iPad, and Mac (native macOS 14). Demonstrates how a single Swift package targets the entire Apple device family without platform-specific divergence — the architectural pattern for enterprise multi-platform apps.' },
+    { icon: '🔎', title: 'Live Cache Observability', colorClass: 'c-blue',
+      desc: 'The Cache Demo screen displays <code class="il">X-Cache</code> status (HIT/MISS/STALE), <code class="il">X-Cache-Age</code>, entry count, and total cache size bytes inline in the UI — updating in real time. Watch cache behavior happen without Instruments. A practical demo of why cache observability headers matter in production.' },
+    { icon: '🌐', title: 'Real Network Calls — No Mocking', colorClass: 'c-blue',
+      desc: 'All networking demos call the real JSONPlaceholder API. You see actual HTTP responses, real cache MISS→HIT flows, and genuine network errors — not mocked callbacks. This is intentional: the demo proves the libraries work exactly as advertised against a live endpoint.' },
+    { icon: '📋', title: 'Reference Implementation Patterns', colorClass: 'c-indigo',
+      desc: 'Copy the client setup, the CacheBridgeInterceptor, the FeatureConfigManager initialization, and the context-switching pattern directly into your own app. Every integration decision in the demo is the recommended approach for production use — not a simplified shortcut.' },
+  ],
+  usage: `
+<span class="cm">// CacheBridgeInterceptor — the canonical composition pattern</span>
+<span class="kw">struct</span> <span class="ty">CacheBridgeInterceptor</span>: <span class="ty">Interceptor</span> {
+    <span class="kw">let</span> cacheInterceptor: <span class="ty">CacheInterceptor</span>
+
+    <span class="kw">func</span> <span class="fn">intercept</span>(
+        <span class="kw">_</span> request: <span class="ty">URLRequest</span>,
+        <span class="pl">next</span>: <span class="ty">InterceptorNext</span>
+    ) <span class="kw">async throws</span> -> (<span class="ty">Data</span>, <span class="ty">HTTPURLResponse</span>) {
+        <span class="kw">try await</span> <span class="fn">withoutActuallyEscaping</span>(next) { escapableNext <span class="kw">in</span>
+            <span class="kw">try await</span> cacheInterceptor.<span class="fn">intercept</span>(request, <span class="pl">next</span>: escapableNext)
+        }
+    }
+}
+
+<span class="cm">// Wire all three libraries together — the complete setup pattern</span>
+<span class="kw">let</span> cacheConfig = <span class="ty">CacheConfig</span>.<span class="ty">Builder</span>(<span class="pl">cacheDir</span>: <span class="ty">FileManager</span>.default.<span class="pl">temporaryDirectory</span>)
+    .<span class="fn">addRule</span>(<span class="st">"/posts/**"</span>, <span class="pl">maxAgeMs</span>: <span class="nu">60_000</span>, <span class="pl">strategy</span>: .cacheFirst)
+    .<span class="fn">build</span>()
+<span class="kw">let</span> cacheManager = <span class="ty">CacheManager</span>(<span class="pl">config</span>: cacheConfig)
+
+<span class="kw">let</span> networkClient = <span class="ty">NetworkingClient</span>(<span class="pl">baseURL</span>: <span class="st">"https://jsonplaceholder.typicode.com"</span>) { config <span class="kw">in</span>
+    config.<span class="pl">interceptors</span> = [<span class="ty">CacheBridgeInterceptor</span>(<span class="pl">cacheInterceptor</span>: cacheManager.<span class="pl">interceptor</span>)]
+    config.<span class="pl">retryConfig</span>  = <span class="ty">RetryConfig</span>(<span class="pl">maxRetries</span>: <span class="nu">2</span>)
+}
+
+<span class="kw">let</span> featureManager = <span class="ty">FeatureConfigManager</span>(
+    <span class="pl">configURL</span>: <span class="ty">URL</span>(<span class="pl">string</span>: <span class="st">"https://config.example.com/features.json"</span>)!,
+    <span class="pl">context</span>:   <span class="ty">EvaluationContext</span>(<span class="pl">platform</span>: <span class="st">"ios"</span>, <span class="pl">appVersion</span>: <span class="st">"1.0.0"</span>)
+)`.trim(),
+
+  usageExtra: `
+<span class="cm">// @Observable / @MainActor ViewModel — modern SwiftUI pattern (iOS 17+)</span>
+<span class="pn">@Observable</span>
+<span class="pn">@MainActor</span>
+<span class="kw">final class</span> <span class="ty">NetworkingViewModel</span> {
+    <span class="kw">var</span> result:    <span class="ty">String</span> = <span class="st">""</span>
+    <span class="kw">var</span> isLoading: <span class="ty">Bool</span>   = <span class="kw">false</span>
+
+    <span class="kw">func</span> <span class="fn">fetchPost</span>() <span class="kw">async</span> {
+        isLoading = <span class="kw">true</span>
+        <span class="kw">let</span> response: <span class="ty">APIResponse</span>&lt;<span class="ty">Post</span>&gt; = <span class="kw">await</span> networkClient.<span class="fn">get</span>(<span class="st">"/posts/1"</span>)
+        <span class="kw">switch</span> response {
+        <span class="kw">case</span> .success(<span class="kw">let</span> post, <span class="kw">_</span>, <span class="kw">_</span>): result = post.<span class="pl">title</span>
+        <span class="kw">case</span> .error(<span class="kw">let</span> code, <span class="kw">_</span>, <span class="kw">_</span>):  result = <span class="st">"Error \(code)"</span>
+        <span class="kw">case</span> .networkError(<span class="kw">_</span>, <span class="kw">let</span> kind): result = kind.<span class="pl">userMessage</span>
+        <span class="kw">case</span> .decodingError:             result = <span class="st">"Decode failed"</span>
+        }
+        isLoading = <span class="kw">false</span>
+    }
+}`.trim(),
+
+  screens: [
+    { icon: '🌐', name: 'Networking Demo',   desc: 'GET / POST against JSONPlaceholder API. Error handling, query params. APIResponse pattern matching with .onSuccess / .onError / .onNetworkError callbacks. Real HTTP, no mocking.' },
+    { icon: '💾', name: 'API Cache Demo',    desc: 'Cache MISS → HIT flow with visual feedback. All three strategies demoed. X-Cache and X-Cache-Age header inspection. Cache stats (entry count + bytes). Pattern-based invalidation.' },
+    { icon: '⚙️', name: 'Feature Config Demo', desc: 'Load a 5-feature config with various targeting rules. Switch between iOS / Android contexts to see how evaluation changes. Typed value access and A/B variant inspection.' },
+    { icon: '🔗', name: 'Integration Demo',  desc: 'CCSwiftNetworking + CCSwiftAPICache via CacheBridgeInterceptor. First request is a cache MISS, second is a HIT. Cache stats visible inline. The recommended production integration.' },
+  ],
+  tests: [],
+  totalTests: 0,
+  stats: [
+    { label: 'Framework',      value: 'SwiftUI' },
+    { label: 'Architecture',   value: '@Observable' },
+    { label: 'iOS Support',    value: 'iOS 17+' },
+    { label: 'macOS Support',  value: 'macOS 14+' },
+    { label: 'Concurrency',    value: 'Swift 6' },
+    { label: 'Demo Screens',   value: '4' },
+    { label: 'License',        value: 'MIT' },
+  ],
+  architecture: `<strong>Sources/</strong>
+├── <strong>DemoApp.swift</strong>                    @main App entry point — TabView / NavigationSplitView
+├── Models/
+│   └── <strong>Models.swift</strong>                Shared API models (Post · User · Todo)
+└── Views/
+    ├── <strong>ContentView.swift</strong>            Navigation hub
+    ├── <strong>NetworkingDemoView.swift</strong>     CCSwiftNetworking demo · @Observable ViewModel
+    ├── <strong>CacheDemoView.swift</strong>          CCSwiftAPICache demo · X-Cache header display
+    ├── <strong>FeatureConfigDemoView.swift</strong>  CCSwiftFeatureConfig demo · context switching
+    └── <strong>IntegrationDemoView.swift</strong>    Networking + Cache via CacheBridgeInterceptor`,
+},
+
+}; // end IOS_LIBS
+
+/* ═══════════════════════════════════════════════════════════════
+   RENDER ENGINE
+   ═══════════════════════════════════════════════════════════════ */
+
+const ALL_LIB_IDS = ['networking', 'cache', 'featureconfig', 'showcase'];
+const ALL_LIBS_META = {
+  networking:    { name: 'CCSwiftNetworking',    icon: '🌐', desc: 'URLSession client — OAuth, retry, certificate pinning, deduplication' },
+  cache:         { name: 'CCSwiftAPICache',       icon: '💾', desc: 'File-based caching — 3 strategies, LRU eviction, auto-invalidation' },
+  featureconfig: { name: 'CCSwiftFeatureConfig',  icon: '⚙️', desc: 'Feature flags — 8-step evaluation, A/B testing, offline fallback' },
+  showcase:      { name: 'CCSwiftLibsDemoApp',    icon: '📱', desc: 'SwiftUI demo app — all 3 libraries working together live' },
+};
+
+function getLibId() {
+  return new URLSearchParams(window.location.search).get('id') || 'networking';
+}
+
+function accentColor(ac) {
+  return { 'c-swift': 'var(--ios-swift)', 'c-blue': 'var(--ios-blue)', 'c-indigo': 'var(--ios-indigo)', 'c-green': 'var(--ios-green)' }[ac] || 'var(--ios-swift)';
+}
+
+function heroBg(ac) {
+  const map = {
+    'c-swift':  'linear-gradient(160deg, rgba(240,81,56,0.07) 0%, rgba(240,81,56,0.02) 45%, transparent 75%)',
+    'c-blue':   'linear-gradient(160deg, rgba(0,122,255,0.07) 0%, rgba(0,122,255,0.02) 45%, transparent 75%)',
+    'c-indigo': 'linear-gradient(160deg, rgba(88,86,214,0.07) 0%, rgba(88,86,214,0.02) 45%, transparent 75%)',
+    'c-green':  'linear-gradient(160deg, rgba(52,199,89,0.07) 0%, rgba(52,199,89,0.02) 45%, transparent 75%)',
+  };
+  return map[ac] || map['c-swift'];
+}
+
+function renderRelatedLibs(currentId) {
+  const container = document.getElementById('related-libs');
+  if (!container) return;
+  container.innerHTML = ALL_LIB_IDS.filter(id => id !== currentId).map(id => {
+    const m = ALL_LIBS_META[id];
+    return `<a href="ios-lib.html?id=${id}" class="ios-related-card">
+      <div class="r-icon">${m.icon}</div>
+      <h4>${m.name}</h4>
+      <p>${m.desc}</p>
+    </a>`;
+  }).join('');
+}
+
+function buildFeaturesGrid(features) {
+  return `<div class="ios-features-grid">
+    ${features.map(f => `
+      <div class="ios-feature-item ${f.colorClass}">
+        <div class="ios-feature-item-icon">${f.icon}</div>
+        <div class="ios-feature-title">${f.title}</div>
+        <p>${f.desc}</p>
+      </div>`).join('')}
+  </div>`;
+}
+
+function buildTestTable(lib) {
+  if (!lib.tests || lib.tests.length === 0) return '';
+  const ac = accentColor(lib.accentClass);
+  const rows = lib.tests.map(t => `
+    <tr>
+      <td>${t.suite}</td>
+      <td>${t.covers || ''}</td>
+      <td style="color:${ac}">${t.count}</td>
+    </tr>`).join('');
+  return `<div>
+    <h2>Test Coverage</h2>
+    <p style="margin-bottom:18px;">
+      ${lib.totalTests} unit tests across ${lib.tests.length} test suites.
+      Every edge case, every error path, every Swift 6 concurrency scenario captured in code that
+      runs in CI on every commit. Tests are documentation — they tell the next engineer exactly what
+      the library guarantees.
+    </p>
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+      <table class="ios-test-table">
+        <thead>
+          <tr>
+            <th>Test Suite</th>
+            <th>Covers</th>
+            <th style="text-align:right;">Tests</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+          <tr class="total-row">
+            <td colspan="2"><strong>Total</strong></td>
+            <td style="color:${ac}"><strong>${lib.totalTests}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function buildBuilderOptions(lib) {
+  if (!lib.builderOptions || lib.builderOptions.length === 0) return '';
+  return `<div>
+    <h2>Builder Options</h2>
+    <p style="margin-bottom:18px;">Full list of configuration properties available when creating the client.</p>
+    <div class="ios-options-table-wrap">
+      <table class="ios-options-table">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${lib.builderOptions.map(o => `
+            <tr>
+              <td>${o.option}</td>
+              <td>${o.type}</td>
+              <td>${o.default}</td>
+              <td>${o.desc}</td>
+            </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
+function buildEvalPipeline(lib) {
+  if (!lib.evaluationSteps || lib.evaluationSteps.length === 0) return '';
+  const ac = accentColor(lib.accentClass);
+  return `<div>
+    <h2>The 8-Step Evaluation Pipeline</h2>
+    <p style="margin-bottom:20px;">
+      Every <code class="il">isFeatureEnabled()</code> call runs through all 8 steps in order.
+      The first failing step short-circuits to <code class="il">false</code> — no partial states, no ambiguity.
+      Targeting arrays that are empty or nil are skipped (permissive by default), so you only restrict
+      what you explicitly configure.
+    </p>
+    <div class="ios-eval-pipeline">
+      ${lib.evaluationSteps.map(s => `
+        <div class="ios-eval-step">
+          <div class="ios-eval-num" style="background:rgba(88,86,214,0.10);border:1px solid rgba(88,86,214,0.22);color:${ac};">${s.num}</div>
+          <div>
+            <h5>${s.title}</h5>
+            <p>${s.desc}</p>
+          </div>
+        </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function buildCacheFlow(lib) {
+  if (!lib.cacheFlow) return '';
+  return `<div>
+    <h2>Cache Decision Flow</h2>
+    <p style="margin-bottom:16px;">
+      Every intercepted GET request follows one of three paths based on the matched rule's strategy.
+      POST, PUT, and DELETE bypass the cache and trigger auto-invalidation of matching entries.
+    </p>
+    <div class="ios-cache-flow">${lib.cacheFlow}</div>
+  </div>`;
+}
+
+function buildDemoScreens(lib) {
+  if (!lib.screens || lib.screens.length === 0) return '';
+  return `<div>
+    <h2>Demo Screens</h2>
+    <p style="margin-bottom:20px;">Four interactive SwiftUI screens — each library gets its own demo,
+    plus an integration screen showing all three working together via <code class="il">CacheBridgeInterceptor</code>.</p>
+    <div class="ios-screens-grid">
+      ${lib.screens.map(s => `
+        <div class="ios-screen-card">
+          <div class="ios-screen-icon">${s.icon}</div>
+          <div>
+            <h5>${s.name}</h5>
+            <p>${s.desc}</p>
+          </div>
+        </div>`).join('')}
+    </div>
+  </div>`;
+}
+
+function renderLib(lib, id) {
+  document.title = `${lib.name} — iOS Library — MindObix`;
+  const ac = accentColor(lib.accentClass);
+
+  const descParagraphs = lib.description.split('\n\n')
+    .map(p => `<p style="margin-bottom:14px;">${p}</p>`).join('');
+
+  const html = `
+  <!-- HERO -->
+  <section class="ios-lib-hero" style="background:${heroBg(lib.accentClass)};">
+    <div class="container">
+      <a href="ios.html" class="back-link">iOS Apps Overview</a>
+      <div class="ios-lib-hero-header">
+        <div class="ios-lib-hero-icon ${lib.iconClass}">${lib.icon}</div>
+        <div>
+          <div class="ios-lib-hero-title">${lib.name}</div>
+          <div class="ios-lib-hero-sub">${lib.subtitle}</div>
+        </div>
+      </div>
+      <div class="ios-lib-badges">
+        ${lib.platforms.map(p => `<span class="ios-lib-badge badge-platform">📱 ${p}</span>`).join('')}
+        <span class="ios-lib-badge badge-zero-dep">⬡ Zero Dependencies</span>
+        <span class="ios-lib-badge badge-swift6">Swift 6</span>
+        <span class="ios-lib-badge badge-mit">MIT License</span>
+      </div>
+      <p class="ios-lib-hero-tagline">${lib.tagline}</p>
+      <div class="ios-lib-hero-actions">
+        <a href="${lib.github}" target="_blank" rel="noopener" class="${lib.btnClass}">View on GitHub →</a>
+        <a href="ios.html#ios-libraries" class="btn-ios-ghost">All iOS Libraries</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT + SIDEBAR -->
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="ios-lib-content">
+
+      <!-- MAIN -->
+      <div class="ios-lib-main">
+
+        <!-- What It Does -->
+        <div>
+          <h2>What It Does</h2>
+          <div style="font-size:13px;color:var(--text2);">${descParagraphs}</div>
+        </div>
+
+        <!-- Key Features -->
+        <div>
+          <h2>Key Features</h2>
+          <p style="margin-bottom:22px;">
+            Precisely engineered capabilities that matter for enterprise iOS apps — from startup MVPs
+            to App Store apps serving hundreds of thousands of daily users across iPhone, iPad, and Mac.
+          </p>
+          ${buildFeaturesGrid(lib.features)}
+        </div>
+
+        <!-- Usage: primary -->
+        ${lib.usage ? `<div>
+          <h2>Usage</h2>
+          <p style="margin-bottom:18px;">Drop it in with Swift Package Manager, initialize with the builder, and you're done. No global singletons, no Objective-C bridging headers, no setup ceremony.</p>
+          ${code('Getting Started', 'Swift', lib.usage)}
+          ${lib.usageExtra ? code('Advanced Usage', 'Swift', lib.usageExtra) : ''}
+        </div>` : ''}
+
+        <!-- Builder options table (networking + cache) -->
+        ${buildBuilderOptions(lib)}
+
+        <!-- Evaluation pipeline (featureconfig) -->
+        ${buildEvalPipeline(lib)}
+
+        <!-- Cache flow (cache) -->
+        ${buildCacheFlow(lib)}
+
+        <!-- Demo screens (showcase) -->
+        ${buildDemoScreens(lib)}
+
+        <!-- Test Coverage -->
+        ${buildTestTable(lib)}
+
+        <!-- Architecture -->
+        <div>
+          <h2>Source Architecture</h2>
+          <p style="margin-bottom:16px;">
+            Clean separation of concerns — each file has one job. The flat structure means any engineer
+            who just joined your team can find and understand the relevant code in under five minutes.
+          </p>
+          <div class="ios-arch-tree">${lib.architecture}</div>
+        </div>
+
+        <!-- AI Callout -->
+        <div class="ios-ai-callout">
+          <div class="ai-icon">🤖</div>
+          <h3>Built 100% with Claude Code AI Agents</h3>
+          <p>This library was architected, implemented, and tested using Vibe Coding — 32 years of enterprise mobile engineering experience translated into production-quality Swift by AI. Every interceptor, every concurrency invariant, every test case was written at the speed of thought.</p>
+          <a href="consulting.html" class="${lib.btnClass}" style="display:inline-flex;">Learn About Our Process →</a>
+        </div>
+
+      </div><!-- /.ios-lib-main -->
+
+      <!-- SIDEBAR -->
+      <div class="ios-lib-sidebar">
+
+        <div class="ios-sidebar-card">
+          <h4>Quick Stats</h4>
+          ${lib.stats.map(s => `
+            <div class="ios-sidebar-stat">
+              <span class="ios-sidebar-stat-label">${s.label}</span>
+              <span class="ios-sidebar-stat-value">${s.value}</span>
+            </div>`).join('')}
+        </div>
+
+        <div class="ios-sidebar-card">
+          <h4>Platform Support</h4>
+          <div class="ios-sidebar-tag-list">
+            ${lib.platforms.map(p => `<span class="ios-sidebar-tag">📱 ${p}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="ios-sidebar-card">
+          <h4>Tech Stack</h4>
+          <div class="ios-sidebar-tag-list">
+            ${lib.stack.map(s => `<span class="ios-sidebar-tag">${s}</span>`).join('')}
+          </div>
+        </div>
+
+        <!-- SPM install card -->
+        <div class="ios-sidebar-card" style="background:linear-gradient(145deg,#0d1117,#161b22);border-color:rgba(255,255,255,0.08);">
+          <h4 style="color:rgba(255,255,255,0.35);">Add via Swift Package Manager</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.60);margin-bottom:14px;">
+            File → Add Package Dependencies in Xcode, or add to <code style="font-size:11px;background:rgba(255,255,255,0.10);padding:1px 5px;border-radius:3px;color:#c9d1d9;">Package.swift</code>:
+          </p>
+          <div style="background:rgba(0,0,0,0.45);border-radius:8px;padding:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#56d364;line-height:1.8;overflow:hidden;">
+.package(<br>
+&nbsp;&nbsp;url: "<span style="color:#a5d6ff;word-break:break-all;">${lib.github}</span>",<br>
+&nbsp;&nbsp;from: <span style="color:#f0883e;">"1.0.0"</span><br>
+)
+          </div>
+          <a href="${lib.github}" target="_blank" rel="noopener" class="${lib.btnClass}" style="margin-top:16px;width:100%;justify-content:center;font-size:12px;">View on GitHub →</a>
+        </div>
+
+        <!-- Enterprise CTA -->
+        <div class="ios-sidebar-card" style="background:linear-gradient(145deg,#0b1d3a,#12254a);border-color:#0b1d3a;">
+          <h4 style="color:rgba(255,255,255,0.35);">Need Enterprise Integration?</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.65);margin-bottom:16px;">
+            We can integrate these libraries into your existing iOS app, customize them for your
+            architecture, or build a complete Apple platform foundation from scratch.
+          </p>
+          <a href="mailto:ganesh@mindobix.com" style="display:block;text-align:center;padding:10px;border-radius:100px;background:rgba(240,81,56,0.15);border:1px solid rgba(240,81,56,0.30);font-family:'Inter',-apple-system,Verdana,sans-serif;font-size:12px;font-weight:700;color:var(--ios-swift);">Talk to Ganesh →</a>
+        </div>
+
+      </div><!-- /.ios-lib-sidebar -->
+    </div><!-- /.ios-lib-content -->
+  </div>`;
+
+  document.getElementById('lib-root').innerHTML = html;
+}
+
+function renderNotFound(id) {
+  document.getElementById('lib-root').innerHTML = `
+    <div class="container section not-found">
+      <h2>Library Not Found</h2>
+      <p>No iOS library with id "${id}" exists.</p>
+      <a href="ios.html" class="btn-swift" style="margin-top:24px;">View iOS Libraries</a>
+    </div>`;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════════════════════════ */
+(function init() {
+  const id  = getLibId();
+  const lib = IOS_LIBS[id];
+  if (!lib) { renderNotFound(id || '(none)'); }
+  else       { renderLib(lib, id); }
+  renderRelatedLibs(id);
+})();
+</script>
+</body>
+</html>
