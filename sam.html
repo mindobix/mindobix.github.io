@@ -155,7 +155,7 @@
         <h2>What It Does</h2>
         <div style="font-size:13px; color:var(--text2);">
           <p>SAM gives Fortune 1000 engineering teams the monorepo velocity that only tech giants like Meta and Google could afford. Developers clone a massive monorepo in seconds, see every domain as a ghost folder, and hydrate only what they need &mdash; with full dependency resolution.</p>
-          <p>The experience: clone the repo, run <code>sam setup</code>, open Finder. Every domain appears as a dimmed folder. Double-click one &mdash; it hydrates with all its dependencies. Push your code &mdash; <code>sam impact</code> shows the blast radius across the entire organization before it ships.</p>
+          <p>The experience: clone the repo, run <code>sam setup</code>, open Finder. The full directory tree appears at any nesting depth &mdash; container folders visible for navigation, leaf project folders dimmed. Double-click any folder &mdash; it hydrates with all subfolders, files, and resolved dependencies in one action. Push your code &mdash; <code>sam impact</code> shows the blast radius across the entire organization before it ships.</p>
         </div>
       </div>
 
@@ -170,8 +170,8 @@
           </div>
           <div class="feature-item">
             <div class="feature-item-icon">&#x1F4C2;</div>
-            <h4>Finder Ghost Folders</h4>
-            <p>All domains visible as dimmed folders in macOS Finder. Double-click to hydrate. No browser extensions or Finder plugins needed.</p>
+            <h4>Nested Ghost Folders</h4>
+            <p>Full directory tree visible in Finder at any depth. Container folders for navigation, leaf folders dimmed. Double-click to hydrate all subfolders and files. Configurable depth with <code>--depth N</code>.</p>
           </div>
           <div class="feature-item">
             <div class="feature-item-icon">&#x1F50D;</div>
@@ -191,7 +191,7 @@
           <div class="feature-item">
             <div class="feature-item-icon">&#x26A1;</div>
             <h4>Watch &amp; Auto-Hydrate</h4>
-            <p>sam watch daemon monitors Finder navigation. Open a ghost folder, files appear within seconds. No manual fetch needed.</p>
+            <p>sam watch daemon monitors Finder navigation. Double-click any dimmed folder at any depth &mdash; all subfolders, files, and dependencies hydrate automatically. Parent folders become visible.</p>
           </div>
         </div>
       </div>
