@@ -86,10 +86,9 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
     <ul class="nav-links" id="nav-links">
-      <li><a href="enterprise.html">Enterprise Apps</a></li>
-      <li><a href="android.html">Android Apps</a></li>
-      <li><a href="ios.html">iOS Apps</a></li>
-      <li><a href="apps.html">Personal Apps</a></li>
+      <li><a href="devtools.html">Dev Tools</a></li>
+      <li class="nav-dropdown"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>
+      <li><a href="useful-apps.html">Useful Apps</a></li>
       <li><a href="consulting.html">Consulting</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
@@ -109,7 +108,7 @@
     <h2 class="section-title" style="font-family:'Roboto',Verdana,sans-serif; margin-bottom:28px;">Explore the Stack</h2>
     <div class="related-grid" id="related-libs"></div>
     <div style="text-align:center; margin-top:32px;">
-      <a href="android.html" class="btn btn-ghost">Back to Android Overview →</a>
+      <a href="android.html" class="btn btn-ghost">Back to Android Kotlin Apps →</a>
     </div>
   </div>
 </section>
@@ -125,9 +124,9 @@
     <div>
       <div class="footer-nav-label">Navigation</div>
       <nav class="footer-nav">
-        <a href="apps.html">Personal Apps</a>
-        <a href="android.html">Android Apps</a>
-        <a href="ios.html">iOS Apps</a>
+        <a href="useful-apps.html">Useful Apps</a>
+        <a href="android.html">Android Kotlin Apps</a>
+        <a href="apple.html">Apple Swift Apps</a>
         <a href="consulting.html">Consulting</a>
         <a href="about.html">About Ganesh</a>
         <a href="analysis.html">AI Analysis</a>
@@ -360,7 +359,7 @@ function renderLib(lib) {
   root.innerHTML = `
     <div class="lib-hero">
       <div class="container">
-        <a href="android.html" class="back-link">Back to Android Apps</a>
+        <a href="android.html" class="back-link">Back to Android Kotlin Apps</a>
         <div class="lib-hero-header">
           <div class="lib-hero-icon">${lib.icon}</div>
           <div>
@@ -371,7 +370,7 @@ function renderLib(lib) {
         <p class="lib-hero-tagline">${lib.tagline}</p>
         <div class="lib-hero-actions">
           <a href="${lib.github}" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub →</a>
-          <a href="android.html" class="btn btn-ghost">All Android Libraries</a>
+          <a href="android.html" class="btn btn-ghost">All Android Kotlin Apps</a>
         </div>
       </div>
     </div>
@@ -436,7 +435,7 @@ function renderNotFound(id) {
     <div class="container section not-found">
       <h2>Library Not Found</h2>
       <p>No library with id "${id}" exists.</p>
-      <a href="android.html" class="btn btn-primary" style="margin-top:20px;">View Android Libraries</a>
+      <a href="android.html" class="btn btn-primary" style="margin-top:20px;">View Android Kotlin Apps</a>
     </div>`;
 }
 

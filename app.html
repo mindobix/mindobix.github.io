@@ -84,10 +84,9 @@
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
     <ul class="nav-links" id="nav-links">
-      <li><a href="enterprise.html">Enterprise Apps</a></li>
-      <li><a href="android.html">Android Apps</a></li>
-      <li><a href="ios.html">iOS Apps</a></li>
-      <li><a href="apps.html" class="active">Personal Apps</a></li>
+      <li><a href="devtools.html">Dev Tools</a></li>
+      <li class="nav-dropdown"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>
+      <li><a href="useful-apps.html" class="active">Useful Apps</a></li>
       <li><a href="consulting.html">Consulting</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
@@ -109,7 +108,7 @@
     <h2 class="section-title" style="margin-bottom:28px;">Explore the Portfolio</h2>
     <div class="related-grid" id="related-apps"></div>
     <div style="text-align:center; margin-top:32px;">
-      <a href="apps.html" class="btn btn-ghost">View All Apps →</a>
+      <a href="useful-apps.html" class="btn btn-ghost">View All Apps →</a>
     </div>
   </div>
 </section>
@@ -123,10 +122,10 @@
     <div>
       <div class="footer-nav-label">Navigation</div>
       <nav class="footer-nav">
-        <a href="enterprise.html">Enterprise Apps</a>
-        <a href="apps.html">Personal Apps</a>
-        <a href="android.html">Android Apps</a>
-        <a href="ios.html">iOS Apps</a>
+        <a href="devtools.html">Dev Tools</a>
+        <a href="useful-apps.html">Useful Apps</a>
+        <a href="android.html">Android Kotlin Apps</a>
+        <a href="apple.html">Apple Swift Apps</a>
         <a href="about.html">About Ganesh</a>
         <a href="consulting.html">Consulting</a>
         <a href="analysis.html">AI Analysis</a>
@@ -632,7 +631,7 @@ function renderApp(app) {
   root.innerHTML = `
     <div class="app-hero">
       <div class="container">
-        <a href="apps.html" class="back-link">Back to All Apps</a>
+        <a href="useful-apps.html" class="back-link">Back to All Apps</a>
         <div class="app-hero-header">
           <div class="app-hero-icon ${app.iconClass}">${app.icon}</div>
           <div class="app-hero-meta">
@@ -643,7 +642,7 @@ function renderApp(app) {
         <p class="app-hero-tagline">${app.tagline}</p>
         <div class="app-hero-actions">
           <a href="${app.github}" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub →</a>
-          <a href="apps.html" class="btn btn-ghost">All Apps</a>
+          <a href="useful-apps.html" class="btn btn-ghost">All Apps</a>
         </div>
       </div>
     </div>
@@ -719,7 +718,7 @@ function renderNotFound(id) {
     <div class="container section not-found">
       <h2>App Not Found</h2>
       <p>No app with id "${id}" exists in our portfolio.</p>
-      <a href="apps.html" class="btn btn-primary" style="margin-top:20px;">View All Apps</a>
+      <a href="useful-apps.html" class="btn btn-primary" style="margin-top:20px;">View All Apps</a>
     </div>
   `;
 }
