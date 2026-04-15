@@ -10,6 +10,22 @@
 
       gtag('config', 'AW-1015535896');
     </script>
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-1015535896/0ABMCPeb4JMcEJiyn-QD',
+          'value': 1.0,
+          'currency': 'USD',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="page-title">App Detail — Mindobix</title>
@@ -264,7 +280,7 @@
           <li><a href="about.html">About</a></li>
           <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
           <li>
-            <a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a>
+            <a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a>
           </li>
         </ul>
         <button

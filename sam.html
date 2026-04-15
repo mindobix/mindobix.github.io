@@ -10,6 +10,22 @@
 
     gtag('config', 'AW-1015535896');
   </script>
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-1015535896/0ABMCPeb4JMcEJiyn-QD',
+        'value': 1.0,
+        'currency': 'USD',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SAM Framework — Mindobix</title>
@@ -124,7 +140,7 @@
       <li><a href="consulting.html">Consulting</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
-      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a></li>
     </ul>
     <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -342,7 +358,7 @@ Watching 178 ghost folders...
       <div class="sidebar-card" style="background: var(--navy); border-color: transparent;">
         <h4 style="color:var(--accent2);">Need Enterprise Support?</h4>
         <p style="font-size:12px; margin-bottom:16px; color:rgba(255,255,255,0.70);">Custom profiles, CI/CD integration, team onboarding, and priority support.</p>
-        <a href="mailto:ganesh@mindobix.com" class="btn btn-accent btn-sm" style="width:100%; justify-content:center;">Contact Us</a>
+        <a href="mailto:ganesh@mindobix.com" class="btn btn-accent btn-sm" style="width:100%; justify-content:center;" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a>
       </div>
 
     </div>
