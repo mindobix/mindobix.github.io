@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015535896"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-1015535896');
+  </script>
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-1015535896/0ABMCPeb4JMcEJiyn-QD',
+        'value': 1.0,
+        'currency': 'USD',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Framework — Mindobix</title>
+  <meta name="description" content="Production-ready Node.js API build framework. Opinionated, composable packages for structured logging, JWT auth, Fastify plugins, and more." />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── HERO ── */
+    .ent-hero {
+      background: linear-gradient(160deg, #0b1d3a 0%, #132d54 100%);
+      padding: 88px 0 72px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .ent-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14,138,110,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ent-hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      margin-bottom: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #ffffff;
+    }
+    .ent-hero p {
+      color: rgba(255,255,255,0.7);
+      max-width: 680px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    .ent-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .ent-stat-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+    .ent-stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* ── PRODUCTS SECTION ── */
+    .ent-products {
+      padding: 80px 0;
+    }
+    .ent-products-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .ent-products-heading h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .ent-products-heading p {
+      color: var(--text2);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .ent-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 800px) {
+      .ent-grid { grid-template-columns: 1fr; }
+    }
+    .ent-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      padding: 36px 32px;
+      transition: box-shadow 0.25s, transform 0.25s;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+    .ent-card:hover {
+      box-shadow: 0 12px 40px rgba(11,29,58,0.10);
+      transform: translateY(-3px);
+    }
+    .ent-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .ent-card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .ent-card-icon--teal {
+      background: linear-gradient(135deg, #0e8a6e, #14b896);
+    }
+    .ent-card-icon--indigo {
+      background: linear-gradient(135deg, #3730a3, #6366f1);
+    }
+    .ent-card-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 3px;
+      background: var(--accent-dim, rgba(14,138,110,0.08));
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .ent-card-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+    .ent-card-tagline {
+      font-size: 0.85rem;
+      color: var(--text2);
+      margin-bottom: 14px;
+    }
+    .ent-card-desc {
+      color: var(--text2);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      flex: 1;
+    }
+    .ent-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .ent-card-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg2);
+      color: var(--text2);
+      border: 1px solid var(--border);
+    }
+    .ent-card-oss {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 3px;
+      background: rgba(14,138,110,0.10);
+      color: var(--accent);
+    }
+    .ent-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .ent-card-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── PACKAGES SECTION ── */
+    .ent-packages {
+      padding: 80px 0;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .ent-packages-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .ent-packages-heading h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .ent-packages-heading p {
+      color: var(--text2);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 1000px) {
+      .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .pkg-grid { grid-template-columns: 1fr; }
+    }
+    .pkg-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 20px;
+    }
+    .pkg-card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .pkg-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .pkg-card p {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    /* ── ARCHITECTURE ── */
+    .ent-arch {
+      padding: 80px 0;
+    }
+    .ent-arch-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .ent-arch-heading h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .ent-arch-heading p {
+      color: var(--text2);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .arch-diagram {
+      background: #0b1d3a;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto;
+      font-family: 'Courier New', monospace;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .arch-diagram .arch-label {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .arch-diagram .arch-muted {
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── CTA ── */
+    .ent-cta {
+      background: linear-gradient(160deg, #0b1d3a 0%, #132d54 100%);
+      padding: 72px 0;
+      text-align: center;
+      color: #fff;
+    }
+    .ent-cta h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 28px;
+      color: #fff;
+    }
+    .ent-cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .ent-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .ent-btn:hover {
+      transform: translateY(-1px);
+    }
+    .ent-btn--primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .ent-btn--primary:hover {
+      background: #0a7a60;
+    }
+    .ent-btn--secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .ent-btn--secondary:hover {
+      background: rgba(255,255,255,0.18);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li class="nav-dropdown"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>
+      <li><a href="api-framework.html" class="active">API Framework</a></li>
+      <li><a href="devtools.html">Dev Tools</a></li>
+      <li><a href="useful-apps.html">Useful Apps</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="ent-hero">
+  <div class="container">
+    <h1>API Framework</h1>
+    <p>Production-ready Node.js API build framework — opinionated, layered, and ready to ship. Composable packages covering everything from structured logging and typed HTTP clients to JWT auth, Fastify plugins, and feature flags.</p>
+    <div class="ent-stats">
+      <div class="ent-stat">
+        <span class="ent-stat-value">8</span>
+        <span class="ent-stat-label">Framework Packages</span>
+      </div>
+      <div class="ent-stat">
+        <span class="ent-stat-value">2</span>
+        <span class="ent-stat-label">Example Services</span>
+      </div>
+      <div class="ent-stat">
+        <span class="ent-stat-value">Node 22+</span>
+        <span class="ent-stat-label">Runtime</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── REPOS ── -->
+<section class="ent-products">
+  <div class="container">
+    <div class="ent-products-heading">
+      <h2>Open Source Repositories</h2>
+      <p>Two complementary repos — the framework itself and a full demo monorepo built on top of it.</p>
+    </div>
+    <div class="ent-grid">
+
+      <!-- cc-api-framework -->
+      <div class="ent-card">
+        <span class="ent-card-oss">Open Source</span>
+        <div class="ent-card-top">
+          <div class="ent-card-icon ent-card-icon--teal">&#x2B21;</div>
+          <div>
+            <span class="ent-card-badge">Core Framework</span>
+            <div class="ent-card-name">CC API Framework</div>
+            <div class="ent-card-tagline">Composable packages for production Node.js APIs</div>
+          </div>
+        </div>
+        <p class="ent-card-desc">A pnpm monorepo of eight composable packages that cover everything a production API needs: typed HTTP errors, structured JSON logging with correlation IDs, a resilient HTTP client with circuit breaker and retry, Zod-validated env config, JWT and API key auth, a full Fastify plugin suite, remote feature flags, and shared test helpers. Two example services — a public-facing user API and an internal order service — demonstrate the full stack end-to-end.</p>
+        <div class="ent-card-tags">
+          <span class="ent-card-tag">TypeScript</span>
+          <span class="ent-card-tag">Node.js 22+</span>
+          <span class="ent-card-tag">Fastify</span>
+          <span class="ent-card-tag">pnpm</span>
+          <span class="ent-card-tag">Turborepo</span>
+          <span class="ent-card-tag">Vitest</span>
+        </div>
+        <a href="cc-api-framework.html" class="ent-card-link">Learn more &rarr;</a>
+      </div>
+
+      <!-- cc-apis-demo-monorepo -->
+      <div class="ent-card">
+        <span class="ent-card-oss">Open Source</span>
+        <div class="ent-card-top">
+          <div class="ent-card-icon ent-card-icon--indigo">&#x25A6;</div>
+          <div>
+            <span class="ent-card-badge">Demo Monorepo</span>
+            <div class="ent-card-name">CC APIs Monorepo</div>
+            <div class="ent-card-tagline">Full production API stack built on CC API Framework</div>
+          </div>
+        </div>
+        <p class="ent-card-desc">A Turborepo monorepo that shows exactly how to consume and compose the CC API Framework packages in a real multi-service product. Includes shared Zod contracts as a single source of truth, a public user API with JWT auth, CORS, and rate limiting, and an internal order service with service-token auth. Shared testing utilities with a JWT factory and fixtures make writing integration tests fast and consistent across every service.</p>
+        <div class="ent-card-tags">
+          <span class="ent-card-tag">TypeScript</span>
+          <span class="ent-card-tag">Node.js 22+</span>
+          <span class="ent-card-tag">Fastify</span>
+          <span class="ent-card-tag">Zod</span>
+          <span class="ent-card-tag">pnpm</span>
+          <span class="ent-card-tag">Turborepo</span>
+        </div>
+        <a href="cc-apis-demo-monorepo.html" class="ent-card-link">Learn more &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PACKAGES ── -->
+<section class="ent-packages">
+  <div class="container">
+    <div class="ent-packages-heading">
+      <h2>Framework Packages</h2>
+      <p>Each package is independently versioned and composable. Use what you need.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <span class="pkg-card-icon">&#x26A0;</span>
+        <h3>errors</h3>
+        <p>Typed HTTP error hierarchy — <code>NotFoundError</code>, <code>UnauthorizedError</code>, <code>ValidationError</code> — that map cleanly to HTTP status codes.</p>
+      </div>
+      <div class="pkg-card">
+        <span class="pkg-card-icon">&#x1F4CB;</span>
+        <h3>logger</h3>
+        <p>Structured JSON logging via Pino with <code>AsyncLocalStorage</code>-backed correlation ID propagation across async call chains.</p>
+      </div>
+      <div class="pkg-card">
+        <span class="pkg-card-icon">&#x21C4;</span>
+        <h3>networking</h3>
+        <p>HTTP client built on <code>undici</code> — full-jitter retry, circuit breaker, OAuth bearer injection, and typed <code>ApiResponse</code> discriminated union.</p>
+      </div>
+      <div class="pkg-card">
+        <span class="pkg-card-icon">&#x2699;</span>
+        <h3>config</h3>
+        <p>Zod-validated <code>defineConfig()</code> that validates <code>process.env</code> at startup and throws a human-readable error rather than failing silently.</p>
+      </div>
+      <div class="pkg-card">
+        <span class="pkg-card-icon">&#x1F511;</span>
+        <h3>auth</h3>
+        <p>JWT verification (HS256, RS256, JWKS auto-fetch &amp; cache), API key plugin, and OAuth 2.0 client credentials / refresh token store.</p>
+      </div>
+      <div class="pkg-card">
+        <span class="pkg-card-icon">&#x26A1;</span>
+        <h3>fastify-plugins</h3>
+        <p>Production plugin suite — correlation ID, request logger, error handler, CORS, rate limiter, graceful shutdown, OpenAPI 3.1, and service auth.</p>
+      </div>
+      <div class="pkg-card">
+        <span class="pkg-card-icon">&#x1F3F3;</span>
+        <h3>feature-config</h3>
+        <p>Remote feature flag configuration loaded from a JSON endpoint with a local fallback — no infrastructure dependency required.</p>
+      </div>
+      <div class="pkg-card">
+        <span class="pkg-card-icon">&#x1F9EA;</span>
+        <h3>testing</h3>
+        <p>Shared test helpers — <code>MockNetworkingClient</code>, <code>withCorrelationContext()</code>, and <code>buildTestApp()</code> — keeping test code DRY across services.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ARCHITECTURE ── -->
+<section class="ent-arch">
+  <div class="container">
+    <div class="ent-arch-heading">
+      <h2>Two-Tier Service Architecture</h2>
+      <p>Front-end services handle public auth and rate limiting. Core services stay internal-only — no CORS, no public JWT.</p>
+    </div>
+    <div class="arch-diagram">
+      <div><span class="arch-muted">Browser / External Client</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ <span class="arch-muted">JWT Bearer token</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼</div>
+      <div><span class="arch-label">user-api :3000</span> <span class="arch-muted">← front-end-services tier</span></div>
+      <div><span class="arch-muted">(JWT auth, CORS, rate-limit, OpenAPI docs)</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│ <span class="arch-muted">Service token</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▼</div>
+      <div><span class="arch-label">order-service :3001</span> <span class="arch-muted">← core-services tier</span></div>
+      <div><span class="arch-muted">(internal only — no public exposure)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── RELATED DEV TOOLS ── -->
+<section class="section" style="background:var(--surface); border-top:1px solid var(--border); padding:64px 0;">
+  <div class="container">
+    <span class="section-label">Related</span>
+    <h2 class="section-title" style="margin-bottom:28px;">Also from Dev Tools</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; max-width:700px;">
+      <a href="sam.html" class="related-card" style="text-decoration:none; display:block; background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:20px; transition:border-color 0.2s;">
+        <div style="font-size:18px; margin-bottom:10px;">&#x22a1;</div>
+        <h4 style="font-size:0.85rem; margin-bottom:6px; color:var(--text);">SAM Framework</h4>
+        <p style="font-size:11px; margin:0; color:var(--text2);">Sparse API Monolith — work in a Fortune 1000 monorepo without downloading everything. Ghost folders, dependency resolution, impact analysis.</p>
+      </a>
+      <a href="app.html?id=api-proxy" class="related-card" style="text-decoration:none; display:block; background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:20px; transition:border-color 0.2s;">
+        <div style="font-size:18px; margin-bottom:10px;">&#x21C4;</div>
+        <h4 style="font-size:0.85rem; margin-bottom:6px; color:var(--text);">Local API Web Proxy</h4>
+        <p style="font-size:11px; margin:0; color:var(--text2);">Zero-config HTTP/HTTPS debugging proxy with a real-time dashboard. Inspect and export API traffic between your app and any backend.</p>
+      </a>
+    </div>
+    <div style="margin-top:28px;">
+      <a href="devtools.html" class="btn btn-ghost">View Dev Tools &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="ent-cta">
+  <div class="container">
+    <h2>Ready to build production-grade Node.js APIs?</h2>
+    <div class="ent-cta-actions">
+      <a href="https://github.com/mindobix/cc-api-framework" class="ent-btn ent-btn--primary" target="_blank" rel="noopener">View Framework</a>
+      <a href="mailto:ganesh@mindobix.com" class="ent-btn ent-btn--secondary" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">Mind<span class="dot">Obix</span></span>
+        <span class="footer-tagline">Software. Consulting. Intelligence.</span>
+      </div>
+      <div class="footer-links">
+        <a href="devtools.html">Dev Tools</a>
+        <a href="api-framework.html">API Framework</a>
+        <a href="useful-apps.html">Useful Apps</a>
+        <a href="android.html">Android Kotlin</a>
+        <a href="apple.html">Apple Swift</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="about.html">About</a>
+        <a href="analysis.html">AI Analysis</a>
+        <a href="mailto:ganesh@mindobix.com">Contact</a>
+      </div>
+      <div class="footer-copy">&copy; 2025 Mindobix. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
