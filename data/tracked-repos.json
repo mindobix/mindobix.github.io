@@ -1,0 +1,29 @@
+{
+  "owner": "mindobix",
+  "repos": [
+    "CCKotlinNetworking",
+    "CCKotlinAPICache",
+    "CCKotlinFeatureConfig",
+    "CCKotlinLibsDemoApp",
+    "CCSwiftNetworking",
+    "CCSwiftAPICache",
+    "CCSwiftFeatureConfig",
+    "CCSwiftLibsDemoApp",
+    "cc-api-framework",
+    "cc-apis-demo-monorepo",
+    "sam-framework",
+    "MyCareerPulse",
+    "local-api-web-proxy",
+    "local-billpay-tracker",
+    "local-filesync",
+    "local-habit-calendar",
+    "local-keywords-files-finder",
+    "local-recipebook",
+    "local-shareanyjson",
+    "local-trading-journal",
+    "local-vibecoding-appideas",
+    "local-weekly-options-trade-plan",
+    "medreview",
+    "myfamilytree"
+  ]
+}
