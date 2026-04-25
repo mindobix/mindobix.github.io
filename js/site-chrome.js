@@ -24,7 +24,7 @@
           '<li data-nav="consulting"><a href="consulting.html">Consulting</a></li>' +
           '<li data-nav="about"><a href="about.html">About</a></li>' +
           '<li data-nav="analysis"><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>' +
-          '<li><a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return (typeof gtag_report_conversion === \'function\') ? gtag_report_conversion(\'mailto:ganesh@mindobix.com\') : true;">Contact Us</a></li>' +
+          '<li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>' +
         '</ul>' +
         '<button class="nav-hamburger" onclick="document.getElementById(\'nav-links\').classList.toggle(\'open\')" aria-label="Menu">' +
           '<span></span><span></span><span></span>' +
