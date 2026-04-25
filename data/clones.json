@@ -1,6 +1,101 @@
 {
   "lastUpdated": "2026-04-25",
   "repos": {
-    "CCKotlinNetworking": { "total": 205 }
+    "CCKotlinNetworking": {
+      "total": 205,
+      "uniques": 104
+    },
+    "CCKotlinAPICache": {
+      "total": 38,
+      "uniques": 34
+    },
+    "CCKotlinFeatureConfig": {
+      "total": 32,
+      "uniques": 29
+    },
+    "CCKotlinLibsDemoApp": {
+      "total": 47,
+      "uniques": 36
+    },
+    "CCSwiftNetworking": {
+      "total": 27,
+      "uniques": 24
+    },
+    "CCSwiftAPICache": {
+      "total": 23,
+      "uniques": 21
+    },
+    "CCSwiftFeatureConfig": {
+      "total": 16,
+      "uniques": 16
+    },
+    "CCSwiftLibsDemoApp": {
+      "total": 17,
+      "uniques": 17
+    },
+    "cc-api-framework": {
+      "total": 18,
+      "uniques": 17
+    },
+    "cc-apis-demo-monorepo": {
+      "total": 19,
+      "uniques": 17
+    },
+    "sam-framework": {
+      "total": 75,
+      "uniques": 51
+    },
+    "MyCareerPulse": {
+      "total": 19,
+      "uniques": 17
+    },
+    "local-api-web-proxy": {
+      "total": 118,
+      "uniques": 71
+    },
+    "local-billpay-tracker": {
+      "total": 36,
+      "uniques": 27
+    },
+    "local-filesync": {
+      "total": 98,
+      "uniques": 52
+    },
+    "local-habit-calendar": {
+      "total": 8,
+      "uniques": 8
+    },
+    "local-keywords-files-finder": {
+      "total": 18,
+      "uniques": 14
+    },
+    "local-recipebook": {
+      "total": 10,
+      "uniques": 10
+    },
+    "local-shareanyjson": {
+      "total": 8,
+      "uniques": 8
+    },
+    "local-trading-journal": {
+      "total": 196,
+      "uniques": 90
+    },
+    "local-vibecoding-appideas": {
+      "total": 211,
+      "uniques": 109
+    },
+    "local-weekly-options-trade-plan": {
+      "total": 8,
+      "uniques": 8
+    },
+    "medreview": {
+      "total": 145,
+      "uniques": 78
+    },
+    "myfamilytree": {
+      "total": 9,
+      "uniques": 9
+    }
   }
 }
