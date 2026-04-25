@@ -153,28 +153,12 @@
       .manifesto-inner { flex-direction: column; }
     }
   </style>
+  <script defer src="js/site-chrome.js"></script>
 </head>
-<body>
+<body data-page="home">
 
 <!-- ── NAVIGATION ── -->
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
-    <ul class="nav-links" id="nav-links">
-      <li class="nav-dropdown"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>
-      <li><a href="api-framework.html">API Framework</a></li>
-      <li><a href="devtools.html">Dev Tools</a></li>
-      <li><a href="useful-apps.html">Useful Apps</a></li>
-      <li><a href="consulting.html">Consulting</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
-      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a></li>
-    </ul>
-    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+<div id="site-nav-mount"></div>
 
 <!-- ── HERO ── -->
 <section class="hero">
@@ -395,52 +379,7 @@
 </div>
 
 <!-- ── FOOTER ── -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
-      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
-    </div>
-    <div>
-      <div class="footer-nav-label">Navigation</div>
-      <nav class="footer-nav">
-        <a href="devtools.html">Dev Tools</a>
-        <a href="useful-apps.html">Useful Apps</a>
-        <a href="top-apps.html">Top Cloned Apps</a>
-        <a href="android.html">Android Kotlin Apps</a>
-        <a href="apple.html">Apple Swift Apps</a>
-        <a href="about.html">About Ganesh</a>
-        <a href="consulting.html">Consulting</a>
-        <a href="analysis.html">AI Analysis</a>
-        <a href="mailto:ganesh@mindobix.com">Contact</a>
-      </nav>
-    </div>
-    <div>
-      <div class="footer-nav-label">Featured Apps</div>
-      <nav class="footer-nav">
-        <a href="app.html?id=mycareerpulse">MyCareerPulse</a>
-        <a href="app.html?id=trading-journal">Trading Journal</a>
-        <a href="app.html?id=filesync">FileSync</a>
-        <a href="app.html?id=shareanyjson">ShareAnyJSON</a>
-      </nav>
-    </div>
-    <div>
-      <div class="footer-nav-label">Contact</div>
-      <div style="margin-bottom:8px;">
-        <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
-      </div>
-      <div style="font-size:11px; color:var(--muted); line-height:1.6;">
-        Ganesh Subramanian<br>
-        Chief Vibe Coding Officer<br>
-        Cincinnati, Ohio
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
-    <span class="footer-copy">Vibe Coded at the speed of thought. &nbsp;·&nbsp; <a href="privacy.html" style="color:var(--muted); text-decoration:underline;">Privacy Policy</a></span>
-  </div>
-</footer>
+<div id="site-footer-mount"></div>
 
 <script defer src="js/apps-meta.js"></script>
 <script defer src="js/clone-badges.js"></script>
@@ -459,16 +398,17 @@
       .filter(([repo]) => META[repo] && META[repo].group === 'Useful App')
       .sort((a, b) => (b[1].total || 0) - (a[1].total || 0))
       .slice(0, 4);
-    grid.innerHTML = ranked.map(([repo, stats]) => {
+    grid.innerHTML = ranked.map(([repo]) => {
       const m = META[repo];
-      const total = (stats.total || 0).toLocaleString();
+      const tags = (m.tags || []).map(t => '<span class="app-card-tag">' + t + '</span>').join('');
       return (
         '<a href="' + m.href + '" class="card card-link app-card-hero" data-repo="' + repo + '">' +
-          '<div class="icon-box icon-career">' + m.icon + '</div>' +
-          '<h3 style="margin-bottom:6px;">' + m.name + '</h3>' +
-          '<div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px;">' + m.category + '</div>' +
-          '<div style="font-size:1.6rem; font-weight:800; color:var(--accent); line-height:1; margin-bottom:6px;">' + total + '</div>' +
-          '<div style="font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;">All-Time Clones</div>' +
+          '<div class="icon-box ' + (m.iconClass || 'icon-career') + '">' + m.icon + '</div>' +
+          '<div class="app-card-cat"><span class="badge ' + (m.badgeClass || 'badge-career') + '">' + (m.badgeText || m.category) + '</span></div>' +
+          '<h3>' + m.name + '</h3>' +
+          '<p>' + (m.desc || '') + '</p>' +
+          '<div class="app-card-tags">' + tags + '</div>' +
+          '<div class="app-card-cta">View Details</div>' +
         '</a>'
       );
     }).join('');

@@ -326,29 +326,12 @@
       background: rgba(255,255,255,0.18);
     }
   </style>
+  <script defer src="js/site-chrome.js"></script>
 </head>
-<body>
+<body data-page="devtools">
 
 <!-- ── NAV ── -->
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
-    <ul class="nav-links" id="nav-links">
-      <li class="nav-dropdown"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>
-      <li><a href="api-framework.html">API Framework</a></li>
-      <li><a href="devtools.html" class="active">Dev Tools</a></li>
-      <li><a href="useful-apps.html">Useful Apps</a>
-        <a href="top-apps.html">Top Cloned Apps</a></li>
-      <li><a href="consulting.html">Consulting</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
-      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a></li>
-    </ul>
-    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+<div id="site-nav-mount"></div>
 
 <!-- ── HERO ── -->
 <section class="ent-hero">
@@ -463,28 +446,7 @@
 </section>
 
 <!-- ── FOOTER ── -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="footer-logo">Mind<span class="dot">Obix</span></span>
-        <span class="footer-tagline">Software. Consulting. Intelligence.</span>
-      </div>
-      <div class="footer-links">
-        <a href="devtools.html">Dev Tools</a>
-        <a href="useful-apps.html">Useful Apps</a>
-        <a href="top-apps.html">Top Cloned Apps</a>
-        <a href="android.html">Android Kotlin</a>
-        <a href="apple.html">Apple Swift</a>
-        <a href="consulting.html">Consulting</a>
-        <a href="about.html">About</a>
-        <a href="analysis.html">AI Analysis</a>
-        <a href="mailto:ganesh@mindobix.com">Contact</a>
-      </div>
-      <div class="footer-copy">&copy; 2025 Mindobix. All rights reserved.</div>
-    </div>
-  </div>
-</footer>
+<div id="site-footer-mount"></div>
 
 <script defer src="js/clone-badges.js"></script>
 </body>

@@ -237,28 +237,13 @@
 
 
   </style>
+  <script defer src="js/site-chrome.js"></script>
 </head>
-<body>
+<body data-page="analysis">
 
 <!-- ── NAV ── -->
 <header class="site-header">
-  <nav class="site-nav">
-    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
-    <ul class="nav-links" id="nav-links">
-      <li class="nav-dropdown"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>
-      <li><a href="api-framework.html">API Framework</a></li>
-      <li><a href="devtools.html">Dev Tools</a></li>
-      <li><a href="useful-apps.html">Useful Apps</a>
-        <a href="top-apps.html">Top Cloned Apps</a></li>
-      <li><a href="consulting.html">Consulting</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
-      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a></li>
-    </ul>
-    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+<div id="site-nav-mount"></div>
 </header>
 
 <!-- ── HERO ── -->
@@ -340,52 +325,7 @@
 </section>
 
 <!-- ── FOOTER ── -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
-      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
-    </div>
-    <div>
-      <div class="footer-nav-label">Navigation</div>
-      <nav class="footer-nav">
-        <a href="devtools.html">Dev Tools</a>
-        <a href="useful-apps.html">Useful Apps</a>
-        <a href="top-apps.html">Top Cloned Apps</a>
-        <a href="android.html">Android Kotlin Apps</a>
-        <a href="apple.html">Apple Swift Apps</a>
-        <a href="about.html">About Ganesh</a>
-        <a href="consulting.html">Consulting</a>
-        <a href="analysis.html">AI Analysis</a>
-        <a href="mailto:ganesh@mindobix.com">Contact</a>
-      </nav>
-    </div>
-    <div>
-      <div class="footer-nav-label">Featured Apps</div>
-      <nav class="footer-nav">
-        <a href="app.html?id=mycareerpulse">MyCareerPulse</a>
-        <a href="app.html?id=trading-journal">Trading Journal</a>
-        <a href="app.html?id=filesync">FileSync</a>
-        <a href="app.html?id=shareanyjson">ShareAnyJSON</a>
-      </nav>
-    </div>
-    <div>
-      <div class="footer-nav-label">Contact</div>
-      <div style="margin-bottom:8px;">
-        <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
-      </div>
-      <div style="font-size:11px; color:var(--muted); line-height:1.6;">
-        Ganesh Subramanian<br>
-        Chief Vibe Coding Officer<br>
-        Cincinnati, Ohio
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
-    <span class="footer-copy">Vibe Coded at the speed of thought. &nbsp;·&nbsp; <a href="privacy.html" style="color:var(--muted); text-decoration:underline;">Privacy Policy</a></span>
-  </div>
-</footer>
+<div id="site-footer-mount"></div>
 
 <script>
 const companies = [

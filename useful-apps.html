@@ -106,27 +106,10 @@
     /* ── ALL APPS HIDDEN BY FILTER ── */
     .no-results { text-align: center; padding: 60px 0; color: var(--muted); display: none; }
   </style>
+  <script defer src="js/site-chrome.js"></script>
 </head>
-<body>
-
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
-    <ul class="nav-links" id="nav-links">
-      <li class="nav-dropdown"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>
-      <li><a href="api-framework.html">API Framework</a></li>
-      <li><a href="devtools.html">Dev Tools</a></li>
-      <li><a href="useful-apps.html" class="active">Useful Apps</a></li>
-      <li><a href="consulting.html">Consulting</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
-      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a></li>
-    </ul>
-    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+<body data-page="useful-apps">
+<div id="site-nav-mount"></div>
 
 <!-- ── PAGE HERO ── -->
 <div class="page-hero">
@@ -137,7 +120,7 @@
   </div>
 </div>
 
-<div class="container" style="position:relative; z-index:1;">
+<div class="container" style="position:relative; z-index:1; padding-bottom:80px;">
 
   <!-- Stats Bar -->
   <div class="stats-bar">
@@ -528,38 +511,7 @@
   </div>
 
 </div><!-- end container -->
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
-      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
-    </div>
-    <div>
-      <div class="footer-nav-label">Navigation</div>
-      <nav class="footer-nav">
-        <a href="devtools.html">Dev Tools</a>
-        <a href="useful-apps.html">Useful Apps</a>
-        <a href="top-apps.html">Top Cloned Apps</a>
-        <a href="android.html">Android Kotlin Apps</a>
-        <a href="apple.html">Apple Swift Apps</a>
-        <a href="about.html">About Ganesh</a>
-        <a href="consulting.html">Consulting</a>
-        <a href="analysis.html">AI Analysis</a>
-        <a href="mailto:ganesh@mindobix.com">Contact</a>
-      </nav>
-    </div>
-    <div>
-      <div class="footer-nav-label">Contact</div>
-      <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
-      <div style="font-size:11px; color:var(--muted); margin-top:6px; line-height:1.6;">Ganesh Subramanian<br>Chief Vibe Coding Officer</div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
-    <span class="footer-copy">Vibe Coded at the speed of thought. &nbsp;·&nbsp; <a href="privacy.html" style="color:var(--muted); text-decoration:underline;">Privacy Policy</a></span>
-  </div>
-</footer>
+<div id="site-footer-mount"></div>
 
 <script>
   // Filter functionality
@@ -603,22 +555,55 @@
 </script>
 <script defer src="js/clone-badges.js"></script>
 <script>
-  // Reorder cards within each apps-grid section by clone count desc
+  // 1. Globally sort all app cards by clone count desc.
+  // 2. Place each card into the .apps-grid that matches its data-cat
+  //    (within each grid, cards end up in global desc order).
+  // 3. Reorder the section blocks (divider + grid) by each section's
+  //    top card's clone count desc — so the section containing the
+  //    most-cloned repo is rendered first.
   fetch('data/clones.json', { cache: 'no-cache' })
     .then(r => r.ok ? r.json() : null)
     .then(data => {
       if (!data || !data.repos) return;
       const repos = data.repos;
-      document.querySelectorAll('.apps-grid').forEach(grid => {
-        const cards = Array.from(grid.querySelectorAll('.app-item'));
-        cards.sort((a, b) => {
-          const ra = a.getAttribute('data-repo');
-          const rb = b.getAttribute('data-repo');
-          const ca = (repos[ra] && repos[ra].total) || 0;
-          const cb = (repos[rb] && repos[rb].total) || 0;
-          return cb - ca;
-        });
-        cards.forEach(c => grid.appendChild(c));
+      const cloneCount = (card) => {
+        const r = card.getAttribute('data-repo');
+        return (repos[r] && repos[r].total) || 0;
+      };
+
+      // Build section blocks: each is { id, divider, grid, parent }
+      const sectionBlocks = [];
+      document.querySelectorAll('.category-divider').forEach(div => {
+        const id = div.getAttribute('data-section');
+        let grid = div.nextElementSibling;
+        while (grid && !grid.classList.contains('apps-grid')) grid = grid.nextElementSibling;
+        if (id && grid) {
+          sectionBlocks.push({ id, divider: div, grid, parent: div.parentElement });
+        }
+      });
+      const gridById = Object.fromEntries(sectionBlocks.map(s => [s.id, s.grid]));
+
+      // Collect all cards from anywhere, sort globally by clones desc
+      const allCards = Array.from(document.querySelectorAll('.app-item'));
+      allCards.sort((a, b) => cloneCount(b) - cloneCount(a));
+
+      // Append each card into the grid matching its data-cat
+      allCards.forEach(card => {
+        const target = gridById[card.getAttribute('data-cat')];
+        if (target) target.appendChild(card);
+      });
+
+      // Sort section blocks by max clone count of their cards desc
+      sectionBlocks.sort((a, b) => {
+        const maxA = Math.max(0, ...Array.from(a.grid.querySelectorAll('.app-item')).map(cloneCount));
+        const maxB = Math.max(0, ...Array.from(b.grid.querySelectorAll('.app-item')).map(cloneCount));
+        return maxB - maxA;
+      });
+
+      // Re-append blocks in new order to their shared parent
+      sectionBlocks.forEach(s => {
+        s.parent.appendChild(s.divider);
+        s.parent.appendChild(s.grid);
       });
     })
     .catch(() => {});

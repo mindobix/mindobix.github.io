@@ -143,27 +143,10 @@
       .leaderboard-table td:first-child::before { display: none; }
     }
   </style>
+  <script defer src="js/site-chrome.js"></script>
 </head>
-<body>
-
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
-    <ul class="nav-links" id="nav-links">
-      <li class="nav-dropdown"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>
-      <li><a href="api-framework.html">API Framework</a></li>
-      <li><a href="devtools.html">Dev Tools</a></li>
-      <li><a href="useful-apps.html">Useful Apps</a></li>
-      <li><a href="consulting.html">Consulting</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
-      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a></li>
-    </ul>
-    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+<body data-page="top-apps">
+<div id="site-nav-mount"></div>
 
 <!-- ── HERO ── -->
 <div class="leaderboard-hero">
@@ -196,49 +179,16 @@
           <th>Category</th>
           <th>Group</th>
           <th style="text-align:right; white-space:nowrap;">Total Clones</th>
-          <th style="text-align:right; white-space:nowrap;">Unique</th>
           <th>Links</th>
         </tr>
       </thead>
       <tbody id="lb-body">
-        <tr><td colspan="7" class="empty-state">Loading leaderboard…</td></tr>
+        <tr><td colspan="6" class="empty-state">Loading leaderboard…</td></tr>
       </tbody>
     </table>
   </div>
 </section>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
-      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
-    </div>
-    <div>
-      <div class="footer-nav-label">Navigation</div>
-      <nav class="footer-nav">
-        <a href="devtools.html">Dev Tools</a>
-        <a href="useful-apps.html">Useful Apps</a>
-        <a href="android.html">Android Kotlin Apps</a>
-        <a href="apple.html">Apple Swift Apps</a>
-        <a href="top-apps.html">Top Cloned Apps</a>
-        <a href="consulting.html">Consulting</a>
-        <a href="about.html">About Ganesh</a>
-        <a href="analysis.html">AI Analysis</a>
-        <a href="mailto:ganesh@mindobix.com">Contact</a>
-      </nav>
-    </div>
-    <div>
-      <div class="footer-nav-label">Contact</div>
-      <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
-      <div style="font-size:11px; color:var(--muted); margin-top:6px; line-height:1.6;">Ganesh Subramanian<br>Chief Vibe Coding Officer<br>Cincinnati, Ohio</div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <a href="privacy.html" class="footer-link">Privacy Policy</a>
-    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
-    <span class="footer-copy">Vibe Coded at the speed of thought.</span>
-  </div>
-</footer>
+<div id="site-footer-mount"></div>
 
 <script defer src="js/apps-meta.js"></script>
 <script>
@@ -247,6 +197,7 @@
     let currentFilter = 'all';
 
     const fmt = (n) => (n || 0).toLocaleString();
+    const groupsOf = (m) => Array.isArray(m.groups) ? m.groups : (m.group ? [m.group] : []);
 
     const rankBadge = (rank) => {
       const cls = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
@@ -265,9 +216,8 @@
             '</a>' +
           '</td>' +
           '<td data-label="Category"><span class="lb-cat">' + m.category + '</span></td>' +
-          '<td data-label="Group"><span class="lb-group">' + m.group + '</span></td>' +
+          '<td data-label="Group"><span class="lb-group">' + groupsOf(m).join(' · ') + '</span></td>' +
           '<td data-label="Clones" style="text-align:right;"><span class="lb-num accent">' + fmt(item.total) + '</span></td>' +
-          '<td data-label="Unique" style="text-align:right;"><span class="lb-uniques">' + fmt(item.uniques) + '</span></td>' +
           '<td data-label="Links">' +
             '<div class="lb-actions">' +
               '<a class="lb-link" href="' + m.href + '">Details</a>' +
@@ -282,9 +232,9 @@
       const body = document.getElementById('lb-body');
       const filtered = currentFilter === 'all'
         ? allRows
-        : allRows.filter(r => r.meta.group === currentFilter);
+        : allRows.filter(r => groupsOf(r.meta).includes(currentFilter));
       if (!filtered.length) {
-        body.innerHTML = '<tr><td colspan="7" class="empty-state">No data yet for this group. Check back after the next sync.</td></tr>';
+        body.innerHTML = '<tr><td colspan="6" class="empty-state">No data yet for this group. Check back after the next sync.</td></tr>';
         return;
       }
       body.innerHTML = filtered.map((row, idx) => renderRow(row, idx + 1)).join('');
@@ -312,7 +262,7 @@
     ]).then(([data, META]) => {
       if (!data || !data.repos) {
         document.getElementById('lb-body').innerHTML =
-          '<tr><td colspan="7" class="empty-state">Could not load clone data. Try again shortly.</td></tr>';
+          '<tr><td colspan="6" class="empty-state">Could not load clone data. Try again shortly.</td></tr>';
         return;
       }
       allRows = Object.entries(data.repos)
@@ -330,7 +280,7 @@
       render();
     }).catch(() => {
       document.getElementById('lb-body').innerHTML =
-        '<tr><td colspan="7" class="empty-state">Could not load clone data.</td></tr>';
+        '<tr><td colspan="6" class="empty-state">Could not load clone data.</td></tr>';
     });
   })();
 </script>
