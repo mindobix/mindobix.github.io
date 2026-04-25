@@ -364,6 +364,29 @@
       </div>
     </a>
 
+    <a href="app.html?id=dailywealth" class="card card-link app-item" data-repo="dailywealth" data-cat="finance">
+      <div class="app-card-body">
+        <div class="app-icon-row">
+          <div class="app-icon icon-finance">💰</div>
+          <div>
+            <div class="app-name">DailyWealth</div>
+            <div class="app-category">Finance</div>
+          </div>
+        </div>
+        <p class="app-desc">Local-first personal portfolio tracker that runs entirely in the browser. Investments, 529 plans, deposits/RMDs/withdrawals, cash, and a full risk-asset trade journal across multiple clients — all in IndexedDB.</p>
+        <div class="app-features">
+          <span class="app-feature-tag">Browser</span>
+          <span class="app-feature-tag">IndexedDB</span>
+          <span class="app-feature-tag">Multi-Client</span>
+          <span class="app-feature-tag">CSV Import</span>
+        </div>
+      </div>
+      <div class="app-footer">
+        <span class="app-cta">View Details →</span>
+        <span class="app-free-badge">Free & Open Source</span>
+      </div>
+    </a>
+
   </div>
 
   <!-- ─ CAREER & PRODUCTIVITY ─ -->
@@ -517,6 +540,7 @@
       <nav class="footer-nav">
         <a href="devtools.html">Dev Tools</a>
         <a href="useful-apps.html">Useful Apps</a>
+        <a href="top-apps.html">Top Cloned Apps</a>
         <a href="android.html">Android Kotlin Apps</a>
         <a href="apple.html">Apple Swift Apps</a>
         <a href="about.html">About Ganesh</a>
@@ -578,5 +602,26 @@
   });
 </script>
 <script defer src="js/clone-badges.js"></script>
+<script>
+  // Reorder cards within each apps-grid section by clone count desc
+  fetch('data/clones.json', { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : null)
+    .then(data => {
+      if (!data || !data.repos) return;
+      const repos = data.repos;
+      document.querySelectorAll('.apps-grid').forEach(grid => {
+        const cards = Array.from(grid.querySelectorAll('.app-item'));
+        cards.sort((a, b) => {
+          const ra = a.getAttribute('data-repo');
+          const rb = b.getAttribute('data-repo');
+          const ca = (repos[ra] && repos[ra].total) || 0;
+          const cb = (repos[rb] && repos[rb].total) || 0;
+          return cb - ca;
+        });
+        cards.forEach(c => grid.appendChild(c));
+      });
+    })
+    .catch(() => {});
+</script>
 </body>
 </html>

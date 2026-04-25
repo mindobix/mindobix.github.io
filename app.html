@@ -328,6 +328,7 @@
           <nav class="footer-nav">
             <a href="devtools.html">Dev Tools</a>
             <a href="useful-apps.html">Useful Apps</a>
+        <a href="top-apps.html">Top Cloned Apps</a>
             <a href="android.html">Android Kotlin Apps</a>
             <a href="apple.html">Apple Swift Apps</a>
             <a href="about.html">About Ganesh</a>
@@ -495,6 +496,83 @@
             "Professionals tracking career growth over time",
             "Anyone tired of manually tailoring resumes",
             "Privacy-conscious users uncomfortable uploading resumes to SaaS",
+          ],
+        },
+
+        "dailywealth": {
+          name: "DailyWealth",
+          tagline:
+            "A local-first personal portfolio tracker that runs entirely in the browser. No server, no accounts, no data leaves your device.",
+          category: "Finance",
+          catClass: "finance",
+          icon: "💰",
+          iconClass: "icon-finance",
+          badge: "Finance",
+          badgeClass: "badge-finance",
+          github: "https://github.com/mindobix/dailywealth",
+          description: `DailyWealth is a complete personal wealth dashboard built from the ground up to live in your browser. Investments, 529 plans, deposits, RMDs, withdrawals, cash balances, and a full risk-asset trade journal — all stored in IndexedDB and isolated per client.\n\nThe Dashboard is the centerpiece: a hero card with the latest portfolio value and week-over-week delta, stat cards for Weekly G/L, YTD G/L, 1-Year Return, True Return, and 529 Total, a full Risk Asset Book widget with KPI strip and positions table, an interactive portfolio chart with range selector, asset allocation, yearly P&L, account breakdown, monthly performance, and a 4-period profit matrix.\n\nThe Risk Assets module is a Fidelity-style master table for stocks and options trades. Each trade has one or more buy/sell legs; computed fields cover Open Qty, Avg Cost, Open Cost Basis, Realized P&L, Current Value, Unrealized G/L, and Total G/L — with the standard 100-share-per-contract multiplier on options. Last Price is manual so there is no live market data dependency.\n\nMulti-client support means you can manage portfolios for yourself, family members, or clients with full data isolation. Backup and restore the entire database to a single JSON file from the Data menu.`,
+          stack: [
+            "Browser",
+            "IndexedDB",
+            "Vanilla JS",
+            "No Build Step",
+            "No Dependencies",
+          ],
+          highlights: [
+            {
+              icon: "📊",
+              title: "Comprehensive Dashboard",
+              desc: "Hero portfolio value with WoW delta, stat cards, Risk Asset Book, portfolio line chart with 1M/3M/YTD/1Y/3Y/ALL ranges, asset allocation, yearly P&L, account breakdown, monthly performance, and 4-period profit matrix.",
+            },
+            {
+              icon: "💼",
+              title: "Risk Asset Trade Journal",
+              desc: "Fidelity-style master table for stocks and options. Multi-leg trades with computed Open Qty, Avg Cost, Realized P&L, Current Value, Unrealized G/L, and Total G/L. Options use the 100-share-per-contract multiplier automatically.",
+            },
+            {
+              icon: "👥",
+              title: "Multi-Client Isolation",
+              desc: "Manage multiple portfolios with full data separation. Switch clients to re-scope every view, account, and grid in the app instantly.",
+            },
+            {
+              icon: "🧮",
+              title: "True P&L Column",
+              desc: "Cumulative gain/loss adjusted for deposits, RMDs, and withdrawals up to each row's date — so you see real return, not gross drift from contributions.",
+            },
+            {
+              icon: "📥",
+              title: "CSV Import with Custom Schemas",
+              desc: "Upload investment or 529 CSV files. Define column mappings per format. Adding a new account auto-generates a camelCase field key and injects it into matching import formats.",
+            },
+            {
+              icon: "🔧",
+              title: "Computed Fields",
+              desc: "Define computed columns per client. They render alongside raw data in the investments grid and follow your account ordering.",
+            },
+            {
+              icon: "📑",
+              title: "Accounting Module",
+              desc: "Track deposits, RMDs, withdrawals, and per-account cash balances. Net summary panel rolls up totals. Cash entries support negative amounts and feed Asset Allocation.",
+            },
+            {
+              icon: "🔒",
+              title: "Absolute Privacy",
+              desc: "Every byte stays in your browser's IndexedDB. No server, no accounts, no telemetry. Backup and restore the full database with a single JSON file.",
+            },
+          ],
+          stats: [
+            { label: "Stack", value: "Vanilla HTML/CSS/JS" },
+            { label: "Build Step", value: "None" },
+            { label: "Dependencies", value: "Zero" },
+            { label: "Storage", value: "IndexedDB (local)" },
+            { label: "Multi-Client", value: "Yes" },
+          ],
+          forWho: [
+            "Investors who want a private, comprehensive view of their portfolio",
+            "Families managing investments and 529 plans across multiple members",
+            "Active traders needing a real risk-asset journal with full P&L",
+            "Anyone tired of paying SaaS fees for portfolio tracking",
+            "Privacy-conscious users who want zero data leaving their device",
           ],
         },
 

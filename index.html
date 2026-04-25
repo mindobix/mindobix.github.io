@@ -339,69 +339,16 @@
   </div>
 </section>
 
-<!-- ── FEATURED APPS ── -->
+<!-- ── FEATURED APPS (Top Cloned, Dynamic) ── -->
 <section class="section" style="background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
   <div class="container">
-    <span class="section-label">Our Software Portfolio</span>
+    <span class="section-label">Our Software Portfolio · Live from GitHub</span>
     <h2 class="section-title">Apps Built by AI. Proven in the Real World.</h2>
-    <p class="section-sub" style="margin-bottom:44px;">Every app in our portfolio was built using Claude Code AI Agents — designed, directed, and validated by 32 years of domain knowledge. Use them free. They prove what's possible.</p>
-    <div class="grid-4">
-
-      <a href="app.html?id=mycareerpulse" class="card card-link app-card-hero" data-repo="MyCareerPulse">
-        <div class="icon-box icon-career">🧠</div>
-        <div class="app-card-cat"><span class="badge badge-career">Career Intelligence</span></div>
-        <h3>MyCareerPulse</h3>
-        <p>Your AI career twin. Scores job postings against your actual skills, tailors resumes, builds a living profile — all local, no subscriptions.</p>
-        <div class="app-card-tags">
-          <span class="app-card-tag">Ollama</span>
-          <span class="app-card-tag">Python</span>
-          <span class="app-card-tag">AI/LLM</span>
-        </div>
-        <div class="app-card-cta">View Details</div>
-      </a>
-
-      <a href="app.html?id=trading-journal" class="card card-link app-card-hero" data-repo="local-trading-journal">
-        <div class="icon-box icon-finance">📊</div>
-        <div class="app-card-cat"><span class="badge badge-finance">Finance</span></div>
-        <h3>Trading Journal</h3>
-        <p>Replace $300–600/year of SaaS trading journals. Full P&amp;L tracking, signal intelligence, and LLM prompts — runs in your browser.</p>
-        <div class="app-card-tags">
-          <span class="app-card-tag">Browser</span>
-          <span class="app-card-tag">IndexedDB</span>
-          <span class="app-card-tag">Offline</span>
-        </div>
-        <div class="app-card-cta">View Details</div>
-      </a>
-
-      <a href="app.html?id=filesync" class="card card-link app-card-hero" data-repo="local-filesync">
-        <div class="icon-box icon-dev">⟲</div>
-        <div class="app-card-cat"><span class="badge badge-dev">Developer Tool</span></div>
-        <h3>FileSync</h3>
-        <p>Zero-config LAN file sync for developers across Windows, macOS and Linux. No cloud. No accounts. Peer discovery, WebSocket transfer, system tray.</p>
-        <div class="app-card-tags">
-          <span class="app-card-tag">Electron</span>
-          <span class="app-card-tag">React</span>
-          <span class="app-card-tag">WebSocket</span>
-        </div>
-        <div class="app-card-cta">View Details</div>
-      </a>
-
-      <a href="app.html?id=shareanyjson" class="card card-link app-card-hero" data-repo="local-shareanyjson">
-        <div class="icon-box icon-dev">{ }</div>
-        <div class="app-card-cat"><span class="badge badge-dev">Developer Tool</span></div>
-        <h3>ShareAnyJSON</h3>
-        <p>Zero-backend JSON configuration manager for dev teams. Version control, environment promotion, and backup — all in one HTML file.</p>
-        <div class="app-card-tags">
-          <span class="app-card-tag">Browser</span>
-          <span class="app-card-tag">localStorage</span>
-          <span class="app-card-tag">No Server</span>
-        </div>
-        <div class="app-card-cta">View Details</div>
-      </a>
-
-    </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="useful-apps.html" class="btn btn-ghost">View All 12 Apps →</a>
+    <p class="section-sub" style="margin-bottom:44px;">Every app in our portfolio was built using Claude Code AI Agents — designed, directed, and validated by 32 years of domain knowledge. Below are the most cloned apps right now, ranked by lifetime <code>git clone</code> counts pulled from the GitHub Traffic API and updated daily.</p>
+    <div class="grid-4" id="top-cloned-grid"></div>
+    <div style="text-align:center; margin-top:40px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="useful-apps.html" class="btn btn-ghost">View All Useful Apps →</a>
+      <a href="top-apps.html" class="btn btn-primary">See All Cloned Apps →</a>
     </div>
   </div>
 </section>
@@ -459,6 +406,7 @@
       <nav class="footer-nav">
         <a href="devtools.html">Dev Tools</a>
         <a href="useful-apps.html">Useful Apps</a>
+        <a href="top-apps.html">Top Cloned Apps</a>
         <a href="android.html">Android Kotlin Apps</a>
         <a href="apple.html">Apple Swift Apps</a>
         <a href="about.html">About Ganesh</a>
@@ -494,6 +442,39 @@
   </div>
 </footer>
 
+<script defer src="js/apps-meta.js"></script>
 <script defer src="js/clone-badges.js"></script>
+<script>
+  // Render top 4 most-cloned apps (Useful Apps only) into #top-cloned-grid
+  Promise.all([
+    fetch('data/clones.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+    new Promise(res => {
+      const tick = () => window.APPS_META ? res(window.APPS_META) : setTimeout(tick, 30);
+      tick();
+    })
+  ]).then(([data, META]) => {
+    const grid = document.getElementById('top-cloned-grid');
+    if (!data || !data.repos || !grid) return;
+    const ranked = Object.entries(data.repos)
+      .filter(([repo]) => META[repo] && META[repo].group === 'Useful App')
+      .sort((a, b) => (b[1].total || 0) - (a[1].total || 0))
+      .slice(0, 4);
+    grid.innerHTML = ranked.map(([repo, stats]) => {
+      const m = META[repo];
+      const total = (stats.total || 0).toLocaleString();
+      return (
+        '<a href="' + m.href + '" class="card card-link app-card-hero" data-repo="' + repo + '">' +
+          '<div class="icon-box icon-career">' + m.icon + '</div>' +
+          '<h3 style="margin-bottom:6px;">' + m.name + '</h3>' +
+          '<div style="font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px;">' + m.category + '</div>' +
+          '<div style="font-size:1.6rem; font-weight:800; color:var(--accent); line-height:1; margin-bottom:6px;">' + total + '</div>' +
+          '<div style="font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;">All-Time Clones</div>' +
+        '</a>'
+      );
+    }).join('');
+    // Re-run badge placement on the freshly rendered cards
+    if (window.__placeCloneBadges) window.__placeCloneBadges();
+  }).catch(() => {});
+</script>
 </body>
 </html>

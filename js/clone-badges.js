@@ -75,9 +75,15 @@
     return 'data/clones.json';
   })();
 
+  let cachedData = null;
+  window.__placeCloneBadges = function () {
+    if (cachedData) apply(cachedData);
+  };
+
   fetch(dataPath, { cache: 'no-cache' })
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => {
+      cachedData = data;
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => apply(data));
       } else {

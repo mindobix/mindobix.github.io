@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1015535896"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-1015535896');
+  </script>
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-1015535896/0ABMCPeb4JMcEJiyn-QD',
+        'value': 1.0,
+        'currency': 'USD',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Cloned Apps — Mindobix</title>
+  <meta name="description" content="Live leaderboard of every public Mindobix repo, sorted by lifetime git clones. Pulled from the GitHub Traffic API. Updated daily." />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .leaderboard-hero {
+      padding: 72px 0 48px; position: relative; z-index: 1;
+      background: linear-gradient(160deg, rgba(14,138,110,0.04) 0%, rgba(11,29,58,0.02) 40%, transparent 70%);
+      border-bottom: 1px solid var(--border);
+    }
+    .leaderboard-hero h1 { margin-bottom: 12px; }
+    .leaderboard-hero .meta { font-size: 12px; color: var(--muted); margin-top: 12px; }
+
+    .leaderboard-section { padding: 60px 0 80px; }
+
+    .group-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px;
+    }
+    .group-tab {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 8px 16px; border-radius: 999px; cursor: pointer;
+      background: var(--surface); border: 1px solid var(--border); color: var(--text2);
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .group-tab.active { background: var(--navy); color: #ffffff; border-color: var(--navy); }
+    .group-tab:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+    .leaderboard-table {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(11,29,58,0.04);
+    }
+    .leaderboard-table th, .leaderboard-table td {
+      padding: 14px 16px; text-align: left; font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    .leaderboard-table thead th {
+      background: var(--surface2); color: var(--muted);
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+    .leaderboard-table tbody tr:last-child td { border-bottom: none; }
+    .leaderboard-table tbody tr { transition: background 0.12s; }
+    .leaderboard-table tbody tr:hover { background: rgba(14,138,110,0.04); }
+
+    .lb-rank {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--surface2); color: var(--text2);
+      font-weight: 800; font-size: 13px;
+    }
+    .lb-rank.gold   { background: linear-gradient(135deg, #f6d365, #f5a623); color: #fff; box-shadow: 0 2px 6px rgba(245,166,35,0.35); }
+    .lb-rank.silver { background: linear-gradient(135deg, #d8dee8, #a4adc1); color: #fff; box-shadow: 0 2px 6px rgba(164,173,193,0.35); }
+    .lb-rank.bronze { background: linear-gradient(135deg, #d8a978, #b07d4f); color: #fff; box-shadow: 0 2px 6px rgba(176,125,79,0.35); }
+
+    .lb-app {
+      display: inline-flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text); font-weight: 700;
+    }
+    .lb-app:hover { color: var(--accent); }
+    .lb-app-icon {
+      width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--surface2); border: 1px solid var(--border);
+      font-size: 18px;
+    }
+
+    .lb-cat {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      padding: 4px 10px; border-radius: 4px;
+      background: var(--surface2); color: var(--text2); border: 1px solid var(--border);
+      text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap;
+    }
+    .lb-group { font-size: 11px; color: var(--muted); }
+
+    .lb-num {
+      font-weight: 800; font-size: 15px; color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+    .lb-num.accent { color: var(--accent); }
+    .lb-uniques { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+    .lb-actions { display: inline-flex; gap: 8px; flex-wrap: wrap; }
+    .lb-link {
+      font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 5px;
+      text-decoration: none; border: 1px solid var(--border);
+      color: var(--text2); background: var(--surface);
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .lb-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    .empty-state {
+      padding: 60px 20px; text-align: center; color: var(--muted);
+      background: var(--surface); border: 1px dashed var(--border); border-radius: 12px;
+    }
+
+    /* Mobile: stack key info */
+    @media (max-width: 720px) {
+      .leaderboard-table { display: block; overflow-x: auto; }
+      .leaderboard-table thead { display: none; }
+      .leaderboard-table tbody, .leaderboard-table tr, .leaderboard-table td { display: block; }
+      .leaderboard-table tr {
+        background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+        padding: 14px; margin-bottom: 12px;
+      }
+      .leaderboard-table td {
+        padding: 6px 0; border-bottom: none; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      }
+      .leaderboard-table td::before {
+        content: attr(data-label);
+        font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted);
+      }
+      .leaderboard-table td:first-child::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li class="nav-dropdown"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>
+      <li><a href="api-framework.html">API Framework</a></li>
+      <li><a href="devtools.html">Dev Tools</a></li>
+      <li><a href="useful-apps.html">Useful Apps</a></li>
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>
+      <li><a href="mailto:ganesh@mindobix.com" class="nav-cta" onclick="return gtag_report_conversion('mailto:ganesh@mindobix.com');">Contact Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="leaderboard-hero">
+  <div class="container">
+    <span class="section-label">Live Leaderboard</span>
+    <h1>Top Cloned Mindobix Repos</h1>
+    <p style="font-size:1rem; color:var(--text2); max-width:680px; margin-top:12px;">
+      Every public Mindobix repository, ranked by lifetime <code>git clone</code> count. Numbers come straight from the GitHub Traffic API and refresh daily. Real adoption, real signal — no vanity metrics.
+    </p>
+    <p class="meta" id="lb-meta">Loading latest data…</p>
+  </div>
+</div>
+
+<!-- ── LEADERBOARD ── -->
+<section class="leaderboard-section">
+  <div class="container">
+    <div class="group-tabs" id="group-tabs">
+      <button type="button" class="group-tab active" data-group="all">All Repos</button>
+      <button type="button" class="group-tab" data-group="Useful App">Useful Apps</button>
+      <button type="button" class="group-tab" data-group="Mobile Architecture">Mobile Architecture</button>
+      <button type="button" class="group-tab" data-group="Dev Tools">Dev Tools</button>
+      <button type="button" class="group-tab" data-group="API Framework">API Framework</button>
+    </div>
+
+    <table class="leaderboard-table" id="lb-table">
+      <thead>
+        <tr>
+          <th style="width:60px;">Rank</th>
+          <th>Repository</th>
+          <th>Category</th>
+          <th>Group</th>
+          <th style="text-align:right; white-space:nowrap;">Total Clones</th>
+          <th style="text-align:right; white-space:nowrap;">Unique</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody id="lb-body">
+        <tr><td colspan="7" class="empty-state">Loading leaderboard…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Mind<span class="dot">Obix</span></div>
+      <div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>
+    </div>
+    <div>
+      <div class="footer-nav-label">Navigation</div>
+      <nav class="footer-nav">
+        <a href="devtools.html">Dev Tools</a>
+        <a href="useful-apps.html">Useful Apps</a>
+        <a href="android.html">Android Kotlin Apps</a>
+        <a href="apple.html">Apple Swift Apps</a>
+        <a href="top-apps.html">Top Cloned Apps</a>
+        <a href="consulting.html">Consulting</a>
+        <a href="about.html">About Ganesh</a>
+        <a href="analysis.html">AI Analysis</a>
+        <a href="mailto:ganesh@mindobix.com">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <div class="footer-nav-label">Contact</div>
+      <a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>
+      <div style="font-size:11px; color:var(--muted); margin-top:6px; line-height:1.6;">Ganesh Subramanian<br>Chief Vibe Coding Officer<br>Cincinnati, Ohio</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <a href="privacy.html" class="footer-link">Privacy Policy</a>
+    <span class="footer-copy">© 2026 Mindobix. Built entirely with Claude Code AI Agents.</span>
+    <span class="footer-copy">Vibe Coded at the speed of thought.</span>
+  </div>
+</footer>
+
+<script defer src="js/apps-meta.js"></script>
+<script>
+  (function () {
+    let allRows = [];
+    let currentFilter = 'all';
+
+    const fmt = (n) => (n || 0).toLocaleString();
+
+    const rankBadge = (rank) => {
+      const cls = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+      return '<span class="lb-rank ' + cls + '">' + rank + '</span>';
+    };
+
+    const renderRow = (item, rank) => {
+      const m = item.meta;
+      return (
+        '<tr>' +
+          '<td data-label="Rank">' + rankBadge(rank) + '</td>' +
+          '<td data-label="Repository">' +
+            '<a href="' + m.href + '" class="lb-app">' +
+              '<span class="lb-app-icon">' + m.icon + '</span>' +
+              '<span>' + m.name + '</span>' +
+            '</a>' +
+          '</td>' +
+          '<td data-label="Category"><span class="lb-cat">' + m.category + '</span></td>' +
+          '<td data-label="Group"><span class="lb-group">' + m.group + '</span></td>' +
+          '<td data-label="Clones" style="text-align:right;"><span class="lb-num accent">' + fmt(item.total) + '</span></td>' +
+          '<td data-label="Unique" style="text-align:right;"><span class="lb-uniques">' + fmt(item.uniques) + '</span></td>' +
+          '<td data-label="Links">' +
+            '<div class="lb-actions">' +
+              '<a class="lb-link" href="' + m.href + '">Details</a>' +
+              '<a class="lb-link" href="' + m.repoUrl + '" target="_blank" rel="noopener">GitHub</a>' +
+            '</div>' +
+          '</td>' +
+        '</tr>'
+      );
+    };
+
+    const render = () => {
+      const body = document.getElementById('lb-body');
+      const filtered = currentFilter === 'all'
+        ? allRows
+        : allRows.filter(r => r.meta.group === currentFilter);
+      if (!filtered.length) {
+        body.innerHTML = '<tr><td colspan="7" class="empty-state">No data yet for this group. Check back after the next sync.</td></tr>';
+        return;
+      }
+      body.innerHTML = filtered.map((row, idx) => renderRow(row, idx + 1)).join('');
+    };
+
+    const bindTabs = () => {
+      document.querySelectorAll('.group-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.group-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          currentFilter = tab.getAttribute('data-group');
+          render();
+        });
+      });
+    };
+
+    const waitForMeta = () => new Promise(res => {
+      const tick = () => window.APPS_META ? res(window.APPS_META) : setTimeout(tick, 30);
+      tick();
+    });
+
+    Promise.all([
+      fetch('data/clones.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null),
+      waitForMeta()
+    ]).then(([data, META]) => {
+      if (!data || !data.repos) {
+        document.getElementById('lb-body').innerHTML =
+          '<tr><td colspan="7" class="empty-state">Could not load clone data. Try again shortly.</td></tr>';
+        return;
+      }
+      allRows = Object.entries(data.repos)
+        .filter(([repo]) => META[repo])
+        .map(([repo, stats]) => ({ repo, total: stats.total || 0, uniques: stats.uniques || 0, meta: META[repo] }))
+        .sort((a, b) => b.total - a.total);
+
+      const lastUpdated = data.lastUpdated ? new Date(data.lastUpdated + 'T00:00:00Z').toUTCString().slice(0, 16) : 'recently';
+      const totalRepos = allRows.length;
+      const totalClones = allRows.reduce((s, r) => s + r.total, 0);
+      document.getElementById('lb-meta').textContent =
+        totalRepos + ' repos · ' + fmt(totalClones) + ' lifetime clones · last updated ' + lastUpdated;
+
+      bindTabs();
+      render();
+    }).catch(() => {
+      document.getElementById('lb-body').innerHTML =
+        '<tr><td colspan="7" class="empty-state">Could not load clone data.</td></tr>';
+    });
+  })();
+</script>
+<script defer src="js/clone-badges.js"></script>
+</body>
+</html>

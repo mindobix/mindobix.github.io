@@ -96,6 +96,10 @@
     "myfamilytree": {
       "total": 9,
       "uniques": 9
+    },
+    "dailywealth": {
+      "total": 526,
+      "uniques": 229
     }
   }
 }
