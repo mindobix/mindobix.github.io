@@ -391,3 +391,122 @@ footer.site-footer {
   .clone-badge-num { font-size: 13px; }
   .clone-badge-label { font-size: 6.5px; }
 }
+
+/* ============================================================
+   DARK THEME
+   Activated via <html data-theme="dark"> (toggle in nav).
+   The :root tokens above stay the light-mode default; this block
+   overrides the same tokens + a few hardcoded surfaces so every
+   page picks up dark mode without per-page edits.
+   ============================================================ */
+[data-theme="dark"] {
+  --bg:       #0d1117;
+  --bg2:      #131922;
+  --surface:  #161b27;
+  --surface2: #1e2433;
+  --surface3: #252d3f;
+
+  --border:   #2a3347;
+  --border2:  #3d4a64;
+
+  --text:     #e2e8f0;
+  --text2:    #aab4c5;
+  --muted:    #7c8a9e;
+
+  /* Brand: keep --navy as a deep panel color so navy-backed buttons
+     and the footer still read correctly. Headings get an explicit
+     light override below. */
+  --navy:     #1a2540;
+  --accent:   #14d2a2;       /* brightened teal so it pops on dark */
+  --accent2:  #34e2b5;
+  --accent-dim:   rgba(20, 210, 162, 0.10);
+  --accent-glow:  rgba(20, 210, 162, 0.22);
+  --accent-glow2: rgba(20, 210, 162, 0.06);
+
+  --nav-bg:     #0a0e15;
+  --nav-text:   rgba(255,255,255,0.78);
+  --nav-active: #ffffff;
+
+  color-scheme: dark;
+}
+
+/* Body ambient gradient (mirrors the trading journal subdomain) */
+[data-theme="dark"] body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(99,102,241,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 100% 30%, rgba(34,211,238,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 0% 60%, rgba(20,210,162,0.05) 0%, transparent 60%);
+}
+
+/* Headings + strong: --navy is dark in this theme too, so flip to --text */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] strong { color: var(--text); }
+
+/* Surface elements that hardcoded navy-on-light text */
+[data-theme="dark"] .btn-ghost { color: var(--text); border-color: var(--border2); }
+[data-theme="dark"] .btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+[data-theme="dark"] .stat-num { color: var(--text); }
+[data-theme="dark"] .quote-block p { color: var(--text); }
+
+/* Card shadows + rotating nth-child gradients, dark variants */
+[data-theme="dark"] .card {
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.02) inset;
+}
+[data-theme="dark"] .card:nth-child(4n+1) { background: linear-gradient(145deg, rgba(20,210,162,0.07) 0%, var(--surface) 60%); }
+[data-theme="dark"] .card:nth-child(4n+2) { background: linear-gradient(155deg, rgba(99,102,241,0.07) 0%, var(--surface) 55%); }
+[data-theme="dark"] .card:nth-child(4n+3) { background: linear-gradient(135deg, var(--surface) 30%, rgba(20,210,162,0.06) 100%); }
+[data-theme="dark"] .card:nth-child(4n+4) { background: linear-gradient(150deg, var(--surface) 35%, rgba(34,211,238,0.06) 100%); }
+[data-theme="dark"] .card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 12px 32px -8px rgba(0,0,0,0.7), 0 0 0 1px rgba(20,210,162,0.15);
+}
+
+/* Btn-primary on dark: --navy is now a soft slate, give it a touch more lift */
+[data-theme="dark"] .btn-primary { box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset; }
+[data-theme="dark"] .btn-primary:hover { background: #243355; box-shadow: 0 6px 18px rgba(0,0,0,0.5); }
+
+/* Badges keep their bright color-on-light look; soften the backgrounds slightly */
+[data-theme="dark"] .badge-dev      { background: rgba(99,102,241,0.18);  color: #a5b4fc; border-color: rgba(99,102,241,0.35); }
+[data-theme="dark"] .badge-finance  { background: rgba(245,158,11,0.18);  color: #fbbf24; border-color: rgba(245,158,11,0.35); }
+[data-theme="dark"] .badge-career   { background: rgba(34,211,238,0.16);  color: #67e8f9; border-color: rgba(34,211,238,0.35); }
+[data-theme="dark"] .badge-personal { background: rgba(167,139,250,0.18); color: #c4b5fd; border-color: rgba(167,139,250,0.35); }
+
+[data-theme="dark"] .icon-dev      { background: rgba(99,102,241,0.16);  border-color: rgba(99,102,241,0.30); }
+[data-theme="dark"] .icon-finance  { background: rgba(245,158,11,0.16);  border-color: rgba(245,158,11,0.30); }
+[data-theme="dark"] .icon-career   { background: rgba(34,211,238,0.14);  border-color: rgba(34,211,238,0.30); }
+[data-theme="dark"] .icon-personal { background: rgba(167,139,250,0.16); border-color: rgba(167,139,250,0.30); }
+
+/* Highlight box border-color was hardcoded teal-rgba — replace with token-driven version */
+[data-theme="dark"] .highlight-box { border-color: rgba(20,210,162,0.30); }
+
+/* Footer is already dark; just nudge the accent border so it pops */
+[data-theme="dark"] footer.site-footer { border-top-color: var(--accent); }
+
+/* ── THEME TOGGLE BUTTON (lives in nav) ── */
+.nav-theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.18);
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  color: var(--nav-text);
+  font-size: 14px; line-height: 1;
+  padding: 0;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.25s;
+}
+.nav-theme-toggle:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+  transform: rotate(20deg);
+}
+.nav-theme-toggle .icon-light { display: none; }
+.nav-theme-toggle .icon-dark  { display: inline; }
+[data-theme="dark"] .nav-theme-toggle .icon-light { display: inline; }
+[data-theme="dark"] .nav-theme-toggle .icon-dark  { display: none; }
+

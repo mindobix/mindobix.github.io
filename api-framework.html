@@ -9,6 +9,7 @@
     gtag('js', new Date());
     gtag('config', 'G-V460QPM640');
   </script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>API Framework — Mindobix</title>
@@ -350,6 +351,46 @@
     }
     .ent-btn--secondary:hover {
       background: rgba(255,255,255,0.18);
+    }
+
+    /* ── DARK THEME OVERRIDES ── */
+    [data-theme="dark"] .ent-products-heading h2,
+    [data-theme="dark"] .ent-packages-heading h2,
+    [data-theme="dark"] .ent-arch-heading h2,
+    [data-theme="dark"] .ent-card-name,
+    [data-theme="dark"] .pkg-card h3 { color: var(--text); }
+
+    [data-theme="dark"] .ent-products-heading p,
+    [data-theme="dark"] .ent-packages-heading p,
+    [data-theme="dark"] .ent-arch-heading p { color: var(--text2); }
+
+    [data-theme="dark"] .ent-card {
+      background: var(--surface);
+      border-color: var(--border);
+    }
+    [data-theme="dark"] .ent-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    }
+    [data-theme="dark"] .ent-card-tag {
+      background: var(--surface3);
+      color: var(--text2);
+      border-color: var(--border);
+    }
+    [data-theme="dark"] .ent-card-oss {
+      background: rgba(20,210,162,0.15);
+      color: var(--accent);
+    }
+    [data-theme="dark"] .ent-card-badge {
+      background: rgba(20,210,162,0.15);
+      color: var(--accent);
+    }
+
+    [data-theme="dark"] .ent-packages {
+      background: var(--bg2);
+    }
+    [data-theme="dark"] .pkg-card {
+      background: var(--surface);
+      border-color: var(--border);
     }
   </style>
   <script defer src="js/site-chrome.js"></script>

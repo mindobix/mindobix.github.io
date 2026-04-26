@@ -1,6 +1,25 @@
 (function () {
   'use strict';
 
+  // ── THEME ──────────────────────────────────────────────────────
+  // Apply the saved theme as early as possible. The same logic is also
+  // duplicated as an inline <script> in each page's <head> so dark-mode
+  // visitors don't get a flash of the light theme on first paint.
+  var THEME_KEY = 'mdbx-theme';
+  function readTheme() {
+    try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
+  }
+  function writeTheme(t) {
+    try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+  }
+  function applyTheme(t) {
+    // Default to dark when nothing is stored — user toggle persists 'light' to opt out.
+    var resolved = t === 'light' ? 'light' : 'dark';
+    if (resolved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    else document.documentElement.removeAttribute('data-theme');
+  }
+  applyTheme(readTheme());
+
   // Map data-page values to the nav-link selector that should get .active
   const ACTIVE_MAP = {
     'about':         '[data-nav="about"]',
@@ -24,6 +43,10 @@
           '<li data-nav="consulting"><a href="consulting.html">Consulting</a></li>' +
           '<li data-nav="about"><a href="about.html">About</a></li>' +
           '<li data-nav="analysis"><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>' +
+          '<li><button id="theme-toggle" class="nav-theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">' +
+            '<span class="icon-dark" aria-hidden="true">☾</span>' +
+            '<span class="icon-light" aria-hidden="true">☀</span>' +
+          '</button></li>' +
           '<li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>' +
         '</ul>' +
         '<button class="nav-hamburger" onclick="document.getElementById(\'nav-links\').classList.toggle(\'open\')" aria-label="Menu">' +
@@ -82,6 +105,14 @@
     const footerMount = document.getElementById('site-footer-mount');
     if (footerMount) {
       footerMount.outerHTML = FOOTER_HTML;
+    }
+    const toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        writeTheme(next);
+      });
     }
   }
 

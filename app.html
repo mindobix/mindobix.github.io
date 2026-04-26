@@ -9,9 +9,11 @@
       gtag('js', new Date());
       gtag('config', 'G-V460QPM640');
     </script>
+    <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="page-title">App Detail — Mindobix</title>
+    <link id="canonical-link" rel="canonical" href="https://mindobix.com/app.html" />
     <link rel="stylesheet" href="css/main.css" />
     <style>
       .app-hero {
@@ -240,6 +242,84 @@
       }
       .not-found h2 {
         margin-bottom: 16px;
+      }
+
+      /* Subdomain promo banner — used when app.subdomain is set */
+      .subdomain-promo {
+        position: relative;
+        margin: 0 0 28px;
+        padding: 18px 22px;
+        border-radius: 14px;
+        background:
+          linear-gradient(135deg, var(--accent) 0%, #0d6e91 60%, var(--navy) 100%);
+        color: #fff;
+        display: flex; align-items: center; gap: 18px;
+        flex-wrap: wrap;
+        box-shadow: 0 16px 44px -18px rgba(14, 138, 110, 0.55), 0 0 0 1px rgba(255,255,255,0.06) inset;
+        overflow: hidden;
+      }
+      .subdomain-promo::before {
+        content: '';
+        position: absolute; inset: 0; pointer-events: none;
+        background:
+          radial-gradient(ellipse 50% 80% at 100% 50%, rgba(255,255,255,0.18) 0%, transparent 60%),
+          radial-gradient(ellipse 30% 60% at 0% 0%, rgba(255,255,255,0.10) 0%, transparent 60%);
+      }
+      .subdomain-promo-icon {
+        flex: 0 0 auto;
+        width: 44px; height: 44px; border-radius: 12px;
+        background: rgba(255,255,255,0.14);
+        border: 1px solid rgba(255,255,255,0.22);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 22px;
+        position: relative; z-index: 1;
+      }
+      .subdomain-promo-body {
+        flex: 1 1 320px;
+        position: relative; z-index: 1;
+        min-width: 0;
+      }
+      .subdomain-promo-eyebrow {
+        display: inline-block;
+        font-size: 10px; font-weight: 800;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        background: rgba(255,255,255,0.18);
+        padding: 3px 9px; border-radius: 100px;
+        margin-bottom: 6px;
+      }
+      .subdomain-promo-title {
+        font-size: 15px; font-weight: 700; line-height: 1.35;
+        color: #fff;
+        margin: 0 0 2px;
+      }
+      .subdomain-promo-url {
+        font-size: 12px; color: rgba(255,255,255,0.78);
+        font-family: 'SF Mono', Menlo, Consolas, monospace;
+      }
+      .subdomain-promo-cta {
+        position: relative; z-index: 1;
+        display: inline-flex; align-items: center; gap: 8px;
+        background: #fff; color: var(--navy) !important;
+        font-weight: 700; font-size: 13px;
+        padding: 11px 18px;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+        box-shadow: 0 8px 22px -8px rgba(0,0,0,0.4);
+        white-space: nowrap;
+      }
+      .subdomain-promo-cta:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 32px -10px rgba(0,0,0,0.5);
+      }
+      .subdomain-promo-cta .arrow {
+        display: inline-block;
+        transition: transform 0.18s ease;
+      }
+      .subdomain-promo-cta:hover .arrow { transform: translateX(3px); }
+      @media (max-width: 640px) {
+        .subdomain-promo { padding: 16px; gap: 12px; }
+        .subdomain-promo-cta { width: 100%; justify-content: center; }
       }
     </style>
     <script defer src="js/site-chrome.js"></script>
@@ -504,6 +584,11 @@
           badge: "Finance",
           badgeClass: "badge-finance",
           github: "https://github.com/mindobix/local-trading-journal",
+          subdomain: {
+            url: "https://tradingjournal.mindobix.com/",
+            label: "tradingjournal.mindobix.com",
+            blurb: "This app has its own dedicated site — full features, screenshots, comparison vs the paid tools, and a live demo.",
+          },
           description: `Your trade data is sensitive. Position sizes, entry timing, win rate, P&L — this is information you don't need to hand to a SaaS company. Local Trading Journal stores everything in your own browser's IndexedDB — a built-in database that grows with your data.\n\n\n\nThere is no server. There is no account. There is no subscription. And it beats the paid tools on features.\n\n\n\nRecent additions: Tradezella CSV import (auto-splits trades into buy/sell legs, auto-tags mistakes), date range picker with two-tap selection and presets, unified filter state shared across Calendar and Trades tabs with IndexedDB persistence, paginated trades table (50–250/page) with row numbers, and smarter bulk entry UX.`,
           stack: [
             "Browser",
@@ -1247,10 +1332,31 @@
           .map((p) => `<p>${p}</p>`)
           .join("");
 
+        const subdomainPromoHTML = app.subdomain
+          ? `
+        <a href="${app.subdomain.url}" class="subdomain-promo" target="_self">
+          <div class="subdomain-promo-icon">🌐</div>
+          <div class="subdomain-promo-body">
+            <span class="subdomain-promo-eyebrow">Official Site</span>
+            <div class="subdomain-promo-title">${app.subdomain.blurb}</div>
+            <div class="subdomain-promo-url">${app.subdomain.label}</div>
+          </div>
+          <span class="subdomain-promo-cta">Visit Site <span class="arrow">→</span></span>
+        </a>
+      `
+          : "";
+
+        const primaryCtaHTML = app.subdomain
+          ? `<a href="${app.subdomain.url}" class="btn btn-primary">Visit Official Site →</a>
+             <a href="${app.github}" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub</a>`
+          : `<a href="${app.github}" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub →</a>
+             <a href="useful-apps.html" class="btn btn-ghost">All Apps</a>`;
+
         root.innerHTML = `
     <div class="app-hero">
       <div class="container">
         <a href="useful-apps.html" class="back-link">Back to All Apps</a>
+        ${subdomainPromoHTML}
         <div class="app-hero-header">
           <div class="app-hero-icon ${app.iconClass}">${app.icon}</div>
           <div class="app-hero-meta">
@@ -1260,8 +1366,7 @@
         </div>
         <p class="app-hero-tagline">${app.tagline}</p>
         <div class="app-hero-actions">
-          <a href="${app.github}" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub →</a>
-          <a href="useful-apps.html" class="btn btn-ghost">All Apps</a>
+          ${primaryCtaHTML}
         </div>
       </div>
     </div>
@@ -1314,6 +1419,13 @@
   `;
 
         document.title = `${app.name} — Mindobix`;
+
+        const canonical = document.getElementById("canonical-link");
+        if (canonical) {
+          canonical.href = app.subdomain
+            ? app.subdomain.url
+            : `https://mindobix.com/app.html?id=${getQueryParam("id")}`;
+        }
       }
 
       function renderRelated(currentId) {

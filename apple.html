@@ -9,6 +9,7 @@
     gtag('js', new Date());
     gtag('config', 'G-V460QPM640');
   </script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iOS Swift Apps &amp; Libraries — MindObix</title>
@@ -438,6 +439,48 @@
       font-weight: 500;
     }
     .ios-quote cite { font-size: 12px; color: var(--muted); font-style: normal; font-weight: 600; }
+
+    /* ── DARK THEME OVERRIDES ── */
+    [data-theme="dark"] .ios-stat-num,
+    [data-theme="dark"] .ios-lib-card h3 { color: var(--text); }
+    [data-theme="dark"] .ios-stat-num.swift-color { color: var(--ios-swift2); }
+
+    [data-theme="dark"] .ios-lib-section { background: var(--bg2); }
+
+    [data-theme="dark"] .ios-lib-card {
+      background: var(--surface);
+      border-color: var(--border);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.40);
+    }
+    [data-theme="dark"] .ios-lib-card:nth-child(1) { background: linear-gradient(155deg, rgba(240,81,56,0.08) 0%, var(--surface) 55%); }
+    [data-theme="dark"] .ios-lib-card:nth-child(2) { background: linear-gradient(155deg, rgba(0,122,255,0.08) 0%, var(--surface) 55%); }
+    [data-theme="dark"] .ios-lib-card:nth-child(3) { background: linear-gradient(155deg, rgba(88,86,214,0.08) 0%, var(--surface) 55%); }
+
+    [data-theme="dark"] .platform-badge {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--border);
+      color: var(--text2);
+    }
+    [data-theme="dark"] .swift6-pill {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--border);
+      color: var(--text2);
+    }
+    [data-theme="dark"] .swift6-banner {
+      background: linear-gradient(100deg, rgba(240,81,56,0.10) 0%, rgba(0,122,255,0.07) 100%);
+      border-color: rgba(240,81,56,0.25);
+    }
+
+    [data-theme="dark"] .btn-ios-ghost {
+      color: var(--text);
+      border-color: var(--border2);
+    }
+    [data-theme="dark"] .btn-ios-ghost:hover {
+      color: var(--ios-swift2);
+      border-color: var(--ios-swift2);
+    }
+
+    [data-theme="dark"] .ios-quote blockquote { color: var(--text); }
   </style>
   <script defer src="js/site-chrome.js"></script>
 </head>

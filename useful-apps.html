@@ -9,6 +9,7 @@
     gtag('js', new Date());
     gtag('config', 'G-V460QPM640');
   </script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Apps — Mindobix</title>
@@ -73,7 +74,7 @@
 
     /* ── STATS BAR ── */
     .stats-bar {
-      display: flex; gap: 0; margin-bottom: 0;
+      display: flex; gap: 0; margin: 36px 0 0;
       background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
       overflow: hidden; flex-wrap: wrap;
     }
@@ -85,6 +86,9 @@
     .stats-bar-item:last-child { border-right: none; }
     .stats-bar-num { font-size: 1.6rem; font-weight: 700; color: var(--navy); }
     .stats-bar-label { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+    /* Dark theme — --navy is a dark slate, so flip the stat numbers to readable text */
+    [data-theme="dark"] .stats-bar-num { color: var(--text); }
 
     /* ── ALL APPS HIDDEN BY FILTER ── */
     .no-results { text-align: center; padding: 60px 0; color: var(--muted); display: none; }
