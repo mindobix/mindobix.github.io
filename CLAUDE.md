@@ -66,8 +66,15 @@ The marketing and portfolio site for **Mindobix**, Ganesh Subramanian's AI-power
 │   ├── clones.json         # Cumulative totals per repo (rendered by the site)
 │   └── clones-history.json # Daily history, used to recompute totals
 │
+├── subdomains/             # Per-app marketing landing pages (each is its own GitHub Pages site)
+│   └── tradingjournal/
+│       ├── index.html      # Standalone, SEO-optimized landing page
+│       ├── CNAME           # tradingjournal.mindobix.com
+│       ├── robots.txt
+│       └── sitemap.xml
+│
 ├── .github/workflows/
-│   ├── deploy.yml          # Push master → mindobix.github.io
+│   ├── deploy.yml          # Push master → mindobix.github.io + each subdomain repo
 │   └── sync-clones.yml     # Daily clone-count sync
 │
 ├── CNAME                   # Custom domain (mindobix.com) — DO NOT remove
@@ -213,6 +220,8 @@ Reusable workflows live in `.claude/skills/` (none defined yet). If you find you
 **The "live from GitHub" feature.** The home page and `top-apps.html` rank the apps by lifetime `git clone` count. Those numbers come from `data/clones.json`, which is regenerated daily by [.github/workflows/sync-clones.yml](.github/workflows/sync-clones.yml) using the GitHub Traffic API (`getClones`). The Traffic API only returns the last 14 days, so `clones-history.json` is the long-term store and `clones.json` is just the rolled-up totals derived from it. Do not delete `clones-history.json` — losing it loses everything before the last 14 days of clone data.
 
 **Deploy is two-stage.** A push to `master` here triggers `deploy.yml`, which `rsync`s the working tree into a clone of `mindobix/mindobix.github.io` and pushes that. The `sync-clones.yml` action also chains into `deploy.yml` on success (via `workflow_run`), so the daily clone-count refresh redeploys the site automatically.
+
+**Per-app subdomains.** Each folder under [subdomains/](subdomains/) is a self-contained marketing/SEO landing page that gets deployed to its own GitHub Pages repo. The repo name is derived from the folder's `CNAME` file — e.g. `subdomains/tradingjournal/CNAME` containing `tradingjournal.mindobix.com` deploys to `mindobix/tradingjournal.mindobix.com`. The `Deploy subdomain landing pages` step in [deploy.yml](.github/workflows/deploy.yml) loops over `subdomains/*/`, clones each destination repo via HTTPS+PAT (`SUBDOMAIN_DEPLOY_TOKEN` secret), rsyncs, and pushes. The step skips silently if the secret is missing, so it doesn't break the main-site deploy. Subdomain pages are intentionally standalone — they don't use `site-chrome.js` or `css/main.css` (different domain, different repo). They reuse the same GA4 tag (`G-V460QPM640`) for unified analytics. To add a new subdomain: (1) create `subdomains/<name>/` with `index.html` + `CNAME` + `robots.txt` + `sitemap.xml`, (2) create the empty `mindobix/<cname>` repo with an initial commit on `master`, (3) enable Pages in that repo's settings (source: `master` branch, root, custom domain matching the CNAME), (4) add the Route 53 `CNAME` record pointing to `mindobix.github.io.`.
 
 **The chrome is dynamic, the rest is not.** `<nav>` and `<footer>` are injected by [js/site-chrome.js](js/site-chrome.js) at runtime. Everything else (hero, sections, cards) is hand-written per page. Do not be surprised that the same hero pattern is duplicated across pages — that is the chosen tradeoff for "no build step."
 
