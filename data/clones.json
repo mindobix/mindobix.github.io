@@ -2,8 +2,8 @@
   "lastUpdated": "2026-04-27",
   "repos": {
     "CCKotlinNetworking": {
-      "total": 205,
-      "uniques": 104
+      "total": 210,
+      "uniques": 108
     },
     "CCKotlinAPICache": {
       "total": 38,
@@ -38,36 +38,36 @@
       "uniques": 17
     },
     "cc-apis-demo-monorepo": {
-      "total": 19,
-      "uniques": 17
+      "total": 20,
+      "uniques": 18
     },
     "sam-framework": {
-      "total": 75,
-      "uniques": 51
+      "total": 77,
+      "uniques": 53
     },
     "MyCareerPulse": {
       "total": 19,
       "uniques": 17
     },
     "local-api-web-proxy": {
-      "total": 118,
-      "uniques": 71
+      "total": 123,
+      "uniques": 76
     },
     "local-billpay-tracker": {
-      "total": 36,
-      "uniques": 27
+      "total": 37,
+      "uniques": 28
     },
     "local-filesync": {
-      "total": 98,
-      "uniques": 52
+      "total": 112,
+      "uniques": 60
     },
     "local-habit-calendar": {
       "total": 8,
       "uniques": 8
     },
     "local-keywords-files-finder": {
-      "total": 18,
-      "uniques": 14
+      "total": 19,
+      "uniques": 15
     },
     "local-recipebook": {
       "total": 10,
@@ -78,28 +78,28 @@
       "uniques": 8
     },
     "local-trading-journal": {
-      "total": 196,
-      "uniques": 90
+      "total": 264,
+      "uniques": 137
     },
     "local-vibecoding-appideas": {
-      "total": 211,
-      "uniques": 109
+      "total": 301,
+      "uniques": 157
     },
     "local-weekly-options-trade-plan": {
-      "total": 8,
-      "uniques": 8
-    },
-    "medreview": {
-      "total": 145,
-      "uniques": 78
-    },
-    "myfamilytree": {
       "total": 9,
       "uniques": 9
     },
+    "medreview": {
+      "total": 170,
+      "uniques": 88
+    },
+    "myfamilytree": {
+      "total": 10,
+      "uniques": 10
+    },
     "dailywealth": {
-      "total": 526,
-      "uniques": 229
+      "total": 529,
+      "uniques": 232
     }
   }
 }
