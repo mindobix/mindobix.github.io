@@ -80,7 +80,7 @@
     .ent-products-heading h2 {
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--text);
       margin-bottom: 10px;
     }
     .ent-products-heading p {
@@ -222,7 +222,7 @@
     .ent-scale-heading h2 {
       font-size: 1.8rem;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--text);
       margin-bottom: 10px;
     }
     .ent-scale-heading p {
@@ -252,7 +252,7 @@
     .ent-scale-item h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--navy);
+      color: var(--text);
       margin-bottom: 10px;
     }
     .ent-scale-item p {
@@ -309,6 +309,22 @@
     .ent-btn--secondary:hover {
       background: rgba(255,255,255,0.18);
     }
+
+    /* ── DARK MODE OVERRIDES ── */
+    [data-theme="dark"] .ent-products { background: var(--bg); }
+    [data-theme="dark"] .ent-products-heading h2,
+    [data-theme="dark"] .ent-scale-heading h2,
+    [data-theme="dark"] .ent-scale-item h3 { color: var(--text); }
+    [data-theme="dark"] .ent-card {
+      background: var(--surface);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.03) inset;
+    }
+    [data-theme="dark"] .ent-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(20,210,162,0.15);
+    }
+    [data-theme="dark"] .ent-scale { background: var(--bg2); }
+    [data-theme="dark"] .ent-scale-item { background: var(--surface2); }
+    [data-theme="dark"] .ent-card-tag { background: var(--surface3); color: var(--text2); }
   </style>
   <script defer src="js/site-chrome.js"></script>
 </head>
