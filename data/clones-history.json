@@ -63,6 +63,10 @@
     "2026-04-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -127,6 +131,10 @@
       "uniques": 0
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -195,6 +203,10 @@
     "2026-04-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -259,6 +271,10 @@
       "uniques": 0
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -327,6 +343,10 @@
     "2026-04-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-27": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCSwiftAPICache": {
@@ -391,6 +411,10 @@
       "uniques": 0
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -459,6 +483,10 @@
     "2026-04-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftLibsDemoApp": {
@@ -525,6 +553,10 @@
     "2026-04-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-27": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "cc-api-framework": {
@@ -589,6 +621,10 @@
       "uniques": 0
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -723,6 +759,10 @@
     "2026-04-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "MyCareerPulse": {
@@ -787,6 +827,10 @@
       "uniques": 0
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -855,6 +899,10 @@
     "2026-04-26": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-04-27": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-billpay-tracker": {
@@ -919,6 +967,10 @@
       "uniques": 1
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -987,6 +1039,10 @@
     "2026-04-26": {
       "count": 9,
       "uniques": 3
+    },
+    "2026-04-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-habit-calendar": {
@@ -1051,6 +1107,10 @@
       "uniques": 0
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -1185,6 +1245,10 @@
     "2026-04-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-shareanyjson": {
@@ -1249,6 +1313,10 @@
       "uniques": 0
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -1383,6 +1451,10 @@
     "2026-04-26": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-04-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-weekly-options-trade-plan": {
@@ -1447,6 +1519,10 @@
       "uniques": 1
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -1515,6 +1591,10 @@
     "2026-04-26": {
       "count": 17,
       "uniques": 5
+    },
+    "2026-04-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "myfamilytree": {
@@ -1579,6 +1659,10 @@
       "uniques": 1
     },
     "2026-04-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-27": {
       "count": 0,
       "uniques": 0
     }
@@ -1647,6 +1731,10 @@
     "2026-04-26": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-04-27": {
+      "count": 22,
+      "uniques": 12
     }
   }
 }
