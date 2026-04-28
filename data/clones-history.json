@@ -693,6 +693,10 @@
     "2026-04-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "sam-framework": {
@@ -1179,6 +1183,10 @@
     "2026-04-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-27": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-recipebook": {
@@ -1385,6 +1393,10 @@
     "2026-04-26": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-04-27": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-vibecoding-appideas": {
