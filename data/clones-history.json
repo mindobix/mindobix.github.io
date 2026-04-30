@@ -207,6 +207,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -277,6 +285,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCSwiftNetworking": {
@@ -347,6 +363,14 @@
     "2026-04-27": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-04-28": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftAPICache": {
@@ -417,6 +441,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftFeatureConfig": {
@@ -485,6 +517,14 @@
       "uniques": 0
     },
     "2026-04-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
       "count": 0,
       "uniques": 0
     }
@@ -627,6 +667,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "cc-apis-demo-monorepo": {
@@ -695,6 +743,14 @@
       "uniques": 0
     },
     "2026-04-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
       "count": 0,
       "uniques": 0
     }
@@ -767,6 +823,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 2,
+      "uniques": 2
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "MyCareerPulse": {
@@ -837,6 +901,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-api-web-proxy": {
@@ -907,6 +979,14 @@
     "2026-04-27": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-billpay-tracker": {
@@ -1047,6 +1127,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-habit-calendar": {
@@ -1115,6 +1203,14 @@
       "uniques": 0
     },
     "2026-04-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
       "count": 0,
       "uniques": 0
     }
@@ -1187,6 +1283,14 @@
     "2026-04-27": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-recipebook": {
@@ -1257,6 +1361,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-shareanyjson": {
@@ -1325,6 +1437,14 @@
       "uniques": 0
     },
     "2026-04-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
       "count": 0,
       "uniques": 0
     }
@@ -1397,6 +1517,14 @@
     "2026-04-27": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-04-28": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-04-29": {
+      "count": 2,
+      "uniques": 2
     }
   },
   "local-vibecoding-appideas": {
@@ -1467,6 +1595,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 11,
+      "uniques": 5
+    },
+    "2026-04-29": {
+      "count": 6,
+      "uniques": 3
     }
   },
   "local-weekly-options-trade-plan": {
@@ -1535,6 +1671,14 @@
       "uniques": 0
     },
     "2026-04-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
       "count": 0,
       "uniques": 0
     }
@@ -1607,6 +1751,14 @@
     "2026-04-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "myfamilytree": {
@@ -1675,6 +1827,14 @@
       "uniques": 0
     },
     "2026-04-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-28": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-04-29": {
       "count": 0,
       "uniques": 0
     }
@@ -1747,6 +1907,14 @@
     "2026-04-27": {
       "count": 22,
       "uniques": 12
+    },
+    "2026-04-28": {
+      "count": 10,
+      "uniques": 4
+    },
+    "2026-04-29": {
+      "count": 0,
+      "uniques": 0
     }
   }
 }
