@@ -46,6 +46,122 @@
       font-size: 1rem; max-width: 620px; line-height: 1.8; margin-bottom: 0;
     }
 
+    /* ── ELECTRON PROMO BAND ── */
+    .el-band {
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      position: relative;
+    }
+    .el-band::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 100% at 100% 50%, rgba(14,138,110,0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 80% at 0% 50%,  rgba(13,110,145,0.12) 0%, transparent 60%);
+    }
+    .el-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 56px 0 0;
+      position: relative; z-index: 1;
+    }
+    .el-text { padding-bottom: 56px; }
+    .el-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      background: rgba(14,138,110,0.15);
+      border: 1px solid rgba(14,138,110,0.3);
+      padding: 4px 12px; border-radius: 100px;
+      margin-bottom: 18px;
+    }
+    .el-eyebrow::before { content: '⬡'; font-size: 11px; }
+    .el-title {
+      font-size: 2rem; font-weight: 800; color: #ffffff;
+      line-height: 1.2; margin-bottom: 14px; letter-spacing: -0.02em;
+    }
+    .el-title span { color: var(--accent); }
+    .el-desc {
+      font-size: 0.95rem; color: rgba(255,255,255,0.65);
+      line-height: 1.75; margin-bottom: 28px; max-width: 420px;
+    }
+    .el-badges {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 28px;
+    }
+    .el-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 4px 11px; border-radius: 6px;
+    }
+    .el-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .el-btn-primary {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 24px; border-radius: 9px;
+      background: var(--accent); color: #ffffff;
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      font-size: 13px; font-weight: 700;
+      text-decoration: none; white-space: nowrap;
+      border: none; cursor: pointer;
+      transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 8px 24px -8px rgba(14,138,110,0.55);
+    }
+    .el-btn-primary:hover {
+      background: var(--accent2); transform: translateY(-1px);
+      box-shadow: 0 14px 32px -10px rgba(14,138,110,0.65);
+    }
+    .el-btn-secondary {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 13px 20px; border-radius: 9px;
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.75);
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      font-size: 13px; font-weight: 700;
+      text-decoration: none; white-space: nowrap;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .el-btn-secondary:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: rgba(14,138,110,0.08);
+    }
+    .el-screenshot {
+      align-self: flex-end;
+      position: relative;
+    }
+    .el-screenshot img {
+      width: 100%; border-radius: 12px 12px 0 0;
+      display: block;
+      box-shadow:
+        0 -8px 40px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.06);
+      transform: perspective(1000px) rotateX(2deg);
+      transform-origin: bottom center;
+    }
+    .el-screenshot::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+      background: linear-gradient(to top, var(--navy), transparent);
+      z-index: 1; border-radius: 0 0 12px 12px;
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .el-inner { grid-template-columns: 1fr; gap: 32px; }
+      .el-text { padding-bottom: 0; }
+      .el-screenshot { display: none; }
+      .el-band { padding-bottom: 40px; }
+    }
+    @media (max-width: 480px) {
+      .el-title { font-size: 1.5rem; }
+      .el-btn-primary, .el-btn-secondary { width: 100%; justify-content: center; }
+      .el-actions { flex-direction: column; }
+    }
+
     /* ── CONTROLS ── */
     .as-controls {
       display: flex; flex-direction: column; gap: 0;
@@ -500,6 +616,40 @@
     <p class="hero-sub">
       14+ production-quality apps built with Claude Code — completely free, local-first, zero cloud. Developer tools, finance, career intelligence, personal utilities. Clone once, run forever.
     </p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     ELECTRON DESKTOP APP PROMO
+     ══════════════════════════════════════════════════════════ -->
+<div class="el-band">
+  <div class="container">
+    <div class="el-inner">
+      <div class="el-text">
+        <div class="el-eyebrow">Desktop App — Best Experience</div>
+        <h2 class="el-title">All your apps.<br><span>One native window.</span></h2>
+        <p class="el-desc">
+          The Mindobix Desktop App brings every local-first app into a single Electron shell — no browser tabs, no file:// gymnastics, no server to start. Launch any app instantly, switch between them like a pro.
+        </p>
+        <div class="el-badges">
+          <span class="el-badge">⚡ Instant launch</span>
+          <span class="el-badge">🖥 Mac · Windows · Linux</span>
+          <span class="el-badge">🔒 100% offline</span>
+          <span class="el-badge">📦 All 15+ apps included</span>
+        </div>
+        <div class="el-actions">
+          <a href="https://github.com/mindobix/mindobix-appstore/releases/latest" class="el-btn-primary" target="_blank" rel="noopener noreferrer">
+            ⬇ Download Desktop App
+          </a>
+          <a href="https://github.com/mindobix/mindobix-appstore" class="el-btn-secondary" target="_blank" rel="noopener noreferrer">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+      <div class="el-screenshot">
+        <img src="appstore/mindobix-appstore.png" alt="Mindobix Desktop App screenshot" />
+      </div>
+    </div>
   </div>
 </div>
 
