@@ -31,6 +31,10 @@ window.APPS_META = {
     desc: "Find any file on your machine instantly by what's inside it. Crawls your filesystem, reads column headers in spreadsheets, surfaces the right file the moment you need it.",
     tags: ["Browser", "Offline", "File Index"], iconClass: "icon-dev", badgeClass: "badge-dev", badgeText: "Developer Tool" },
 
+  "local-my-pwds-keys":        { name: "My Passwords & Keys",  category: "Personal",               icon: "🔐", href: "app.html?id=my-pwds-keys", group: "Useful App", repoUrl: "https://github.com/mindobix/local-my-pwds-keys",
+    desc: "Private, encrypted password and key vault that runs entirely in your browser. Store passwords, API keys, SSH secrets, and license codes — no cloud, no server, no subscriptions.",
+    tags: ["Browser", "Encrypted", "Offline"], iconClass: "icon-personal", badgeClass: "badge-personal", badgeText: "Personal" },
+
   "local-recipebook":          { name: "RecipeBook",           category: "Personal",               icon: "🍳", href: "app.html?id=recipebook", group: "Useful App", repoUrl: "https://github.com/mindobix/local-recipebook",
     desc: "Store and organize recipes by category — ingredients, instructions, and notes — all saved locally in your browser. No account needed, no cloud sync.",
     tags: ["Browser", "localStorage", "Offline"], iconClass: "icon-personal", badgeClass: "badge-personal", badgeText: "Personal" },

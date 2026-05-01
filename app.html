@@ -1230,6 +1230,83 @@
           ],
         },
 
+        "my-pwds-keys": {
+          name: "My Passwords & Keys",
+          tagline:
+            "Your private vault for passwords, API keys, and secrets. Encrypted in your browser. Never sent to any server.",
+          category: "Personal",
+          catClass: "personal",
+          icon: "🔐",
+          iconClass: "icon-personal",
+          badge: "Personal",
+          badgeClass: "badge-personal",
+          github: "https://github.com/mindobix/local-my-pwds-keys",
+          description: `Every account needs a password. Every project needs API keys. Every server has SSH credentials. You're either reusing weak passwords (dangerous), storing them in a notes file (risky), or paying a subscription service to hold your secrets (trust required).\n\nMy Passwords & Keys is a private, local-first vault. Everything is encrypted and stored in your own browser — no cloud sync, no master password sent to any server, no monthly fee. Open the app. Unlock your vault. Your credentials are exactly where you left them.\n\nBuilt for developers, power users, and anyone who takes credential security seriously without wanting to hand control to a SaaS company.`,
+          stack: [
+            "Browser",
+            "AES Encryption",
+            "IndexedDB",
+            "Vanilla JS",
+            "No Server",
+          ],
+          highlights: [
+            {
+              icon: "🔐",
+              title: "Encrypted Local Vault",
+              desc: "All credentials are encrypted before being stored. Your master password never leaves your device — decryption happens entirely in the browser.",
+            },
+            {
+              icon: "🗂️",
+              title: "Organized by Category",
+              desc: "Group entries by type — Passwords, API Keys, SSH Keys, License Codes, Secure Notes. Find what you need instantly without scrolling through one long list.",
+            },
+            {
+              icon: "📋",
+              title: "One-Click Copy",
+              desc: "Copy passwords, usernames, or key values to your clipboard with a single click. Auto-clear clipboard after a configurable timeout for safety.",
+            },
+            {
+              icon: "🔍",
+              title: "Instant Search",
+              desc: "Search across all entries by name, URL, username, or tag. Find any credential in under a second.",
+            },
+            {
+              icon: "🔑",
+              title: "API Keys & Developer Secrets",
+              desc: "Built for developers who juggle dozens of API keys, tokens, and environment variables. Store them with notes and associated project context.",
+            },
+            {
+              icon: "💾",
+              title: "Encrypted Backup & Restore",
+              desc: "Export your entire vault as an encrypted JSON file. Restore on any machine — your vault travels with you, still fully protected.",
+            },
+            {
+              icon: "🔒",
+              title: "Zero Cloud Exposure",
+              desc: "No account creation. No server sync. No vendor lock-in. Your secrets are yours — stored in your browser, controlled by you.",
+            },
+            {
+              icon: "🆓",
+              title: "Free Forever",
+              desc: "No premium tier, no family plan, no autofill-as-a-service upsell. Just a clean, private vault that works.",
+            },
+          ],
+          stats: [
+            { label: "vs 1Password", value: "Free vs $36/yr" },
+            { label: "vs LastPass", value: "Free vs $36/yr" },
+            { label: "Encryption", value: "AES (client-side)" },
+            { label: "Cloud Required", value: "Never" },
+            { label: "Subscription", value: "Free forever" },
+          ],
+          forWho: [
+            "Developers managing dozens of API keys and tokens",
+            "Anyone paying for 1Password, LastPass, or Bitwarden",
+            "Privacy-conscious users who won't sync credentials to the cloud",
+            "Anyone who has ever stored a password in a Notes or text file",
+            "Power users who want full control over their credential storage",
+          ],
+        },
+
         recipebook: {
           name: "Recipe Book",
           tagline:
