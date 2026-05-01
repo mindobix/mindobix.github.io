@@ -55,6 +55,21 @@
       '</div>' +
     '</nav>';
 
+  const SAP_HTML =
+    '<div class="sap-band">' +
+      '<div class="container">' +
+        '<a href="appstore/index.html" class="sap-promo">' +
+          '<div class="sap-icon">📦</div>' +
+          '<div class="sap-body">' +
+            '<span class="sap-eyebrow">Mindobix App Store</span>' +
+            '<div class="sap-title">Browse, clone, and run all 14+ apps — in one place.</div>' +
+            '<div class="sap-sub">mindobix.com/appstore</div>' +
+          '</div>' +
+          '<span class="sap-cta">Open App Store <span class="sap-arrow">→</span></span>' +
+        '</a>' +
+      '</div>' +
+    '</div>';
+
   const FOOTER_HTML =
     '<footer class="site-footer">' +
       '<div class="footer-inner">' +
@@ -68,6 +83,7 @@
             '<a href="devtools.html">Dev Tools</a>' +
             '<a href="api-framework.html">API Framework</a>' +
             '<a href="useful-apps.html">Useful Apps</a>' +
+            '<a href="appstore/index.html">App Store</a>' +
             '<a href="top-apps.html">Top Cloned Apps</a>' +
             '<a href="android.html">Android Kotlin Apps</a>' +
             '<a href="apple.html">Apple Swift Apps</a>' +
@@ -90,10 +106,11 @@
     '</footer>';
 
   function injectChrome() {
+    const page = document.body && document.body.getAttribute('data-page');
+
     const navMount = document.getElementById('site-nav-mount');
     if (navMount) {
       navMount.outerHTML = NAV_HTML;
-      const page = document.body && document.body.getAttribute('data-page');
       if (page && ACTIVE_MAP[page]) {
         const target = document.querySelector('.nav-links ' + ACTIVE_MAP[page]);
         if (target) {
@@ -104,7 +121,7 @@
     }
     const footerMount = document.getElementById('site-footer-mount');
     if (footerMount) {
-      footerMount.outerHTML = FOOTER_HTML;
+      footerMount.outerHTML = (page !== 'useful-apps' ? SAP_HTML : '') + FOOTER_HTML;
     }
     const toggle = document.getElementById('theme-toggle');
     if (toggle) {

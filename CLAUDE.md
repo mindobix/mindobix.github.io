@@ -1,6 +1,6 @@
 # PROJECT: Mindobix Website
 
-> Last updated: 2026-04-25 — keep this file current. If something here is wrong, fix it before doing anything else.
+> Last updated: 2026-05-01 — keep this file current. If something here is wrong, fix it before doing anything else.
 
 ---
 
@@ -41,7 +41,7 @@ The marketing and portfolio site for **Mindobix**, Ganesh Subramanian's AI-power
 ├── about.html              # About Ganesh
 ├── consulting.html         # Consulting offer
 ├── analysis.html           # AI Analysis page
-├── useful-apps.html        # Apps catalog (grid of cards)
+├── useful-apps.html        # Apps catalog (grid of cards) — has App Store promo in hero
 ├── top-apps.html           # Apps ranked by clone count
 ├── app.html                # Per-app detail page (?id=<slug> query param)
 ├── android.html            # Android Kotlin demo app
@@ -55,10 +55,19 @@ The marketing and portfolio site for **Mindobix**, Ganesh Subramanian's AI-power
 ├── sam.html                # SAM Framework
 ├── privacy.html            # Privacy policy
 │
+├── appstore/
+│   └── index.html          # App Store — browse/download all 15+ apps
+│                           # Uses <base href="../"> to resolve shared assets from repo root
+│                           # Uses data-page="useful-apps" (shares nav active state)
+│                           # NO site-chrome App Store promo injected here (excluded by data-page)
+│
 ├── css/
 │   └── main.css            # All shared styles + design tokens
+│                           # Includes .sap-band / .sap-promo (App Store promo band styles)
 ├── js/
-│   ├── site-chrome.js      # Injects shared <nav> and <footer> into every page
+│   ├── site-chrome.js      # Injects shared <nav>, App Store promo band, and <footer>
+│   │                       # SAP_HTML (promo band) is injected before footer on all pages
+│   │                       # EXCEPT data-page="useful-apps" (useful-apps.html + appstore)
 │   ├── apps-meta.js        # The single source of truth for app/library metadata
 │   └── clone-badges.js     # Renders clone-count badges on app cards
 ├── data/
@@ -87,6 +96,8 @@ The marketing and portfolio site for **Mindobix**, Ganesh Subramanian's AI-power
 - Every page sets `<body data-page="<key>">` so `site-chrome.js` can mark the active nav link. Keys live in the `ACTIVE_MAP` table in that file.
 - The Google Analytics snippet must be the **first** thing inside `<head>` on every page. The current tag is `G-V460QPM640` — do not change it without being asked.
 - Every app/library shown anywhere on the site MUST have an entry in [js/apps-meta.js](js/apps-meta.js). That file is the single catalog. Adding an app means: (1) add it to `apps-meta.js`, (2) add its repo to `data/tracked-repos.json` if you want clone tracking, (3) link to it from the relevant page.
+- **App Store promo band:** `site-chrome.js` injects `SAP_HTML` (a gradient callout banner linking to `appstore/index.html`) just before the footer on every page **except** `data-page="useful-apps"`. That exclusion covers both `useful-apps.html` (which has its own hero banner) and `appstore/index.html` (which shares the same `data-page` value). CSS lives in the `.sap-band` / `.sap-promo` block at the bottom of `main.css`.
+- **Subfolder pages** (e.g. `appstore/index.html`) use `<base href="../">` in `<head>` so all relative URLs — `css/main.css`, `js/site-chrome.js`, `data/clones.json`, nav links — resolve from the repo root rather than the subfolder. Any new page added under a subfolder must include this base tag.
 
 ---
 
@@ -223,7 +234,9 @@ Reusable workflows live in `.claude/skills/` (none defined yet). If you find you
 
 **Per-app subdomains.** Each folder under [subdomains/](subdomains/) is a self-contained marketing/SEO landing page that gets deployed to its own GitHub Pages repo. The repo name is derived from the folder's `CNAME` file — e.g. `subdomains/tradingjournal/CNAME` containing `tradingjournal.mindobix.com` deploys to `mindobix/tradingjournal.mindobix.com`. The `Deploy subdomain landing pages` step in [deploy.yml](.github/workflows/deploy.yml) loops over `subdomains/*/`, clones each destination repo via HTTPS+PAT (`SUBDOMAIN_DEPLOY_TOKEN` secret), rsyncs, and pushes. The step skips silently if the secret is missing, so it doesn't break the main-site deploy. Subdomain pages are intentionally standalone — they don't use `site-chrome.js` or `css/main.css` (different domain, different repo). They reuse the same GA4 tag (`G-V460QPM640`) for unified analytics. To add a new subdomain: (1) create `subdomains/<name>/` with `index.html` + `CNAME` + `robots.txt` + `sitemap.xml`, (2) create the empty `mindobix/<cname>` repo with an initial commit on `master`, (3) enable Pages in that repo's settings (source: `master` branch, root, custom domain matching the CNAME), (4) add the Route 53 `CNAME` record pointing to `mindobix.github.io.`.
 
-**The chrome is dynamic, the rest is not.** `<nav>` and `<footer>` are injected by [js/site-chrome.js](js/site-chrome.js) at runtime. Everything else (hero, sections, cards) is hand-written per page. Do not be surprised that the same hero pattern is duplicated across pages — that is the chosen tradeoff for "no build step."
+**The chrome is dynamic, the rest is not.** `<nav>`, the App Store promo band, and `<footer>` are injected by [js/site-chrome.js](js/site-chrome.js) at runtime via the `site-nav-mount` and `site-footer-mount` elements. Everything else (hero, sections, cards) is hand-written per page. Do not be surprised that the same hero pattern is duplicated across pages — that is the chosen tradeoff for "no build step."
+
+**The App Store** (`appstore/index.html`) is a self-contained page that cross-references `window.APPS_META` (from `js/apps-meta.js`) with `data/clones.json` to render only the "Useful App" group, sorted by lifetime clone count. Cards show circular clone badges, a muted Download button (triggers `repoUrl/archive/HEAD.zip`), and a GitHub icon. It uses `<base href="../">` for asset resolution and `data-page="useful-apps"` to share the nav active state with `useful-apps.html`.
 
 **Decisions log (don't relitigate):**
 - We chose vanilla HTML/CSS/JS over any framework because the site is small, the team is one person, and the AI agents that maintain it work better with plain files than with a framework's conventions. Don't suggest switching.

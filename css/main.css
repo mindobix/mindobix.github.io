@@ -510,3 +510,54 @@ footer.site-footer {
 [data-theme="dark"] .nav-theme-toggle .icon-light { display: inline; }
 [data-theme="dark"] .nav-theme-toggle .icon-dark  { display: none; }
 
+/* ─── App Store promo band (injected by site-chrome.js before footer) ─── */
+.sap-band { padding: 48px 0; border-top: 1px solid var(--border); }
+.sap-promo {
+  position: relative;
+  padding: 20px 24px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent) 0%, #0d6e91 58%, var(--navy) 100%);
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  box-shadow: 0 16px 44px -18px rgba(14,138,110,0.5), 0 0 0 1px rgba(255,255,255,0.07) inset;
+  overflow: hidden; text-decoration: none; color: #fff;
+}
+.sap-promo::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 50% 80% at 100% 50%, rgba(255,255,255,0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 60% at 0% 0%, rgba(255,255,255,0.09) 0%, transparent 60%);
+}
+.sap-icon {
+  flex: 0 0 auto; width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; position: relative; z-index: 1;
+}
+.sap-body { flex: 1 1 280px; min-width: 0; position: relative; z-index: 1; }
+.sap-eyebrow {
+  display: inline-block; font-size: 10px; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: rgba(255,255,255,0.18); padding: 3px 9px; border-radius: 100px;
+  margin-bottom: 6px;
+}
+.sap-title { font-size: 15px; font-weight: 700; line-height: 1.35; color: #fff; margin: 0 0 2px; }
+.sap-sub { font-size: 12px; color: rgba(255,255,255,0.78); font-family: 'SF Mono', Menlo, Consolas, monospace; }
+.sap-cta {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--navy);
+  font-weight: 700; font-size: 13px;
+  padding: 11px 18px; border-radius: 10px;
+  text-decoration: none; white-space: nowrap;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 8px 22px -8px rgba(0,0,0,0.4);
+}
+.sap-promo:hover .sap-cta { transform: translateY(-1px); box-shadow: 0 14px 32px -10px rgba(0,0,0,0.5); }
+.sap-arrow { display: inline-block; transition: transform 0.18s ease; }
+.sap-promo:hover .sap-arrow { transform: translateX(3px); }
+@media (max-width: 640px) {
+  .sap-band { padding: 32px 0; }
+  .sap-promo { padding: 16px; gap: 12px; }
+  .sap-cta { width: 100%; justify-content: center; }
+}
+

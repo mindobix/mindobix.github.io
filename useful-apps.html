@@ -24,6 +24,78 @@
     .page-hero h1 { margin-bottom: 14px; }
     .page-hero p { font-size: 1rem; max-width: 600px; }
 
+    /* ── APP STORE PROMO BANNER ── */
+    .appstore-promo {
+      position: relative;
+      margin-top: 28px;
+      padding: 18px 22px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent) 0%, #0d6e91 60%, var(--navy) 100%);
+      color: #fff;
+      display: flex; align-items: center; gap: 18px;
+      flex-wrap: wrap;
+      box-shadow: 0 16px 44px -18px rgba(14,138,110,0.55), 0 0 0 1px rgba(255,255,255,0.06) inset;
+      overflow: hidden;
+      text-decoration: none;
+      max-width: 760px;
+    }
+    .appstore-promo::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 50% 80% at 100% 50%, rgba(255,255,255,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 60% at 0% 0%, rgba(255,255,255,0.10) 0%, transparent 60%);
+    }
+    .appstore-promo-icon {
+      flex: 0 0 auto;
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      position: relative; z-index: 1;
+    }
+    .appstore-promo-body {
+      flex: 1 1 280px; min-width: 0;
+      position: relative; z-index: 1;
+    }
+    .appstore-promo-eyebrow {
+      display: inline-block;
+      font-size: 10px; font-weight: 800;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      background: rgba(255,255,255,0.18);
+      padding: 3px 9px; border-radius: 100px;
+      margin-bottom: 6px;
+    }
+    .appstore-promo-title {
+      font-size: 15px; font-weight: 700; line-height: 1.35;
+      color: #fff; margin: 0 0 2px;
+    }
+    .appstore-promo-url {
+      font-size: 12px; color: rgba(255,255,255,0.78);
+      font-family: 'SF Mono', Menlo, Consolas, monospace;
+    }
+    .appstore-promo-cta {
+      position: relative; z-index: 1;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--navy);
+      font-weight: 700; font-size: 13px;
+      padding: 11px 18px; border-radius: 10px;
+      text-decoration: none; white-space: nowrap;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 8px 22px -8px rgba(0,0,0,0.4);
+    }
+    .appstore-promo:hover .appstore-promo-cta {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px -10px rgba(0,0,0,0.5);
+    }
+    .appstore-promo-cta .arrow { display: inline-block; transition: transform 0.18s ease; }
+    .appstore-promo:hover .appstore-promo-cta .arrow { transform: translateX(3px); }
+    @media (max-width: 640px) {
+      .appstore-promo { padding: 16px; gap: 12px; }
+      .appstore-promo-cta { width: 100%; justify-content: center; }
+    }
+
     /* ── FILTER TABS ── */
     .filter-bar {
       display: flex; gap: 8px; flex-wrap: wrap;
@@ -104,6 +176,15 @@
     <span class="section-label">Software Portfolio</span>
     <h1>Apps Built by AI.<br>Proven by Real Use.</h1>
     <p>Every app was built with Claude Code AI Agents, directed by 32 years of domain expertise. No cloud. No subscriptions. No accounts. Open the file and go.</p>
+    <a href="appstore/index.html" class="appstore-promo">
+      <div class="appstore-promo-icon">📦</div>
+      <div class="appstore-promo-body">
+        <span class="appstore-promo-eyebrow">Mindobix App Store</span>
+        <div class="appstore-promo-title">Browse, clone, and run all 14+ apps — in one place.</div>
+        <div class="appstore-promo-url">mindobix.com/appstore</div>
+      </div>
+      <span class="appstore-promo-cta">Open App Store <span class="arrow">→</span></span>
+    </a>
   </div>
 </div>
 

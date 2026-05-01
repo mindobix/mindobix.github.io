@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 1. Google tag (gtag.js) — must be first in <head> -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V460QPM640"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V460QPM640');
+  </script>
+
+  <!-- 2. Theme detection — before CSS to prevent flash -->
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+
+  <!-- 3-4. Charset + viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- 5. Base href — resolves all relative URLs from the site root -->
+  <base href="../">
+
+  <!-- 6. Title -->
+  <title>App Store — Mindobix</title>
+
+  <!-- 7. Description -->
+  <meta name="description" content="Browse and run 14+ local-first, privacy-respecting apps built with Claude Code. Finance, career intelligence, developer tools, and personal apps. Free and open source." />
+
+  <!-- 8. Shared stylesheet -->
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!-- 9. Page-specific styles -->
+  <style>
+    /* ── HERO ── */
+    .as-hero {
+      padding: 64px 0 48px;
+      position: relative; z-index: 1;
+      background: linear-gradient(160deg,
+        rgba(14,138,110,0.06) 0%,
+        rgba(11,29,58,0.03) 45%,
+        transparent 75%);
+      border-bottom: 1px solid var(--border);
+    }
+    .as-hero h1 { margin-bottom: 12px; }
+    .as-hero .hero-sub {
+      font-size: 1rem; max-width: 620px; line-height: 1.8; margin-bottom: 0;
+    }
+
+    /* ── CONTROLS ── */
+    .as-controls {
+      display: flex; flex-direction: column; gap: 0;
+      margin: 36px 0 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .as-search-row {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .as-search {
+      flex: 1; min-width: 220px; max-width: 420px;
+      padding: 10px 16px;
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      background: var(--surface2);
+      color: var(--text);
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .as-search::placeholder { color: var(--muted); }
+    .as-search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .as-search-icon {
+      position: relative;
+      display: flex; align-items: center;
+    }
+    .as-search-wrapper {
+      position: relative; flex: 1; min-width: 220px; max-width: 420px;
+    }
+    .as-search-wrapper::before {
+      content: '⌕';
+      position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+      font-size: 16px; color: var(--muted); pointer-events: none;
+      line-height: 1;
+    }
+    .as-search-wrapper .as-search { padding-left: 36px; width: 100%; }
+
+    .as-count {
+      font-size: 12px; color: var(--muted); font-weight: 600;
+      letter-spacing: 0.04em; white-space: nowrap;
+    }
+
+    /* Filter tabs */
+    .as-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .as-tab {
+      padding: 7px 18px; border-radius: 20px;
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      border: 1px solid var(--border2); background: transparent;
+      color: var(--text2); transition: all 0.15s; letter-spacing: 0.03em;
+    }
+    .as-tab:hover { border-color: var(--accent); color: var(--accent); }
+    .as-tab.active { background: var(--navy); color: #ffffff; border-color: var(--navy); }
+
+    /* ── GRID ── */
+    .as-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    @media (max-width: 960px) { .as-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .as-grid { grid-template-columns: 1fr; } }
+
+    /* ── APP CARD ── */
+    .as-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px;
+      display: flex; flex-direction: column;
+      box-shadow: 0 1px 4px rgba(11,29,58,0.06);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      overflow: visible;
+    }
+    .as-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 28px rgba(11,29,58,0.12);
+      transform: translateY(-3px);
+    }
+    [data-theme="dark"] .as-card {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.02) inset;
+    }
+    [data-theme="dark"] .as-card:hover {
+      box-shadow: 0 12px 32px -8px rgba(0,0,0,0.7), 0 0 0 1px rgba(20,210,162,0.18);
+    }
+
+    /* nth-child card tints matching main.css card pattern */
+    .as-card:nth-child(4n+1) { background: linear-gradient(145deg, rgba(14,138,110,0.04) 0%, var(--surface) 60%); }
+    .as-card:nth-child(4n+2) { background: linear-gradient(155deg, rgba(11,29,58,0.035) 0%, var(--surface) 55%); }
+    .as-card:nth-child(4n+3) { background: linear-gradient(135deg, var(--surface) 30%, rgba(14,138,110,0.035) 100%); }
+    .as-card:nth-child(4n+4) { background: linear-gradient(150deg, var(--surface) 35%, rgba(11,29,58,0.03) 100%); }
+
+    [data-theme="dark"] .as-card:nth-child(4n+1) { background: linear-gradient(145deg, rgba(20,210,162,0.07) 0%, var(--surface) 60%); }
+    [data-theme="dark"] .as-card:nth-child(4n+2) { background: linear-gradient(155deg, rgba(99,102,241,0.07) 0%, var(--surface) 55%); }
+    [data-theme="dark"] .as-card:nth-child(4n+3) { background: linear-gradient(135deg, var(--surface) 30%, rgba(20,210,162,0.06) 100%); }
+    [data-theme="dark"] .as-card:nth-child(4n+4) { background: linear-gradient(150deg, var(--surface) 35%, rgba(34,211,238,0.06) 100%); }
+
+    /* Clone badge — top right, always light text */
+    .as-clone-badge {
+      position: absolute;
+      top: -16px; right: -16px;
+      width: 62px; height: 62px;
+      border-radius: 50%;
+      background: conic-gradient(from 135deg,
+        #0fa882 0deg, #34d8b5 120deg, #0e8a6e 240deg, #0a6e58 360deg);
+      color: #ffffff;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      box-shadow:
+        0 6px 18px rgba(11,29,58,0.30),
+        0 2px 6px rgba(14,138,110,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.28);
+      border: 3px solid #ffffff;
+      z-index: 5;
+      pointer-events: none;
+      user-select: none;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Verdana, sans-serif;
+      transform: translateZ(0);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .as-card:hover .as-clone-badge {
+      transform: translateY(-2px) scale(1.06);
+      box-shadow:
+        0 10px 24px rgba(11,29,58,0.38),
+        0 3px 8px rgba(14,138,110,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.32);
+    }
+    .as-badge-num {
+      font-size: 15px; font-weight: 800; line-height: 1;
+      letter-spacing: -0.02em;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.22);
+    }
+    .as-badge-lbl {
+      font-size: 7px; font-weight: 700; line-height: 1;
+      margin-top: 3px; letter-spacing: 0.12em; text-transform: uppercase;
+      opacity: 0.9;
+    }
+    @media (max-width: 480px) {
+      .as-clone-badge { width: 52px; height: 52px; top: -12px; right: -12px; border-width: 2px; }
+      .as-badge-num { font-size: 13px; }
+      .as-badge-lbl { font-size: 6px; }
+    }
+
+    /* Card header */
+    .as-card-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 14px;
+      padding-right: 54px; /* don't overlap badge */
+    }
+    .as-app-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+      background: var(--surface2); border: 1px solid var(--border);
+    }
+    .as-app-name { font-size: 0.95rem; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .as-app-cat {
+      font-size: 10px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px;
+    }
+
+    /* Description */
+    .as-desc {
+      font-size: 12px; color: var(--text2); line-height: 1.7;
+      margin-bottom: 14px; flex: 1;
+    }
+
+    /* Tag row */
+    .as-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 18px;
+    }
+    .as-tag {
+      font-size: 10px; padding: 3px 9px; border-radius: 4px;
+      background: var(--surface3); color: var(--muted);
+      border: 1px solid var(--border); font-weight: 600;
+    }
+
+    /* Actions row */
+    .as-actions {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .as-btn-clone {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 6px;
+      background: var(--surface3); color: var(--text2);
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      font-size: 12px; font-weight: 700;
+      border: 1.5px solid var(--border2); cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+      letter-spacing: 0.02em;
+      flex: 1;
+    }
+    .as-btn-clone:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-dim);
+    }
+    .as-btn-icon {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 6px;
+      background: transparent;
+      border: 1.5px solid var(--border2);
+      color: var(--text2); font-size: 14px;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .as-btn-icon:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* ── EMPTY STATE ── */
+    .as-empty {
+      display: none; text-align: center;
+      padding: 80px 20px; color: var(--muted);
+    }
+    .as-empty svg { margin-bottom: 16px; opacity: 0.4; }
+    .as-empty p { font-size: 14px; }
+
+    /* ── BOTTOM CTA ── */
+    .as-cta-block {
+      margin: 64px 0;
+      text-align: center;
+      padding: 52px 32px;
+      background: var(--navy);
+      border-radius: 14px;
+    }
+    .as-cta-block h2 { color: #ffffff; margin-bottom: 12px; }
+    .as-cta-block p { color: rgba(255,255,255,0.62); max-width: 520px; margin: 0 auto 28px; }
+
+    /* ── MODAL BASE ── */
+    .as-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(11,29,58,0.55);
+      backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .as-overlay.open { opacity: 1; pointer-events: auto; }
+    .as-modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      width: 100%; max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 36px 32px 28px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+      transform: scale(0.94) translateY(8px);
+      transition: transform 0.3s cubic-bezier(0.34,1.4,0.64,1);
+    }
+    .as-overlay.open .as-modal {
+      transform: scale(1) translateY(0);
+    }
+    .as-modal-close {
+      position: absolute; top: 14px; right: 16px;
+      background: none; border: none; cursor: pointer;
+      font-size: 20px; color: var(--muted); line-height: 1;
+      padding: 4px 8px; border-radius: 4px;
+      transition: color 0.15s;
+    }
+    .as-modal-close:hover { color: var(--text); }
+    .as-modal-inner { position: relative; }
+
+    /* Instructions modal */
+    .im-title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .im-subtitle { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    .im-steps { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+    .im-step { display: flex; gap: 14px; align-items: flex-start; }
+    .im-step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--accent); color: #ffffff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+    }
+    .im-step-body { flex: 1; min-width: 0; }
+    .im-step-label {
+      font-size: 10px; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 6px;
+    }
+    .im-step-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700; color: var(--accent);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .im-step-link:hover { color: var(--accent2); }
+    .im-code-row {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .im-code {
+      flex: 1; font-family: 'Courier New', Courier, monospace;
+      font-size: 12px; color: var(--text);
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 6px; padding: 8px 12px;
+      white-space: nowrap; overflow: auto; min-width: 0;
+    }
+    .im-copy {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 8px 12px; border-radius: 6px;
+      background: var(--surface3); border: 1px solid var(--border2);
+      color: var(--text2); font-size: 11px; font-weight: 700;
+      cursor: pointer; white-space: nowrap; flex-shrink: 0;
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .im-copy:hover { background: var(--accent-dim); color: var(--accent); border-color: var(--accent); }
+    .im-modal-footer {
+      margin-top: 28px; padding-top: 18px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: flex-end;
+    }
+    .im-close-btn {
+      padding: 9px 22px; border-radius: 7px;
+      background: var(--surface2); border: 1px solid var(--border2);
+      color: var(--text2); font-family: Verdana, Geneva, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .im-close-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Launch-locally modal */
+    .ll-title { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .ll-body { font-size: 13px; color: var(--text2); line-height: 1.7; margin-bottom: 20px; }
+    .ll-url-box {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+    .ll-url {
+      flex: 1; font-family: 'Courier New', Courier, monospace;
+      font-size: 12px; color: var(--text); word-break: break-all;
+    }
+    .ll-copy-url {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border-radius: 6px;
+      background: var(--accent); color: #ffffff;
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      font-size: 11px; font-weight: 700; border: none; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .ll-copy-url:hover { background: var(--accent2); }
+    .ll-instruction {
+      font-size: 12px; color: var(--muted);
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 14px; line-height: 1.65;
+    }
+
+    /* ── TOAST ── */
+    .as-toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--navy); color: #ffffff;
+      padding: 12px 20px; border-radius: 24px;
+      font-size: 13px; font-weight: 700;
+      box-shadow: 0 8px 24px rgba(11,29,58,0.35);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      z-index: 3000; white-space: nowrap;
+      display: flex; align-items: center; gap: 10px;
+      max-width: min(92vw, 680px);
+    }
+    .as-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+    .as-toast-url {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px; font-weight: 400;
+      color: rgba(255,255,255,0.75); overflow: hidden;
+      text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0;
+    }
+    .as-toast-copy {
+      flex-shrink: 0; padding: 5px 11px; border-radius: 12px;
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+      color: #fff; font-size: 11px; font-weight: 700; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .as-toast-copy:hover { background: rgba(255,255,255,0.28); }
+  </style>
+
+  <!-- 10. Shared chrome script -->
+  <script defer src="js/site-chrome.js"></script>
+</head>
+<body data-page="useful-apps">
+
+<!-- Site nav (injected by site-chrome.js) -->
+<div id="site-nav-mount"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     INSTRUCTIONS MODAL (Python / Node / Electron apps)
+     ══════════════════════════════════════════════════════════ -->
+<div class="as-overlay" id="instructions-overlay" role="dialog" aria-modal="true" aria-labelledby="im-heading">
+  <div class="as-modal" id="instructions-modal" style="max-width:560px;">
+    <div class="as-modal-inner">
+      <button class="as-modal-close" id="instructions-close" aria-label="Close">✕</button>
+      <div class="im-title" id="im-heading"></div>
+      <div class="im-subtitle" id="im-subtitle"></div>
+      <ol class="im-steps" id="im-steps"></ol>
+      <div class="im-modal-footer">
+        <button class="im-close-btn" id="instructions-close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     LAUNCH LOCALLY MODAL (browser apps)
+     ══════════════════════════════════════════════════════════ -->
+<div class="as-overlay" id="launch-overlay" role="dialog" aria-modal="true" aria-labelledby="ll-heading">
+  <div class="as-modal" id="launch-modal" style="max-width:500px;">
+    <div class="as-modal-inner">
+      <button class="as-modal-close" id="launch-close" aria-label="Close">✕</button>
+      <div class="ll-title" id="ll-heading">Launch Locally</div>
+      <p class="ll-body">
+        This is a browser app — no server needed. Copy the URL below and paste it into your browser's address bar.
+      </p>
+      <div class="ll-url-box">
+        <span class="ll-url" id="ll-url"></span>
+        <button class="ll-copy-url" id="ll-copy-btn">Copy</button>
+      </div>
+      <div class="ll-instruction">
+        💡 Paste this URL into your browser's address bar to open the app. If your browser shows a security warning for <code>file://</code> URLs, choose "Allow" or open the file through File → Open instead.
+      </div>
+      <div class="im-modal-footer">
+        <button class="im-close-btn" id="launch-close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════════════════ -->
+<div class="as-hero">
+  <div class="container">
+    <span class="section-label">App Store</span>
+    <h1>Apps Built by AI.<br>Owned by You.</h1>
+    <p class="hero-sub">
+      14+ production-quality apps built with Claude Code — completely free, local-first, zero cloud. Developer tools, finance, career intelligence, personal utilities. Clone once, run forever.
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MAIN CONTENT
+     ══════════════════════════════════════════════════════════ -->
+<div class="container" style="position:relative; z-index:1; padding-bottom:80px;">
+
+  <!-- Controls -->
+  <div class="as-controls">
+    <div class="as-search-row">
+      <div class="as-search-wrapper">
+        <input
+          type="search"
+          id="as-search"
+          class="as-search"
+          placeholder="Search apps…"
+          aria-label="Search apps"
+          spellcheck="false"
+          autocomplete="off"
+        />
+      </div>
+      <span class="as-count" id="as-count"></span>
+    </div>
+    <div class="as-tabs" role="tablist" aria-label="Filter by category">
+      <button class="as-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="as-tab" data-filter="developer" role="tab" aria-selected="false">Developer Tools</button>
+      <button class="as-tab" data-filter="finance" role="tab" aria-selected="false">Finance</button>
+      <button class="as-tab" data-filter="career" role="tab" aria-selected="false">Career &amp; Productivity</button>
+      <button class="as-tab" data-filter="personal" role="tab" aria-selected="false">Personal</button>
+      <button class="as-tab" data-filter="medical" role="tab" aria-selected="false">Medical</button>
+    </div>
+  </div>
+
+  <!-- App grid -->
+  <div class="as-grid" id="as-grid"></div>
+
+  <!-- Empty state -->
+  <div class="as-empty" id="as-empty">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <p>No apps match your search. Try different keywords or clear the filter.</p>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="as-cta-block">
+    <span class="section-label" style="display:block; text-align:center; margin-bottom:10px;">Need Something Custom?</span>
+    <h2>We Build Software That Doesn't Exist Yet</h2>
+    <p>If you see an app here that's close to what you need, or you have an idea that no one has built — that's exactly what we do. Fixed-bid, AI-powered, delivered fast.</p>
+    <a href="mailto:ganesh@mindobix.com" class="btn btn-accent">Talk to Ganesh</a>
+  </div>
+
+</div><!-- /container -->
+
+<!-- Toast notification -->
+<div class="as-toast" id="as-toast" role="status" aria-live="polite"></div>
+
+<div id="site-footer-mount"></div>
+
+<!-- App metadata -->
+<script defer src="js/apps-meta.js"></script>
+
+<!-- Main IIFE -->
+<script>
+(function () {
+  'use strict';
+
+  /* ─────────────────────────────────────────────
+     CONSTANTS
+  ───────────────────────────────────────────── */
+  var CLONES_URL = 'data/clones.json';
+
+  /* Category key mapping */
+  var CAT_MAP = {
+    'Developer Tool': 'developer',
+    'Finance':        'finance',
+    'Career & Productivity': 'career',
+    'Personal':       'personal',
+    'Medical':        'medical',
+    'Medical / Education': 'medical'
+  };
+
+  /* Launch configs for non-browser apps */
+  var LAUNCH_CONFIGS = {
+    'MyCareerPulse': {
+      type: 'python',
+      icon: '🐍',
+      title: 'Start MyCareerPulse',
+      subtitle: 'Requires Python 3.11+ and Ollama running locally.',
+      steps: [
+        { label: 'Install Ollama', url: 'https://ollama.ai/' },
+        { label: 'Pull AI models', cmd: 'ollama pull llama3.2 && ollama pull nomic-embed-text' },
+        { label: 'Navigate to app', cmd: 'cd ~/vibecode/MyCareerPulse' },
+        { label: 'Install dependencies', cmd: 'pip install -r requirements.txt' },
+        { label: 'Start the server', cmd: 'python run.py' },
+        { label: 'Open in browser', url: 'http://localhost:8000' }
+      ]
+    },
+    'local-api-web-proxy': {
+      type: 'node',
+      icon: '⚙️',
+      title: 'Start Local API Web Proxy',
+      subtitle: 'Requires Node.js 18+. Or download the Electron desktop app from GitHub.',
+      steps: [
+        { label: 'Install Node.js', url: 'https://nodejs.org/' },
+        { label: 'Navigate to app', cmd: 'cd ~/vibecode/local-api-web-proxy' },
+        { label: 'Install dependencies', cmd: 'npm install' },
+        { label: 'Start the proxy', cmd: 'npm start' },
+        { label: 'Open dashboard', url: 'http://localhost:8081' }
+      ]
+    },
+    'local-filesync': {
+      type: 'electron',
+      icon: '⚡',
+      title: 'Start FileSync',
+      subtitle: 'Electron desktop app — requires Node.js 18+.',
+      steps: [
+        { label: 'Install Node.js', url: 'https://nodejs.org/' },
+        { label: 'Navigate to app', cmd: 'cd ~/vibecode/local-filesync' },
+        { label: 'Install dependencies', cmd: 'npm install' },
+        { label: 'Launch the app', cmd: 'npm start' }
+      ]
+    }
+  };
+
+  /* ─────────────────────────────────────────────
+     STATE
+  ───────────────────────────────────────────── */
+  var cloneData = {};
+  var allCards = [];   /* { slug, meta, catKey, clones } */
+  var activeFilter = 'all';
+  var searchTerm = '';
+  var toastTimer = null;
+
+  /* ─────────────────────────────────────────────
+     FORMAT CLONE COUNT
+  ───────────────────────────────────────────── */
+  function fmtCount(n) {
+    if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+    return String(n);
+  }
+
+  /* ─────────────────────────────────────────────
+     BUILD CARD HTML
+  ───────────────────────────────────────────── */
+  function buildCard(item) {
+    var meta = item.meta;
+    var slug = item.slug;
+    var clones = item.clones;
+
+    /* Badge */
+    var badgeHtml = '';
+    if (clones > 0) {
+      badgeHtml =
+        '<div class="as-clone-badge" title="' + clones + ' lifetime git clones">' +
+          '<span class="as-badge-num">' + fmtCount(clones) + '</span>' +
+          '<span class="as-badge-lbl">clones</span>' +
+        '</div>';
+    }
+
+    /* Icon */
+    var iconHtml =
+      '<div class="as-app-icon ' + (meta.iconClass || '') + '">' +
+        meta.icon +
+      '</div>';
+
+    /* Tags */
+    var tagsHtml = '';
+    if (meta.tags && meta.tags.length) {
+      tagsHtml = '<div class="as-tags">';
+      for (var i = 0; i < meta.tags.length; i++) {
+        tagsHtml += '<span class="as-tag">' + escHtml(meta.tags[i]) + '</span>';
+      }
+      tagsHtml += '</div>';
+    }
+
+    /* Category badge class */
+    var catClass = item.catKey ? ('badge-' + item.catKey) : 'badge-accent';
+
+    var card =
+      '<div class="as-card" data-slug="' + escAttr(slug) + '" data-cat="' + escAttr(item.catKey) + '">' +
+        badgeHtml +
+        '<div class="as-card-header">' +
+          iconHtml +
+          '<div>' +
+            '<div class="as-app-name">' + escHtml(meta.name) + '</div>' +
+            '<div class="as-app-cat">' + escHtml(meta.category) + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<p class="as-desc">' + escHtml(meta.desc) + '</p>' +
+        tagsHtml +
+        '<div class="as-actions">' +
+          '<button class="as-btn-clone" data-action="clone" data-slug="' + escAttr(slug) + '" title="Download ZIP from GitHub">⬇ Download</button>' +
+          '<a href="' + escAttr(meta.repoUrl) + '" class="as-btn-icon" target="_blank" rel="noopener noreferrer" title="View on GitHub" aria-label="View ' + escAttr(meta.name) + ' on GitHub">⎋</a>' +
+        '</div>' +
+      '</div>';
+
+    return card;
+  }
+
+  /* ─────────────────────────────────────────────
+     RENDER GRID
+  ───────────────────────────────────────────── */
+  function renderGrid() {
+    var grid = document.getElementById('as-grid');
+    var empty = document.getElementById('as-empty');
+    var countEl = document.getElementById('as-count');
+    if (!grid) return;
+
+    var filtered = allCards.filter(function (item) {
+      /* Category filter */
+      if (activeFilter !== 'all' && item.catKey !== activeFilter) return false;
+      /* Search filter */
+      if (searchTerm) {
+        var q = searchTerm.toLowerCase();
+        var hay = [
+          item.meta.name,
+          item.meta.desc,
+          (item.meta.tags || []).join(' ')
+        ].join(' ').toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+
+    if (countEl) {
+      countEl.textContent = filtered.length + ' app' + (filtered.length !== 1 ? 's' : '');
+    }
+
+    grid.innerHTML = '';
+    for (var i = 0; i < filtered.length; i++) {
+      grid.insertAdjacentHTML('beforeend', buildCard(filtered[i]));
+    }
+
+    if (empty) {
+      empty.style.display = filtered.length === 0 ? 'block' : 'none';
+    }
+
+    /* Bind card action buttons */
+    var cloneBtns = grid.querySelectorAll('[data-action="clone"]');
+    for (var j = 0; j < cloneBtns.length; j++) {
+      cloneBtns[j].addEventListener('click', onCloneClick);
+    }
+  }
+
+  /* ─────────────────────────────────────────────
+     ACTIONS
+  ───────────────────────────────────────────── */
+  function onCloneClick(e) {
+    var slug = e.currentTarget.getAttribute('data-slug');
+    var meta = findMeta(slug);
+    if (!meta) return;
+    var zipUrl = meta.repoUrl + '/archive/HEAD.zip';
+    window.open(zipUrl, '_blank');
+    showToast('⬇ Downloading ' + meta.name + '…');
+  }
+
+  function findMeta(slug) {
+    for (var i = 0; i < allCards.length; i++) {
+      if (allCards[i].slug === slug) return allCards[i].meta;
+    }
+    return null;
+  }
+
+  /* ─────────────────────────────────────────────
+     CLIPBOARD
+  ───────────────────────────────────────────── */
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).catch(function () { legacyCopy(text); });
+    } else {
+      legacyCopy(text);
+    }
+  }
+  function legacyCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  /* ─────────────────────────────────────────────
+     TOAST
+  ───────────────────────────────────────────── */
+  function showToast(msg) {
+    var el = document.getElementById('as-toast');
+    if (!el) return;
+    el.innerHTML = '';
+    var span = document.createElement('span');
+    span.textContent = msg;
+    el.appendChild(span);
+    el.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { el.classList.remove('show'); }, 2200);
+  }
+
+
+  /* ─────────────────────────────────────────────
+     MODAL HELPERS
+  ───────────────────────────────────────────── */
+  function openOverlay(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.add('open');
+  }
+  function closeOverlay(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.remove('open');
+  }
+  function bindOverlayClose(overlayId, closeBtnIds) {
+    var overlay = document.getElementById(overlayId);
+    if (!overlay) return;
+    /* Backdrop click */
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeOverlay(overlayId);
+    });
+    /* Close buttons */
+    for (var i = 0; i < closeBtnIds.length; i++) {
+      (function (btnId) {
+        var btn = document.getElementById(btnId);
+        if (btn) btn.addEventListener('click', function () { closeOverlay(overlayId); });
+      })(closeBtnIds[i]);
+    }
+  }
+
+  /* ─────────────────────────────────────────────
+     INSTRUCTIONS MODAL
+  ───────────────────────────────────────────── */
+  function openInstructions(slug, cfg) {
+    var titleEl = document.getElementById('im-heading');
+    var subtitleEl = document.getElementById('im-subtitle');
+    var stepsEl = document.getElementById('im-steps');
+    if (!titleEl || !stepsEl) return;
+
+    titleEl.textContent = cfg.icon + ' ' + cfg.title;
+    if (subtitleEl) subtitleEl.textContent = cfg.subtitle;
+
+    stepsEl.innerHTML = '';
+    for (var i = 0; i < cfg.steps.length; i++) {
+      var step = cfg.steps[i];
+      var stepNum = i + 1;
+
+      var bodyHtml = '';
+      if (step.url) {
+        bodyHtml =
+          '<div class="im-step-label">' + escHtml(step.label) + '</div>' +
+          '<a href="' + escAttr(step.url) + '" class="im-step-link" target="_blank" rel="noopener noreferrer">' +
+            '↗ ' + escHtml(step.url) +
+          '</a>';
+      } else if (step.cmd) {
+        var cmd = step.cmd;
+        bodyHtml =
+          '<div class="im-step-label">' + escHtml(step.label) + '</div>' +
+          '<div class="im-code-row">' +
+            '<code class="im-code" data-cmd="' + escAttr(cmd) + '">' + escHtml(cmd) + '</code>' +
+            '<button class="im-copy" type="button">Copy</button>' +
+          '</div>';
+      }
+
+      var li = document.createElement('li');
+      li.className = 'im-step';
+      li.innerHTML =
+        '<div class="im-step-num">' + stepNum + '</div>' +
+        '<div class="im-step-body">' + bodyHtml + '</div>';
+      stepsEl.appendChild(li);
+    }
+
+    /* Bind copy buttons */
+    var copyBtns = stepsEl.querySelectorAll('.im-copy');
+    for (var j = 0; j < copyBtns.length; j++) {
+      (function (btn) {
+        btn.addEventListener('click', function () {
+          var code = btn.previousElementSibling;
+          if (code) {
+            copyToClipboard(code.getAttribute('data-cmd') || code.textContent);
+            btn.textContent = '✓';
+            setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+          }
+        });
+      })(copyBtns[j]);
+    }
+
+    openOverlay('instructions-overlay');
+  }
+
+  function initInstructionsModal() {
+    bindOverlayClose('instructions-overlay', ['instructions-close', 'instructions-close-btn']);
+  }
+
+  /* ─────────────────────────────────────────────
+     FILTER TABS
+  ───────────────────────────────────────────── */
+  function initTabs() {
+    var tabs = document.querySelectorAll('.as-tab');
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].addEventListener('click', function (e) {
+        var f = e.currentTarget.getAttribute('data-filter');
+        activeFilter = f;
+        tabs.forEach(function (t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        e.currentTarget.classList.add('active');
+        e.currentTarget.setAttribute('aria-selected', 'true');
+        renderGrid();
+      });
+    }
+  }
+
+  /* ─────────────────────────────────────────────
+     SEARCH
+  ───────────────────────────────────────────── */
+  function initSearch() {
+    var input = document.getElementById('as-search');
+    if (!input) return;
+    input.addEventListener('input', function () {
+      searchTerm = input.value.trim();
+      renderGrid();
+    });
+  }
+
+  /* ─────────────────────────────────────────────
+     ESCAPE HELPERS
+  ───────────────────────────────────────────── */
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  function escAttr(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;');
+  }
+
+  /* ─────────────────────────────────────────────
+     BOOTSTRAP
+  ───────────────────────────────────────────── */
+  function init() {
+    /* Init UI */
+    initInstructionsModal();
+    initTabs();
+    initSearch();
+
+    /* Add global Escape key to close modals */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeOverlay('instructions-overlay');
+        closeOverlay('launch-overlay');
+      }
+    });
+
+    /* Fetch clone data, then build card list */
+    fetch(CLONES_URL, { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (data && data.repos) cloneData = data.repos;
+        buildCardList();
+        renderGrid();
+      })
+      .catch(function () {
+        buildCardList();
+        renderGrid();
+      });
+  }
+
+  function buildCardList() {
+    var meta = window.APPS_META;
+    if (!meta) return;
+
+    allCards = [];
+    var slugs = Object.keys(meta);
+    for (var i = 0; i < slugs.length; i++) {
+      var slug = slugs[i];
+      var m = meta[slug];
+      /* Only Useful App group, must have category in CAT_MAP */
+      if (m.group !== 'Useful App') continue;
+      var catKey = CAT_MAP[m.category];
+      if (!catKey) continue;
+      /* Must exist in clones.json OR we still show it (0 clones) */
+      var clones = (cloneData[slug] && cloneData[slug].total) || 0;
+      allCards.push({ slug: slug, meta: m, catKey: catKey, clones: clones });
+    }
+
+    /* Sort by clone count descending */
+    allCards.sort(function (a, b) { return b.clones - a.clones; });
+  }
+
+  /* Wait for apps-meta.js to load (it's deferred, this script is also deferred — both run after DOM,
+     but apps-meta.js is declared before this script, so window.APPS_META should be ready.
+     If for any reason it isn't, poll briefly. */
+  function waitForMeta(cb) {
+    if (window.APPS_META) { cb(); return; }
+    var tries = 0;
+    var t = setInterval(function () {
+      if (window.APPS_META || ++tries > 20) { clearInterval(t); cb(); }
+    }, 50);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { waitForMeta(init); });
+  } else {
+    waitForMeta(init);
+  }
+
+})();
+</script>
+
+</body>
+</html>
