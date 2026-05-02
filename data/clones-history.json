@@ -79,6 +79,10 @@
     "2026-04-30": {
       "count": 21,
       "uniques": 6
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCKotlinAPICache": {
@@ -243,6 +247,10 @@
     "2026-04-30": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -325,6 +333,10 @@
     "2026-04-30": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCSwiftNetworking": {
@@ -403,6 +415,10 @@
     "2026-04-29": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-30": {
+      "count": 3,
+      "uniques": 2
     }
   },
   "CCSwiftAPICache": {
@@ -485,6 +501,10 @@
     "2026-04-30": {
       "count": 3,
       "uniques": 2
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCSwiftFeatureConfig": {
@@ -567,6 +587,10 @@
     "2026-04-30": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-01": {
+      "count": 2,
+      "uniques": 2
     }
   },
   "CCSwiftLibsDemoApp": {
@@ -647,6 +671,10 @@
       "uniques": 0
     },
     "2026-04-30": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-01": {
       "count": 1,
       "uniques": 1
     }
@@ -731,6 +759,10 @@
     "2026-04-30": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "cc-apis-demo-monorepo": {
@@ -811,6 +843,10 @@
       "uniques": 0
     },
     "2026-04-30": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-01": {
       "count": 1,
       "uniques": 1
     }
@@ -895,6 +931,10 @@
     "2026-04-30": {
       "count": 6,
       "uniques": 3
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "MyCareerPulse": {
@@ -975,6 +1015,10 @@
       "uniques": 1
     },
     "2026-04-30": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-01": {
       "count": 1,
       "uniques": 1
     }
@@ -1059,6 +1103,10 @@
     "2026-04-30": {
       "count": 23,
       "uniques": 5
+    },
+    "2026-05-01": {
+      "count": 2,
+      "uniques": 2
     }
   },
   "local-billpay-tracker": {
@@ -1141,6 +1189,10 @@
     "2026-04-30": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-filesync": {
@@ -1221,6 +1273,10 @@
       "uniques": 0
     },
     "2026-04-30": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-01": {
       "count": 1,
       "uniques": 1
     }
@@ -1387,6 +1443,10 @@
     "2026-04-30": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-05-01": {
+      "count": 7,
+      "uniques": 3
     }
   },
   "local-recipebook": {
@@ -1551,6 +1611,10 @@
     "2026-04-30": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-trading-journal": {
@@ -1633,6 +1697,10 @@
     "2026-04-30": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-05-01": {
+      "count": 58,
+      "uniques": 16
     }
   },
   "local-vibecoding-appideas": {
@@ -1714,6 +1782,10 @@
     },
     "2026-04-30": {
       "count": 26,
+      "uniques": 8
+    },
+    "2026-05-01": {
+      "count": 131,
       "uniques": 8
     }
   },
@@ -1797,6 +1869,10 @@
     "2026-04-30": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "medreview": {
@@ -1875,6 +1951,14 @@
     "2026-04-29": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-04-30": {
+      "count": 3,
+      "uniques": 3
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "myfamilytree": {
@@ -1955,6 +2039,10 @@
       "uniques": 0
     },
     "2026-04-30": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-01": {
       "count": 1,
       "uniques": 1
     }
@@ -2039,6 +2127,10 @@
     "2026-04-30": {
       "count": 3,
       "uniques": 2
+    },
+    "2026-05-01": {
+      "count": 1,
+      "uniques": 1
     }
   }
 }
