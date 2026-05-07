@@ -95,6 +95,10 @@
     "2026-05-04": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -187,6 +191,18 @@
       "uniques": 0
     },
     "2026-05-03": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-04": {
+      "count": 2,
+      "uniques": 2
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
       "count": 0,
       "uniques": 0
     }
@@ -287,6 +303,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -385,6 +409,14 @@
     "2026-05-04": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftNetworking": {
@@ -477,6 +509,18 @@
       "uniques": 0
     },
     "2026-05-03": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-04": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-06": {
       "count": 0,
       "uniques": 0
     }
@@ -577,6 +621,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftFeatureConfig": {
@@ -675,6 +727,10 @@
     "2026-05-04": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftLibsDemoApp": {
@@ -767,6 +823,18 @@
       "uniques": 0
     },
     "2026-05-03": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-04": {
+      "count": 2,
+      "uniques": 2
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
       "count": 0,
       "uniques": 0
     }
@@ -867,6 +935,10 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "cc-apis-demo-monorepo": {
@@ -959,6 +1031,14 @@
       "uniques": 0
     },
     "2026-05-03": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-04": {
+      "count": 2,
+      "uniques": 2
+    },
+    "2026-05-05": {
       "count": 0,
       "uniques": 0
     }
@@ -1059,6 +1139,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-06": {
+      "count": 2,
+      "uniques": 2
     }
   },
   "MyCareerPulse": {
@@ -1157,6 +1245,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-api-web-proxy": {
@@ -1255,6 +1351,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-billpay-tracker": {
@@ -1353,6 +1457,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-filesync": {
@@ -1447,6 +1559,18 @@
     "2026-05-03": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-04": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-habit-calendar": {
@@ -1539,6 +1663,18 @@
       "uniques": 1
     },
     "2026-05-03": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-04": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-06": {
       "count": 0,
       "uniques": 0
     }
@@ -1639,6 +1775,14 @@
     "2026-05-04": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-recipebook": {
@@ -1737,6 +1881,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-shareanyjson": {
@@ -1835,6 +1987,14 @@
     "2026-05-04": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-trading-journal": {
@@ -1933,6 +2093,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-vibecoding-appideas": {
@@ -2031,6 +2199,14 @@
     "2026-05-04": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-weekly-options-trade-plan": {
@@ -2123,6 +2299,18 @@
       "uniques": 0
     },
     "2026-05-03": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-04": {
+      "count": 2,
+      "uniques": 2
+    },
+    "2026-05-05": {
+      "count": 2,
+      "uniques": 1
+    },
+    "2026-05-06": {
       "count": 0,
       "uniques": 0
     }
@@ -2223,6 +2411,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "myfamilytree": {
@@ -2321,6 +2517,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "dailywealth": {
@@ -2419,6 +2623,14 @@
     "2026-05-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-05": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-06": {
+      "count": 0,
+      "uniques": 0
     }
   }
 }
