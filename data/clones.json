@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-05-09",
+  "lastUpdated": "2026-05-10",
   "repos": {
     "CCKotlinNetworking": {
-      "total": 234,
-      "uniques": 117
+      "total": 235,
+      "uniques": 118
     },
     "CCKotlinAPICache": {
       "total": 45,
@@ -14,8 +14,8 @@
       "uniques": 34
     },
     "CCKotlinLibsDemoApp": {
-      "total": 52,
-      "uniques": 41
+      "total": 53,
+      "uniques": 42
     },
     "CCSwiftNetworking": {
       "total": 35,
@@ -34,16 +34,16 @@
       "uniques": 22
     },
     "cc-api-framework": {
-      "total": 22,
-      "uniques": 21
-    },
-    "cc-apis-demo-monorepo": {
-      "total": 24,
+      "total": 23,
       "uniques": 22
     },
+    "cc-apis-demo-monorepo": {
+      "total": 25,
+      "uniques": 23
+    },
     "sam-framework": {
-      "total": 92,
-      "uniques": 65
+      "total": 94,
+      "uniques": 67
     },
     "MyCareerPulse": {
       "total": 24,
@@ -66,8 +66,8 @@
       "uniques": 14
     },
     "local-keywords-files-finder": {
-      "total": 31,
-      "uniques": 23
+      "total": 32,
+      "uniques": 24
     },
     "local-recipebook": {
       "total": 15,
@@ -94,8 +94,8 @@
       "uniques": 95
     },
     "myfamilytree": {
-      "total": 15,
-      "uniques": 14
+      "total": 16,
+      "uniques": 15
     },
     "dailywealth": {
       "total": 568,
