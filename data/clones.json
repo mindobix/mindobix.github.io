@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-11",
+  "lastUpdated": "2026-05-12",
   "repos": {
     "CCKotlinNetworking": {
       "total": 236,
@@ -10,16 +10,16 @@
       "uniques": 41
     },
     "CCKotlinFeatureConfig": {
-      "total": 37,
-      "uniques": 34
+      "total": 38,
+      "uniques": 35
     },
     "CCKotlinLibsDemoApp": {
       "total": 54,
       "uniques": 43
     },
     "CCSwiftNetworking": {
-      "total": 35,
-      "uniques": 31
+      "total": 36,
+      "uniques": 32
     },
     "CCSwiftAPICache": {
       "total": 30,
@@ -38,12 +38,12 @@
       "uniques": 23
     },
     "cc-apis-demo-monorepo": {
-      "total": 25,
-      "uniques": 23
+      "total": 26,
+      "uniques": 24
     },
     "sam-framework": {
-      "total": 95,
-      "uniques": 68
+      "total": 96,
+      "uniques": 69
     },
     "MyCareerPulse": {
       "total": 25,
@@ -58,28 +58,28 @@
       "uniques": 35
     },
     "local-filesync": {
-      "total": 132,
-      "uniques": 68
+      "total": 133,
+      "uniques": 69
     },
     "local-habit-calendar": {
       "total": 15,
       "uniques": 15
     },
     "local-keywords-files-finder": {
-      "total": 32,
-      "uniques": 24
+      "total": 33,
+      "uniques": 25
     },
     "local-recipebook": {
-      "total": 15,
-      "uniques": 15
+      "total": 16,
+      "uniques": 16
     },
     "local-shareanyjson": {
       "total": 13,
       "uniques": 13
     },
     "local-trading-journal": {
-      "total": 340,
-      "uniques": 167
+      "total": 354,
+      "uniques": 174
     },
     "local-vibecoding-appideas": {
       "total": 479,
@@ -90,8 +90,8 @@
       "uniques": 15
     },
     "medreview": {
-      "total": 180,
-      "uniques": 95
+      "total": 191,
+      "uniques": 101
     },
     "myfamilytree": {
       "total": 17,

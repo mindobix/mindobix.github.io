@@ -119,6 +119,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -359,6 +363,14 @@
     "2026-05-09": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-05-10": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -481,6 +493,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftNetworking": {
@@ -597,6 +613,14 @@
       "uniques": 0
     },
     "2026-05-09": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-05-10": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-11": {
       "count": 0,
       "uniques": 0
     }
@@ -721,6 +745,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftFeatureConfig": {
@@ -843,6 +871,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftLibsDemoApp": {
@@ -965,6 +997,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "cc-api-framework": {
@@ -1205,6 +1241,10 @@
     "2026-05-09": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-10": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "sam-framework": {
@@ -1325,6 +1365,10 @@
       "uniques": 1
     },
     "2026-05-10": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-11": {
       "count": 1,
       "uniques": 1
     }
@@ -1571,6 +1615,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-billpay-tracker": {
@@ -1811,6 +1859,14 @@
     "2026-05-09": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-05-10": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-habit-calendar": {
@@ -1933,6 +1989,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-keywords-files-finder": {
@@ -2051,6 +2111,10 @@
     "2026-05-09": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-05-10": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-recipebook": {
@@ -2169,6 +2233,10 @@
     "2026-05-09": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-05-10": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-shareanyjson": {
@@ -2413,6 +2481,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 14,
+      "uniques": 7
     }
   },
   "local-vibecoding-appideas": {
@@ -2535,6 +2607,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-weekly-options-trade-plan": {
@@ -2775,6 +2851,14 @@
     "2026-05-09": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-05-10": {
+      "count": 11,
+      "uniques": 6
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "myfamilytree": {
@@ -2897,6 +2981,10 @@
     "2026-05-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-05-11": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "dailywealth": {
