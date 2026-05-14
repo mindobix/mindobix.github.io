@@ -81,6 +81,51 @@
     .profile-detail-text { color: var(--text2); }
     .profile-detail-text strong { color: var(--text); }
 
+    /* ── PROFILE CONNECT TILES ── */
+    .pc-connect-label {
+      font-size: 10px; font-weight: 800; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.14em;
+      margin-bottom: 10px;
+    }
+    .pc-connect {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 6px; margin-bottom: 16px;
+    }
+    .pc-tile {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 5px;
+      padding: 9px 3px 8px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text2);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .pc-tile:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(14,138,110,0.18);
+    }
+    .pc-tile-ic {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      box-shadow: 0 3px 10px rgba(14,138,110,0.30);
+    }
+    .pc-tile-ic svg { width: 14px; height: 14px; display: block; }
+    .pc-tile:hover .pc-tile-ic {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3066 100%);
+      box-shadow: 0 4px 14px rgba(11,29,58,0.30);
+    }
+
     /* ── THREE REVOLUTIONS ── */
     .revolutions-section { padding: 80px 0; }
     .rev-timeline { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
@@ -205,13 +250,45 @@
           <span class="profile-detail-icon">📱</span>
           <span class="profile-detail-text">Best Western · Chick-fil-A mobile platforms</span>
         </div>
-        <div class="profile-detail">
-          <span class="profile-detail-icon">🔗</span>
-          <span class="profile-detail-text"><a href="https://www.linkedin.com/in/gsubu/" target="_blank" rel="noopener" style="color:var(--accent);">linkedin.com/in/gsubu</a></span>
-        </div>
         <div class="profile-card-divider"></div>
+        <div class="pc-connect-label">Quick Connect</div>
+        <div class="pc-connect">
+          <a class="pc-tile" href="mailto:ganesh@mindobix.com" aria-label="Email Ganesh">
+            <span class="pc-tile-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </span>
+            <span>Email</span>
+          </a>
+          <a class="pc-tile" href="https://www.linkedin.com/in/gsubu/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+            <span class="pc-tile-ic">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.43v6.31zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.92-2.06 2.06-2.06 1.14 0 2.07.92 2.07 2.06 0 1.14-.93 2.07-2.07 2.07zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.78C.8 0 0 .77 0 1.73v20.55C0 23.23.8 24 1.78 24h20.43c.98 0 1.79-.77 1.79-1.72V1.73C24 .77 23.19 0 22.22 0z"></path></svg>
+            </span>
+            <span>LinkedIn</span>
+          </a>
+          <a class="pc-tile" href="https://github.com/mindobix" target="_blank" rel="noopener" aria-label="GitHub profile">
+            <span class="pc-tile-ic">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12.02c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.12c-3.2.7-3.87-1.37-3.87-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.74.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.07 0 0 .97-.31 3.18 1.18.92-.26 1.91-.39 2.89-.39.98 0 1.97.13 2.89.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.78.11 3.07.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.4-5.25 5.68.41.36.78 1.06.78 2.15v3.18c0 .31.21.67.8.55C20.21 21.4 23.5 17.09 23.5 12.02 23.5 5.65 18.35.5 12 .5z"></path></svg>
+            </span>
+            <span>GitHub</span>
+          </a>
+          <a class="pc-tile" href="https://mindobix.com" aria-label="Mindobix website">
+            <span class="pc-tile-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </span>
+            <span>Web</span>
+          </a>
+          <a class="pc-tile" href="tel:+15132060195" aria-label="Call Ganesh">
+            <span class="pc-tile-ic">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </span>
+            <span>Phone</span>
+          </a>
+        </div>
         <a href="mailto:ganesh@mindobix.com" class="btn btn-primary" style="width:100%; justify-content:center;">ganesh@mindobix.com</a>
-        <a href="https://www.linkedin.com/in/gsubu/" target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%; justify-content:center; margin-top:10px;">View LinkedIn Profile</a>
+        <a href="Ganesh-Subramanian-Resume.pdf" download class="btn btn-ghost" style="width:100%; justify-content:center; margin-top:10px; gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Resume (PDF)
+        </a>
       </div>
     </div>
   </div>
