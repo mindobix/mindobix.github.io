@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14",
+  "lastUpdated": "2026-05-15",
   "repos": {
     "CCKotlinNetworking": {
       "total": 236,
@@ -42,8 +42,8 @@
       "uniques": 24
     },
     "sam-framework": {
-      "total": 96,
-      "uniques": 69
+      "total": 97,
+      "uniques": 70
     },
     "MyCareerPulse": {
       "total": 25,
@@ -54,8 +54,8 @@
       "uniques": 88
     },
     "local-billpay-tracker": {
-      "total": 44,
-      "uniques": 35
+      "total": 45,
+      "uniques": 36
     },
     "local-filesync": {
       "total": 133,
@@ -78,8 +78,8 @@
       "uniques": 13
     },
     "local-trading-journal": {
-      "total": 355,
-      "uniques": 175
+      "total": 373,
+      "uniques": 183
     },
     "local-vibecoding-appideas": {
       "total": 479,
@@ -90,8 +90,8 @@
       "uniques": 15
     },
     "medreview": {
-      "total": 192,
-      "uniques": 102
+      "total": 194,
+      "uniques": 104
     },
     "myfamilytree": {
       "total": 18,
