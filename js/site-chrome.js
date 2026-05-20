@@ -70,6 +70,35 @@
       '</div>' +
     '</div>';
 
+  // ── Social Stream announcement strip (injected ABOVE the nav on every page) ──
+  const SSP_TOP_HTML =
+    '<a href="https://socialstream.media/#/landing" class="ssp-strip" target="_blank" rel="noopener">' +
+      '<div class="ssp-strip-inner">' +
+        '<span class="ssp-strip-badge">NEW</span>' +
+        '<span class="ssp-strip-text">' +
+          '<strong>Mindobix Social Stream</strong> — plan, write, schedule, and publish to X, LinkedIn, Instagram, YouTube &amp; TikTok from one app.' +
+        '</span>' +
+        '<span class="ssp-strip-cta">Try it free <span class="ssp-strip-arrow">→</span></span>' +
+      '</div>' +
+    '</a>';
+
+  // ── Social Stream hero band (injected BEFORE the footer on every page) ──
+  const SSP_HTML =
+    '<div class="ssp-band">' +
+      '<div class="container">' +
+        '<a href="https://socialstream.media/#/landing" class="ssp-promo" target="_blank" rel="noopener">' +
+          '<div class="ssp-icon">✦</div>' +
+          '<div class="ssp-body">' +
+            '<span class="ssp-eyebrow">New · Mindobix Social Stream</span>' +
+            '<div class="ssp-title">Stop paying $50–200/month for Hootsuite, Buffer, or Later.</div>' +
+            '<div class="ssp-sub">One app to plan, draft, schedule, and publish across X · LinkedIn · Instagram · YouTube · TikTok. AI-assisted, multi-channel, multi-account.</div>' +
+            '<div class="ssp-meta">socialstream.media</div>' +
+          '</div>' +
+          '<span class="ssp-cta">Try Social Stream <span class="ssp-arrow">→</span></span>' +
+        '</a>' +
+      '</div>' +
+    '</div>';
+
   const FOOTER_HTML =
     '<footer class="site-footer">' +
       '<div class="footer-inner">' +
@@ -110,7 +139,7 @@
 
     const navMount = document.getElementById('site-nav-mount');
     if (navMount) {
-      navMount.outerHTML = NAV_HTML;
+      navMount.outerHTML = SSP_TOP_HTML + NAV_HTML;
       if (page && ACTIVE_MAP[page]) {
         const target = document.querySelector('.nav-links ' + ACTIVE_MAP[page]);
         if (target) {
@@ -121,7 +150,7 @@
     }
     const footerMount = document.getElementById('site-footer-mount');
     if (footerMount) {
-      footerMount.outerHTML = (page !== 'useful-apps' ? SAP_HTML : '') + FOOTER_HTML;
+      footerMount.outerHTML = SSP_HTML + (page !== 'useful-apps' ? SAP_HTML : '') + FOOTER_HTML;
     }
     const toggle = document.getElementById('theme-toggle');
     if (toggle) {
