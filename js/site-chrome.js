@@ -70,32 +70,59 @@
       '</div>' +
     '</div>';
 
-  // ── Social Stream announcement strip (injected ABOVE the nav on every page) ──
+  // ── Top dual-product announcement strip (above the nav on every page) ──
+  // Two halves on desktop: Social Stream (purple) + Weekly Options Trader
+  // (orange→pink). Stack on mobile. Each half is its own clickable <a>.
   const SSP_TOP_HTML =
-    '<a href="https://socialstream.media/#/landing" class="ssp-strip" target="_blank" rel="noopener">' +
-      '<div class="ssp-strip-inner">' +
-        '<span class="ssp-strip-badge">NEW</span>' +
-        '<span class="ssp-strip-text">' +
-          '<strong>Mindobix Social Stream</strong> — plan, write, schedule, and publish to X, LinkedIn, Instagram, YouTube &amp; TikTok from one app.' +
-        '</span>' +
-        '<span class="ssp-strip-cta">Try it free <span class="ssp-strip-arrow">→</span></span>' +
-      '</div>' +
-    '</a>';
+    '<div class="mdbx-dual-strip">' +
+      '<a href="https://socialstream.media/#/landing" class="ssp-strip mdbx-dual-strip-col" target="_blank" rel="noopener">' +
+        '<div class="ssp-strip-inner">' +
+          '<span class="ssp-strip-badge">NEW</span>' +
+          '<span class="ssp-strip-text">' +
+            '<strong>Mindobix Social Stream</strong> — plan, write, schedule &amp; publish to X · LinkedIn · IG · YouTube · TikTok from one app.' +
+          '</span>' +
+          '<span class="ssp-strip-cta">Try it free <span class="ssp-strip-arrow">→</span></span>' +
+        '</div>' +
+      '</a>' +
+      '<a href="https://wot.socialstream.media/#/landing" class="wotp-strip mdbx-dual-strip-col" target="_blank" rel="noopener">' +
+        '<div class="ssp-strip-inner">' +
+          '<span class="ssp-strip-badge">ALPHA</span>' +
+          '<span class="ssp-strip-text">' +
+            '<strong>Weekly Options Trader</strong> — AI-built weekly options plans, delivered before the bell.' +
+          '</span>' +
+          '<span class="ssp-strip-cta wotp-strip-cta">Start from $1 <span class="ssp-strip-arrow">→</span></span>' +
+        '</div>' +
+      '</a>' +
+    '</div>';
 
-  // ── Social Stream hero band (injected BEFORE the footer on every page) ──
+  // ── Bottom dual-product hero band (before the footer on every page) ──
+  // Two cards on desktop, stacked on mobile. Each is the full hero-band
+  // treatment (icon, eyebrow, title, sub, CTA), just rendered narrower.
   const SSP_HTML =
     '<div class="ssp-band">' +
       '<div class="container">' +
-        '<a href="https://socialstream.media/#/landing" class="ssp-promo" target="_blank" rel="noopener">' +
-          '<div class="ssp-icon">✦</div>' +
-          '<div class="ssp-body">' +
-            '<span class="ssp-eyebrow">New · Mindobix Social Stream</span>' +
-            '<div class="ssp-title">Stop paying $50–200/month for Hootsuite, Buffer, or Later.</div>' +
-            '<div class="ssp-sub">One app to plan, draft, schedule, and publish across X · LinkedIn · Instagram · YouTube · TikTok. AI-assisted, multi-channel, multi-account.</div>' +
-            '<div class="ssp-meta">socialstream.media</div>' +
-          '</div>' +
-          '<span class="ssp-cta">Try Social Stream <span class="ssp-arrow">→</span></span>' +
-        '</a>' +
+        '<div class="mdbx-dual-band">' +
+          '<a href="https://socialstream.media/#/landing" class="ssp-promo mdbx-dual-band-col" target="_blank" rel="noopener">' +
+            '<div class="ssp-icon">✦</div>' +
+            '<div class="ssp-body">' +
+              '<span class="ssp-eyebrow">New · Mindobix Social Stream</span>' +
+              '<div class="ssp-title">Stop paying $50–200/month for Hootsuite, Buffer, or Later.</div>' +
+              '<div class="ssp-sub">One app to plan, draft, schedule, and publish across X · LinkedIn · Instagram · YouTube · TikTok. AI-assisted, multi-channel, multi-account.</div>' +
+              '<div class="ssp-meta">socialstream.media</div>' +
+            '</div>' +
+            '<span class="ssp-cta">Try Social Stream <span class="ssp-arrow">→</span></span>' +
+          '</a>' +
+          '<a href="https://wot.socialstream.media/#/landing" class="wotp-promo mdbx-dual-band-col" target="_blank" rel="noopener">' +
+            '<div class="wotp-icon">📈</div>' +
+            '<div class="ssp-body">' +
+              '<span class="wotp-eyebrow">Alpha · Weekly Options Trader</span>' +
+              '<div class="ssp-title">AI-built weekly options plans, delivered before the bell.</div>' +
+              '<div class="ssp-sub">Sunday weekly setups, daily Market Analysis &amp; Trade Plan at 8:45 ET. Density-peak SR, 16 discipline rules, per-user watchlist. $1 day pass or $20/mo.</div>' +
+              '<div class="ssp-meta">wot.socialstream.media</div>' +
+            '</div>' +
+            '<span class="wotp-cta">Try WOT <span class="ssp-arrow">→</span></span>' +
+          '</a>' +
+        '</div>' +
       '</div>' +
     '</div>';
 

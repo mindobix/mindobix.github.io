@@ -667,3 +667,138 @@ footer.site-footer {
   .ssp-cta { width: 100%; justify-content: center; }
 }
 
+/* ─── Dual-product layouts ───────────────────────────────────────────────
+ * Renders Social Stream + Weekly Options Trader side-by-side both above
+ * the nav (announcement strips) and before the footer (hero cards). On
+ * narrow viewports the columns stack. Each column reuses the existing
+ * `.ssp-*` chrome where possible; the WOT half overrides the gradient
+ * + accent colours via `.wotp-*` modifiers.
+ * ─────────────────────────────────────────────────────────────────── */
+
+/* Top: side-by-side announcement strips. The two halves share a thin
+   vertical divider on desktop so the eye reads them as a paired unit
+   instead of two separate banners. */
+.mdbx-dual-strip { display: grid; grid-template-columns: 1fr 1fr; }
+.mdbx-dual-strip-col { display: block; }
+.mdbx-dual-strip > .ssp-strip + .wotp-strip {
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+@media (max-width: 860px) {
+  .mdbx-dual-strip { grid-template-columns: 1fr; }
+  .mdbx-dual-strip > .ssp-strip + .wotp-strip {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+  }
+}
+
+/* Bottom: side-by-side hero cards. .ssp-band is the outer padded
+   container — already styled. Inside, the grid splits at desktop. */
+.mdbx-dual-band {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+.mdbx-dual-band-col {
+  /* Each column already inherits .ssp-promo / .wotp-promo (flex row,
+     wrap-aware). Equal-height alignment comes from the grid track
+     stretch; inner contents reflow naturally. The body min-width
+     here keeps the headline from crowding the icon at the 2-col width. */
+  min-height: 100%;
+}
+.mdbx-dual-band-col .ssp-body { flex: 1 1 200px; min-width: 0; }
+@media (max-width: 860px) {
+  .mdbx-dual-band { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ─── WOT (Weekly Options Trader) promo — orange→pink mirror of SSP ───
+ * Reuses the .ssp-strip-inner / .ssp-body / .ssp-arrow internals to keep
+ * the markup consistent; only the outer gradient + accent colours flip.
+ * Matches the WOT app's own brand tokens (--wot-grad-start #FF6B1F →
+ * --wot-grad-end #FF1F8F from the WOT app's elite.css). */
+
+/* Top strip — WOT half */
+.wotp-strip {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(90deg, #FF6B1F 0%, #FF3A6A 55%, #FF1F8F 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+  position: relative; overflow: hidden;
+}
+.wotp-strip::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 200% at 20% 50%, rgba(255, 255, 255, 0.12), transparent 60%),
+    radial-gradient(ellipse 40% 180% at 85% 50%, rgba(255, 255, 255, 0.08), transparent 60%);
+}
+.wotp-strip .ssp-strip-inner { position: relative; z-index: 1; }
+.wotp-strip .ssp-strip-badge {
+  background: rgba(255, 255, 255, 0.20);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+.wotp-strip-cta {
+  /* Pill button styled to read as a WOT CTA — white pill, hot pink text. */
+  background: #fff;
+  color: #c2185b;
+}
+.wotp-strip:hover .wotp-strip-cta {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.45);
+}
+
+/* Bottom hero card — WOT half */
+.wotp-promo {
+  position: relative;
+  padding: 22px 26px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #FF6B1F 0%, #FF3A6A 50%, #FF1F8F 100%);
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  text-decoration: none;
+  color: #fff;
+  overflow: hidden;
+  box-shadow:
+    0 22px 56px -22px rgba(255, 31, 143, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.10) inset;
+}
+.wotp-promo::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 90% at 100% 50%, rgba(255, 255, 255, 0.20) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 70% at 0% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+}
+.wotp-icon {
+  flex: 0 0 auto; width: 52px; height: 52px; border-radius: 14px;
+  background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.28);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; line-height: 1; color: #fff;
+  position: relative; z-index: 1;
+}
+.wotp-promo .ssp-body { position: relative; z-index: 1; }
+.wotp-eyebrow {
+  display: inline-block; font-size: 10px; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.20); padding: 3px 9px; border-radius: 100px;
+  margin-bottom: 8px; border: 1px solid rgba(255, 255, 255, 0.26);
+}
+.wotp-cta {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: #c2185b;
+  font-weight: 800; font-size: 13px;
+  padding: 12px 20px; border-radius: 12px;
+  text-decoration: none; white-space: nowrap;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 10px 26px -8px rgba(0, 0, 0, 0.42);
+}
+.wotp-promo:hover .wotp-cta {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5);
+}
+.wotp-promo:hover .ssp-arrow { transform: translateX(3px); }
+@media (max-width: 640px) {
+  .wotp-promo { padding: 18px; gap: 14px; }
+  .wotp-cta { width: 100%; justify-content: center; }
+}
+
