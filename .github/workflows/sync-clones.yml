@@ -1,0 +1,77 @@
+name: Sync GitHub Clone Counts
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Fetch traffic data and update history
+        uses: actions/github-script@v8
+        env:
+          CLONES_TOKEN: ${{ secrets.CLONES_TOKEN }}
+        with:
+          github-token: ${{ secrets.CLONES_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const tracked = JSON.parse(fs.readFileSync('data/tracked-repos.json', 'utf8'));
+            const historyPath = 'data/clones-history.json';
+            const totalsPath = 'data/clones.json';
+
+            const history = fs.existsSync(historyPath)
+              ? JSON.parse(fs.readFileSync(historyPath, 'utf8'))
+              : {};
+
+            for (const repo of tracked.repos) {
+              try {
+                const res = await github.rest.repos.getClones({
+                  owner: tracked.owner,
+                  repo: repo,
+                  per: 'day'
+                });
+                const repoHistory = history[repo] || {};
+                for (const day of res.data.clones) {
+                  const date = day.timestamp.slice(0, 10);
+                  repoHistory[date] = {
+                    count: day.count,
+                    uniques: day.uniques
+                  };
+                }
+                history[repo] = repoHistory;
+                console.log(`✓ ${repo}: ${res.data.clones.length} days fetched`);
+              } catch (err) {
+                console.error(`✗ ${repo}: ${err.message}`);
+              }
+            }
+
+            fs.writeFileSync(historyPath, JSON.stringify(history, null, 2) + '\n');
+
+            const totals = { lastUpdated: new Date().toISOString().slice(0, 10), repos: {} };
+            for (const [repo, days] of Object.entries(history)) {
+              const total = Object.values(days).reduce((s, d) => s + (d.count || 0), 0);
+              const uniqueTotal = Object.values(days).reduce((s, d) => s + (d.uniques || 0), 0);
+              totals.repos[repo] = { total, uniques: uniqueTotal };
+            }
+            fs.writeFileSync(totalsPath, JSON.stringify(totals, null, 2) + '\n');
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/clones-history.json data/clones.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: sync clone counts $(date -u +%Y-%m-%d)"
+            git push
+          fi

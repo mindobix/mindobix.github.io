@@ -9,7 +9,7 @@
       gtag('js', new Date());
       gtag('config', 'G-V460QPM640');
     </script>
-    <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+    <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="page-title">App Detail — Mindobix</title>
@@ -20,12 +20,7 @@
         padding: 72px 0 60px;
         position: relative;
         z-index: 1;
-        background: linear-gradient(
-          160deg,
-          rgba(14, 138, 110, 0.04) 0%,
-          rgba(11, 29, 58, 0.02) 40%,
-          transparent 70%
-        );
+        background: var(--bg2);
         border-bottom: 1px solid var(--border);
       }
       .app-hero-header {
@@ -113,9 +108,25 @@
       .feature-item {
         background: var(--surface2);
         border: 1px solid var(--border);
-        border-radius: 10px;
+        border-radius: var(--radius-sm);
         padding: 20px;
       }
+
+      /* ── HOW IT COMPARES (gentle / empathic) ── */
+      .compare-intro { font-size: 13px; color: var(--text2); margin-bottom: 18px; line-height: 1.7; }
+      .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
+      .compare-col {
+        border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px;
+      }
+      .compare-col.them { background: var(--surface2); }
+      .compare-col.you { background: var(--accent-dim); border-color: var(--accent-glow); }
+      .compare-col h4 { font-size: 0.95rem; margin-bottom: 12px; }
+      .compare-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+      .compare-col li { font-size: 12.5px; color: var(--text2); line-height: 1.5; padding-left: 18px; position: relative; }
+      .compare-col li::before { content: '·'; position: absolute; left: 4px; color: var(--muted); font-weight: 700; }
+      .compare-col.you li::before { content: '✓'; color: var(--accent); }
+      .compare-note { font-size: 12px; color: var(--muted); margin-top: 16px; font-style: italic; }
       .feature-item-icon {
         font-size: 20px;
         margin-bottom: 10px;
@@ -299,7 +310,7 @@
       .subdomain-promo-cta {
         position: relative; z-index: 1;
         display: inline-flex; align-items: center; gap: 8px;
-        background: #fff; color: var(--navy) !important;
+        background: #fff; color: #0071e3 !important;
         font-weight: 700; font-size: 13px;
         padding: 11px 18px;
         border-radius: 10px;
@@ -350,6 +361,142 @@
 
     <script>
       const APPS = {
+        socialstream: {
+          name: "Social Stream",
+          tagline:
+            "Plan, write, schedule, and publish across X, LinkedIn, Instagram, YouTube, and TikTok — from one calm, AI-assisted workspace.",
+          category: "Social Media",
+          catClass: "career",
+          icon: "✦",
+          iconClass: "icon-career",
+          badge: "Hosted App",
+          badgeClass: "badge-career",
+          github: "",
+          launch: {
+            url: "https://socialstream.media/#/landing",
+            label: "socialstream.media",
+            blurb: "Social Stream is a hosted product — open the live app to plan, draft, schedule, and publish.",
+            cta: "Launch Social Stream",
+          },
+          description: `Social Stream brings every channel into one place. Plan a week of content on a calendar, draft posts with AI assistance, tailor each one per network, and schedule everything to publish automatically — across X, LinkedIn, Instagram, YouTube, and TikTok.\n\nIt's built for people who manage multiple accounts and channels and are tired of juggling tabs, copy-paste, and five different dashboards. One workspace, multi-channel, multi-account.`,
+          stack: [
+            "Web App",
+            "Multi-Channel",
+            "AI-Assisted",
+            "Scheduling",
+            "Multi-Account",
+          ],
+          highlights: [
+            { icon: "🗓️", title: "Plan & Schedule", desc: "Lay out a content calendar, queue posts, and let Social Stream publish them automatically at the right time for each network." },
+            { icon: "✍️", title: "AI-Assisted Drafting", desc: "Get help turning an idea into a finished post, then tune the tone and length per channel before it goes out." },
+            { icon: "🔀", title: "One Post, Every Channel", desc: "Tailor a single message for X, LinkedIn, Instagram, YouTube, and TikTok without rewriting it five times." },
+            { icon: "👥", title: "Multi-Account", desc: "Manage several brands or clients side by side, each with its own channels and queue." },
+            { icon: "📊", title: "See It All in One View", desc: "Your whole publishing pipeline — drafts, scheduled, and published — in a single calm dashboard." },
+            { icon: "🚀", title: "Hosted & Ready", desc: "Nothing to install. Sign in and start planning; your queue runs in the cloud." },
+          ],
+          stats: [
+            { label: "Type", value: "Hosted web app" },
+            { label: "Channels", value: "X · LinkedIn · IG · YT · TikTok" },
+            { label: "Accounts", value: "Multi-account" },
+            { label: "AI Assist", value: "Built-in" },
+            { label: "Pricing", value: "Free to try" },
+          ],
+          forWho: [
+            "Creators and founders posting across several networks",
+            "Small teams and agencies juggling multiple brands",
+            "Anyone tired of paying for and switching between several tools",
+            "People who want AI help without losing their own voice",
+          ],
+          comparison: {
+            intro:
+              "Hootsuite, Buffer, and Later are excellent, established tools with deep feature sets and large teams behind them. Social Stream isn't here to declare them wrong — it's a simpler, friendlier take for people who found those tools heavier or pricier than they needed.",
+            themTitle: "Established suites (Hootsuite, Buffer, Later)",
+            them: [
+              "Deep analytics, approvals, and large-team workflows",
+              "Years of integrations and a big support ecosystem",
+              "A great fit for agencies needing the full enterprise toolkit",
+              "Plans commonly run $50–200+/month as you scale",
+            ],
+            youTitle: "Social Stream",
+            you: [
+              "A calmer, faster workflow focused on plan → draft → publish",
+              "AI assistance built into composing, not bolted on",
+              "Multi-channel and multi-account without the enterprise overhead",
+              "Designed to be friendlier on price",
+            ],
+            note:
+              "If you rely on advanced approvals or deep analytics, a mature suite may still serve you best — and we respect that. Social Stream is for when you want most of the value with far less friction.",
+          },
+        },
+
+        wot: {
+          name: "Weekly Options Trader",
+          tagline:
+            "AI-built weekly options plans, delivered before the bell — Sunday setups plus a daily market analysis and trade plan at 8:45 ET.",
+          category: "Finance",
+          catClass: "finance",
+          icon: "📈",
+          iconClass: "icon-finance",
+          badge: "Hosted App",
+          badgeClass: "badge-finance",
+          github: "",
+          launch: {
+            url: "https://wot.socialstream.media/#/landing",
+            label: "wot.socialstream.media",
+            blurb: "Weekly Options Trader is a hosted product — open the live app to see this week's setups and daily plan.",
+            cta: "Launch WOT",
+          },
+          description: `Weekly Options Trader turns a disciplined, rules-based process into a plan you can actually follow. Every Sunday it publishes weekly setups; every trading morning at 8:45 ET it delivers a fresh Market Analysis and Trade Plan.\n\nUnder the hood: density-peak support/resistance, a per-user watchlist, and 16 discipline rules that keep the plan consistent instead of reactive. Start with a $1 day pass or go monthly.\n\nThis is an educational tool, not financial advice. Options trading carries real risk, including the loss of your entire position.`,
+          stack: [
+            "Web App",
+            "AI-Generated Plans",
+            "Daily Delivery",
+            "Per-User Watchlist",
+            "Density-Peak SR",
+          ],
+          highlights: [
+            { icon: "🔔", title: "Before the Bell", desc: "A fresh Market Analysis and Trade Plan land daily at 8:45 ET — ahead of the open, not after it." },
+            { icon: "🗓️", title: "Sunday Weekly Setups", desc: "Start each week with a clear set of candidate setups so you're not improvising on Monday." },
+            { icon: "📐", title: "Density-Peak Support/Resistance", desc: "Levels derived from where price actually spent time, not eyeballed lines." },
+            { icon: "📋", title: "16 Discipline Rules", desc: "A consistent rule set keeps every plan structured and repeatable, reducing impulse decisions." },
+            { icon: "⭐", title: "Per-User Watchlist", desc: "Tune the plan to the names you actually trade." },
+            { icon: "🎟️", title: "Low-Commitment Start", desc: "Try it with a $1 day pass before deciding on $20/month." },
+          ],
+          stats: [
+            { label: "Type", value: "Hosted web app" },
+            { label: "Daily Plan", value: "8:45 ET" },
+            { label: "Weekly Setups", value: "Sundays" },
+            { label: "Start From", value: "$1 day pass" },
+            { label: "Monthly", value: "$20/mo" },
+          ],
+          forWho: [
+            "Weekly options traders who want a structured, rules-based plan",
+            "Traders who'd rather follow a process than react to noise",
+            "People curious to try a disciplined approach for $1 first",
+            "Anyone who wants pre-market analysis without the late-night research",
+          ],
+          comparison: {
+            intro:
+              "There are many good paid newsletters, Discord rooms, and alert services in this space, run by people who genuinely know markets. WOT's difference is emphasis: a consistent, rules-based plan delivered on a fixed schedule, rather than a stream of real-time calls.",
+            themTitle: "Newsletters & alert/Discord services",
+            them: [
+              "Real-time chat, community, and live commentary",
+              "Often built around a specific personality or trader",
+              "Great if you thrive on an active, social trading room",
+              "Subscriptions vary widely, sometimes $50–200+/month",
+            ],
+            youTitle: "Weekly Options Trader",
+            you: [
+              "A structured weekly + daily plan on a predictable schedule",
+              "Rules-based and consistent, not reactive call-by-call",
+              "Density-peak levels and a per-user watchlist",
+              "Try it for $1 before committing to $20/month",
+            ],
+            note:
+              "Neither approach is 'right' — some traders do best in a live room. WOT is for those who want a calm, repeatable plan. It's educational and not financial advice; options involve substantial risk.",
+          },
+        },
+
         filesync: {
           name: "FileSync",
           tagline:
@@ -571,6 +718,26 @@
             "Anyone tired of paying SaaS fees for portfolio tracking",
             "Privacy-conscious users who want zero data leaving their device",
           ],
+          comparison: {
+            intro:
+              "Hosted portfolio trackers like Empower (Personal Capital), Kubera, and Sharesight are genuinely excellent — beautiful, automatic, and convenient. DailyWealth makes a different trade: it asks a little more of you in exchange for keeping everything on your own device.",
+            themTitle: "Hosted trackers (Empower, Kubera, Sharesight)",
+            them: [
+              "Automatic account syncing via linked logins",
+              "Polished mobile apps and live market data",
+              "Great if you're comfortable sharing balances with a service",
+              "Often free (ad/lead-supported) or a yearly subscription",
+            ],
+            youTitle: "DailyWealth",
+            you: [
+              "Everything stays in your browser's IndexedDB — nothing uploaded",
+              "No accounts, no linking, no subscription, ever",
+              "Multi-client isolation and a full options trade journal built in",
+              "Manual prices and CSV import — you stay in control of the data",
+            ],
+            note:
+              "If automatic syncing matters most to you, a hosted tracker may be the better fit — and that's perfectly fine. DailyWealth is for people who'd rather own their numbers outright.",
+          },
         },
 
         "trading-journal": {
@@ -653,6 +820,26 @@
             "Anyone who wants to use LLM analysis without SaaS overhead",
             "Tradezella users looking to migrate to a free, private alternative",
           ],
+          comparison: {
+            intro:
+              "Tradervue, TraderSync, and Tradezella are mature, well-loved tools — broker auto-sync, cloud backup, and team features are real advantages. Trading Journal isn't trying to out-feature them; it's for traders who'd rather keep their book entirely private and skip the subscription.",
+            themTitle: "Hosted journals (Tradervue, TraderSync, Tradezella)",
+            them: [
+              "Automatic broker import and cloud sync across devices",
+              "Mature analytics, sharing, and mentor/team features",
+              "Convenient if you're happy storing your book in the cloud",
+              "Typically $300–600/year",
+            ],
+            youTitle: "Trading Journal",
+            you: [
+              "Runs entirely in your browser — your positions never leave it",
+              "Multi-leg FIFO P&L, options plans, and Tradezella CSV import",
+              "No account, no subscription — free and open source",
+              "You bring the data in (CSV) and keep full control of it",
+            ],
+            note:
+              "If broker auto-sync or cross-device cloud is essential, one of the paid tools may serve you better — no hard feelings. This is the privacy-first, own-your-data option.",
+          },
         },
 
         "keywords-finder": {
@@ -1409,25 +1596,60 @@
           .map((p) => `<p>${p}</p>`)
           .join("");
 
-        const subdomainPromoHTML = app.subdomain
+        // Hosted apps (Social Stream, WOT) link out to their live site; local
+        // apps may point to a marketing subdomain. Both reuse the promo banner.
+        const promoSrc = app.launch
+          ? { url: app.launch.url, eyebrow: "Hosted app", blurb: app.launch.blurb, label: app.launch.label, cta: app.launch.cta || "Launch app", target: "_blank", icon: "🚀" }
+          : app.subdomain
+          ? { url: app.subdomain.url, eyebrow: "Official Site", blurb: app.subdomain.blurb, label: app.subdomain.label, cta: "Visit Site", target: "_self", icon: "🌐" }
+          : null;
+
+        const subdomainPromoHTML = promoSrc
           ? `
-        <a href="${app.subdomain.url}" class="subdomain-promo" target="_self">
-          <div class="subdomain-promo-icon">🌐</div>
+        <a href="${promoSrc.url}" class="subdomain-promo" target="${promoSrc.target}" rel="noopener">
+          <div class="subdomain-promo-icon">${promoSrc.icon}</div>
           <div class="subdomain-promo-body">
-            <span class="subdomain-promo-eyebrow">Official Site</span>
-            <div class="subdomain-promo-title">${app.subdomain.blurb}</div>
-            <div class="subdomain-promo-url">${app.subdomain.label}</div>
+            <span class="subdomain-promo-eyebrow">${promoSrc.eyebrow}</span>
+            <div class="subdomain-promo-title">${promoSrc.blurb}</div>
+            <div class="subdomain-promo-url">${promoSrc.label}</div>
           </div>
-          <span class="subdomain-promo-cta">Visit Site <span class="arrow">→</span></span>
+          <span class="subdomain-promo-cta">${promoSrc.cta} <span class="arrow">→</span></span>
         </a>
       `
           : "";
 
-        const primaryCtaHTML = app.subdomain
+        const secondaryCta = app.github
+          ? `<a href="${app.github}" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub</a>`
+          : `<a href="useful-apps.html" class="btn btn-ghost">All Apps</a>`;
+
+        const primaryCtaHTML = app.launch
+          ? `<a href="${app.launch.url}" target="_blank" rel="noopener" class="btn btn-primary">${app.launch.cta || "Launch app"} ↗</a>
+             ${secondaryCta}`
+          : app.subdomain
           ? `<a href="${app.subdomain.url}" class="btn btn-primary">Visit Official Site →</a>
-             <a href="${app.github}" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub</a>`
+             ${secondaryCta}`
           : `<a href="${app.github}" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub →</a>
              <a href="useful-apps.html" class="btn btn-ghost">All Apps</a>`;
+
+        // Gentle, empathic competitor comparison (optional per app)
+        const comparisonHTML = app.comparison
+          ? `
+          <div>
+            <h2>How It Compares</h2>
+            <p class="compare-intro">${app.comparison.intro}</p>
+            <div class="compare-grid">
+              <div class="compare-col them">
+                <h4>${app.comparison.themTitle}</h4>
+                <ul>${app.comparison.them.map((x) => `<li>${x}</li>`).join("")}</ul>
+              </div>
+              <div class="compare-col you">
+                <h4>${app.comparison.youTitle || app.name}</h4>
+                <ul>${app.comparison.you.map((x) => `<li>${x}</li>`).join("")}</ul>
+              </div>
+            </div>
+            ${app.comparison.note ? `<p class="compare-note">${app.comparison.note}</p>` : ""}
+          </div>`
+          : "";
 
         root.innerHTML = `
     <div class="app-hero">
@@ -1468,11 +1690,13 @@
             </div>
           </div>
 
-          <div style="background:var(--navy); border-radius:12px; padding:28px; text-align:center; color:#fff;">
+          ${comparisonHTML}
+
+          <div style="background:var(--surface2); border:1px solid var(--border); border-radius:var(--radius); padding:28px; text-align:center;">
             <div style="font-size:28px; margin-bottom:14px;">🏗️</div>
-            <h3 style="margin-bottom:10px; color:#ffffff;">Built 100% with Claude Code AI Agents</h3>
-            <p style="font-size:13px; max-width:500px; margin:0 auto 20px; color:rgba(255,255,255,0.65);">This app was designed, directed, and shipped using Vibe Coding — organized thinking and 32 years of experience translated into production software by AI. No manual code editing required.</p>
-            <a href="about.html" class="btn btn-accent btn-sm">Learn About Our Process</a>
+            <h3 style="margin-bottom:10px;">Built with Claude Code</h3>
+            <p style="font-size:13px; max-width:500px; margin:0 auto 20px; color:var(--text2);">Like every Mindobix app, this was designed and shipped with Claude Code AI agents — organized thinking and 32 years of experience, translated into working software.</p>
+            <a href="about.html" class="btn btn-ghost btn-sm">About Mindobix</a>
           </div>
         </div>
 
@@ -1485,10 +1709,10 @@
             <h4>Details</h4>
             ${statsHTML}
           </div>
-          <div class="sidebar-card" style="background: var(--navy); border-radius:0 12px 12px 0;">
-            <h4 style="color:var(--accent2);">Need a Custom Version?</h4>
-            <p style="font-size:12px; margin-bottom:16px; color:rgba(255,255,255,0.70);">Want this app modified for your business, with your branding, integrated into your systems, or extended with new features? That's exactly what we do.</p>
-            <a href="mailto:ganesh@mindobix.com" class="btn btn-accent btn-sm" style="width:100%; justify-content:center;">Get in Touch</a>
+          <div class="sidebar-card" style="background: var(--accent-dim); border-color: var(--accent-glow);">
+            <h4 style="color:var(--accent);">Feedback or a feature idea?</h4>
+            <p style="font-size:12px; margin-bottom:16px; color:var(--text2);">This app is free and made better by the people who use it. Spotted a bug or want something added? Tell us — we read everything.</p>
+            <a href="mailto:ganesh@mindobix.com" class="btn btn-primary btn-sm" style="width:100%; justify-content:center;">Get in touch</a>
           </div>
         </div>
       </div>

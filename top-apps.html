@@ -9,7 +9,7 @@
     gtag('js', new Date());
     gtag('config', 'G-V460QPM640');
   </script>
-  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Top Cloned Apps — Mindobix</title>
@@ -18,7 +18,7 @@
   <style>
     .leaderboard-hero {
       padding: 72px 0 48px; position: relative; z-index: 1;
-      background: linear-gradient(160deg, rgba(14,138,110,0.04) 0%, rgba(11,29,58,0.02) 40%, transparent 70%);
+      background: var(--bg2);
       border-bottom: 1px solid var(--border);
     }
     .leaderboard-hero h1 { margin-bottom: 12px; }
@@ -35,7 +35,7 @@
       background: var(--surface); border: 1px solid var(--border); color: var(--text2);
       transition: background 0.15s, color 0.15s, border-color 0.15s;
     }
-    .group-tab.active { background: var(--navy); color: #ffffff; border-color: var(--navy); }
+    .group-tab.active { background: var(--accent); color: #ffffff; border-color: var(--accent); }
     .group-tab:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
 
     .leaderboard-table {
@@ -55,7 +55,7 @@
     }
     .leaderboard-table tbody tr:last-child td { border-bottom: none; }
     .leaderboard-table tbody tr { transition: background 0.12s; }
-    .leaderboard-table tbody tr:hover { background: rgba(14,138,110,0.04); }
+    .leaderboard-table tbody tr:hover { background: var(--accent-dim); }
 
     .lb-rank {
       display: inline-flex; align-items: center; justify-content: center;

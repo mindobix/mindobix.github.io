@@ -9,7 +9,7 @@
     gtag('js', new Date());
     gtag('config', 'G-V460QPM640');
   </script>
-  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="page-title">Library Detail — MindObix</title>
@@ -357,11 +357,11 @@ function renderLib(lib) {
             <h2>Architecture</h2>
             <div class="arch-tree">${lib.architecture}</div>
           </div>
-          <div style="background:var(--navy); border-radius:12px; padding:28px; text-align:center;">
+          <div style="background:var(--panel-dark); border-radius:12px; padding:28px; text-align:center;">
             <div style="font-size:28px; margin-bottom:14px;">🤖</div>
             <h3 style="margin-bottom:10px; color:#ffffff;">Built 100% with Claude Code AI Agents</h3>
-            <p style="font-size:13px; max-width:500px; margin:0 auto 20px; color:rgba(255,255,255,0.65);">This library was architected, implemented, and tested using Vibe Coding — organized thinking and enterprise experience translated into production-quality Kotlin by AI.</p>
-            <a href="consulting.html" class="btn btn-accent btn-sm">Learn About Our Process</a>
+            <p style="font-size:13px; max-width:500px; margin:0 auto 20px; color:rgba(255,255,255,0.65);">This library was architected, implemented, and tested with Claude Code — organized thinking and enterprise experience translated into production-quality Kotlin by AI.</p>
+            <a href="about.html" class="btn btn-accent btn-sm">About Mindobix</a>
           </div>
         </div>
         <div class="lib-sidebar">
@@ -373,7 +373,7 @@ function renderLib(lib) {
             <h4>Details</h4>
             ${statsHTML}
           </div>
-          <div class="sidebar-card" style="background:var(--navy);">
+          <div class="sidebar-card" style="background:var(--panel-dark);">
             <h4 style="color:rgba(255,255,255,0.4);">Need This Integrated?</h4>
             <p style="font-size:12px; margin-bottom:16px; color:rgba(255,255,255,0.70);">We can help integrate these libraries into your existing Android app, customize them for your architecture, or build a complete Android platform on this foundation.</p>
             <a href="mailto:ganesh@mindobix.com" class="btn btn-accent btn-sm" style="width:100%; justify-content:center;">Get in Touch</a>

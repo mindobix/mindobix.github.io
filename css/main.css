@@ -1,39 +1,51 @@
 /* ============================================================
    MINDOBIX — Main Stylesheet
-   Theme: Premium Consulting (McKinsey / BCG / Deloitte inspired)
-   Light backgrounds · Navy authority · Teal accent
-   Font: Verdana / Arial — professional, clean, approachable
+   Theme: Apple — clean light surfaces, SF system font,
+   Apple blue accent, frosted-glass nav, soft-cornered cards.
+   Light default; dark mode via [data-theme="dark"] (nav toggle).
    ============================================================ */
 
 :root {
   /* ── Backgrounds ── */
   --bg:       #ffffff;
-  --bg2:      #f5f7fb;
+  --bg2:      #f5f5f7;      /* Apple light gray */
   --surface:  #ffffff;
-  --surface2: #f0f3f9;
-  --surface3: #e6eaf3;
+  --surface2: #f5f5f7;
+  --surface3: #ececef;
 
   /* ── Borders ── */
-  --border:   #dce2ed;
-  --border2:  #c5cfe0;
+  --border:   #d2d2d7;      /* Apple hairline */
+  --border2:  #c7c7cc;
 
   /* ── Text ── */
-  --text:     #0b1d3a;      /* Deep navy — authoritative */
-  --text2:    #4a5872;      /* Slate for body copy */
-  --muted:    #8796b0;
+  --text:     #1d1d1f;      /* Apple near-black */
+  --text2:    #424245;      /* Body copy */
+  --muted:    #6e6e73;      /* Secondary label */
 
-  /* ── Brand ── */
-  --navy:     #0b1d3a;
-  --accent:   #0e8a6e;      /* Professional teal-green */
-  --accent2:  #0fa882;
-  --accent-dim:   rgba(14, 138, 110, 0.08);
-  --accent-glow:  rgba(14, 138, 110, 0.14);
-  --accent-glow2: rgba(14, 138, 110, 0.05);
+  /* ── Brand ──
+     --navy is kept as a token name (used widely across pages) but now
+     maps to the Apple ink color so navy-backed elements read clean. */
+  --navy:     #1d1d1f;
+  --accent:   #0071e3;      /* Apple blue */
+  --accent2:  #0077ed;
+  --accent-dim:   rgba(0, 113, 227, 0.08);
+  --accent-glow:  rgba(0, 113, 227, 0.18);
+  --accent-glow2: rgba(0, 113, 227, 0.05);
 
-  /* ── Nav (dark navy — McKinsey / BCG style) ── */
-  --nav-bg:     #0b1d3a;
-  --nav-text:   rgba(255,255,255,0.75);
-  --nav-active: #ffffff;
+  /* ── Always-dark panel (white text reads on it in both light and dark) ──
+     Separate from --navy, which flips to light ink in dark mode. Use this for
+     dark callout bands / panels that carry white text. */
+  --panel-dark: #1d1d1f;
+
+  /* ── Radii ── */
+  --radius:   18px;         /* cards / panels */
+  --radius-sm:12px;
+  --radius-pill: 980px;     /* Apple pill buttons */
+
+  /* ── Nav (frosted glass — light translucent) ── */
+  --nav-bg:     rgba(255,255,255,0.72);
+  --nav-text:   #1d1d1f;
+  --nav-active: #000000;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,29 +55,24 @@ html { scroll-behavior: smooth; }
 body {
   min-height: 100vh;
   background: var(--bg);
-  background-image:
-    radial-gradient(ellipse at 15% 8%, rgba(14,138,110,0.045) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 25%, rgba(11,29,58,0.035) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 65%, rgba(14,138,110,0.030) 0%, transparent 50%),
-    radial-gradient(ellipse at 10% 90%, rgba(11,29,58,0.025) 0%, transparent 40%),
-    radial-gradient(ellipse at 90% 80%, rgba(14,138,110,0.035) 0%, transparent 45%);
-  background-attachment: fixed;
   color: var(--text);
-  font-family: Verdana, Geneva, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.65;
+  font-family: -apple-system, "SF Pro Text", "SF Pro Display", BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── TYPOGRAPHY ── */
-h1 { font-size: clamp(1.75rem, 4.2vw, 3rem); font-weight: 700; line-height: 1.2; color: var(--navy); }
-h2 { font-size: clamp(1.35rem, 2.8vw, 2rem); font-weight: 700; line-height: 1.3; color: var(--navy); }
-h3 { font-size: 1.1rem; font-weight: 700; line-height: 1.4; color: var(--navy); }
-h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); }
-p  { color: var(--text2); line-height: 1.75; }
+/* ── TYPOGRAPHY — Apple marketing scale (tight, large, semibold) ── */
+h1 { font-size: clamp(2.1rem, 5vw, 3.6rem); font-weight: 600; line-height: 1.07; letter-spacing: -0.025em; color: var(--text); }
+h2 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; color: var(--text); }
+h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.015em; color: var(--text); }
+h4 { font-size: 1rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+p  { color: var(--text2); line-height: 1.6; }
 a  { color: var(--accent); text-decoration: none; transition: color 0.15s; }
-a:hover { color: var(--accent2); }
-strong { color: var(--navy); }
+a:hover { color: var(--accent2); text-decoration: underline; }
+strong { color: var(--text); font-weight: 600; }
 
 /* ── LAYOUT ── */
 .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
@@ -80,114 +87,115 @@ strong { color: var(--navy); }
 .section-title { margin-bottom: 14px; }
 .section-sub { font-size: 0.95rem; max-width: 600px; line-height: 1.8; }
 
-/* ── NAV — Dark navy, consulting authority ── */
+/* ── NAV — Apple frosted glass (light, translucent) ── */
 nav.site-nav {
   position: sticky; top: 0; z-index: 1000;
   background: var(--nav-bg);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 2px 16px rgba(11,29,58,0.18);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
-  height: 62px; max-width: 1280px; margin: 0 auto; padding: 0 28px; flex-wrap: nowrap;
+  height: 52px; max-width: 1280px; margin: 0 auto; padding: 0 28px; flex-wrap: nowrap;
 }
 
 .nav-logo {
-  font-size: 1.25rem; font-weight: 700;
-  color: #ffffff; text-decoration: none; letter-spacing: -0.02em;
+  font-size: 1.2rem; font-weight: 600;
+  color: var(--nav-active); text-decoration: none; letter-spacing: -0.02em;
 }
-.nav-logo .dot { color: var(--accent2); }
+.nav-logo:hover { text-decoration: none; }
+.nav-logo .dot { color: var(--accent); }
 
-.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; white-space: nowrap; flex-shrink: 0; }
+.nav-links { display: flex; align-items: center; gap: 26px; list-style: none; white-space: nowrap; flex-shrink: 0; }
 .nav-links a {
-  font-size: 11px; font-weight: 700; color: var(--nav-text); white-space: nowrap;
-  text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase;
-  transition: color 0.15s;
+  font-size: 12px; font-weight: 500; color: var(--nav-text); white-space: nowrap;
+  text-decoration: none; letter-spacing: 0; text-transform: none;
+  transition: color 0.15s; opacity: 0.85;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--nav-active); }
+.nav-links a:hover, .nav-links a.active { color: var(--nav-active); opacity: 1; text-decoration: none; }
 
 /* Nav dropdown */
 .nav-dropdown { position: relative; }
 .nav-dropdown > a::after { content: ' ▾'; font-size: 8px; opacity: 0.5; }
 .nav-dropdown-menu {
   display: none; position: absolute; top: 100%; left: -12px;
-  min-width: 170px; padding: 8px 0; margin-top: 10px;
-  background: var(--nav-bg); border: 1px solid rgba(255,255,255,0.10);
-  border-radius: 6px; box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+  min-width: 190px; padding: 8px 0; margin-top: 10px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
   list-style: none; z-index: 999;
 }
 .nav-dropdown-menu::before {
   content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px;
 }
 .nav-dropdown-menu li a {
-  display: block; padding: 8px 18px; font-size: 11px !important;
-  white-space: nowrap; color: var(--nav-text) !important;
-  letter-spacing: 0.04em;
+  display: block; padding: 9px 18px; font-size: 12px !important;
+  white-space: nowrap; color: var(--text2) !important;
+  letter-spacing: 0; opacity: 1;
 }
-.nav-dropdown-menu li a:hover { color: #ffffff !important; background: rgba(255,255,255,0.06); }
+.nav-dropdown-menu li a:hover { color: var(--text) !important; background: var(--surface2); text-decoration: none; }
 .nav-dropdown:hover .nav-dropdown-menu { display: block; }
 
 .nav-cta {
   background: var(--accent) !important;
   color: #ffffff !important;
-  padding: 8px 20px; border-radius: 5px;
-  font-size: 11px !important; font-weight: 700 !important;
-  letter-spacing: 0.05em !important; text-transform: uppercase !important;
+  padding: 7px 16px; border-radius: var(--radius-pill);
+  font-size: 12px !important; font-weight: 500 !important;
+  letter-spacing: 0 !important; text-transform: none !important;
+  opacity: 1 !important;
   transition: background 0.15s !important;
 }
-.nav-cta:hover { background: var(--accent2) !important; color: #ffffff !important; }
+.nav-cta:hover { background: var(--accent2) !important; color: #ffffff !important; text-decoration: none; }
 
 .nav-links a.nav-ai {
-  color: var(--accent2) !important;
-  font-weight: 600 !important;
+  color: var(--accent) !important;
+  font-weight: 500 !important;
 }
-.nav-links a.nav-ai:hover { color: #ffffff !important; }
+.nav-links a.nav-ai:hover { color: var(--accent2) !important; }
 
 .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-hamburger span {
   display: block; width: 22px; height: 2px;
-  background: rgba(255,255,255,0.7); margin: 5px 0; transition: 0.2s;
+  background: var(--text); margin: 5px 0; transition: 0.2s;
 }
 
-/* ── BUTTONS ── */
+/* ── BUTTONS — Apple pill ── */
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 13px 26px; border-radius: 5px;
-  font-family: Verdana, Geneva, Arial, sans-serif;
-  font-size: 13px; font-weight: 700;
+  padding: 12px 24px; border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: 15px; font-weight: 500; line-height: 1.2;
   cursor: pointer; border: none; text-decoration: none;
-  transition: all 0.18s; white-space: nowrap; letter-spacing: 0.01em;
+  transition: all 0.2s; white-space: nowrap; letter-spacing: -0.01em;
 }
-.btn-primary { background: var(--navy); color: #ffffff; }
-.btn-primary:hover { background: #162f5c; color: #ffffff; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(11,29,58,0.22); }
+.btn:hover { text-decoration: none; }
+.btn-primary { background: var(--accent); color: #ffffff; }
+.btn-primary:hover { background: var(--accent2); color: #ffffff; }
 
-.btn-ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--border2); }
-.btn-ghost:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--accent); border: 1px solid var(--border2); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 
-.btn-accent { background: var(--accent); color: #ffffff; }
-.btn-accent:hover { background: var(--accent2); color: #ffffff; transform: translateY(-1px); box-shadow: 0 4px 14px var(--accent-glow); }
+.btn-accent { background: var(--text); color: var(--bg); }
+.btn-accent:hover { background: #000; color: #fff; }
 
-.btn-sm { padding: 8px 18px; font-size: 12px; }
+.btn-sm { padding: 8px 18px; font-size: 13px; }
 
-/* ── CARDS ── */
+/* ── CARDS — clean white, soft Apple shadow, generous radius ── */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 10px; padding: 28px;
-  box-shadow: 0 1px 4px rgba(11,29,58,0.05);
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s, background 0.3s;
+  border-radius: var(--radius); padding: 28px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: border-color 0.2s, box-shadow 0.25s, transform 0.25s;
 }
-.card:nth-child(4n+1) { background: linear-gradient(145deg, rgba(14,138,110,0.04) 0%, #ffffff 60%); }
-.card:nth-child(4n+2) { background: linear-gradient(155deg, rgba(11,29,58,0.035) 0%, #ffffff 55%); }
-.card:nth-child(4n+3) { background: linear-gradient(135deg, #ffffff 30%, rgba(14,138,110,0.035) 100%); }
-.card:nth-child(4n+4) { background: linear-gradient(150deg, #ffffff 35%, rgba(11,29,58,0.03) 100%); }
 .card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 6px 24px rgba(11,29,58,0.10);
-  transform: translateY(-3px);
+  border-color: var(--border2);
+  box-shadow: 0 16px 40px -12px rgba(0,0,0,0.16);
+  transform: translateY(-4px);
 }
 .card-link { text-decoration: none; display: block; }
+.card-link:hover { text-decoration: none; }
 .card-link:hover h3, .card-link:hover h4 { color: var(--accent); }
 
 /* ── BADGE ── */
@@ -272,32 +280,32 @@ nav.site-nav {
 .back-link:hover { color: var(--accent); }
 .back-link::before { content: '←'; font-size: 14px; }
 
-/* ── FOOTER — Dark navy, authoritative ── */
+/* ── FOOTER — light Apple style, small muted print ── */
 footer.site-footer {
-  background: var(--navy);
-  border-top: 3px solid var(--accent);
-  padding: 52px 0; position: relative; z-index: 1;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 44px 0; position: relative; z-index: 1;
 }
 .footer-inner {
   max-width: 1160px; margin: 0 auto; padding: 0 28px;
   display: flex; justify-content: space-between; align-items: flex-start;
   flex-wrap: wrap; gap: 36px;
 }
-.footer-logo { font-size: 1.15rem; font-weight: 700; color: #ffffff; }
-.footer-logo .dot { color: var(--accent2); }
-.footer-tagline { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 7px; line-height: 1.6; }
-.footer-nav { display: flex; flex-direction: column; gap: 10px; }
-.footer-nav a { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.6); letter-spacing: 0.03em; }
-.footer-nav a:hover { color: var(--accent2); }
-.footer-nav-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
+.footer-logo { font-size: 1.1rem; font-weight: 600; color: var(--text); }
+.footer-logo .dot { color: var(--accent); }
+.footer-tagline { font-size: 12px; color: var(--muted); margin-top: 7px; line-height: 1.6; }
+.footer-nav { display: flex; flex-direction: column; gap: 9px; }
+.footer-nav a { font-size: 12px; font-weight: 400; color: var(--text2); letter-spacing: 0; }
+.footer-nav a:hover { color: var(--accent); text-decoration: none; }
+.footer-nav-label { font-size: 11px; font-weight: 600; color: var(--text); text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
 .footer-bottom {
   max-width: 1160px; margin: 28px auto 0; padding: 22px 28px 0;
-  border-top: 1px solid rgba(255,255,255,0.10);
+  border-top: 1px solid var(--border);
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 12px;
 }
-.footer-copy { font-size: 11px; color: rgba(255,255,255,0.30); }
-.footer-email { font-size: 12px; font-weight: 700; color: var(--accent2); }
+.footer-copy { font-size: 11px; color: var(--muted); }
+.footer-email { font-size: 12px; font-weight: 500; color: var(--accent); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
@@ -310,8 +318,9 @@ footer.site-footer {
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column; position: absolute;
-    top: 62px; left: 0; right: 0; background: var(--nav-bg);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    top: 52px; left: 0; right: 0; background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
     padding: 20px 28px; gap: 18px; z-index: 999;
   }
   .nav-hamburger { display: block; }
@@ -332,15 +341,15 @@ footer.site-footer {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0fa882 0%, #0e8a6e 60%, #0a6e58 100%);
+  background: linear-gradient(135deg, #2997ff 0%, #0071e3 60%, #0058b9 100%);
   color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   box-shadow:
-    0 6px 18px rgba(11, 29, 58, 0.28),
-    0 2px 4px rgba(11, 29, 58, 0.18),
+    0 6px 18px rgba(0, 113, 227, 0.30),
+    0 2px 4px rgba(0, 0, 0, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
   border: 3px solid #ffffff;
   z-index: 5;
@@ -400,43 +409,35 @@ footer.site-footer {
    page picks up dark mode without per-page edits.
    ============================================================ */
 [data-theme="dark"] {
-  --bg:       #0d1117;
-  --bg2:      #131922;
-  --surface:  #161b27;
-  --surface2: #1e2433;
-  --surface3: #252d3f;
+  --bg:       #000000;       /* Apple true black */
+  --bg2:      #1d1d1f;
+  --surface:  #1d1d1f;
+  --surface2: #2a2a2c;
+  --surface3: #333336;
 
-  --border:   #2a3347;
-  --border2:  #3d4a64;
+  --border:   #38383a;
+  --border2:  #48484a;
 
-  --text:     #e2e8f0;
-  --text2:    #aab4c5;
-  --muted:    #7c8a9e;
+  --text:     #f5f5f7;
+  --text2:    #c7c7cc;
+  --muted:    #8e8e93;
 
-  /* Brand: keep --navy as a deep panel color so navy-backed buttons
-     and the footer still read correctly. Headings get an explicit
-     light override below. */
-  --navy:     #1a2540;
-  --accent:   #14d2a2;       /* brightened teal so it pops on dark */
-  --accent2:  #34e2b5;
-  --accent-dim:   rgba(20, 210, 162, 0.10);
-  --accent-glow:  rgba(20, 210, 162, 0.22);
-  --accent-glow2: rgba(20, 210, 162, 0.06);
+  --navy:     #f5f5f7;       /* ink: flips light on dark so `color:var(--navy)` text stays readable */
+  --accent:   #2997ff;       /* Apple blue, brightened for dark */
+  --accent2:  #4aa8ff;
+  --accent-dim:   rgba(41, 151, 255, 0.12);
+  --accent-glow:  rgba(41, 151, 255, 0.24);
+  --accent-glow2: rgba(41, 151, 255, 0.07);
 
-  --nav-bg:     #0a0e15;
-  --nav-text:   rgba(255,255,255,0.78);
+  --nav-bg:     rgba(0,0,0,0.72);
+  --nav-text:   #f5f5f7;
   --nav-active: #ffffff;
 
   color-scheme: dark;
 }
 
-/* Body ambient gradient (mirrors the trading journal subdomain) */
-[data-theme="dark"] body {
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(99,102,241,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 100% 30%, rgba(34,211,238,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 0% 60%, rgba(20,210,162,0.05) 0%, transparent 60%);
-}
+/* Apple dark uses clean flat surfaces — no ambient gradient mesh */
+[data-theme="dark"] body { background-image: none; }
 
 /* Headings + strong: --navy is dark in this theme too, so flip to --text */
 [data-theme="dark"] h1,
@@ -451,23 +452,15 @@ footer.site-footer {
 [data-theme="dark"] .stat-num { color: var(--text); }
 [data-theme="dark"] .quote-block p { color: var(--text); }
 
-/* Card shadows + rotating nth-child gradients, dark variants */
+/* Cards on dark: flat surface, soft elevation (no gradient tints) */
 [data-theme="dark"] .card {
   background: var(--surface);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.02) inset;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
-[data-theme="dark"] .card:nth-child(4n+1) { background: linear-gradient(145deg, rgba(20,210,162,0.07) 0%, var(--surface) 60%); }
-[data-theme="dark"] .card:nth-child(4n+2) { background: linear-gradient(155deg, rgba(99,102,241,0.07) 0%, var(--surface) 55%); }
-[data-theme="dark"] .card:nth-child(4n+3) { background: linear-gradient(135deg, var(--surface) 30%, rgba(20,210,162,0.06) 100%); }
-[data-theme="dark"] .card:nth-child(4n+4) { background: linear-gradient(150deg, var(--surface) 35%, rgba(34,211,238,0.06) 100%); }
 [data-theme="dark"] .card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 12px 32px -8px rgba(0,0,0,0.7), 0 0 0 1px rgba(20,210,162,0.15);
+  border-color: var(--border2);
+  box-shadow: 0 16px 40px -12px rgba(0,0,0,0.7);
 }
-
-/* Btn-primary on dark: --navy is now a soft slate, give it a touch more lift */
-[data-theme="dark"] .btn-primary { box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset; }
-[data-theme="dark"] .btn-primary:hover { background: #243355; box-shadow: 0 6px 18px rgba(0,0,0,0.5); }
 
 /* Badges keep their bright color-on-light look; soften the backgrounds slightly */
 [data-theme="dark"] .badge-dev      { background: rgba(99,102,241,0.18);  color: #a5b4fc; border-color: rgba(99,102,241,0.35); }
@@ -481,15 +474,12 @@ footer.site-footer {
 [data-theme="dark"] .icon-personal { background: rgba(167,139,250,0.16); border-color: rgba(167,139,250,0.30); }
 
 /* Highlight box border-color was hardcoded teal-rgba — replace with token-driven version */
-[data-theme="dark"] .highlight-box { border-color: rgba(20,210,162,0.30); }
-
-/* Footer is already dark; just nudge the accent border so it pops */
-[data-theme="dark"] footer.site-footer { border-top-color: var(--accent); }
+[data-theme="dark"] .highlight-box { border-color: var(--accent-glow); }
 
 /* ── THEME TOGGLE BUTTON (lives in nav) ── */
 .nav-theme-toggle {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid var(--border2);
   width: 30px; height: 30px;
   border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
@@ -500,9 +490,9 @@ footer.site-footer {
   transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.25s;
 }
 .nav-theme-toggle:hover {
-  background: rgba(255,255,255,0.08);
-  color: #fff;
-  border-color: rgba(255,255,255,0.4);
+  background: var(--surface2);
+  color: var(--text);
+  border-color: var(--accent);
   transform: rotate(20deg);
 }
 .nav-theme-toggle .icon-light { display: none; }
@@ -545,7 +535,7 @@ footer.site-footer {
 .sap-cta {
   position: relative; z-index: 1;
   display: inline-flex; align-items: center; gap: 8px;
-  background: #fff; color: var(--navy);
+  background: #fff; color: #0071e3;
   font-weight: 700; font-size: 13px;
   padding: 11px 18px; border-radius: 10px;
   text-decoration: none; white-space: nowrap;

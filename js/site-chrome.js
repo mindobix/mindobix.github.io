@@ -13,8 +13,8 @@
     try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
   }
   function applyTheme(t) {
-    // Default to dark when nothing is stored — user toggle persists 'light' to opt out.
-    var resolved = t === 'light' ? 'light' : 'dark';
+    // Default to light (Apple marketing look) — user toggle persists 'dark' to opt in.
+    var resolved = t === 'dark' ? 'dark' : 'light';
     if (resolved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     else document.documentElement.removeAttribute('data-theme');
   }
@@ -22,13 +22,14 @@
 
   // Map data-page values to the nav-link selector that should get .active
   const ACTIVE_MAP = {
+    'home':          '[data-nav="apps"]',
+    'useful-apps':   '[data-nav="apps"]',
+    'top-apps':      '[data-nav="top-apps"]',
     'about':         '[data-nav="about"]',
-    'analysis':      '[data-nav="analysis"]',
-    'mobile':        '[data-nav="mobile"]',
-    'api-framework': '[data-nav="api-framework"]',
-    'useful-apps':   '[data-nav="useful-apps"]',
-    'consulting':    '[data-nav="consulting"]',
-    'devtools':      '[data-nav="devtools"]'
+    'mobile':        '[data-nav="developers"]',
+    'api-framework': '[data-nav="developers"]',
+    'devtools':      '[data-nav="developers"]',
+    'analysis':      '[data-nav="developers"]'
   };
 
   const NAV_HTML =
@@ -36,18 +37,22 @@
       '<div class="nav-inner">' +
         '<a href="index.html" class="nav-logo">Mind<span class="dot">Obix</span></a>' +
         '<ul class="nav-links" id="nav-links">' +
-          '<li class="nav-dropdown" data-nav="mobile"><a href="#">Mobile Architecture</a><ul class="nav-dropdown-menu"><li><a href="android.html">Android Kotlin Apps</a></li><li><a href="apple.html">Apple Swift Apps</a></li></ul></li>' +
-          '<li data-nav="api-framework"><a href="api-framework.html">API Framework</a></li>' +
-          '<li data-nav="devtools"><a href="devtools.html">Dev Tools</a></li>' +
-          '<li data-nav="useful-apps"><a href="useful-apps.html">Useful Apps</a></li>' +
-          '<li data-nav="consulting"><a href="consulting.html">Consulting</a></li>' +
+          '<li data-nav="apps"><a href="useful-apps.html">Apps</a></li>' +
+          '<li data-nav="top-apps"><a href="top-apps.html">Top Apps</a></li>' +
+          '<li data-nav="appstore"><a href="appstore/index.html">App Store</a></li>' +
+          '<li class="nav-dropdown" data-nav="developers"><a href="#">For Developers</a><ul class="nav-dropdown-menu">' +
+            '<li><a href="devtools.html">Dev Tools</a></li>' +
+            '<li><a href="api-framework.html">API Framework</a></li>' +
+            '<li><a href="android.html">Android Kotlin</a></li>' +
+            '<li><a href="apple.html">Apple Swift</a></li>' +
+            '<li><a href="analysis.html">AI Analysis</a></li>' +
+          '</ul></li>' +
           '<li data-nav="about"><a href="about.html">About</a></li>' +
-          '<li data-nav="analysis"><a href="analysis.html" class="nav-ai">✦ AI Analysis</a></li>' +
           '<li><button id="theme-toggle" class="nav-theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">' +
             '<span class="icon-dark" aria-hidden="true">☾</span>' +
             '<span class="icon-light" aria-hidden="true">☀</span>' +
           '</button></li>' +
-          '<li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact Us</a></li>' +
+          '<li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact</a></li>' +
         '</ul>' +
         '<button class="nav-hamburger" onclick="document.getElementById(\'nav-links\').classList.toggle(\'open\')" aria-label="Menu">' +
           '<span></span><span></span><span></span>' +
@@ -131,28 +136,35 @@
       '<div class="footer-inner">' +
         '<div>' +
           '<div class="footer-logo">Mind<span class="dot">Obix</span></div>' +
-          '<div class="footer-tagline">AI-Powered Software Development Consulting<br>Fixed-Bid · Local-First · Vibe Coded</div>' +
+          '<div class="footer-tagline">Apps built with Claude Code.<br>Local-first &middot; Private &middot; Free &amp; open source</div>' +
         '</div>' +
         '<div>' +
-          '<div class="footer-nav-label">Navigation</div>' +
+          '<div class="footer-nav-label">Apps</div>' +
+          '<nav class="footer-nav">' +
+            '<a href="useful-apps.html">All Apps</a>' +
+            '<a href="top-apps.html">Top Apps</a>' +
+            '<a href="appstore/index.html">App Store</a>' +
+            '<a href="app.html?id=socialstream">Social Stream</a>' +
+            '<a href="app.html?id=wot">Weekly Options Trader</a>' +
+            '<a href="app.html?id=trading-journal">Trading Journal</a>' +
+            '<a href="app.html?id=dailywealth">DailyWealth</a>' +
+          '</nav>' +
+        '</div>' +
+        '<div>' +
+          '<div class="footer-nav-label">More</div>' +
           '<nav class="footer-nav">' +
             '<a href="devtools.html">Dev Tools</a>' +
             '<a href="api-framework.html">API Framework</a>' +
-            '<a href="useful-apps.html">Useful Apps</a>' +
-            '<a href="appstore/index.html">App Store</a>' +
-            '<a href="top-apps.html">Top Cloned Apps</a>' +
-            '<a href="android.html">Android Kotlin Apps</a>' +
-            '<a href="apple.html">Apple Swift Apps</a>' +
-            '<a href="consulting.html">Consulting</a>' +
-            '<a href="about.html">About Ganesh</a>' +
-            '<a href="analysis.html">AI Analysis</a>' +
+            '<a href="android.html">Android Kotlin</a>' +
+            '<a href="apple.html">Apple Swift</a>' +
+            '<a href="about.html">About</a>' +
             '<a href="mailto:ganesh@mindobix.com">Contact</a>' +
           '</nav>' +
         '</div>' +
         '<div>' +
           '<div class="footer-nav-label">Contact</div>' +
           '<a href="mailto:ganesh@mindobix.com" class="footer-email">ganesh@mindobix.com</a>' +
-          '<div style="font-size:11px; color:var(--muted); margin-top:6px; line-height:1.6;">Ganesh Subramanian<br>Chief Vibe Coding Officer<br>Cincinnati, Ohio</div>' +
+          '<div style="font-size:11px; color:var(--muted); margin-top:6px; line-height:1.6;">Ganesh Subramanian<br>Cincinnati, Ohio</div>' +
         '</div>' +
       '</div>' +
       '<div class="footer-bottom">' +

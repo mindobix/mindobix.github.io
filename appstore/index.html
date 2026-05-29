@@ -11,7 +11,7 @@
   </script>
 
   <!-- 2. Theme detection — before CSS to prevent flash -->
-  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 
   <!-- 3-4. Charset + viewport -->
   <meta charset="UTF-8" />
@@ -48,7 +48,7 @@
 
     /* ── ELECTRON PROMO BAND ── */
     .el-band {
-      background: var(--navy);
+      background: var(--panel-dark);
       border-bottom: 1px solid rgba(255,255,255,0.06);
       overflow: hidden;
       position: relative;
@@ -146,7 +146,7 @@
     .el-screenshot::before {
       content: '';
       position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
-      background: linear-gradient(to top, var(--navy), transparent);
+      background: linear-gradient(to top, var(--panel-dark), transparent);
       z-index: 1; border-radius: 0 0 12px 12px;
       pointer-events: none;
     }
@@ -222,7 +222,7 @@
       color: var(--text2); transition: all 0.15s; letter-spacing: 0.03em;
     }
     .as-tab:hover { border-color: var(--accent); color: var(--accent); }
-    .as-tab.active { background: var(--navy); color: #ffffff; border-color: var(--navy); }
+    .as-tab.active { background: var(--panel-dark); color: #ffffff; border-color: var(--navy); }
 
     /* ── GRID ── */
     .as-grid {
@@ -400,7 +400,7 @@
       margin: 64px 0;
       text-align: center;
       padding: 52px 32px;
-      background: var(--navy);
+      background: var(--panel-dark);
       border-radius: 14px;
     }
     .as-cta-block h2 { color: #ffffff; margin-bottom: 12px; }
@@ -530,7 +530,7 @@
     /* ── TOAST ── */
     .as-toast {
       position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
-      background: var(--navy); color: #ffffff;
+      background: var(--panel-dark); color: #ffffff;
       padding: 12px 20px; border-radius: 24px;
       font-size: 13px; font-weight: 700;
       box-shadow: 0 8px 24px rgba(11,29,58,0.35);
@@ -697,10 +697,10 @@
 
   <!-- Bottom CTA -->
   <div class="as-cta-block">
-    <span class="section-label" style="display:block; text-align:center; margin-bottom:10px;">Need Something Custom?</span>
-    <h2>We Build Software That Doesn't Exist Yet</h2>
-    <p>If you see an app here that's close to what you need, or you have an idea that no one has built — that's exactly what we do. Fixed-bid, AI-powered, delivered fast.</p>
-    <a href="mailto:ganesh@mindobix.com" class="btn btn-accent">Talk to Ganesh</a>
+    <span class="section-label" style="display:block; text-align:center; margin-bottom:10px;">Feedback welcome</span>
+    <h2>Got an idea or found a bug?</h2>
+    <p>These apps are free and get better when people tell us what's missing. If something's close to what you need but not quite right, let us know — we read every message.</p>
+    <a href="mailto:ganesh@mindobix.com" class="btn btn-accent">Send feedback</a>
   </div>
 
 </div><!-- /container -->

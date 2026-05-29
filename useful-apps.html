@@ -9,7 +9,7 @@
     gtag('js', new Date());
     gtag('config', 'G-V460QPM640');
   </script>
-  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t!=='light')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Apps — Mindobix</title>
@@ -18,11 +18,31 @@
   <style>
     .page-hero {
       padding: 72px 0 56px; position: relative; z-index: 1;
-      background: linear-gradient(160deg, rgba(14,138,110,0.04) 0%, rgba(11,29,58,0.02) 40%, transparent 70%);
+      background: var(--bg2);
       border-bottom: 1px solid var(--border);
     }
     .page-hero h1 { margin-bottom: 14px; }
-    .page-hero p { font-size: 1rem; max-width: 600px; }
+    .page-hero p { font-size: 1.05rem; max-width: 620px; }
+
+    /* ── Featured strip ── */
+    .ua-featured { margin: 40px 0 8px; }
+    .ua-feat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 900px) { .ua-feat-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .ua-feat-grid { grid-template-columns: 1fr; } }
+    .ua-feat {
+      display: flex; flex-direction: column; gap: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      transition: transform 0.25s, box-shadow 0.25s; text-decoration: none;
+    }
+    .ua-feat:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -14px rgba(0,0,0,0.18); text-decoration: none; }
+    .ua-feat-ic { font-size: 26px; }
+    .ua-feat h4 { font-size: 1.05rem; margin: 2px 0 0; }
+    .ua-feat-host { font-size: 11px; font-weight: 600; color: var(--accent); }
+    .ua-feat p { font-size: 12.5px; color: var(--text2); line-height: 1.5; margin: 0; flex: 1; }
+    .ua-feat-cta { font-size: 12px; font-weight: 500; color: var(--accent); margin-top: 4px; }
+    .ua-feat-cta::after { content: ' ›'; }
 
     /* ── APP STORE PROMO BANNER ── */
     .appstore-promo {
@@ -78,7 +98,7 @@
     .appstore-promo-cta {
       position: relative; z-index: 1;
       display: inline-flex; align-items: center; gap: 8px;
-      background: #fff; color: var(--navy);
+      background: #fff; color: #0071e3;
       font-weight: 700; font-size: 13px;
       padding: 11px 18px; border-radius: 10px;
       text-decoration: none; white-space: nowrap;
@@ -110,7 +130,7 @@
       color: var(--text2); transition: all 0.15s; letter-spacing: 0.03em;
     }
     .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
-    .filter-btn.active { background: var(--navy); color: #ffffff; border-color: var(--navy); }
+    .filter-btn.active { background: var(--panel-dark); color: #ffffff; border-color: var(--navy); }
 
     /* ── APPS GRID ── */
     .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -173,9 +193,9 @@
 <!-- ── PAGE HERO ── -->
 <div class="page-hero">
   <div class="container">
-    <span class="section-label">Software Portfolio</span>
-    <h1>Apps Built by AI.<br>Proven by Real Use.</h1>
-    <p>Every app was built with Claude Code AI Agents, directed by 32 years of domain expertise. No cloud. No subscriptions. No accounts. Open the file and go.</p>
+    <span class="section-label">The collection</span>
+    <h1>Apps built with Claude Code.</h1>
+    <p>Directed by 32 years of domain experience and built by AI. Most run locally — no cloud, no subscriptions, no accounts. Open it and go.</p>
     <a href="appstore/index.html" class="appstore-promo">
       <div class="appstore-promo-icon">📦</div>
       <div class="appstore-promo-body">
@@ -189,6 +209,41 @@
 </div>
 
 <div class="container" style="position:relative; z-index:1; padding-bottom:80px;">
+
+  <!-- ── FEATURED (fixed order) ── -->
+  <div class="ua-featured">
+    <span class="section-label">Start here · Featured</span>
+    <div class="ua-feat-grid">
+      <a href="app.html?id=socialstream" class="ua-feat">
+        <span class="ua-feat-ic">✦</span>
+        <span class="ua-feat-host">Hosted · socialstream.media</span>
+        <h4>Social Stream</h4>
+        <p>Plan, write, schedule &amp; publish across X, LinkedIn, Instagram, YouTube &amp; TikTok from one workspace.</p>
+        <span class="ua-feat-cta">Details</span>
+      </a>
+      <a href="app.html?id=wot" class="ua-feat">
+        <span class="ua-feat-ic">📈</span>
+        <span class="ua-feat-host">Hosted · wot.socialstream.media</span>
+        <h4>Weekly Options Trader</h4>
+        <p>AI-built weekly options plans, delivered before the bell. A disciplined, rules-based daily plan.</p>
+        <span class="ua-feat-cta">Details</span>
+      </a>
+      <a href="app.html?id=trading-journal" class="ua-feat">
+        <span class="ua-feat-ic">📊</span>
+        <span class="ua-feat-host">Local-first · in your browser</span>
+        <h4>Trading Journal</h4>
+        <p>Log trades, track P&amp;L, and manage options plans — privately, with nothing sent to a server.</p>
+        <span class="ua-feat-cta">View app</span>
+      </a>
+      <a href="app.html?id=dailywealth" class="ua-feat">
+        <span class="ua-feat-ic">💰</span>
+        <span class="ua-feat-host">Local-first · in your browser</span>
+        <h4>DailyWealth</h4>
+        <p>Track investments, 529s, cash, and a full risk-asset trade journal — all stored on your device.</p>
+        <span class="ua-feat-cta">View app</span>
+      </a>
+    </div>
+  </div>
 
   <!-- Stats Bar -->
   <div class="stats-bar">
@@ -594,11 +649,14 @@
   </div>
 
   <!-- Bottom CTA -->
-  <div style="margin:60px 0; text-align:center; padding:48px 32px; background:var(--navy); border-radius:14px;">
-    <span class="section-label" style="justify-content:center; display:block;">Need Something Custom?</span>
-    <h2 style="margin-bottom:14px; color:#ffffff;">We Build Software That Doesn't Exist Yet</h2>
-    <p style="max-width:540px; margin:0 auto 28px; color:rgba(255,255,255,0.65);">If you see an app here that's close to what you need, or if you have an idea that no one has built yet — that's exactly what we do. Fixed-bid, AI-powered, delivered fast.</p>
-    <a href="mailto:ganesh@mindobix.com" class="btn btn-accent">Talk to Ganesh</a>
+  <div style="margin:60px 0; text-align:center; padding:48px 32px; background:#1d1d1f; border-radius:var(--radius);">
+    <span class="section-label" style="justify-content:center; display:block;">All in one place</span>
+    <h2 style="margin-bottom:14px; color:#ffffff;">Browse everything in the App Store</h2>
+    <p style="max-width:540px; margin:0 auto 28px; color:rgba(255,255,255,0.70);">Every app, with one-click clone and download. Or if you have feedback or a feature idea, we'd genuinely like to hear it.</p>
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="appstore/index.html" class="btn btn-primary">Open App Store</a>
+      <a href="mailto:ganesh@mindobix.com" class="btn btn-accent">Send feedback</a>
+    </div>
   </div>
 
 </div><!-- end container -->
