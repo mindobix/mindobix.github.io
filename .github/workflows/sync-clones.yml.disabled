@@ -1,3 +1,10 @@
+# DISABLED 2026-05-31 — superseded by the aidatacrawler "Sync GitHub Clone
+# Counts" service (group: Mindobix), which runs daily on the Mac mini
+# (~/Library/LaunchAgents/com.mindobix.clone-sync.plist →
+# aidatacrawler/scripts/mindobix-clones-cron.sh) and publishes via
+# deploy-to-pages.sh. Renamed to *.disabled so GitHub Actions ignores it
+# (it only runs .yml/.yaml files). Kept in-tree for history; re-enable by
+# renaming back to sync-clones.yml if Actions billing is restored.
 name: Sync GitHub Clone Counts
 
 on:
