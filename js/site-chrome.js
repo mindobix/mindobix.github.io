@@ -76,7 +76,7 @@
     '</div>';
 
   // ── Top dual-product announcement strip (above the nav on every page) ──
-  // Two halves on desktop: Social Stream (purple) + Weekly Options Trader
+  // Two halves on desktop: Social Stream (purple) + TradeByFire
   // (orange→pink). Stack on mobile. Each half is its own clickable <a>.
   const SSP_TOP_HTML =
     '<div class="mdbx-dual-strip">' +
@@ -89,11 +89,11 @@
           '<span class="ssp-strip-cta">Try it free <span class="ssp-strip-arrow">→</span></span>' +
         '</div>' +
       '</a>' +
-      '<a href="https://wot.socialstream.media/#/landing" class="wotp-strip mdbx-dual-strip-col" target="_blank" rel="noopener">' +
+      '<a href="https://tradebyfire.com/#/landing" class="wotp-strip mdbx-dual-strip-col" target="_blank" rel="noopener">' +
         '<div class="ssp-strip-inner">' +
           '<span class="ssp-strip-badge">ALPHA</span>' +
           '<span class="ssp-strip-text">' +
-            '<strong>Weekly Options Trader</strong> — AI-built weekly options plans, delivered before the bell.' +
+            '<strong>TradeByFire</strong> — deterministic weekly options plans, forged before the open.' +
           '</span>' +
           '<span class="ssp-strip-cta wotp-strip-cta">Start from $1 <span class="ssp-strip-arrow">→</span></span>' +
         '</div>' +
@@ -117,15 +117,15 @@
             '</div>' +
             '<span class="ssp-cta">Try Social Stream <span class="ssp-arrow">→</span></span>' +
           '</a>' +
-          '<a href="https://wot.socialstream.media/#/landing" class="wotp-promo mdbx-dual-band-col" target="_blank" rel="noopener">' +
-            '<div class="wotp-icon">📈</div>' +
+          '<a href="https://tradebyfire.com/#/landing" class="wotp-promo mdbx-dual-band-col" target="_blank" rel="noopener">' +
+            '<div class="wotp-icon">🔥</div>' +
             '<div class="ssp-body">' +
-              '<span class="wotp-eyebrow">Alpha · Weekly Options Trader</span>' +
-              '<div class="ssp-title">AI-built weekly options plans, delivered before the bell.</div>' +
-              '<div class="ssp-sub">Sunday weekly setups, daily Market Analysis &amp; Trade Plan at 8:45 ET. Density-peak SR, 16 discipline rules, per-user watchlist. $1 day pass or $20/mo.</div>' +
-              '<div class="ssp-meta">wot.socialstream.media</div>' +
+              '<span class="wotp-eyebrow">Alpha · TradeByFire</span>' +
+              '<div class="ssp-title">Deterministic weekly options plans, forged before the open.</div>' +
+              '<div class="ssp-sub">Sunday weekly setups, daily Market Analysis &amp; Trade Plan before the bell. Density-peak SR, 16 discipline rules, per-user watchlist. No paid LLM. $1 day pass or $20/mo.</div>' +
+              '<div class="ssp-meta">tradebyfire.com</div>' +
             '</div>' +
-            '<span class="wotp-cta">Try WOT <span class="ssp-arrow">→</span></span>' +
+            '<span class="wotp-cta">Try TradeByFire <span class="ssp-arrow">→</span></span>' +
           '</a>' +
         '</div>' +
       '</div>' +
@@ -145,7 +145,7 @@
             '<a href="top-apps.html">Top Apps</a>' +
             '<a href="appstore/index.html">App Store</a>' +
             '<a href="app.html?id=socialstream">Social Stream</a>' +
-            '<a href="app.html?id=wot">Weekly Options Trader</a>' +
+            '<a href="app.html?id=wot">TradeByFire</a>' +
             '<a href="app.html?id=trading-journal">Trading Journal</a>' +
             '<a href="app.html?id=dailywealth">DailyWealth</a>' +
           '</nav>' +

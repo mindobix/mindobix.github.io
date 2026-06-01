@@ -3,8 +3,8 @@ window.APPS_META = {
     desc: "Plan, write, schedule, and publish across X, LinkedIn, Instagram, YouTube, and TikTok from one calm, AI-assisted workspace. Hosted product.",
     tags: ["Hosted", "Multi-Channel", "AI-Assisted"], iconClass: "icon-career", badgeClass: "badge-career", badgeText: "Hosted App" },
 
-  "wot": { name: "Weekly Options Trader", category: "Finance", icon: "📈", href: "app.html?id=wot", group: "Featured", repoUrl: "https://wot.socialstream.media/#/landing",
-    desc: "AI-built weekly options plans delivered before the bell — Sunday setups plus a daily market analysis and trade plan at 8:45 ET. Hosted product. Not financial advice.",
+  "wot": { name: "TradeByFire", category: "Finance", icon: "🔥", href: "app.html?id=wot", group: "Featured", repoUrl: "https://tradebyfire.com/#/landing",
+    desc: "Deterministic weekly options plans, forged before the open — Sunday setups plus a daily market analysis and trade plan before the bell. No paid LLM. Hosted product. Not financial advice.",
     tags: ["Hosted", "AI Plans", "Daily"], iconClass: "icon-finance", badgeClass: "badge-finance", badgeText: "Hosted App" },
 
   "local-vibecoding-appideas": { name: "VibeCoding App Ideas", category: "Career & Productivity", icon: "💡", href: "app.html?id=vibecoding-ideas", group: "Useful App", repoUrl: "https://github.com/mindobix/local-vibecoding-appideas",
