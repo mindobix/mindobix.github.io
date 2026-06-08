@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-07",
+  "lastUpdated": "2026-06-08",
   "repos": {
     "CCKotlinNetworking": {
       "total": 248,
@@ -22,8 +22,8 @@
       "uniques": 40
     },
     "CCSwiftAPICache": {
-      "total": 39,
-      "uniques": 36
+      "total": 40,
+      "uniques": 37
     },
     "CCSwiftFeatureConfig": {
       "total": 28,
@@ -42,8 +42,8 @@
       "uniques": 29
     },
     "sam-framework": {
-      "total": 117,
-      "uniques": 90
+      "total": 118,
+      "uniques": 91
     },
     "MyCareerPulse": {
       "total": 29,
@@ -78,8 +78,8 @@
       "uniques": 18
     },
     "local-trading-journal": {
-      "total": 439,
-      "uniques": 228
+      "total": 440,
+      "uniques": 229
     },
     "local-vibecoding-appideas": {
       "total": 490,
