@@ -243,6 +243,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -487,6 +495,14 @@
       "uniques": 0
     },
     "2026-06-10": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
       "count": 0,
       "uniques": 0
     }
@@ -735,6 +751,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -981,6 +1005,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 2,
+      "uniques": 2
     }
   },
   "CCSwiftNetworking": {
@@ -1225,6 +1257,14 @@
       "uniques": 0
     },
     "2026-06-10": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
       "count": 0,
       "uniques": 0
     }
@@ -1473,6 +1513,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftFeatureConfig": {
@@ -1717,6 +1765,14 @@
       "uniques": 0
     },
     "2026-06-10": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-06-12": {
       "count": 0,
       "uniques": 0
     }
@@ -1965,6 +2021,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "cc-api-framework": {
@@ -2209,6 +2273,14 @@
       "uniques": 0
     },
     "2026-06-10": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
       "count": 0,
       "uniques": 0
     }
@@ -2457,6 +2529,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "sam-framework": {
@@ -2703,6 +2783,14 @@
     "2026-06-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "MyCareerPulse": {
@@ -2949,6 +3037,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-06-12": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-api-web-proxy": {
@@ -3195,6 +3291,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-billpay-tracker": {
@@ -3441,6 +3545,14 @@
     "2026-06-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-filesync": {
@@ -3687,6 +3799,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-habit-calendar": {
@@ -3931,6 +4051,14 @@
       "uniques": 0
     },
     "2026-06-10": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-06-12": {
       "count": 0,
       "uniques": 0
     }
@@ -4179,6 +4307,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-recipebook": {
@@ -4423,6 +4559,14 @@
       "uniques": 0
     },
     "2026-06-10": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-06-12": {
       "count": 0,
       "uniques": 0
     }
@@ -4671,6 +4815,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-trading-journal": {
@@ -4915,6 +5067,14 @@
       "uniques": 2
     },
     "2026-06-10": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
       "count": 0,
       "uniques": 0
     }
@@ -5163,6 +5323,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-weekly-options-trade-plan": {
@@ -5407,6 +5575,14 @@
       "uniques": 0
     },
     "2026-06-10": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
       "count": 0,
       "uniques": 0
     }
@@ -5655,6 +5831,14 @@
     "2026-06-10": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "myfamilytree": {
@@ -5901,6 +6085,14 @@
     "2026-06-10": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "dailywealth": {
@@ -6145,6 +6337,14 @@
       "uniques": 0
     },
     "2026-06-10": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-12": {
       "count": 0,
       "uniques": 0
     }
