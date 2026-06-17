@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-16",
+  "lastUpdated": "2026-06-17",
   "repos": {
     "CCKotlinNetworking": {
       "total": 251,
@@ -18,8 +18,8 @@
       "uniques": 50
     },
     "CCSwiftNetworking": {
-      "total": 47,
-      "uniques": 43
+      "total": 49,
+      "uniques": 45
     },
     "CCSwiftAPICache": {
       "total": 43,
@@ -38,8 +38,8 @@
       "uniques": 29
     },
     "cc-apis-demo-monorepo": {
-      "total": 32,
-      "uniques": 30
+      "total": 33,
+      "uniques": 31
     },
     "sam-framework": {
       "total": 123,
