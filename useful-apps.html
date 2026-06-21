@@ -26,8 +26,9 @@
 
     /* ── Featured strip ── */
     .ua-featured { margin: 40px 0 8px; }
-    .ua-feat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    @media (max-width: 900px) { .ua-feat-grid { grid-template-columns: repeat(2, 1fr); } }
+    .ua-feat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    @media (max-width: 1100px) { .ua-feat-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 760px) { .ua-feat-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 520px) { .ua-feat-grid { grid-template-columns: 1fr; } }
     .ua-feat {
       display: flex; flex-direction: column; gap: 8px;
@@ -214,6 +215,13 @@
   <div class="ua-featured">
     <span class="section-label">Start here · Featured</span>
     <div class="ua-feat-grid">
+      <a href="awakening.html" class="ua-feat">
+        <span class="ua-feat-ic">☾</span>
+        <span class="ua-feat-host">iOS · iPhone · iPad · Watch · TV</span>
+        <h4>Awakening</h4>
+        <p>A quiet space to sit and be awake. A breathing dot, a daily reflection, and a calm log — no streaks, no noise.</p>
+        <span class="ua-feat-cta">View app</span>
+      </a>
       <a href="app.html?id=socialstream" class="ua-feat">
         <span class="ua-feat-ic">✦</span>
         <span class="ua-feat-host">Hosted · socialstream.media</span>

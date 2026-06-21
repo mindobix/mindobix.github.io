@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V460QPM640"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V460QPM640');
+  </script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awakening — Sit. Be awake. | Mindobix</title>
+  <meta name="description" content="Awakening is a quiet space to sit. No streaks, no targets, no noise — just a breathing dot, a daily reflection from the world's wisdom traditions, and a calm log of the days you showed up. iPhone, iPad, Apple Watch & Apple TV. Free." />
+  <link rel="canonical" href="https://mindobix.com/awakening" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Awakening — Sit. Be awake." />
+  <meta property="og:description" content="A quiet place to sit and be awake. A breathing dot, a daily reflection from many traditions, and a calm log of your practice — across iPhone, iPad, Apple Watch and Apple TV." />
+  <meta property="og:url" content="https://mindobix.com/awakening" />
+  <meta property="og:image" content="https://mindobix.com/awakening-icon.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── Awakening brand palette (twilight → dawn, from the app icon) ── */
+    .awk {
+      --awk-night: #2B2A57;
+      --awk-indigo: #4a3f7e;
+      --awk-violet: #6E5C93;
+      --awk-dawn: #E2A38C;
+      --awk-cream: #FBF1DC;
+    }
+
+    /* ── HERO ── */
+    .awk-hero {
+      position: relative; overflow: hidden;
+      text-align: center; color: #fff;
+      padding: 110px 0 96px;
+      background: linear-gradient(180deg, #1f1e44 0%, #2B2A57 28%, #4a3f7e 52%, #6E5C93 74%, #E2A38C 100%);
+    }
+    .awk-hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(2px 2px at 18% 22%, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.5px 1.5px at 72% 16%, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 41% 30%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(2px 2px at 86% 34%, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 9% 40%, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.5px 1.5px at 58% 9%, rgba(255,255,255,0.75), transparent);
+      opacity: 0.8;
+    }
+    .awk-hero .container { position: relative; z-index: 1; }
+
+    /* Breathing dot — the heart of the app, rendered live */
+    .awk-dot {
+      width: 132px; height: 132px; margin: 0 auto 36px; border-radius: 50%;
+      background: radial-gradient(circle at 50% 42%, #fffaf0 0%, #FBF1DC 46%, #f1d9b8 100%);
+      box-shadow: 0 0 60px 14px rgba(251,241,220,0.55), 0 0 120px 30px rgba(226,163,140,0.35);
+      animation: awk-breathe 9s ease-in-out infinite;
+    }
+    @keyframes awk-breathe {
+      0%, 100% { transform: scale(0.86); opacity: 0.86; }
+      50%      { transform: scale(1.06); opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .awk-dot { animation: none; transform: scale(1); }
+    }
+
+    .awk-eyebrow {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: #fff; background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 22px;
+    }
+    .awk-hero h1 {
+      color: #fff; font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.02; margin: 0 auto 18px; max-width: 16ch; letter-spacing: -0.02em;
+    }
+    .awk-hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.35rem); color: rgba(255,255,255,0.92);
+      max-width: 620px; margin: 0 auto 14px; line-height: 1.5; font-weight: 400;
+    }
+    .awk-hero-still {
+      font-size: 1rem; color: rgba(255,255,255,0.72);
+      max-width: 520px; margin: 0 auto 36px; font-style: italic;
+    }
+    .awk-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; align-items: center; }
+
+    /* App Store button — dark pill, à la Apple's badge */
+    .awk-appstore {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: #000; color: #fff; text-decoration: none;
+      padding: 12px 22px; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5);
+    }
+    .awk-appstore:hover { transform: translateY(-2px); box-shadow: 0 20px 44px -12px rgba(0,0,0,0.6); }
+    .awk-appstore .awk-apple { font-size: 26px; line-height: 1; }
+    .awk-appstore .awk-as-text { text-align: left; line-height: 1.15; }
+    .awk-appstore .awk-as-small { display: block; font-size: 10px; letter-spacing: 0.04em; opacity: 0.85; text-transform: uppercase; }
+    .awk-appstore .awk-as-big { display: block; font-size: 18px; font-weight: 600; }
+    .awk-ghost-light {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: #fff; text-decoration: none; font-weight: 600; font-size: 15px;
+      padding: 13px 22px; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.08);
+      transition: background 0.18s ease;
+    }
+    .awk-ghost-light:hover { background: rgba(255,255,255,0.16); }
+    .awk-platforms-line { margin-top: 28px; font-size: 13px; color: rgba(255,255,255,0.8); letter-spacing: 0.04em; }
+
+    /* ── FEATURE TRIO ── */
+    .awk-features { padding: 84px 0 64px; }
+    .awk-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 820px) { .awk-feat-grid { grid-template-columns: 1fr; } }
+    .awk-feat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 34px 30px; text-align: left;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .awk-feat-ic {
+      width: 54px; height: 54px; border-radius: 15px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; font-size: 26px;
+      color: #fff; background: linear-gradient(135deg, var(--awk-night), var(--awk-violet));
+    }
+    .awk-feat h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .awk-feat p { font-size: 0.98rem; line-height: 1.6; color: var(--text2); margin: 0; }
+
+    /* ── TRADITIONS ── */
+    .awk-trad { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .awk-trad-inner { padding: 80px 0; }
+    .awk-trad-head { text-align: center; max-width: 660px; margin: 0 auto 48px; }
+    .awk-trad-head p { font-size: 1.05rem; color: var(--text2); margin-top: 10px; line-height: 1.6; }
+    .awk-trad-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 900px) { .awk-trad-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .awk-trad-grid { grid-template-columns: 1fr; } }
+    .awk-trad-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px 20px; text-align: center;
+    }
+    .awk-trad-card h4 { font-size: 1rem; margin: 0 0 6px; }
+    .awk-trad-card p { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin: 0; }
+
+    /* ── PHILOSOPHY / QUOTE BAND ── */
+    .awk-quote {
+      position: relative; overflow: hidden; text-align: center; color: #fff;
+      padding: 96px 0;
+      background: linear-gradient(135deg, #2B2A57 0%, #4a3f7e 45%, #6E5C93 72%, #E2A38C 100%);
+    }
+    .awk-quote::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 50% 80% at 50% 0%, rgba(255,255,255,0.14), transparent 60%);
+    }
+    .awk-quote .container { position: relative; z-index: 1; }
+    .awk-quote blockquote {
+      font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 600; line-height: 1.3;
+      max-width: 16ch; margin: 0 auto 14px; color: #fff; letter-spacing: -0.01em;
+    }
+    .awk-quote cite { font-style: normal; font-size: 0.95rem; color: rgba(255,255,255,0.7); }
+
+    /* ── PRINCIPLES ── */
+    .awk-principles { padding: 84px 0; }
+    .awk-prin-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 8px; }
+    @media (max-width: 820px) { .awk-prin-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px) { .awk-prin-grid { grid-template-columns: 1fr; } }
+    .awk-prin h4 { font-size: 1.05rem; margin: 0 0 6px; }
+    .awk-prin p { font-size: 0.92rem; color: var(--text2); line-height: 1.55; margin: 0; }
+    .awk-prin-mark { font-size: 22px; color: var(--awk-violet); display: block; margin-bottom: 10px; }
+
+    /* ── PLATFORMS ── */
+    .awk-plat { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 72px 0; text-align: center; }
+    .awk-plat-row { display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 36px; }
+    .awk-plat-item { display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 110px; }
+    .awk-plat-ic { font-size: 38px; }
+    .awk-plat-item span { font-size: 13px; color: var(--text2); font-weight: 600; }
+
+    /* ── DOWNLOAD CTA ── */
+    .awk-cta { padding: 96px 0; text-align: center; }
+    .awk-cta h2 { margin-bottom: 14px; }
+    .awk-cta p { max-width: 540px; margin: 0 auto 30px; font-size: 1.05rem; color: var(--text2); }
+    .awk-cta-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; align-items: center; }
+    .awk-support-link { font-size: 14px; color: var(--muted); margin-top: 22px; }
+    .awk-support-link a { color: var(--accent); }
+  </style>
+  <script defer src="js/site-chrome.js"></script>
+</head>
+<body data-page="awakening" class="awk">
+
+<!-- ── NAVIGATION ── -->
+<div id="site-nav-mount"></div>
+
+<!-- ── HERO ── -->
+<section class="awk-hero">
+  <div class="container">
+    <div class="awk-dot" aria-hidden="true"></div>
+    <div class="awk-eyebrow">Free · iOS · Apple Watch · Apple TV</div>
+    <h1>Sit. Be awake.</h1>
+    <p class="awk-hero-sub">Awakening is a quiet space to sit. No streaks, no targets, no noise — just a breathing dot, a daily reflection, and a record of the days you showed up.</p>
+    <p class="awk-hero-still">Be still, and know.</p>
+    <div class="awk-actions">
+      <a href="https://apps.apple.com/us/search?term=awakening%20mindobix" target="_blank" rel="noopener" class="awk-appstore">
+        <span class="awk-apple" aria-hidden="true"></span>
+        <span class="awk-as-text">
+          <span class="awk-as-small">Download on the</span>
+          <span class="awk-as-big">App Store</span>
+        </span>
+      </a>
+      <a href="#features" class="awk-ghost-light">Why Awakening <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="awk-platforms-line">iPhone · iPad · Apple Watch · Apple TV — your practice, everywhere you are.</div>
+  </div>
+</section>
+
+<!-- ── FEATURE TRIO ── -->
+<section class="awk-features" id="features">
+  <div class="container">
+    <div class="sec-head" style="text-align:center; max-width:680px; margin:0 auto 48px;">
+      <span class="section-label">What it is</span>
+      <h2 class="section-title">Just a still place to sit.</h2>
+      <p style="font-size:1.05rem; color:var(--text2); margin-top:8px;">Three quiet things, done well. Nothing more to manage.</p>
+    </div>
+    <div class="awk-feat-grid">
+      <div class="awk-feat">
+        <div class="awk-feat-ic">◯</div>
+        <h3>A breathing dot</h3>
+        <p>Sit for as long as you like, or set a gentle timer. A soft dot expands and contracts to give your breath something to rest on. Tap BEGIN to start; tap END when you're done.</p>
+      </div>
+      <div class="awk-feat">
+        <div class="awk-feat-ic">✶</div>
+        <h3>A daily reflection</h3>
+        <p>One short passage each day, drawn from the world's wisdom traditions. A single thought to carry into the stillness — never a feed, never a notification storm.</p>
+      </div>
+      <div class="awk-feat">
+        <div class="awk-feat-ic">☷</div>
+        <h3>A calm log</h3>
+        <p>A quiet record of the days you showed up — the Awake log — synced across iPhone, iPad, Apple Watch and Apple TV. No streak to defend, no guilt for missing a day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRADITIONS ── -->
+<div class="awk-trad">
+  <div class="container awk-trad-inner">
+    <div class="awk-trad-head">
+      <span class="section-label">Reflections</span>
+      <h2 class="section-title">Wisdom from many traditions.</h2>
+      <p>Each day's reflection is gathered from across the world's great spiritual texts — offered side by side, with respect, for anyone who wants to sit with them.</p>
+    </div>
+    <div class="awk-trad-grid">
+      <div class="awk-trad-card">
+        <h4>Christianity</h4>
+        <p>The Bible &amp; the Beatitudes</p>
+      </div>
+      <div class="awk-trad-card">
+        <h4>Buddhism</h4>
+        <p>The Dhammapada</p>
+      </div>
+      <div class="awk-trad-card">
+        <h4>Sikhism</h4>
+        <p>Guru Granth Sahib &amp; Japji Sahib</p>
+      </div>
+      <div class="awk-trad-card">
+        <h4>Islam</h4>
+        <p>The Quran</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PHILOSOPHY QUOTE ── -->
+<div class="awk-quote">
+  <div class="container">
+    <blockquote>Be still, and know.</blockquote>
+    <cite>The whole app, in three words.</cite>
+  </div>
+</div>
+
+<!-- ── PRINCIPLES ── -->
+<section class="awk-principles">
+  <div class="container">
+    <div class="sec-head" style="text-align:center; max-width:680px; margin:0 auto 40px;">
+      <span class="section-label">By design</span>
+      <h2 class="section-title">What we left out, on purpose.</h2>
+    </div>
+    <div class="awk-prin-grid">
+      <div class="awk-prin">
+        <span class="awk-prin-mark" aria-hidden="true">∅</span>
+        <h4>No streaks</h4>
+        <p>Miss a day, miss a month — nothing is lost. You simply sit again when you're ready.</p>
+      </div>
+      <div class="awk-prin">
+        <span class="awk-prin-mark" aria-hidden="true">∅</span>
+        <h4>No targets</h4>
+        <p>No goals to hit, no badges to chase. The only measure is that you showed up.</p>
+      </div>
+      <div class="awk-prin">
+        <span class="awk-prin-mark" aria-hidden="true">⌂</span>
+        <h4>No account</h4>
+        <p>Nothing to sign up for. Open it and begin — your practice stays on your devices.</p>
+      </div>
+      <div class="awk-prin">
+        <span class="awk-prin-mark" aria-hidden="true">♡</span>
+        <h4>No noise</h4>
+        <p>No ads, no upsell, no firehose of content. A calm tool that asks nothing of you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PLATFORMS ── -->
+<div class="awk-plat">
+  <div class="container">
+    <span class="section-label">Everywhere you are</span>
+    <h2 class="section-title" style="margin-top:6px;">One practice, every Apple screen.</h2>
+    <div class="awk-plat-row">
+      <div class="awk-plat-item"><span class="awk-plat-ic" aria-hidden="true">📱</span><span>iPhone</span></div>
+      <div class="awk-plat-item"><span class="awk-plat-ic" aria-hidden="true">▭</span><span>iPad</span></div>
+      <div class="awk-plat-item"><span class="awk-plat-ic" aria-hidden="true">⌚</span><span>Apple Watch</span></div>
+      <div class="awk-plat-item"><span class="awk-plat-ic" aria-hidden="true">📺</span><span>Apple TV</span></div>
+    </div>
+    <p style="margin-top:28px; font-size:0.95rem; color:var(--muted); max-width:540px; margin-left:auto; margin-right:auto;">On Apple TV, use the Siri Remote — click to select, swipe to move between tabs. Reflections and the Awake log are fully navigable on the big screen.</p>
+  </div>
+</div>
+
+<!-- ── DOWNLOAD CTA ── -->
+<section class="awk-cta">
+  <div class="container">
+    <span class="section-label">Free on the App Store</span>
+    <h2>Begin where you are.</h2>
+    <p>Download Awakening, tap BEGIN, and sit. That's the whole thing.</p>
+    <div class="awk-cta-actions">
+      <a href="https://apps.apple.com/us/search?term=awakening%20mindobix" target="_blank" rel="noopener" class="awk-appstore" style="border-color:var(--border);">
+        <span class="awk-apple" aria-hidden="true"></span>
+        <span class="awk-as-text">
+          <span class="awk-as-small">Download on the</span>
+          <span class="awk-as-big">App Store</span>
+        </span>
+      </a>
+      <a href="useful-apps.html" class="btn btn-ghost">See all Mindobix apps</a>
+    </div>
+    <div class="awk-support-link">Questions? <a href="awakening/support">Awakening support</a> · <a href="privacy.html">Privacy</a></div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<div id="site-footer-mount"></div>
+
+<script defer src="js/apps-meta.js"></script>
+</body>
+</html>

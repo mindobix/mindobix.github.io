@@ -80,6 +80,15 @@
   // (orange→pink). Stack on mobile. Each half is its own clickable <a>.
   const SSP_TOP_HTML =
     '<div class="mdbx-dual-strip">' +
+      '<a href="awakening.html" class="awkp-strip mdbx-dual-strip-col">' +
+        '<div class="ssp-strip-inner">' +
+          '<span class="ssp-strip-badge">NEW</span>' +
+          '<span class="ssp-strip-text">' +
+            '<strong>Awakening</strong> — a quiet place to sit and be awake, on iPhone · iPad · Watch · TV.' +
+          '</span>' +
+          '<span class="ssp-strip-cta awkp-strip-cta">Get the app <span class="ssp-strip-arrow">→</span></span>' +
+        '</div>' +
+      '</a>' +
       '<a href="https://socialstream.media/#/landing" class="ssp-strip mdbx-dual-strip-col" target="_blank" rel="noopener">' +
         '<div class="ssp-strip-inner">' +
           '<span class="ssp-strip-badge">NEW</span>' +
@@ -107,6 +116,16 @@
     '<div class="ssp-band">' +
       '<div class="container">' +
         '<div class="mdbx-dual-band">' +
+          '<a href="awakening.html" class="awkp-promo mdbx-dual-band-col">' +
+            '<div class="awkp-icon">☾</div>' +
+            '<div class="ssp-body">' +
+              '<span class="awkp-eyebrow">New · Awakening for iOS</span>' +
+              '<div class="ssp-title">A quiet place to sit and be awake.</div>' +
+              '<div class="ssp-sub">No streaks, no targets, no noise — just a breathing dot, a daily reflection from the world\'s wisdom traditions, and a calm record of the days you showed up. iPhone · iPad · Apple Watch · Apple TV.</div>' +
+              '<div class="ssp-meta">mindobix.com/awakening</div>' +
+            '</div>' +
+            '<span class="awkp-cta">Get Awakening <span class="ssp-arrow">→</span></span>' +
+          '</a>' +
           '<a href="https://socialstream.media/#/landing" class="ssp-promo mdbx-dual-band-col" target="_blank" rel="noopener">' +
             '<div class="ssp-icon">✦</div>' +
             '<div class="ssp-body">' +
@@ -144,6 +163,7 @@
             '<a href="useful-apps.html">All Apps</a>' +
             '<a href="top-apps.html">Top Apps</a>' +
             '<a href="appstore/index.html">App Store</a>' +
+            '<a href="awakening.html">Awakening</a>' +
             '<a href="app.html?id=socialstream">Social Stream</a>' +
             '<a href="app.html?id=wot">TradeByFire</a>' +
             '<a href="app.html?id=trading-journal">Trading Journal</a>' +
