@@ -134,15 +134,18 @@
     .awk-trad-inner { padding: 80px 0; }
     .awk-trad-head { text-align: center; max-width: 660px; margin: 0 auto 48px; }
     .awk-trad-head p { font-size: 1.05rem; color: var(--text2); margin-top: 10px; line-height: 1.6; }
-    .awk-trad-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    @media (max-width: 900px) { .awk-trad-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .awk-trad-grid { grid-template-columns: 1fr; } }
-    .awk-trad-card {
+    .awk-trad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 820px) { .awk-trad-grid { grid-template-columns: 1fr; } }
+    .awk-quote-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 14px; padding: 22px 20px; text-align: center;
+      border-radius: 16px; padding: 30px 28px; text-align: left; position: relative;
     }
-    .awk-trad-card h4 { font-size: 1rem; margin: 0 0 6px; }
-    .awk-trad-card p { font-size: 12.5px; color: var(--muted); line-height: 1.55; margin: 0; }
+    .awk-quote-card .awk-qmark {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 46px; line-height: 0.5; color: var(--awk-dawn);
+      display: block; margin-bottom: 16px;
+    }
+    .awk-quote-card p { font-size: 1.1rem; color: var(--text); line-height: 1.5; margin: 0; font-weight: 500; }
 
     /* ── PHILOSOPHY / QUOTE BAND ── */
     .awk-quote {
@@ -247,25 +250,21 @@
   <div class="container awk-trad-inner">
     <div class="awk-trad-head">
       <span class="section-label">Reflections</span>
-      <h2 class="section-title">Wisdom from many traditions.</h2>
-      <p>Each day's reflection is gathered from across the world's great spiritual texts — offered side by side, with respect, for anyone who wants to sit with them.</p>
+      <h2 class="section-title">A quiet thought each day.</h2>
+      <p>Every day, Awakening offers a single short reflection — a calm thought to carry into the stillness. Never a feed, never a flood. Just one line to sit with.</p>
     </div>
     <div class="awk-trad-grid">
-      <div class="awk-trad-card">
-        <h4>Christianity</h4>
-        <p>The Bible &amp; the Beatitudes</p>
+      <div class="awk-quote-card">
+        <span class="awk-qmark" aria-hidden="true">&ldquo;</span>
+        <p>The quieter you become, the more you are able to hear.</p>
       </div>
-      <div class="awk-trad-card">
-        <h4>Buddhism</h4>
-        <p>The Dhammapada</p>
+      <div class="awk-quote-card">
+        <span class="awk-qmark" aria-hidden="true">&ldquo;</span>
+        <p>Each breath is a place to begin again.</p>
       </div>
-      <div class="awk-trad-card">
-        <h4>Sikhism</h4>
-        <p>Guru Granth Sahib &amp; Japji Sahib</p>
-      </div>
-      <div class="awk-trad-card">
-        <h4>Islam</h4>
-        <p>The Quran</p>
+      <div class="awk-quote-card">
+        <span class="awk-qmark" aria-hidden="true">&ldquo;</span>
+        <p>Wherever you are, that is the entry point.</p>
       </div>
     </div>
   </div>
