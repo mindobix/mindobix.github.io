@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V460QPM640"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V460QPM640');
+  </script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HabitCalendar — Build habits, one tap a day | Mindobix</title>
+  <meta name="description" content="HabitCalendar is the simplest way to build a habit and keep it — one tap a day on a calendar you'll love to look at. No streaks to stress over, no accounts, no ads. iPhone & iPad, with private iCloud sync. Free." />
+  <link rel="canonical" href="https://mindobix.com/habitcalendar" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="HabitCalendar — Build habits, one tap a day" />
+  <meta property="og:description" content="The simplest way to build a habit and keep it. Tap a day, build a habit, keep going. iPhone & iPad, private by design." />
+  <meta property="og:url" content="https://mindobix.com/habitcalendar" />
+  <meta property="og:image" content="https://mindobix.com/habitcalendar-icon.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── HabitCalendar brand palette (blue → periwinkle, teal accent) ── */
+    .hc {
+      --hc-indigo: #4F5BE0;
+      --hc-blue: #6E86F2;
+      --hc-peri: #93B4F7;
+      --hc-teal: #26C6A0;
+    }
+
+    /* ── HERO ── */
+    .hc-hero {
+      position: relative; overflow: hidden; text-align: center; color: #fff;
+      padding: 104px 0 72px;
+      background: linear-gradient(158deg, #4453d8 0%, #4F5BE0 26%, #6E86F2 62%, #93B4F7 100%);
+    }
+    .hc-hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 50% 70% at 85% 0%, rgba(255,255,255,0.18), transparent 60%),
+        radial-gradient(ellipse 40% 60% at 5% 100%, rgba(255,255,255,0.12), transparent 60%);
+    }
+    .hc-hero .container { position: relative; z-index: 1; }
+    .hc-appicon {
+      width: 96px; height: 96px; border-radius: 23px; margin: 0 auto 26px;
+      display: block; box-shadow: 0 18px 40px -12px rgba(0,0,0,0.45);
+    }
+    .hc-eyebrow {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: #fff; background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 20px;
+    }
+    .hc-hero h1 {
+      color: #fff; font-size: clamp(2.5rem, 5.6vw, 4rem);
+      line-height: 1.04; margin: 0 auto 18px; max-width: 15ch; letter-spacing: -0.02em;
+    }
+    .hc-hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.3rem); color: rgba(255,255,255,0.92);
+      max-width: 600px; margin: 0 auto 34px; line-height: 1.5; font-weight: 400;
+    }
+    .hc-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; align-items: center; }
+    .hc-appstore {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: #000; color: #fff; text-decoration: none;
+      padding: 12px 22px; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5);
+    }
+    .hc-appstore:hover { transform: translateY(-2px); box-shadow: 0 20px 44px -12px rgba(0,0,0,0.6); }
+    .hc-appstore .hc-apple { font-size: 26px; line-height: 1; }
+    .hc-appstore .hc-as-text { text-align: left; line-height: 1.15; }
+    .hc-appstore .hc-as-small { display: block; font-size: 10px; letter-spacing: 0.04em; opacity: 0.85; text-transform: uppercase; }
+    .hc-appstore .hc-as-big { display: block; font-size: 18px; font-weight: 600; }
+    .hc-ghost-light {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: #fff; text-decoration: none; font-weight: 600; font-size: 15px;
+      padding: 13px 22px; border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.35); background: rgba(255,255,255,0.08);
+      transition: background 0.18s ease;
+    }
+    .hc-ghost-light:hover { background: rgba(255,255,255,0.16); }
+
+    /* Hero device shot */
+    .hc-hero-shot { margin-top: 54px; display: flex; justify-content: center; }
+    .hc-hero-shot img {
+      width: 280px; max-width: 78%; border-radius: 36px;
+      box-shadow: 0 40px 80px -24px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.12);
+    }
+
+    /* ── FEATURE TRIO ── */
+    .hc-features { padding: 84px 0 64px; }
+    .hc-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 820px) { .hc-feat-grid { grid-template-columns: 1fr; } }
+    .hc-feat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 34px 30px; text-align: left;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .hc-feat-ic {
+      width: 54px; height: 54px; border-radius: 15px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; font-size: 26px;
+      color: #fff; background: linear-gradient(135deg, var(--hc-indigo), var(--hc-blue));
+    }
+    .hc-feat h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .hc-feat p { font-size: 0.98rem; line-height: 1.6; color: var(--text2); margin: 0; }
+
+    /* ── SCREENSHOT SHOWCASE ── */
+    .hc-shots { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .hc-shots-inner { padding: 80px 0; }
+    .hc-shots-head { text-align: center; max-width: 660px; margin: 0 auto 52px; }
+    .hc-shots-head p { font-size: 1.05rem; color: var(--text2); margin-top: 10px; line-height: 1.6; }
+    .hc-shots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: start; }
+    @media (max-width: 760px) { .hc-shots-grid { grid-template-columns: 1fr; gap: 44px; max-width: 320px; margin: 0 auto; } }
+    .hc-shot { text-align: center; }
+    .hc-shot img {
+      width: 100%; max-width: 270px; border-radius: 30px;
+      box-shadow: 0 28px 60px -22px rgba(40,50,120,0.45), 0 0 0 1px var(--border);
+    }
+    .hc-shot h4 { font-size: 1.05rem; margin: 22px 0 6px; }
+    .hc-shot p { font-size: 0.9rem; color: var(--muted); line-height: 1.55; margin: 0 auto; max-width: 28ch; }
+
+    /* ── PRINCIPLES ── */
+    .hc-principles { padding: 84px 0; }
+    .hc-prin-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 8px; }
+    @media (max-width: 820px) { .hc-prin-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px) { .hc-prin-grid { grid-template-columns: 1fr; } }
+    .hc-prin h4 { font-size: 1.05rem; margin: 0 0 6px; }
+    .hc-prin p { font-size: 0.92rem; color: var(--text2); line-height: 1.55; margin: 0; }
+    .hc-prin-mark { font-size: 22px; color: var(--hc-blue); display: block; margin-bottom: 10px; }
+
+    /* ── PLATFORMS ── */
+    .hc-plat { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 72px 0; text-align: center; }
+    .hc-plat-row { display: flex; flex-wrap: wrap; gap: 28px; justify-content: center; margin-top: 36px; }
+    .hc-plat-item { display: flex; flex-direction: column; align-items: center; gap: 10px; min-width: 110px; }
+    .hc-plat-ic { font-size: 38px; }
+    .hc-plat-item span { font-size: 13px; color: var(--text2); font-weight: 600; }
+
+    /* ── QUOTE BAND ── */
+    .hc-quote {
+      position: relative; overflow: hidden; text-align: center; color: #fff;
+      padding: 92px 0;
+      background: linear-gradient(135deg, #4F5BE0 0%, #6E86F2 55%, #93B4F7 100%);
+    }
+    .hc-quote::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 50% 80% at 50% 0%, rgba(255,255,255,0.16), transparent 60%);
+    }
+    .hc-quote .container { position: relative; z-index: 1; }
+    .hc-quote blockquote {
+      font-size: clamp(1.6rem, 4vw, 2.3rem); font-weight: 600; line-height: 1.3;
+      max-width: 18ch; margin: 0 auto 12px; color: #fff; letter-spacing: -0.01em;
+    }
+    .hc-quote cite { font-style: normal; font-size: 0.95rem; color: rgba(255,255,255,0.72); }
+
+    /* ── DOWNLOAD CTA ── */
+    .hc-cta { padding: 96px 0; text-align: center; }
+    .hc-cta h2 { margin-bottom: 14px; }
+    .hc-cta p { max-width: 540px; margin: 0 auto 30px; font-size: 1.05rem; color: var(--text2); }
+    .hc-cta-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; align-items: center; }
+    .hc-support-link { font-size: 14px; color: var(--muted); margin-top: 22px; }
+    .hc-support-link a { color: var(--accent); }
+  </style>
+  <script defer src="js/site-chrome.js"></script>
+</head>
+<body data-page="habitcalendar" class="hc">
+
+<!-- ── NAVIGATION ── -->
+<div id="site-nav-mount"></div>
+
+<!-- ── HERO ── -->
+<section class="hc-hero">
+  <div class="container">
+    <img src="habitcalendar-icon.png" alt="HabitCalendar app icon" class="hc-appicon" width="96" height="96" />
+    <div class="hc-eyebrow">Free · iPhone · iPad</div>
+    <h1>Build habits, one tap a day.</h1>
+    <p class="hc-hero-sub">HabitCalendar is the simplest way to build a habit and actually keep it — one tap a day on a calendar you'll love to look at.</p>
+    <div class="hc-actions">
+      <a href="https://apps.apple.com/us/search?term=habitcalendar" target="_blank" rel="noopener" class="hc-appstore">
+        <span class="hc-apple" aria-hidden="true"></span>
+        <span class="hc-as-text">
+          <span class="hc-as-small">Download on the</span>
+          <span class="hc-as-big">App Store</span>
+        </span>
+      </a>
+      <a href="#screens" class="hc-ghost-light">See it in action <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="hc-hero-shot">
+      <img src="habitcalendar/shot-calendar.png" alt="HabitCalendar calendar view filling in as days are marked done" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURE TRIO ── -->
+<section class="hc-features">
+  <div class="container">
+    <div class="sec-head" style="text-align:center; max-width:680px; margin:0 auto 48px;">
+      <span class="section-label">What it is</span>
+      <h2 class="section-title">A habit tracker you'll actually open.</h2>
+      <p style="font-size:1.05rem; color:var(--text2); margin-top:8px;">Three simple things, done beautifully. Tap a day, build a habit, keep going.</p>
+    </div>
+    <div class="hc-feat-grid">
+      <div class="hc-feat">
+        <div class="hc-feat-ic">📅</div>
+        <h3>A calendar you'll love</h3>
+        <p>A clean, full-screen calendar for each habit. Tap a day to mark it done and watch the month fill in as your consistency grows. No clutter, no friction.</p>
+      </div>
+      <div class="hc-feat">
+        <div class="hc-feat-ic">📈</div>
+        <h3>Insights that motivate</h3>
+        <p>See your momentum at a glance — current streak, best streak, completion rate, and the patterns that keep you going. Encouragement, never pressure.</p>
+      </div>
+      <div class="hc-feat">
+        <div class="hc-feat-ic">✓</div>
+        <h3>As many habits as you like</h3>
+        <p>Meditation, exercise, reading, water, journaling — track them all and switch between them in a single tap. One tidy place for every routine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCREENSHOT SHOWCASE ── -->
+<div class="hc-shots" id="screens">
+  <div class="container hc-shots-inner">
+    <div class="hc-shots-head">
+      <span class="section-label">Take a look</span>
+      <h2 class="section-title">Designed to be glanced at, every day.</h2>
+      <p>Calendar, Insights, and Habits — three calm tabs, and nothing you don't need.</p>
+    </div>
+    <div class="hc-shots-grid">
+      <div class="hc-shot">
+        <img src="habitcalendar/shot-calendar.png" alt="Monthly calendar with days marked done in teal" loading="lazy" />
+        <h4>Calendar</h4>
+        <p>Tap a day to mark it done. Your month fills in as you go.</p>
+      </div>
+      <div class="hc-shot">
+        <img src="habitcalendar/shot-insights.png" alt="Insights screen showing a 20-day streak, completion rate and consistency heatmap" loading="lazy" />
+        <h4>Insights</h4>
+        <p>Streaks, completion rate, and a consistency map that keeps you motivated.</p>
+      </div>
+      <div class="hc-shot">
+        <img src="habitcalendar/shot-habits.png" alt="Habits list showing Journal, Meditation, Exercise, Drink Water and Read" loading="lazy" />
+        <h4>Habits</h4>
+        <p>Every habit in one tidy list. Switch between them in a tap.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRINCIPLES ── -->
+<section class="hc-principles">
+  <div class="container">
+    <div class="sec-head" style="text-align:center; max-width:680px; margin:0 auto 40px;">
+      <span class="section-label">By design</span>
+      <h2 class="section-title">What we left out, on purpose.</h2>
+    </div>
+    <div class="hc-prin-grid">
+      <div class="hc-prin">
+        <span class="hc-prin-mark" aria-hidden="true">∅</span>
+        <h4>No streak stress</h4>
+        <p>Streaks encourage you — they never punish you. Miss a day and simply pick it back up.</p>
+      </div>
+      <div class="hc-prin">
+        <span class="hc-prin-mark" aria-hidden="true">⌂</span>
+        <h4>No accounts</h4>
+        <p>Nothing to sign up for. Open the app, add a habit, and start tapping.</p>
+      </div>
+      <div class="hc-prin">
+        <span class="hc-prin-mark" aria-hidden="true">∅</span>
+        <h4>No ads</h4>
+        <p>No ads, no trackers, no upsell. Just a calm tool that stays out of your way.</p>
+      </div>
+      <div class="hc-prin">
+        <span class="hc-prin-mark" aria-hidden="true">☁</span>
+        <h4>Private by design</h4>
+        <p>Your habits and history sync across your devices through your own iCloud. Your data is yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PLATFORMS ── -->
+<div class="hc-plat">
+  <div class="container">
+    <span class="section-label">Everywhere you are</span>
+    <h2 class="section-title" style="margin-top:6px;">On iPhone and iPad, always in sync.</h2>
+    <div class="hc-plat-row">
+      <div class="hc-plat-item"><span class="hc-plat-ic" aria-hidden="true">📱</span><span>iPhone</span></div>
+      <div class="hc-plat-item"><span class="hc-plat-ic" aria-hidden="true">▭</span><span>iPad</span></div>
+      <div class="hc-plat-item"><span class="hc-plat-ic" aria-hidden="true">☁</span><span>iCloud sync</span></div>
+    </div>
+    <p style="margin-top:28px; font-size:0.95rem; color:var(--muted); max-width:540px; margin-left:auto; margin-right:auto;">Mark a habit done on your iPhone and it's already there on your iPad. Private iCloud sync keeps your history with you, with no account to manage.</p>
+  </div>
+</div>
+
+<!-- ── QUOTE BAND ── -->
+<div class="hc-quote">
+  <div class="container">
+    <blockquote>Small steps, every day.</blockquote>
+    <cite>That's how habits are built.</cite>
+  </div>
+</div>
+
+<!-- ── DOWNLOAD CTA ── -->
+<section class="hc-cta">
+  <div class="container">
+    <span class="section-label">Free on the App Store</span>
+    <h2>Start today.</h2>
+    <p>Download HabitCalendar, add your first habit, and tap today. Tomorrow, do it again.</p>
+    <div class="hc-cta-actions">
+      <a href="https://apps.apple.com/us/search?term=habitcalendar" target="_blank" rel="noopener" class="hc-appstore" style="border-color:var(--border);">
+        <span class="hc-apple" aria-hidden="true"></span>
+        <span class="hc-as-text">
+          <span class="hc-as-small">Download on the</span>
+          <span class="hc-as-big">App Store</span>
+        </span>
+      </a>
+      <a href="useful-apps.html" class="btn btn-ghost">See all Mindobix apps</a>
+    </div>
+    <div class="hc-support-link">Questions? <a href="habitcalendar/support">HabitCalendar support</a> · <a href="privacy.html">Privacy</a></div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<div id="site-footer-mount"></div>
+
+<script defer src="js/apps-meta.js"></script>
+</body>
+</html>

@@ -164,6 +164,7 @@
             '<a href="top-apps.html">Top Apps</a>' +
             '<a href="appstore/index.html">App Store</a>' +
             '<a href="awakening.html">Awakening</a>' +
+            '<a href="habitcalendar.html">HabitCalendar</a>' +
             '<a href="app.html?id=socialstream">Social Stream</a>' +
             '<a href="app.html?id=wot">TradeByFire</a>' +
             '<a href="app.html?id=trading-journal">Trading Journal</a>' +

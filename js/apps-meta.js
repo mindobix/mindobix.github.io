@@ -3,6 +3,10 @@ window.APPS_META = {
     desc: "A quiet space to sit and be awake. No streaks, no targets, no noise — just a breathing dot, a daily reflection from the world's wisdom traditions, and a calm log of the days you showed up. iPhone, iPad, Apple Watch & Apple TV.",
     tags: ["iOS App", "Meditation", "Private"], iconClass: "icon-personal", badgeClass: "badge-personal", badgeText: "iOS App" },
 
+  "habitcalendar": { name: "HabitCalendar", category: "Health & Wellness", icon: "📅", href: "habitcalendar.html", group: "Featured", repoUrl: "https://apps.apple.com/us/search?term=habitcalendar",
+    desc: "The simplest way to build a habit and keep it — one tap a day on a calendar you'll love to look at. Insights, streaks, and as many habits as you like. No accounts, no ads. iPhone & iPad, with private iCloud sync.",
+    tags: ["iOS App", "Habits", "Private"], iconClass: "icon-career", badgeClass: "badge-career", badgeText: "iOS App" },
+
   "socialstream": { name: "Social Stream", category: "Social Media", icon: "✦", href: "app.html?id=socialstream", group: "Featured", repoUrl: "https://socialstream.media/#/landing",
     desc: "Plan, write, schedule, and publish across X, LinkedIn, Instagram, YouTube, and TikTok from one calm, AI-assisted workspace. Hosted product.",
     tags: ["Hosted", "Multi-Channel", "AI-Assisted"], iconClass: "icon-career", badgeClass: "badge-career", badgeText: "Hosted App" },
