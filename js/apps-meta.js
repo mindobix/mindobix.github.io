@@ -1,9 +1,9 @@
 window.APPS_META = {
-  "awakening": { name: "Awakening", category: "Health & Wellness", icon: "☾", href: "awakening.html", group: "Featured", repoUrl: "https://apps.apple.com/us/search?term=awakening%20mindobix",
+  "awakening": { name: "Awakening", category: "Health & Wellness", icon: "☾", href: "awakening.html", group: "Featured", repoUrl: "https://apps.apple.com/us/app/awakening-by-spirituality/id6670454529",
     desc: "A quiet space to sit and be awake. No streaks, no targets, no noise — just a breathing dot, a daily reflection from the world's wisdom traditions, and a calm log of the days you showed up. iPhone, iPad, Apple Watch & Apple TV.",
     tags: ["iOS App", "Meditation", "Private"], iconClass: "icon-personal", badgeClass: "badge-personal", badgeText: "iOS App" },
 
-  "habitcalendar": { name: "HabitCalendar", category: "Health & Wellness", icon: "📅", href: "habitcalendar.html", group: "Featured", repoUrl: "https://apps.apple.com/us/search?term=habitcalendar",
+  "habitcalendar": { name: "HabitCalendar", category: "Health & Wellness", icon: "📅", href: "habitcalendar.html", group: "Featured", repoUrl: "https://apps.apple.com/us/app/habit-calendar-for-life/id1632017641",
     desc: "The simplest way to build a habit and keep it — one tap a day on a calendar you'll love to look at. Insights, streaks, and as many habits as you like. No accounts, no ads. iPhone & iPad, with private iCloud sync.",
     tags: ["iOS App", "Habits", "Private"], iconClass: "icon-career", badgeClass: "badge-career", badgeText: "iOS App" },
 
