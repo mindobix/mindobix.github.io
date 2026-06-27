@@ -303,6 +303,10 @@
     "2026-06-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -607,6 +611,10 @@
       "uniques": 2
     },
     "2026-06-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-26": {
       "count": 0,
       "uniques": 0
     }
@@ -915,6 +923,10 @@
     "2026-06-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -1219,6 +1231,10 @@
       "uniques": 1
     },
     "2026-06-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-26": {
       "count": 0,
       "uniques": 0
     }
@@ -1527,6 +1543,10 @@
     "2026-06-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftAPICache": {
@@ -1831,6 +1851,10 @@
       "uniques": 2
     },
     "2026-06-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-26": {
       "count": 0,
       "uniques": 0
     }
@@ -2139,6 +2163,10 @@
     "2026-06-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-26": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCSwiftLibsDemoApp": {
@@ -2445,6 +2473,10 @@
     "2026-06-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-26": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "cc-api-framework": {
@@ -2749,6 +2781,10 @@
       "uniques": 1
     },
     "2026-06-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-26": {
       "count": 0,
       "uniques": 0
     }
@@ -3057,6 +3093,10 @@
     "2026-06-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "sam-framework": {
@@ -3363,6 +3403,10 @@
     "2026-06-25": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "MyCareerPulse": {
@@ -3667,6 +3711,10 @@
       "uniques": 2
     },
     "2026-06-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-26": {
       "count": 0,
       "uniques": 0
     }
@@ -3975,6 +4023,10 @@
     "2026-06-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-billpay-tracker": {
@@ -4281,6 +4333,10 @@
     "2026-06-25": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-filesync": {
@@ -4587,6 +4643,10 @@
     "2026-06-25": {
       "count": 17,
       "uniques": 5
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-habit-calendar": {
@@ -4891,6 +4951,10 @@
       "uniques": 1
     },
     "2026-06-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-26": {
       "count": 0,
       "uniques": 0
     }
@@ -5199,6 +5263,10 @@
     "2026-06-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-recipebook": {
@@ -5505,6 +5573,10 @@
     "2026-06-25": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-shareanyjson": {
@@ -5811,6 +5883,10 @@
     "2026-06-25": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-trading-journal": {
@@ -6117,6 +6193,10 @@
     "2026-06-25": {
       "count": 20,
       "uniques": 5
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-vibecoding-appideas": {
@@ -6421,6 +6501,10 @@
       "uniques": 10
     },
     "2026-06-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-26": {
       "count": 0,
       "uniques": 0
     }
@@ -6729,6 +6813,10 @@
     "2026-06-25": {
       "count": 5,
       "uniques": 2
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "medreview": {
@@ -7035,6 +7123,10 @@
     "2026-06-25": {
       "count": 20,
       "uniques": 3
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "myfamilytree": {
@@ -7341,6 +7433,10 @@
     "2026-06-25": {
       "count": 2,
       "uniques": 1
+    },
+    "2026-06-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "dailywealth": {
@@ -7645,6 +7741,10 @@
       "uniques": 1
     },
     "2026-06-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-06-26": {
       "count": 0,
       "uniques": 0
     }
