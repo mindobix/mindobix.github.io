@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02",
+  "lastUpdated": "2026-07-03",
   "repos": {
     "CCKotlinNetworking": {
       "total": 278,
@@ -18,12 +18,12 @@
       "uniques": 54
     },
     "CCSwiftNetworking": {
-      "total": 53,
-      "uniques": 48
+      "total": 54,
+      "uniques": 49
     },
     "CCSwiftAPICache": {
-      "total": 51,
-      "uniques": 47
+      "total": 52,
+      "uniques": 48
     },
     "CCSwiftFeatureConfig": {
       "total": 36,
