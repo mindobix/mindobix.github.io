@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-04",
+  "lastUpdated": "2026-07-05",
   "repos": {
     "CCKotlinNetworking": {
       "total": 278,
@@ -74,8 +74,8 @@
       "uniques": 31
     },
     "local-shareanyjson": {
-      "total": 26,
-      "uniques": 26
+      "total": 27,
+      "uniques": 27
     },
     "local-trading-journal": {
       "total": 562,
@@ -94,8 +94,8 @@
       "uniques": 131
     },
     "myfamilytree": {
-      "total": 34,
-      "uniques": 32
+      "total": 35,
+      "uniques": 33
     },
     "dailywealth": {
       "total": 661,
