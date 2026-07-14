@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-13",
+  "lastUpdated": "2026-07-14",
   "repos": {
     "CCKotlinNetworking": {
       "total": 279,
@@ -70,8 +70,8 @@
       "uniques": 44
     },
     "local-recipebook": {
-      "total": 33,
-      "uniques": 32
+      "total": 34,
+      "uniques": 33
     },
     "local-shareanyjson": {
       "total": 28,
