@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-20",
+  "lastUpdated": "2026-07-21",
   "repos": {
     "CCKotlinNetworking": {
       "total": 279,
@@ -50,8 +50,8 @@
       "uniques": 38
     },
     "local-api-web-proxy": {
-      "total": 194,
-      "uniques": 111
+      "total": 195,
+      "uniques": 112
     },
     "local-billpay-tracker": {
       "total": 70,
@@ -78,16 +78,16 @@
       "uniques": 28
     },
     "local-trading-journal": {
-      "total": 644,
-      "uniques": 319
+      "total": 654,
+      "uniques": 323
     },
     "local-vibecoding-appideas": {
       "total": 577,
       "uniques": 220
     },
     "local-weekly-options-trade-plan": {
-      "total": 38,
-      "uniques": 34
+      "total": 39,
+      "uniques": 35
     },
     "medreview": {
       "total": 253,
