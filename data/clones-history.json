@@ -403,6 +403,10 @@
     "2026-07-20": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-21": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -807,6 +811,10 @@
       "uniques": 0
     },
     "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
       "count": 0,
       "uniques": 0
     }
@@ -1215,6 +1223,10 @@
     "2026-07-20": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-21": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -1619,6 +1631,10 @@
       "uniques": 0
     },
     "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
       "count": 0,
       "uniques": 0
     }
@@ -2027,6 +2043,10 @@
     "2026-07-20": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-21": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftAPICache": {
@@ -2431,6 +2451,10 @@
       "uniques": 0
     },
     "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
       "count": 0,
       "uniques": 0
     }
@@ -3607,6 +3631,10 @@
     "2026-07-20": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-21": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "cc-apis-demo-monorepo": {
@@ -4011,6 +4039,10 @@
       "uniques": 0
     },
     "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
       "count": 0,
       "uniques": 0
     }
@@ -4419,6 +4451,10 @@
     "2026-07-20": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-21": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "MyCareerPulse": {
@@ -5195,6 +5231,10 @@
     "2026-07-20": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-07-21": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-billpay-tracker": {
@@ -5599,6 +5639,10 @@
       "uniques": 1
     },
     "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
       "count": 0,
       "uniques": 0
     }
@@ -6409,6 +6453,10 @@
     "2026-07-20": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-21": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-keywords-files-finder": {
@@ -6815,6 +6863,10 @@
     "2026-07-20": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-21": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-recipebook": {
@@ -7219,6 +7271,10 @@
       "uniques": 0
     },
     "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
       "count": 0,
       "uniques": 0
     }
@@ -8033,6 +8089,10 @@
     "2026-07-20": {
       "count": 10,
       "uniques": 4
+    },
+    "2026-07-21": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-vibecoding-appideas": {
@@ -8437,6 +8497,10 @@
       "uniques": 0
     },
     "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
       "count": 0,
       "uniques": 0
     }
@@ -8845,6 +8909,10 @@
     "2026-07-20": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-07-21": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "medreview": {
@@ -9249,6 +9317,10 @@
       "uniques": 0
     },
     "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
       "count": 0,
       "uniques": 0
     }
@@ -9657,6 +9729,10 @@
     "2026-07-20": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-21": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "dailywealth": {
@@ -10061,6 +10137,10 @@
       "uniques": 0
     },
     "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
       "count": 0,
       "uniques": 0
     }
