@@ -423,6 +423,10 @@
     "2026-07-25": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -849,6 +853,10 @@
     "2026-07-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinFeatureConfig": {
@@ -1273,6 +1281,10 @@
       "uniques": 0
     },
     "2026-07-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-26": {
       "count": 0,
       "uniques": 0
     }
@@ -2123,6 +2135,10 @@
     "2026-07-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftAPICache": {
@@ -2547,6 +2563,10 @@
       "uniques": 0
     },
     "2026-07-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-26": {
       "count": 0,
       "uniques": 0
     }
@@ -3377,6 +3397,10 @@
     "2026-07-26": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-27": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "cc-api-framework": {
@@ -3801,6 +3825,10 @@
       "uniques": 0
     },
     "2026-07-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-26": {
       "count": 0,
       "uniques": 0
     }
@@ -4655,6 +4683,10 @@
     "2026-07-25": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "MyCareerPulse": {
@@ -5023,6 +5055,62 @@
       "uniques": 0
     },
     "2026-07-11": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-14": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-15": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-16": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-17": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-18": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-19": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-20": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-21": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-22": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-23": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-24": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-27": {
       "count": 0,
       "uniques": 0
     }
@@ -5451,6 +5539,10 @@
     "2026-07-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-26": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-billpay-tracker": {
@@ -5877,6 +5969,10 @@
     "2026-07-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-26": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-filesync": {
@@ -6303,6 +6399,10 @@
     "2026-07-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-26": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-habit-calendar": {
@@ -6727,6 +6827,10 @@
       "uniques": 1
     },
     "2026-07-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-26": {
       "count": 0,
       "uniques": 0
     }
@@ -7155,6 +7259,10 @@
     "2026-07-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-recipebook": {
@@ -7581,6 +7689,10 @@
     "2026-07-25": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-shareanyjson": {
@@ -8413,6 +8525,10 @@
     "2026-07-25": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-07-26": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-vibecoding-appideas": {
@@ -8835,6 +8951,14 @@
     "2026-07-24": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-26": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-weekly-options-trade-plan": {
@@ -9259,6 +9383,10 @@
       "uniques": 0
     },
     "2026-07-25": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-07-26": {
       "count": 0,
       "uniques": 0
     }
@@ -9687,6 +9815,10 @@
     "2026-07-25": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "myfamilytree": {
@@ -10113,6 +10245,10 @@
     "2026-07-25": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "dailywealth": {
@@ -10539,6 +10675,10 @@
     "2026-07-25": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-07-26": {
+      "count": 0,
+      "uniques": 0
     }
   }
 }
