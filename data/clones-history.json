@@ -3517,6 +3517,10 @@
     "2026-08-01": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-02": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "cc-api-framework": {
@@ -4843,6 +4847,10 @@
     "2026-07-31": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-01": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "MyCareerPulse": {
@@ -5287,6 +5295,10 @@
       "uniques": 0
     },
     "2026-08-01": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-08-02": {
       "count": 0,
       "uniques": 0
     }
@@ -8843,6 +8855,10 @@
       "uniques": 0
     },
     "2026-07-31": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-08-01": {
       "count": 0,
       "uniques": 0
     }
