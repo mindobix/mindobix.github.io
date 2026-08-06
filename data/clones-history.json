@@ -463,6 +463,10 @@
     "2026-08-04": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -927,6 +931,10 @@
       "uniques": 0
     },
     "2026-08-04": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-08-05": {
       "count": 0,
       "uniques": 0
     }
@@ -2263,6 +2271,10 @@
     "2026-08-04": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftAPICache": {
@@ -3191,6 +3203,10 @@
     "2026-08-05": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-06": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftLibsDemoApp": {
@@ -3651,6 +3667,10 @@
       "uniques": 0
     },
     "2026-08-05": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-08-06": {
       "count": 0,
       "uniques": 0
     }
@@ -4995,6 +5015,10 @@
     "2026-08-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "MyCareerPulse": {
@@ -5451,6 +5475,10 @@
       "uniques": 0
     },
     "2026-08-04": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-08-05": {
       "count": 0,
       "uniques": 0
     }
@@ -5919,6 +5947,10 @@
     "2026-08-04": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-05": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-billpay-tracker": {
@@ -6383,6 +6415,10 @@
       "uniques": 0
     },
     "2026-08-04": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-08-05": {
       "count": 0,
       "uniques": 0
     }
@@ -6851,6 +6887,10 @@
     "2026-08-04": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-habit-calendar": {
@@ -7315,6 +7355,10 @@
       "uniques": 0
     },
     "2026-08-04": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-08-05": {
       "count": 0,
       "uniques": 0
     }
@@ -7783,6 +7827,10 @@
     "2026-08-04": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-recipebook": {
@@ -8249,6 +8297,10 @@
     "2026-08-04": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-shareanyjson": {
@@ -8711,6 +8763,10 @@
     "2026-08-04": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-trading-journal": {
@@ -9175,6 +9231,10 @@
       "uniques": 0
     },
     "2026-08-04": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-08-05": {
       "count": 0,
       "uniques": 0
     }
@@ -9643,6 +9703,10 @@
     "2026-08-04": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-weekly-options-trade-plan": {
@@ -10107,6 +10171,10 @@
       "uniques": 0
     },
     "2026-08-04": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-08-05": {
       "count": 0,
       "uniques": 0
     }
@@ -10575,6 +10643,10 @@
     "2026-08-04": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "myfamilytree": {
@@ -11041,6 +11113,10 @@
     "2026-08-04": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-08-05": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "dailywealth": {
@@ -11505,6 +11581,10 @@
       "uniques": 0
     },
     "2026-08-04": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-08-05": {
       "count": 1,
       "uniques": 1
     }
