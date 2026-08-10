@@ -1,21 +1,21 @@
 {
-  "lastUpdated": "2026-08-09",
+  "lastUpdated": "2026-08-10",
   "repos": {
     "CCKotlinNetworking": {
-      "total": 281,
-      "uniques": 149
+      "total": 282,
+      "uniques": 150
     },
     "CCKotlinAPICache": {
-      "total": 72,
-      "uniques": 66
+      "total": 73,
+      "uniques": 67
     },
     "CCKotlinFeatureConfig": {
-      "total": 50,
-      "uniques": 47
+      "total": 51,
+      "uniques": 48
     },
     "CCKotlinLibsDemoApp": {
-      "total": 66,
-      "uniques": 55
+      "total": 67,
+      "uniques": 56
     },
     "CCSwiftNetworking": {
       "total": 56,
@@ -94,8 +94,8 @@
       "uniques": 138
     },
     "myfamilytree": {
-      "total": 37,
-      "uniques": 35
+      "total": 38,
+      "uniques": 36
     },
     "dailywealth": {
       "total": 671,
