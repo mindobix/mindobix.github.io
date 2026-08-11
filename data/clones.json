@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-10",
+  "lastUpdated": "2026-08-11",
   "repos": {
     "CCKotlinNetworking": {
       "total": 282,
@@ -14,8 +14,8 @@
       "uniques": 48
     },
     "CCKotlinLibsDemoApp": {
-      "total": 67,
-      "uniques": 56
+      "total": 68,
+      "uniques": 57
     },
     "CCSwiftNetworking": {
       "total": 56,
@@ -42,8 +42,8 @@
       "uniques": 36
     },
     "sam-framework": {
-      "total": 155,
-      "uniques": 125
+      "total": 157,
+      "uniques": 127
     },
     "MyCareerPulse": {
       "total": 42,
