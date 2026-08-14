@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-13",
+  "lastUpdated": "2026-08-14",
   "repos": {
     "CCKotlinNetworking": {
       "total": 282,
@@ -34,16 +34,16 @@
       "uniques": 34
     },
     "cc-api-framework": {
-      "total": 40,
-      "uniques": 39
+      "total": 41,
+      "uniques": 40
     },
     "cc-apis-demo-monorepo": {
-      "total": 38,
-      "uniques": 36
+      "total": 39,
+      "uniques": 37
     },
     "sam-framework": {
-      "total": 158,
-      "uniques": 128
+      "total": 160,
+      "uniques": 130
     },
     "MyCareerPulse": {
       "total": 43,
@@ -78,8 +78,8 @@
       "uniques": 29
     },
     "local-trading-journal": {
-      "total": 674,
-      "uniques": 339
+      "total": 678,
+      "uniques": 343
     },
     "local-vibecoding-appideas": {
       "total": 579,
