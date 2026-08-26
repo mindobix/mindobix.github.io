@@ -50,6 +50,7 @@
           '</ul></li>' +
           '<li class="nav-dropdown" data-nav="articles"><a href="#">Articles</a><ul class="nav-dropdown-menu">' +
             '<li><a href="articles/thetokenfactory/">The Token Factory</a></li>' +
+            '<li><a href="articles/thememoryladder/">The Memory Ladder</a></li>' +
             '<li><a href="analysis.html">AI Analysis</a></li>' +
           '</ul></li>' +
           '<li data-nav="about"><a href="about.html">About</a></li>' +
