@@ -547,14 +547,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -1103,14 +1095,6 @@
       "uniques": 0
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -1663,14 +1647,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -2211,14 +2187,6 @@
       "uniques": 0
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -2771,14 +2739,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "CCSwiftAPICache": {
@@ -3329,14 +3289,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "CCSwiftFeatureConfig": {
@@ -3879,14 +3831,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "CCSwiftLibsDemoApp": {
@@ -4427,14 +4371,6 @@
       "uniques": 1
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -4987,14 +4923,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "cc-apis-demo-monorepo": {
@@ -5535,14 +5463,6 @@
       "uniques": 1
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -6095,14 +6015,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 1,
-      "uniques": 1
     }
   },
   "MyCareerPulse": {
@@ -6643,14 +6555,6 @@
       "uniques": 0
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -7203,14 +7107,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 2,
-      "uniques": 2
     }
   },
   "local-billpay-tracker": {
@@ -7751,14 +7647,6 @@
       "uniques": 1
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -8311,14 +8199,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "local-habit-calendar": {
@@ -8859,14 +8739,6 @@
       "uniques": 0
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -9419,14 +9291,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "local-recipebook": {
@@ -9977,14 +9841,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "local-shareanyjson": {
@@ -10529,14 +10385,6 @@
       "uniques": 1
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -11089,14 +10937,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "local-vibecoding-appideas": {
@@ -11645,14 +11485,6 @@
       "uniques": 1
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -12205,14 +12037,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 1,
-      "uniques": 1
     }
   },
   "medreview": {
@@ -12761,14 +12585,6 @@
       "uniques": 0
     },
     "2026-08-25": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
       "count": 0,
       "uniques": 0
     }
@@ -13321,14 +13137,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 0,
-      "uniques": 0
     }
   },
   "dailywealth": {
@@ -13879,14 +13687,6 @@
     "2026-08-25": {
       "count": 0,
       "uniques": 0
-    },
-    "2026-08-26": {
-      "count": 0,
-      "uniques": 0
-    },
-    "2026-08-27": {
-      "count": 2,
-      "uniques": 2
     }
   }
 }
