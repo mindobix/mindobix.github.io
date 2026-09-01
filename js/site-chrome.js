@@ -185,6 +185,7 @@
             '<a href="api-framework.html">API Framework</a>' +
             '<a href="android.html">Android Kotlin</a>' +
             '<a href="apple.html">Apple Swift</a>' +
+            '<a href="articles/">Articles</a>' +
             '<a href="about.html">About</a>' +
             '<a href="mailto:ganesh@mindobix.com">Contact</a>' +
           '</nav>' +
