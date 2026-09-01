@@ -1,9 +1,9 @@
 {
-  "lastUpdated": "2026-09-01",
+  "lastUpdated": "2026-08-26",
   "repos": {
     "CCKotlinNetworking": {
-      "total": 284,
-      "uniques": 152
+      "total": 283,
+      "uniques": 151
     },
     "CCKotlinAPICache": {
       "total": 74,
@@ -18,12 +18,12 @@
       "uniques": 58
     },
     "CCSwiftNetworking": {
-      "total": 59,
-      "uniques": 54
+      "total": 58,
+      "uniques": 53
     },
     "CCSwiftAPICache": {
-      "total": 59,
-      "uniques": 55
+      "total": 56,
+      "uniques": 52
     },
     "CCSwiftFeatureConfig": {
       "total": 39,
@@ -34,40 +34,40 @@
       "uniques": 35
     },
     "cc-api-framework": {
-      "total": 43,
-      "uniques": 42
+      "total": 42,
+      "uniques": 41
     },
     "cc-apis-demo-monorepo": {
       "total": 40,
       "uniques": 38
     },
     "sam-framework": {
-      "total": 171,
-      "uniques": 141
+      "total": 168,
+      "uniques": 138
     },
     "MyCareerPulse": {
       "total": 45,
       "uniques": 43
     },
     "local-api-web-proxy": {
-      "total": 205,
-      "uniques": 122
+      "total": 203,
+      "uniques": 120
     },
     "local-billpay-tracker": {
-      "total": 75,
-      "uniques": 63
+      "total": 73,
+      "uniques": 61
     },
     "local-filesync": {
-      "total": 183,
-      "uniques": 101
+      "total": 181,
+      "uniques": 99
     },
     "local-habit-calendar": {
-      "total": 33,
-      "uniques": 33
+      "total": 32,
+      "uniques": 32
     },
     "local-keywords-files-finder": {
-      "total": 63,
-      "uniques": 51
+      "total": 61,
+      "uniques": 49
     },
     "local-recipebook": {
       "total": 39,
@@ -78,28 +78,28 @@
       "uniques": 30
     },
     "local-trading-journal": {
-      "total": 695,
-      "uniques": 355
+      "total": 688,
+      "uniques": 349
     },
     "local-vibecoding-appideas": {
-      "total": 582,
-      "uniques": 225
+      "total": 581,
+      "uniques": 224
     },
     "local-weekly-options-trade-plan": {
-      "total": 42,
-      "uniques": 38
+      "total": 41,
+      "uniques": 37
     },
     "medreview": {
-      "total": 259,
-      "uniques": 140
+      "total": 258,
+      "uniques": 139
     },
     "myfamilytree": {
-      "total": 42,
-      "uniques": 40
+      "total": 40,
+      "uniques": 38
     },
     "dailywealth": {
-      "total": 681,
-      "uniques": 321
+      "total": 676,
+      "uniques": 316
     }
   }
 }

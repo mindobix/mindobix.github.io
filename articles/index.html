@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V460QPM640"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V460QPM640');
+  </script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="../" />
+  <title>Articles | Mindobix</title>
+  <meta name="description" content="Long-form explainers and annotated readings from Mindobix — how AI systems actually work underneath, written in plain language." />
+  <link rel="canonical" href="https://mindobix.com/articles/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Articles | Mindobix" />
+  <meta property="og:description" content="Long-form explainers and annotated readings on how AI systems actually work underneath." />
+  <meta property="og:url" content="https://mindobix.com/articles/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .ai-hero {
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      padding: 84px 0 56px;
+    }
+    .ai-wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    .ai-eyebrow {
+      font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+    .ai-hero h1 {
+      font-size: clamp(40px, 6.5vw, 68px);
+      font-weight: 600;
+      letter-spacing: -.04em;
+      line-height: 1.02;
+      color: var(--text);
+      margin: 0 0 20px;
+      text-wrap: balance;
+    }
+    .ai-lede {
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--text2);
+      max-width: 62ch;
+      margin: 0;
+    }
+
+    .ai-list { padding: 56px 0 96px; background: var(--bg); }
+
+    .ai-card {
+      display: block;
+      text-decoration: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 34px;
+      margin-bottom: 20px;
+      transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+    .ai-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px var(--accent-glow2);
+    }
+    .ai-card-kicker {
+      font-family: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+    .ai-card h2 {
+      font-size: clamp(26px, 3.4vw, 34px);
+      font-weight: 600;
+      letter-spacing: -.028em;
+      line-height: 1.12;
+      color: var(--text);
+      margin: 0 0 12px;
+    }
+    .ai-card p {
+      font-size: 17px;
+      line-height: 1.62;
+      color: var(--text2);
+      max-width: 68ch;
+      margin: 0 0 18px;
+    }
+    .ai-more {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    .ai-more span { transition: margin-left .2s ease; margin-left: 4px; display: inline-block; }
+    .ai-card:hover .ai-more span { margin-left: 9px; }
+
+    @media (max-width: 768px) {
+      .ai-hero { padding: 56px 0 40px; }
+      .ai-list { padding: 36px 0 64px; }
+      .ai-card { padding: 26px 22px; }
+      .ai-lede { font-size: 18px; }
+    }
+  </style>
+</head>
+<body data-page="articles" data-top-strip="off">
+  <div id="site-nav-mount"></div>
+
+  <header class="ai-hero">
+    <div class="ai-wrap">
+      <p class="ai-eyebrow">Mindobix · Writing</p>
+      <h1>Articles</h1>
+      <p class="ai-lede">
+        Long-form explainers and annotated readings on how AI systems actually
+        work underneath — the memory, the silicon, the economics — written for
+        people who want the mechanism, not the marketing.
+      </p>
+    </div>
+  </header>
+
+  <main class="ai-list">
+    <div class="ai-wrap">
+
+      <a class="ai-card" href="articles/thememoryladder/">
+        <p class="ai-card-kicker">A plain-language explainer</p>
+        <h2>The Memory Ladder — and why it breaks</h2>
+        <p>
+          Four kinds of memory do the work inside every AI answer, and they differ
+          by factors of a thousand. Why latency and bandwidth are not the same
+          thing, and the arithmetic that makes long conversations so expensive.
+        </p>
+        <p class="ai-more">Read the explainer<span>&rarr;</span></p>
+      </a>
+
+      <a class="ai-card" href="articles/thetokenfactory/">
+        <p class="ai-card-kicker">Invest Like the Best · Neil Movva</p>
+        <h2>The Token Factory</h2>
+        <p>
+          Neil Movva of Sail Research on long-horizon agents, scavenging chips and
+          power, and the 21 hard problems still unsolved. An annotated transcript in
+          ten chapters, plus an analysis of his convictions and what drives them.
+        </p>
+        <p class="ai-more">Read the annotated transcript<span>&rarr;</span></p>
+      </a>
+
+      <a class="ai-card" href="analysis.html">
+        <p class="ai-card-kicker">Ongoing series</p>
+        <h2>AI Analysis</h2>
+        <p>
+          Running notes on the models, the tooling and the shifting economics of
+          building software with AI agents — updated as the ground moves.
+        </p>
+        <p class="ai-more">Browse the analysis<span>&rarr;</span></p>
+      </a>
+
+    </div>
+  </main>
+
+  <div id="site-footer-mount"></div>
+  <script defer src="js/site-chrome.js"></script>
+</body>
+</html>
