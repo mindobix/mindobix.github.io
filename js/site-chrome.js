@@ -26,7 +26,6 @@
     'useful-apps':   '[data-nav="apps"]',
     'top-apps':      '[data-nav="top-apps"]',
     'about':         '[data-nav="about"]',
-    'articles':      '[data-nav="articles"]',
     'mobile':        '[data-nav="developers"]',
     'api-framework': '[data-nav="developers"]',
     'devtools':      '[data-nav="developers"]',
@@ -46,12 +45,6 @@
             '<li><a href="api-framework.html">API Framework</a></li>' +
             '<li><a href="android.html">Android Kotlin</a></li>' +
             '<li><a href="apple.html">Apple Swift</a></li>' +
-            '<li><a href="analysis.html">AI Analysis</a></li>' +
-          '</ul></li>' +
-          '<li class="nav-dropdown" data-nav="articles"><a href="articles/">Articles</a><ul class="nav-dropdown-menu">' +
-            '<li><a href="articles/">All Articles</a></li>' +
-            '<li><a href="articles/thetokenfactory/">The Token Factory</a></li>' +
-            '<li><a href="articles/thememoryladder/">The Memory Ladder</a></li>' +
             '<li><a href="analysis.html">AI Analysis</a></li>' +
           '</ul></li>' +
           '<li data-nav="about"><a href="about.html">About</a></li>' +
@@ -185,7 +178,6 @@
             '<a href="api-framework.html">API Framework</a>' +
             '<a href="android.html">Android Kotlin</a>' +
             '<a href="apple.html">Apple Swift</a>' +
-            '<a href="articles/">Articles</a>' +
             '<a href="about.html">About</a>' +
             '<a href="mailto:ganesh@mindobix.com">Contact</a>' +
           '</nav>' +
@@ -205,10 +197,9 @@
   function injectChrome() {
     const page = document.body && document.body.getAttribute('data-page');
 
-    const topStrip = document.body && document.body.getAttribute('data-top-strip');
     const navMount = document.getElementById('site-nav-mount');
     if (navMount) {
-      navMount.outerHTML = (topStrip === 'off' ? '' : SSP_TOP_HTML) + NAV_HTML;
+      navMount.outerHTML = SSP_TOP_HTML + NAV_HTML;
       if (page && ACTIVE_MAP[page]) {
         const target = document.querySelector('.nav-links ' + ACTIVE_MAP[page]);
         if (target) {
