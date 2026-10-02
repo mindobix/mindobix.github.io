@@ -30,13 +30,7 @@
     'mobile':        '[data-nav="developers"]',
     'api-framework': '[data-nav="developers"]',
     'devtools':      '[data-nav="developers"]',
-    'analysis':      '[data-nav="developers"]',
-    'meditation':    '[data-nav="services"]',
-    'meditation-enterprise': '[data-nav="services"]',
-    'meditation-csuite':     '[data-nav="services"]',
-    'meditation-university': '[data-nav="services"]',
-    'meditation-k12':        '[data-nav="services"]',
-    'meditation-personal':   '[data-nav="services"]'
+    'analysis':      '[data-nav="developers"]'
   };
 
   const NAV_HTML =
@@ -47,13 +41,6 @@
           '<li data-nav="apps"><a href="useful-apps.html">Apps</a></li>' +
           '<li data-nav="top-apps"><a href="top-apps.html">Top Apps</a></li>' +
           '<li data-nav="appstore"><a href="appstore/index.html">App Store</a></li>' +
-          '<li class="nav-dropdown" data-nav="services"><a href="meditation.html">Services</a><ul class="nav-dropdown-menu nav-dropdown-menu--wide">' +
-            '<li><a href="enterprise-meditation.html">Enterprise Meditation Service</a></li>' +
-            '<li><a href="csuite-meditation.html">C-Suite Meditation Service</a></li>' +
-            '<li><a href="university-meditation.html">University Student Meditation Services</a></li>' +
-            '<li><a href="k12-meditation.html">K-12 Meditation Service</a></li>' +
-            '<li><a href="personal-meditation.html">Personal 1-1 Meditation Service</a></li>' +
-          '</ul></li>' +
           '<li class="nav-dropdown" data-nav="developers"><a href="#">For Developers</a><ul class="nav-dropdown-menu">' +
             '<li><a href="devtools.html">Dev Tools</a></li>' +
             '<li><a href="api-framework.html">API Framework</a></li>' +
@@ -74,7 +61,7 @@
           '</button></li>' +
           '<li><a href="mailto:ganesh@mindobix.com" class="nav-cta">Contact</a></li>' +
         '</ul>' +
-        '<button class="nav-hamburger" onclick="var n=document.querySelector(\'.site-nav\'); if(n) n.scrollIntoView({block:\'start\'}); document.getElementById(\'nav-links\').classList.toggle(\'open\')" aria-label="Menu">' +
+        '<button class="nav-hamburger" onclick="document.getElementById(\'nav-links\').classList.toggle(\'open\')" aria-label="Menu">' +
           '<span></span><span></span><span></span>' +
         '</button>' +
       '</div>' +
@@ -201,17 +188,6 @@
             '<a href="articles/">Articles</a>' +
             '<a href="about.html">About</a>' +
             '<a href="mailto:ganesh@mindobix.com">Contact</a>' +
-          '</nav>' +
-        '</div>' +
-        '<div>' +
-          '<div class="footer-nav-label">Meditation</div>' +
-          '<nav class="footer-nav">' +
-            '<a href="meditation.html">All services</a>' +
-            '<a href="enterprise-meditation.html">Enterprise</a>' +
-            '<a href="csuite-meditation.html">C-Suite</a>' +
-            '<a href="university-meditation.html">University</a>' +
-            '<a href="k12-meditation.html">K-12</a>' +
-            '<a href="personal-meditation.html">Personal 1-1</a>' +
           '</nav>' +
         '</div>' +
         '<div>' +
