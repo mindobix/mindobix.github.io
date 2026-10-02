@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V460QPM640"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V460QPM640');
+  </script>
+  <script>(function(){try{var t=localStorage.getItem('mdbx-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="../../" />
+  <title>The Token Factory — Neil Movva on making intelligence cheap | Mindobix</title>
+  <meta name="description" content="Neil Movva of Sail Research on long-horizon agents, scavenging chips and power, and the 21 hard problems still unsolved. Full annotated transcript in ten chapters, plus analysis of his convictions and motivations." />
+  <link rel="canonical" href="https://mindobix.com/articles/thetokenfactory" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Token Factory — Neil Movva on making intelligence cheap" />
+  <meta property="og:description" content="Long-horizon agents, scavenged silicon and power, and the 21 hard problems he says are still open. An annotated reading of the Invest Like the Best interview." />
+  <meta property="og:url" content="https://mindobix.com/articles/thetokenfactory" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* Article tokens alias onto the shared Mindobix tokens in css/main.css, so the
+       site's dark-mode toggle flips this page along with everything else. */
+    :root {
+      --font-sans: -apple-system, "SF Pro Text", "SF Pro Display", BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      --ground:      var(--bg);
+      --surface-2:   var(--surface2);
+      --ink:         var(--text);
+      --ink-2:       var(--text2);
+      --ink-3:       var(--muted);
+      --rule:        var(--border);
+      --rule-strong: var(--border2);
+      --accent-text: var(--accent);
+      --accent-soft: var(--accent-dim);
+      --measure: 68ch;
+    }
+
+    .tf-article *, .tf-article *::before, .tf-article *::after { box-sizing: border-box; }
+
+    .tf-article {
+      background: var(--ground);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 17.5px;
+      line-height: 1.72;
+      letter-spacing: -.003em;
+    }
+
+    .tf-article h1, .tf-article h2, .tf-article h3, .tf-article h4 { font-family: var(--font-sans); }
+
+
+    .tf-article a { color: var(--accent-text); }
+    .tf-article :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .tf-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- masthead ---------- */
+    .tf-masthead { border-bottom: 1px solid var(--rule); background: var(--surface); }
+    .tf-masthead-inner { padding: 44px 0 0; }
+
+    .tf-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--ink-3);
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    }
+    .tf-eyebrow .tf-dot { color: var(--rule-strong); }
+
+    h1 {
+      font-size: clamp(42px, 7.5vw, 76px);
+      font-weight: 600;
+      letter-spacing: -.045em;
+      line-height: .96;
+      text-wrap: balance;
+      margin: 18px 0 0;
+    }
+    .tf-article h1 .tf-molten {
+      background: linear-gradient(96deg, var(--accent) 0%, var(--accent-text) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: var(--accent);
+    }
+    .tf-standfirst {
+      max-width: 62ch; margin: 20px 0 0;
+      font-size: 21px; line-height: 1.55; color: var(--ink-2);
+    }
+    .tf-byline {
+      margin: 22px 0 0; font-size: 15px; color: var(--ink-3);
+      font-family: var(--font-sans);
+    }
+
+    /* ---------- instrument panel ---------- */
+    .tf-panel {
+      display: grid; gap: 1px;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin: 40px 0 0;
+    }
+    .tf-cell { background: var(--surface-2); padding: 22px 22px 24px; }
+    .tf-cell .tf-k {
+      font-family: var(--font-mono);
+      font-size: 10.5px; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .tf-cell .tf-v {
+      font-family: var(--font-sans);
+      font-size: 34px; font-weight: 600; letter-spacing: -.035em;
+      color: var(--accent-text);
+      font-variant-numeric: tabular-nums;
+      margin: 9px 0 5px; line-height: 1;
+    }
+    .tf-cell .tf-n { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
+
+    /* ---------- pane switch ---------- */
+    .tf-switch { display: flex; gap: 2px; margin: 40px 0 -1px; flex-wrap: wrap; }
+    .tf-switch button {
+      font-family: var(--font-sans);
+      font-size: 13px; font-weight: 600; letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 13px 20px;
+      border: 1px solid var(--rule); border-bottom-color: transparent;
+      background: var(--surface-2); color: var(--ink-3);
+      cursor: pointer;
+    }
+    .tf-switch button[aria-selected="true"] {
+      background: var(--surface); color: var(--ink);
+      box-shadow: inset 0 3px 0 var(--accent);
+    }
+    .tf-switch button:hover { color: var(--ink); }
+
+    .tf-main { background: var(--surface); border-top: 1px solid var(--rule); }
+    .tf-pane[hidden] { display: none; }
+    .tf-pane { padding: 0 0 96px; }
+
+    /* ---------- transcript ---------- */
+    .tf-transcript-grid {
+      display: grid; grid-template-columns: 210px minmax(0, 1fr);
+      gap: 56px; padding-top: 48px;
+    }
+    @media (max-width: 900px) { .tf-transcript-grid { grid-template-columns: 1fr; gap: 28px; } }
+
+    .tf-rail { position: sticky; top: 20px; align-self: start; }
+    @media (max-width: 900px) { .tf-rail { position: static; } }
+    .tf-rail .tf-rail-title {
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3);
+      padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+    }
+    .tf-rail ol { list-style: none; margin: 0; padding: 0; }
+    .tf-rail li a {
+      display: flex; gap: 10px; padding: 9px 0;
+      font-family: var(--font-sans); font-size: 13.5px; line-height: 1.35;
+      color: var(--ink-3); text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+    }
+    .tf-rail li a:hover { color: var(--ink); }
+    .tf-rail li a.tf-active { color: var(--accent-text); font-weight: 600; }
+    .tf-rail li a .tf-num {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--rule-strong); padding-top: 2px;
+    }
+    .tf-rail li a.tf-active .tf-num { color: var(--accent); }
+
+    .tf-chapter { scroll-margin-top: 24px; }
+    .tf-chapter + .tf-chapter { margin-top: 72px; }
+    .tf-chapter-head { border-top: 2px solid var(--ink); padding-top: 18px; margin-bottom: 34px; }
+    .tf-chapter:first-child .tf-chapter-head { border-top: none; padding-top: 0; }
+    .tf-chapter-head .tf-num {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--accent-text);
+    }
+    .tf-chapter-head h2 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 600;
+      letter-spacing: -.038em; line-height: 1.05; margin: 10px 0 0;
+      text-wrap: balance;
+    }
+    .tf-chapter-head .tf-dek {
+      font-weight: 450; color: var(--ink-2); margin: 12px 0 0;
+      max-width: var(--measure); font-size: 18px;
+    }
+
+    .tf-q, .tf-a { max-width: var(--measure); }
+    .tf-q {
+      font-family: var(--font-sans);
+      font-size: 17.5px; line-height: 1.5; font-weight: 500;
+      color: var(--ink);
+      border-left: 3px solid var(--accent);
+      padding: 2px 0 2px 18px;
+      margin: 40px 0 22px;
+    }
+    .tf-q .tf-who {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10.5px; font-weight: 500; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--ink-3);
+      margin-bottom: 7px;
+    }
+    .tf-a { margin: 0 0 20px; }
+    .tf-a + .tf-a { margin-top: 0; }
+    .tf-speaker-tag {
+      font-family: var(--font-mono);
+      font-size: 10.5px; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--ink-3); margin: 0 0 8px;
+    }
+    .tf-pull {
+      max-width: var(--measure);
+      border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      margin: 34px 0; padding: 22px 0;
+      font-size: 22px; line-height: 1.42; font-weight: 500;
+      letter-spacing: -.02em; color: var(--ink);
+    }
+    .tf-aside {
+      max-width: var(--measure); background: var(--surface-2);
+      border-left: 3px solid var(--rule-strong);
+      padding: 14px 18px; margin: 28px 0;
+      font-size: 15.5px; line-height: 1.55; color: var(--ink-2);
+      font-family: var(--font-sans);
+    }
+
+    /* ---------- conviction ---------- */
+    .tf-pane-intro { padding-top: 48px; max-width: 68ch; }
+    .tf-pane-intro h2 {
+      font-size: clamp(30px, 4.4vw, 44px); font-weight: 600;
+      letter-spacing: -.04em; line-height: 1.04; margin: 12px 0 0;
+      text-wrap: balance;
+    }
+    .tf-pane-intro p { color: var(--ink-2); margin: 16px 0 0; }
+
+    .tf-claims { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 44px; }
+    .tf-claim { background: var(--surface); padding: 30px 32px 32px; }
+    .tf-claim-top {
+      display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .tf-claim .tf-idx {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--rule-strong); letter-spacing: .1em;
+    }
+    .tf-tag {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+      padding: 4px 9px; border: 1px solid var(--rule-strong); color: var(--ink-3);
+      white-space: nowrap;
+    }
+    .tf-tag.tf-contrarian { border-color: var(--accent); color: var(--accent-text); background: var(--accent-soft); }
+    .tf-claim h3 {
+      font-size: 24px; font-weight: 700; letter-spacing: -.025em;
+      line-height: 1.2; margin: 0 0 14px; max-width: 40ch; text-wrap: balance;
+    }
+    .tf-claim .tf-body { max-width: 62ch; color: var(--ink-2); font-size: 18px; }
+    .tf-claim .tf-evidence {
+      margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--rule);
+      font-family: var(--font-sans); font-size: 15px; line-height: 1.55;
+      color: var(--ink-2); max-width: 62ch;
+    }
+    .tf-claim .tf-evidence b {
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3);
+      display: block; margin-bottom: 6px; font-weight: 500;
+    }
+    .tf-claim blockquote {
+      margin: 18px 0 0; padding-left: 18px; border-left: 2px solid var(--accent);
+      font-weight: 450; color: var(--ink); max-width: 58ch; font-size: 18px;
+    }
+
+    /* ---------- motivation ---------- */
+    .tf-tl { margin-top: 44px; border-left: 2px solid var(--rule); padding-left: 0; }
+    .tf-tl-item { position: relative; padding: 0 0 42px 34px; }
+    .tf-tl-item::before {
+      content: ""; position: absolute; left: -7px; top: 9px;
+      width: 12px; height: 12px; background: var(--surface);
+      border: 2px solid var(--rule-strong); border-radius: 50%;
+    }
+    .tf-tl-item.tf-key::before { border-color: var(--accent); background: var(--accent); }
+    .tf-tl-item .tf-when {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text);
+    }
+    .tf-tl-item h3 {
+      font-size: 21px; font-weight: 700; letter-spacing: -.02em;
+      margin: 8px 0 10px; max-width: 42ch;
+    }
+    .tf-tl-item p { margin: 0; color: var(--ink-2); max-width: 60ch; font-size: 18px; }
+    .tf-tl-item blockquote {
+      margin: 14px 0 0; padding-left: 16px; border-left: 2px solid var(--rule-strong);
+      font-weight: 450; color: var(--ink); max-width: 56ch; font-size: 17.5px;
+    }
+
+    .tf-drives { display: grid; gap: 1px; background: var(--rule);
+      border: 1px solid var(--rule); margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .tf-drive { background: var(--surface-2); padding: 24px 26px 26px; }
+    .tf-drive .tf-k {
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text);
+    }
+    .tf-drive h4 { font-size: 18px; font-weight: 700; margin: 10px 0 8px; letter-spacing: -.015em; }
+    .tf-drive p { margin: 0; font-size: 16.5px; color: var(--ink-2); line-height: 1.55; }
+
+    .tf-tension {
+      margin-top: 44px; border: 1px solid var(--rule); background: var(--surface-2);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    }
+    @media (max-width: 700px) { .tf-tension { grid-template-columns: 1fr; } }
+    .tf-tension > div { background: var(--surface); padding: 26px 28px 28px; }
+    .tf-tension .tf-k {
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3);
+    }
+    .tf-tension h4 { font-size: 20px; margin: 10px 0 10px; letter-spacing: -.02em; }
+    .tf-tension p { margin: 0; font-size: 17px; color: var(--ink-2); }
+
+    /* ---------- footer ---------- */
+    .tf-colophon {
+      border-top: 1px solid var(--rule); background: var(--surface2);
+      padding: 36px 0 40px; color: var(--ink-3);
+      font-family: var(--font-sans); font-size: 14.5px; line-height: 1.6;
+    }
+    .tf-colophon p { max-width: 72ch; margin: 0 0 10px; }
+    .tf-colophon strong { color: var(--ink-2); font-weight: 600; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tf-article * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+
+
+    /* ---------- hard problems ---------- */
+    .tf-layer { margin-top: 60px; }
+    .tf-layer:first-of-type { margin-top: 44px; }
+    .tf-layer-head { border-top: 2px solid var(--ink); padding-top: 16px; }
+    .tf-layer-head .tf-k {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--accent-text);
+    }
+    .tf-layer-head h3 {
+      font-size: clamp(24px, 3.2vw, 32px); font-weight: 600;
+      letter-spacing: -.034em; line-height: 1.08; margin: 10px 0 0; text-wrap: balance;
+    }
+    .tf-layer-head p { margin: 10px 0 0; color: var(--ink-2); max-width: 62ch; font-weight: 450; }
+
+    .tf-problems { display: grid; gap: 1px; background: var(--rule);
+      border: 1px solid var(--rule); margin-top: 26px; }
+    .tf-problem { background: var(--surface); padding: 26px 28px 28px; }
+    .tf-problem-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 13px; }
+    .tf-problem .tf-pnum {
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--rule-strong); letter-spacing: .1em; margin-right: 4px;
+    }
+    .tf-chip {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: .13em; text-transform: uppercase;
+      padding: 4px 9px; border: 1px solid var(--rule-strong);
+      color: var(--ink-3); white-space: nowrap;
+    }
+    .tf-chip.tf-open { border-color: var(--accent); color: var(--accent-text); background: var(--accent-soft); }
+    .tf-chip.tf-unsolvable { border-style: dashed; border-color: var(--ink-3); color: var(--ink-2); }
+    .tf-problem h4 {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 700; letter-spacing: -.024em;
+      line-height: 1.22; margin: 0 0 12px; max-width: 42ch; text-wrap: balance;
+    }
+    .tf-problem .tf-body { max-width: 62ch; color: var(--ink-2); font-size: 18px; margin: 0; }
+    .tf-problem .tf-hard {
+      margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--rule);
+      font-family: var(--font-sans); font-size: 15px; line-height: 1.55;
+      color: var(--ink-2); max-width: 62ch;
+    }
+    .tf-problem .tf-hard b {
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3);
+      display: block; margin-bottom: 6px; font-weight: 500;
+    }
+    .tf-problem blockquote {
+      margin: 16px 0 0; padding-left: 18px; border-left: 2px solid var(--accent);
+      font-weight: 450; color: var(--ink); max-width: 58ch; font-size: 17.5px;
+    }
+    .tf-legend {
+      display: flex; gap: 22px; flex-wrap: wrap; margin-top: 26px;
+      padding-top: 18px; border-top: 1px solid var(--rule);
+      font-family: var(--font-sans); font-size: 14px; color: var(--ink-3);
+    }
+    .tf-legend span b { color: var(--ink-2); font-weight: 600; }
+
+    .tf-byline-row {
+      display: flex; align-items: center; gap: 18px;
+      flex-wrap: wrap; margin: 22px 0 0;
+    }
+    .tf-byline-row .tf-byline { margin: 0; }
+    .tf-watch {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-family: var(--font-sans);
+      font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      color: var(--accent-text); text-decoration: none;
+      border: 1px solid var(--accent); background: var(--accent-soft);
+      padding: 9px 15px 9px 12px;
+      transition: background .15s ease, color .15s ease;
+    }
+    .tf-watch:hover { background: var(--accent); color: var(--surface); }
+    .tf-watch:hover svg { fill: var(--surface); }
+    .tf-watch svg { width: 15px; height: 15px; fill: var(--accent-text); flex: none; }
+  </style>
+</head>
+<body data-page="articles" data-top-strip="off">
+  <div id="site-nav-mount"></div>
+
+  <article class="tf-article">
+<header class="tf-masthead">
+  <div class="tf-wrap tf-masthead-inner">
+    <div class="tf-eyebrow">
+      <span>Invest Like the Best</span><span class="tf-dot">/</span>
+      <span>Neil Movva</span><span class="tf-dot">/</span>
+      <span>Co-founder, Sail Research</span>
+    </div>
+    <h1>The <span class="tf-molten">Token</span> Factory</h1>
+    <p class="tf-standfirst">
+      Neil Movva is trying to make machine intelligence cost almost nothing — by
+      scavenging the chips nobody wants, the power nobody can use, and the
+      milliseconds nobody misses.
+    </p>
+    <div class="tf-byline-row">
+      <p class="tf-byline">In conversation with Patrick O'Shaughnessy</p>
+      <a class="tf-watch" href="https://www.youtube.com/watch?v=uyzqxIoiobU" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        Watch the episode
+      </a>
+    </div>
+
+    <div class="tf-panel">
+      <div class="tf-cell">
+        <div class="tf-k">Background vs real-time</div>
+        <div class="tf-v">90 / 10</div>
+        <div class="tf-n">Where he thinks inference lands, from roughly 50/50 at the end of this year.</div>
+      </div>
+      <div class="tf-cell">
+        <div class="tf-k">Uptime he will buy</div>
+        <div class="tf-v">95%</div>
+        <div class="tf-n">Fatal for anyone else. He says he is the first buyer — and would consider 80%.</div>
+      </div>
+      <div class="tf-cell">
+        <div class="tf-k">Target token rate</div>
+        <div class="tf-v">1–10 /s</div>
+        <div class="tf-n">Not 100. Long-horizon agents do not need to type fast.</div>
+      </div>
+      <div class="tf-cell">
+        <div class="tf-k">One megawatt</div>
+        <div class="tf-v">8 racks</div>
+        <div class="tf-n">Liquid cooling shrank a data hall to eight refrigerators in a row.</div>
+      </div>
+    </div>
+
+    <div class="tf-switch" role="tablist" aria-label="Views">
+      <button role="tab" id="tab-t" aria-controls="pane-t" aria-selected="true">Transcript</button>
+      <button role="tab" id="tab-c" aria-controls="pane-c" aria-selected="false">Conviction</button>
+      <button role="tab" id="tab-m" aria-controls="pane-m" aria-selected="false">Motivation</button>
+      <button role="tab" id="tab-h" aria-controls="pane-h" aria-selected="false">Hard problems</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="tf-pane" id="pane-t" role="tabpanel" aria-labelledby="tab-t">
+  <div class="tf-wrap tf-transcript-grid">
+    <nav class="tf-rail" aria-label="Chapters">
+      <div class="tf-rail-title">Chapters</div>
+      <ol>
+        <li><a href="#ch1"><span class="tf-num">01</span><span>Building a token factory</span></a></li>
+        <li><a href="#ch2"><span class="tf-num">02</span><span>The future of background agents</span></a></li>
+        <li><a href="#ch3"><span class="tf-num">03</span><span>Nvidia and the GPU stack</span></a></li>
+        <li><a href="#ch4"><span class="tf-num">04</span><span>Chips, memory, and transformers</span></a></li>
+        <li><a href="#ch5"><span class="tf-num">05</span><span>The future of AI training data</span></a></li>
+        <li><a href="#ch6"><span class="tf-num">06</span><span>Chip scarcity and compute arbitrage</span></a></li>
+        <li><a href="#ch7"><span class="tf-num">07</span><span>Reinventing the AI data center</span></a></li>
+        <li><a href="#ch8"><span class="tf-num">08</span><span>Power and the scavenger strategy</span></a></li>
+        <li><a href="#ch9"><span class="tf-num">09</span><span>Open vs. closed AI</span></a></li>
+        <li><a href="#ch10"><span class="tf-num">10</span><span>Closing</span></a></li>
+      </ol>
+    </nav>
+
+    <div class="tf-transcript">
+
+<article class="tf-chapter" id="ch1">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 01</div>
+    <h2>Building a token factory</h2>
+    <p class="tf-dek">What Sail actually sells, why "abundance" is the company's theme, and the opening the low-latency crowd left wide open.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>I think it's important early in these conversations to just say the thing — literally what you're building and what it does today. So orient us there: what is the system you're building, and why should it exist?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Sail Research is a token factory. We have an API where anyone can send us requests, where they can use large language models — open source large language models — for any task they want. We will serve those tokens to them at a price that is unbeatable in the market.</p>
+  <p class="tf-a">We also support their ability to build agents on top of this. We host what we call sandboxes, which are long-running agent virtual machines hosted in the cloud, designed for agents that run for hours, days, or weeks.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So we should think about you as a peer company to others that serve different kinds of inference. You're serving one specific kind, and your goal is to be the absolute cheapest provider and enabler of a certain kind of use of intelligence.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Exactly. The theme of our company is abundance. We want to deliver this new commodity of intelligence to as many people as possible, at a cost that is sustainable for almost every industry. We think that whenever you make something 10 times cheaper, it's a new product category, and we aspire to do that for tokens.</p>
+  <p class="tf-a">We think it's so profound that the machine can think, and now our job is to make as many machines as possible in the world work towards thinking.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>If the theme of the day is token cost — is that the right way to think about this, or is there some other way you'd put it?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Absolutely. My north star is I want to have the lowest cost per token in the industry, and do that by a mile. I don't think tokens are the final unit of work or intelligence, but they are what we use today, and so it's very straightforward.</p>
+  <p class="tf-a">After tokens, I think you start to move more towards outcomes, which is a vague direction. Today, when you consume tokens through an agent, you don't actually control how many tokens the agent reasons for. It can reason for a certain amount of time, or call a certain number of tools. Increasingly I think we will have agents do some unit of work, take as many shots on goal as they can, and however many tokens they use to get there is a dependent variable depending on the task.</p>
+  <p class="tf-a">So think about agents that self-administer a token budget, as opposed to a company setting a budget for how many tokens engineers can spend per month.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Why is there an opportunity here that you can tackle? The entire world seems oriented around more, better, faster, cheaper tokens, and seems to be attacking this very aggressively. What was the unique opening you saw — where is the market not being efficient?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">There's two things that are tailwinds for our company. One has got to be the rise of open source — I had to talk about that first. We are starting to see an increasing number of our customers and the broader market care about owning intelligence. They want control, sovereignty, over the thing that they depend on.</p>
+  <p class="tf-a">That created a much more robust market for customized models, or even just these vanilla open source models that no one can ever take away from you. You always have the weights. You always have the right to deploy them however you like.</p>
+  <p class="tf-a">In that world there's been a reasonably robust market for the past couple of years serving these models at large scale. The challenge is all those companies — you could take your pick, Baseten, Fireworks, Together — they all focus on low latency inference, and they were pulled in that direction by one very important customer: Cursor.</p>
+  <p class="tf-a">I think that was the right choice about a year ago. As of six months ago, it started to look like maybe low latency wasn't the only thing you wanted from an agent. You wanted more persistence, more long-horizon tasks.</p>
+  <div class="tf-pull">Now it's to me very obvious that the future of agentic inference is long-horizon tasks. You're going to run the machine for hours or days at a time. It doesn't matter if it spits out tokens at 100 tokens per second. Maybe 10 is just fine.</div>
+</article>
+
+<article class="tf-chapter" id="ch2">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 02</div>
+    <h2>The future of background agents</h2>
+    <p class="tf-dek">Why the best latency is no latency, what an unbounded market looks like, and the point at which a scientific answer costs tens of dollars.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Why are you so confident in that? To me it seems like I want everything as fast as possible.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">When you're waiting on it, you absolutely deserve the fastest answer possible. My trick is I don't want you to be waiting on it. I want it to be proactive. I want it to be in the background. One way to say it is: the best latency is no latency at all. When you wake up in the morning, the work's already been done overnight. You didn't even have to ask for it. That's the dream — we're not quite there yet.</p>
+  <p class="tf-a">But more importantly, the more you're in the loop as you prompt agents and wait for a response, the more you're the bottleneck in helping the agent do more or less work. What we'd like is for the agent to operate on more human time scales. You don't manage your colleagues every five minutes. You ask them to do a high-level task and you come back and check in maybe every day, but more likely once a week. That to me is the future of human-agent collaboration.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Say more about the early indications that this is happening — and therefore that you should be building this company.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">The first and most important thing is the idea of test-time compute scaling: that you can give an agent more time and it will give you a better answer. That was theorized about two years ago now, but it wasn't really something we could actually bet on until, I'd say, late last year with Opus 4.5.</p>
+  <p class="tf-a">Opus 4.5 was the first agent that was at all suitable for longer-horizon tasks, and it was pretty mediocre when it first came out. But you look at the more recent models, and what we've done on open source as well, and you see agents are capable of running for an hour at a time. I wouldn't say days, but definitely an hour is quite suitable today.</p>
+  <p class="tf-a">Just seeing that average turn or task length get longer and longer — it doesn't take many points to draw out the exponential and see that agents are worth running for longer periods.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>What do you think will be the market share of long-running agents in three years?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I love this market because it's unbounded. There's no human in the loop, so you can consume as many tokens as you like in the background — versus human attention span. If you tell me to consume 10x as many tokens at Codex or at Claude Code, I'm actually not sure that I can anymore. I'm already in a loop and locked in coding for most of the day that I'm at the laptop. What is unbounded is how many tokens can be consumed in the background or proactively.</p>
+  <p class="tf-a">So long term, I think we're going to end this year at maybe 50/50 background and real-time workloads, but I see this going to 90/10 in favor of background.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>What are your favorite examples of something that gets accomplished much better as a background task than as a human-in-the-loop task?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Most deep research. Most questions where you want a definitive answer over not 100 sources, not a thousand sources, but 10,000 sources or more. If you want to build an authoritative index of information — for example, one of our customers, Parallel Web Systems, seeks to do exactly this. They want to build an index over the whole internet and monitor it in real time for changes. That is the kind of crazy exabyte-scale task that needs a very different scale of intelligence to achieve.</p>
+  <p class="tf-a">Deep research is a top category for us, and increasingly we see cybersecurity following this direction. There's only so much code you can generate, but there are exponentially more ways to break that same code than there are to generate it. And there are some great customers out there working very hard on agents that can break any piece of software and proactively patch it.</p>
+  <p class="tf-a">When Fable first came out, for example, there was this push in the cybersecurity community to run Fable against every line of code we've ever written and look for bugs in 20 different ways — memory errors, business logic errors, network vulnerabilities, all these things. These are all things you would write specialized agents for. You wouldn't just have Fable look at the source code once; you'd have it set up environments where you can pentest these applications.</p>
+  <p class="tf-a">At some point people started to make this joke that security has become proof of work. When you want secure software, it's really a question of how many dollars did you spend on Anthropic's APIs trying to break into your software. That is the best indication of how secure it is, because that's the best tool in the world.</p>
+  <p class="tf-a">And increasingly we found that the frontier of intelligence here is quite jagged. It's not the case that Fable finds a superset of all bugs in software. You'd find some bugs with a very small model that you don't find with the large model. You'd find some bugs with Haiku that you wouldn't find with Fable, and vice versa. So it encouraged this very diverse approach to sampling.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Get speculative for me. We talked about practical examples — deep research, cybersecurity. If you get dreamier about the new product categories this kind of inference unlocks: what if you're maximally successful?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">For individual users, what I'm most excited about is proactive intelligent agents. You can imagine Siri running in the background all the time to understand all the emails you received in a day, all the text messages you receive in a day — having a much more encyclopedic view of your life and how to be helpful in that life. Right now there are still point solutions, so you end up doing a lot of prompting. Siri is not very proactive. That's something we can fix with abundant inference.</p>
+  <p class="tf-a">If you trust the machine enough that it's reliable and also trustworthy — as in private — you might even imagine the machine understanding how you interact with it and proactively surfacing your next action whenever you open your phone. Can we build a good model of what you're going to do next? My estimation is yes, we totally can. And the key to that is incredibly cheap intelligence. You have to be willing to spend tokens without any promise of return. That's the unlock.</p>
+  <p class="tf-a">The long-lens view is that we have a form of intelligence that can tackle any verifiable problem. Any verifiable problem means most software. It means a lot of formal math proofs and similar. And it could also mean scientific discovery. These are all relatively verifiable problems. And all those things currently have a dollar cost attached to them — a hidden one. How many tokens could you possibly harness to make this work?</p>
+  <div class="tf-pull">We have started to bring within view a dollar cost for these long-horizon tasks that is reasonable. It's not millions, it's thousands — and maybe hundreds or even tens of dollars in the near future to have a definitive answer to any scientific question.</div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>And so if we dream about that future, we then become limited just by the questions that people can ask.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Pretty much. The models are on the cusp of taking even a high-level question and chasing down every possible follow-up. You can have the model take that on its own, and the question is just what is your token budget. And we will solve the token budget problem.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>What about non-verifiable tasks?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I put basically the entire category of human taste into that bucket. We have not solved human taste yet, and I don't know that it fundamentally can be. I'm excited to be surprised here, but we are focused on very quantitative problems. We leave the quality of writing, the beauty of art, to people.</p>
+  <div class="tf-aside">Sponsor reads have been removed from this transcript.</div>
+</article>
+
+<article class="tf-chapter" id="ch3">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 03</div>
+    <h2>Nvidia and the GPU stack</h2>
+    <p class="tf-dek">Tensor cores earning their die area, the milk club, "speed of light" — and why throughput and latency can never both be won.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Let's talk about the stack of solutions you hope to build to get to this giant token factory. You think about it in levels — software, hardware, power. Talk through the master plan.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">We always have to start with software. Where is the opportunity, on today's chips and in today's data centers, to improve efficiency? The first thing we did was try to build the entire LLM software stack around peak GPU efficiency — we're using Nvidia GPUs, and we wanted to squeeze more tokens out of the same chip than anyone else in the world.</p>
+  <p class="tf-a">That starts with the lowest level of programming: kernels. It's actually my background. I spent my whole professional life working on GPUs and kernels. Nvidia was my first job while I was in college, and I got to see how the tensor cores earned their right to be on the chip. This is back in 2016.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Describe what that means for the lay person.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">A tensor core is a specialized unit on the GPU that accelerates matrix multiplication. Simple as that.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>And why is matrix multiplication so important?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">That's a great question. I cannot say that there is a divine truth of the universe that explains why matrix multiplies seem to be the atomic unit of computation. But one way I've heard it described is that it's a really succinct way to mix two blocks of numbers together and have them interact in some interesting way. That's as much as I can say about it. It is really convenient that linear algebra turns out to be a very compact representation of arbitrary relationships in data.</p>
+  <p class="tf-a">Nvidia, great graphics company obviously, had market share dominance in GPUs and gaming graphics for quite some time. Then starting in the mid-2010s they began these skunkworks projects to make the graphics processor more suitable for the machine learning tasks they were tracking.</p>
+  <p class="tf-a">I remember reading the lab notebooks of some of my managers when I was at Nvidia. They would visit these small ML conferences like ICML or NeurIPS at the time and just take note of these papers — oh, this deep learning thing seems to be catching on, and what's really interesting is that these grad students are using gaming Nvidia GPUs to train their large models. We should double-click on this and figure out what's going on here.</p>
+  <p class="tf-a">By 2015, 2016, at least Jensen had the conviction to double down on: this usage of our chips is only going to grow, let's start allocating more and more precious silicon die area to this capability that seems to be emerging. Let's put the first version of tensor cores on the chip.</p>
+  <p class="tf-a">So we're talking about taking this gaming chip, designed for painting pixels on a screen, and adapting it to do matrix multiplies. It was early, and you'd be competing against the graphics teams when you asked for more silicon area. In any chip company there's always competition for that — it's something the designers guard so carefully. You never want to invest in the wrong technology, because that's opportunity cost you could have allocated to some other functionality.</p>
+  <p class="tf-a">So we fought tooth and nail and got just a tiny bit of die area — maybe 5 or 10%, something like that — for the first generation of these chips, to get some acceleration for basic convolutions, which were the fundamental operation for computer vision models at the time.</p>
+  <p class="tf-a">Then we had a software team trying to squeeze all the performance we could out of the chip. That team, which is where I worked, taught me the most about the ethos Nvidia has. They have this term called speed of light. They always chase the speed of light for any piece of hardware they make. It is so ingrained in every engineer's mind that if the machine can do it, we're going to push the machine to the frontier.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>And the speed of light is the edge of what's possible.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">The speed of light is the edge of what's possible. Exactly. If we think the chip can run at this frequency and produce this many multiplies per cycle, we're going to get there. We're going to break every bottleneck and get to that peak level of performance.</p>
+  <div class="tf-pull">To this day I tell all my engineers: we're chasing 100% speed of light. I don't care about relative numbers versus the competition. I only care about absolute numbers.</div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Before we leave your time at Nvidia — anything else beyond that cultural touch point that changed how you think, or that stood out about how the business ran?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I have a ton of stories about Nvidia. One of my favorites is that on the tenure side, a lot of people I worked with in 2015, 2016 are still there today. That company has incredible retention, and these are the best engineers — frankly on the silicon side at least — I've worked with in my whole career. They're extremely motivated and passionate. They've believed in parallel computing as a concept through its various incarnations and have loved seeing the chip evolve. This is their life's work.</p>
+  <p class="tf-a">They're also a very frugal company. Nvidia — and I guess all the Silicon Valley companies after 2008 — had some cutbacks on perks. So, no free lunch. Nvidia took it one step further: there was no free milk in the fridge. If you wanted to drink coffee at Nvidia and you wanted some milk, you actually had to chip in a dollar every month to the milk club, and the milk club would stock Costco milk in the fridge. I remember that distinctly. We don't do that at Sail, but it's a frugality that permeates the company.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Link that experience — making more efficient use of the underlying hardware through software — to today's environment.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">The GPU is fundamentally a throughput machine. It's happiest when you give it a lot of work to do and let it chew through that work at peak utilization of its compute units. But that's not the way we've taken AI in the last couple of years. We've really pushed AI to be an interactive chatbot tool — that's the most common form of AI usage today. And in that world you care a lot about spitting answers out to the person at the keyboard as quickly as possible.</p>
+  <p class="tf-a">That's quite interesting for the GPU. It's very difficult to put the GPU in its happy path of being fully compute-utilized when you're trying to spit out tokens quickly. There's a fundamental trade-off on the GPU between being throughput oriented or latency optimized, and everyone has chosen latency optimization because the shape of usage was chatbot oriented. I believe that's the most profound change we're going to see in the next year — away from chatbots, towards proactive or background agents. In that world it makes a lot more sense to build a stack around throughput.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Explain technically why the trade-off between throughput and latency is unbreakable. Why can't we have both from the same hardware?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">It's quite foundational in almost every system you could ever look at. There's always a trade-off between getting a small amount of data through the system as quickly as possible, and running wide and slow. Narrow and fast or wide and slow is a classic trade-off in all computer science.</p>
+  <p class="tf-a">For GPUs specifically, focus on this concept of batching. We want to group many users' work together into a batch that we can run all at once on the GPU. That's the parallel processing of the GPU — we'd like to have a lot of parallel work to do. The thing is, you're doing net more work when you run a large batch of compute together. You might be filling all the units, but every step along the way as you carry a batch through the GPU, there's more work to be done. So any individual token, or any individual user's request in that batch, is going to spend a longer time on the GPU being carried along with other people's traffic.</p>
+  <p class="tf-a">Maybe the way to say it is: if you want to get downtown in SF, you can take the bus or you can take private transit. The private transit has its own direct path, as the crow flies, using exactly the roads you want from point A to point B. A bus has to serve many more people, and it has to do something that works for everyone — so it takes a slower path, and it stops and waits for other people to get on and off.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>The bus versus car analogy is a good one. So step one for you is to create the best possible bus on top of Nvidia GPUs.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">That's exactly right. It means we explore things like different parallelism schemes.</p>
+  <p class="tf-a">Another example: one of the things Nvidia has really innovated on is the NVLink interconnect between GPUs. That system is so good that if you have a large matrix multiply you want to perform faster, you can cut it in half and shard it across two or more — up to eight, let's say — Nvidia GPUs, have them all work on pieces of that larger matrix multiply, and reduce their results back together at the end.</p>
+  <p class="tf-a">This is a great way to cut the minimum latency of an operation. Each GPU is now doing one-eighth as much work, so it can finish faster — but not eight times faster. It's sublinear scaling. You'll use eight times more hardware, but you might only get four to five times the speed. You're not going to get strong scaling. That's because of communication overhead, and because every GPU is a little less efficient working on a smaller tile of work than a larger one.</p>
+  <p class="tf-a">It's the only way to speed up if you want the minimum latency possible. You can do that, but it is not the choice I would make. I'd prefer a different parallelism scheme like expert parallelism or pipeline parallelism, and we may do interesting things to overlap and hide the communication latency in a way you'd have less ability to do for a low-latency server.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So is the right way to think about NVLink as a technology that improves latency performance?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Yes — and only latency performance, which segues into what we do differently as a company. NVLink is mandatory, I'd say, for low-latency inference. So Nvidia is excellent at low-latency inference. And I'm telling you that we don't really care that much about low-latency inference.</p>
+  <p class="tf-a">So where does that leave us? I'm not holding my breath for other companies broadly to figure out NVLink quickly. It's a challenging technology to figure out. It's hard to scale, hard to productionize. So if I have some other vendor's chip and it's good at the foundational compute components — it can still do matrix multiplies really well, it just can't communicate those results across its peers quickly — well, maybe there's room for that chip in my stack as a really good compute-per-dollar option.</p>
+  <p class="tf-a">That's what I actually optimize for in most cases: how many flops does this chip have, and how much is it going to cost me per hour to own and operate. There are other chips that definitely rank higher than Nvidia on flops per dollar, but they may not have as much interconnect. So it's my job to figure out what parallelism scheme makes this chip suitable for inference. It's not going to be tensor parallelism — Nvidia is basically mandatory for that. But other techniques may work well for me.</p>
+</article>
+
+<article class="tf-chapter" id="ch4">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 04</div>
+    <h2>Chips, memory, and transformers</h2>
+    <p class="tf-dek">SRAM against DRAM, what Cerebras is really buying with a whole wafer, and the original sin of the transformer.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Before we leave latency — what do you make of Cerebras and others that can perform incredibly fast operations? What is your prediction for the future of very low-latency-focused hardware?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Cerebras, Groq, and a couple of others coming out of stealth now have made a very interesting bet: not just building another GPU, but building a different kind of accelerator that focuses on a different memory hierarchy. They want to maximize the amount of SRAM on the chip and use that as very fast memory for weights and KV cache.</p>
+  <p class="tf-a">There are two ways to make memory for a chip. One is to integrate the memory on the logic die itself — you tell TSMC, I want this many megabytes of storage on my chip. TSMC has a standard cell library, and you can print out a bunch of cells of SRAM. The problem with SRAM is it takes a lot of area on the silicon die. If you want to build a large die — say the Nvidia Blackwell at 800 mm² — and you made that whole thing SRAM, it would be in maybe the single-digit gigabytes. Not a crazy amount of storage.</p>
+  <p class="tf-a">Compare that to taking a different process technology entirely. Not TSMC anymore, but Micron, SK Hynix, Samsung. They build DRAM, which is a whole different way to build memory, more focused on capacitors than transistor cells.</p>
+  <p class="tf-a">SRAM — the standard way to build it is what's called the 6T transistor cell. It's a stable transistor arrangement that lets you write a bit to it and then it holds that state. You do have to apply some power, but it's holding that bit without any active management. It's static.</p>
+  <p class="tf-a">Dynamic RAM is dynamic because to write data you write a charge onto a capacitor, and as soon as you write that charge, it starts dissipating. It's leaking. So the dynamic part of DRAM is that you must, every 50 milliseconds or so, refresh every bit you've written. You're constantly juggling billions of balls in the air — billions of bits managed by a memory controller reading and refreshing every bit on the DRAM.</p>
+  <p class="tf-a">The benefit is you get much higher density. It's a whole different process technology with a ton of different trade-offs — hence why DRAM manufacturing sits in entirely different companies like Micron, SK Hynix, and Samsung. These are the best companies in the world to do this.</p>
+  <p class="tf-a">If you take DRAM from those companies, stack it into many layers, and solder it around the main logic die from Nvidia, you can get hundreds of gigabytes. Blackwell has 288 GB of HBM capacity around the logic die, and the logic die itself maybe only has 500 megabytes of SRAM. So it's possibly three orders of magnitude difference in density, DRAM versus SRAM.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So let's go back to Cerebras. What are they doing?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">They see this problem — there's no obvious way to increase SRAM density on the chip. But the thing with SRAM is that because it's so physically close to the logic gates that do the computation — the arithmetic logic units are right next to the SRAM they pull from — the compute units doing the matrix multiplies can pull data from SRAM at just mind-boggling speeds. Cerebras quotes 21 petabytes per second for Wafer Scale Engine 3. Compare that to HBM on an Nvidia Blackwell, which is around 10 terabytes per second. Once again, orders of magnitude: more capacity, but proportionally less bandwidth.</p>
+  <p class="tf-a">So what Cerebras does is say: we're going to take as many of these dies as we can. We're not going to limit ourselves to the 800 square millimeter reticle limit TSMC imposes. We're going to take the entire wafer and have every die connect to every other die over scribe lines, and get as much SRAM as we can on the whole wafer — let's say 50 gigabytes per wafer. Then we stack many wafers together in a pipeline, and now we can have up to a terabyte of very fast memory.</p>
+  <p class="tf-a">And you do all that work just to get the ability to read data from SRAM at 21 petabytes per second per wafer. Therefore you can serve these language models at extremely high tokens per second, because you can move the entire parameter count of a large model like Kimi in and off the logic cores in about a millisecond. So there you go — you have a path to a thousand tokens per second.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>And what's your prediction for that segment of the market?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I think what happens is some hybrid outcome, where we pair the Cerebras chip where it's very strong — very fast access to memory — with something that has more capacity for memory. It's true you can take a one-trillion-parameter model like Kimi and fit it on a large number of Cerebras wafers. But you can't do something about the KV cache very easily. The KV cache grows as people use the model more, and it's always dynamic. You don't even know how much you're going to need. It depends on how many users you have and how many you want to serve.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Can you explain KV cache in basic terms?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Whenever you use a language model, every token you send through stays in the context window for as long as you're having a conversation. If we talk for 100,000 tokens, the 100,001st token is still in the conversation behind us, and the model references all the past conversation history to make better predictions about what the next thing we're going to say is.</p>
+  <p class="tf-a">So that KV cache is a bunch of memory. You have to store a representation for every token you send through the language model, and it frequently gets larger than the weights of the model themselves. You have this crystallized knowledge in the model weights, and the dynamic knowledge of the exact conversation we're having in the KV cache. That's how I like to think about it.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>And this is why people observe that deep in a conversation things start to degrade — some sort of technical problem.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">The KV cache is quite interesting in that regard. It's an exact representation of everything that came before — we store all the information we've seen in the conversation. However, during training, the model did not get trained primarily on very long context conversations. It got trained primarily on, let's say, 8,000-token or 16,000-token conversations. So if you take the model to 200,000 tokens, there was some training at that context length, but it's not the model's core strength.</p>
+  <p class="tf-a">There's always been a challenge for the frontier labs: how do we make the model exactly as intelligent at 10,000 tokens as we expect it to be at 200,000 tokens? It's going to be a perennial battle. We've had one-million context windows as a concept for years now — Anthropic was, I think, the first to hit that length. I still use /compact in my Claude Code well before one million context length. I don't think it's actually great to hit the full length.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So these extremely fast, extremely low-latency approaches are ultimately limited by this factor.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Yes. You can do whatever you want for the weights — it's very possible to have unbeatable performance on weight storage. However, the KV cache is going to be a big thorn in your side.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Three years from now, five years from now, what role do these kinds of chips play? What market share do they have in the heterogeneous chip market?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Cerebras and Groq and maybe a couple of others — you should think of them as accelerators. What they're really good at is being used in conjunction with a more traditional GPU-like device that critically has off-chip memory built in. You want off-chip memory for capacity and on-chip memory for speed. We want to hybridize these two things.</p>
+  <p class="tf-a">If you take transformers in the limit — take a transformer to a million context length — what happens is you have this compute-bound stage, which is the actual matrix multiplies for the MLP, where most of the model's world knowledge is encoded. And then you have the attention layer, where we're dynamically adapting to the current conversation. Attention in the limit is usually memory bound, and the MLP in the limit is compute bound at large enough batch size.</p>
+  <div class="tf-pull">The original sin of transformers is that you've taken this fundamentally memory-bound layer and juxtaposed it right next to a compute-bound layer.</div>
+  <p class="tf-a">It is very difficult to have a single chip that is good at both compute operations and memory operations. The GPU is quite balanced in this regard, but you have to choose one or the other. Cerebras has very fast memory access, and it's really good to host the MLP — the weights essentially — on the Cerebras chip. But the GPU has the capacity to scale to really long context lengths, so you'd like to put attention on the GPU and the MLP on the Cerebras chip. I believe this is what's happening with Nvidia and Groq.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Riff for a minute on transformers. What was the innovation in 2017, what are its strengths and weaknesses, and will it remain the dominant architecture?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">What it did was allow us to learn on unsupervised data really effectively. Transformers, at the end of the day, are about taking any arbitrary sequence of data and trying to find patterns in it. And critically, the attention operation — the headline component of transformers — allows the model to dynamically adapt to what it thinks is the most relevant component of the sequence. Every step you take through a transformer, you're essentially reweighing the input you looked at before and figuring out which is most relevant for your next prediction.</p>
+  <p class="tf-a">So it's extremely amenable to learning arbitrary sequence data. And the most interesting sequences of data that we produce on a regular basis is language — that's how we got to dominance in the language regime.</p>
+  <p class="tf-a">To zoom out further, what transformers really did well is that they scaled. Transformers make no such human prior. They just say: there's going to be a pattern in the sequence of data, and if there is one, I'm going to find it. I'm going to throw more and more parameters at this problem until it works.</p>
+  <p class="tf-a">Transformers benefited from a lot of the computer vision work too. One of the challenges in computer vision was that we had a hard time going from the hundreds of thousands of parameters you get for linear models like support vector machines. Then we got to deep learning and tens of millions of parameters — the biggest models were around 150 million parameters, which was huge for computer vision. And now we routinely talk about trillions of parameters. Transformers are the link to go from millions to trillions.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>If the important units of scaling are data and compute, does it stand to reason that transformers stick around, because that's the thing we're good at getting more of?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Data is an open question, but compute — yeah. Transformers are just such great sponges. You increase the compute available to a transformer by 10x and you'll get some log improvement somewhere. So far the scaling laws really work. They're really quite beautiful.</p>
+  <p class="tf-a">And what do transformers do really well? They extend to almost any data set you can throw at them. They're extremely powerful general learners. What's especially useful about transformers over other techniques we've tried to replace attention with is that transformers represent any pairwise relationship you want. Any token in the sequence can attend to any other token. So if there's any relationship in the sequence at all, you're going to find it with a transformer.</p>
+  <p class="tf-a">Now, it may be the case that you don't need all-to-all modeling — you don't need every token to look at every other token. But if you need to, transformers give you that option. Until we know a better way to prune that space down, a better way to have information modeling be more selective, attention is a very good operation.</p>
+  <p class="tf-a">This is another trick we learned in the computer vision days. One of the old Karpathy sayings is that if you have a new data set you want to train a model for, your first goal should be to overparameterize the model and try to overfit the data you have — to prove there is a relationship you can model or memorize, that your learning algorithm works, that you can instill knowledge into the model. Once you can overfit, then you can compress, and the compression is how you get generalization. You don't want to memorize the data in front of you, you want to generalize. Once you overfit the data set, you can work backwards and find the general patterns that fit into the smallest parameter count possible.</p>
+</article>
+
+<article class="tf-chapter" id="ch5">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 05</div>
+    <h2>The future of AI training data</h2>
+    <p class="tf-dek">The internet as a one-time subsidy, RL gyms as the next block — then back to kernels, coal, and how much of a Blackwell we actually burn.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>What's your prediction for the future of data, and riff on the importance of data in this whole story.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I like the phrase that the internet was a one-time subsidy on data. We got it for free. It's extremely high quality — about 30 trillion tokens of high quality text, 300 trillion tokens if you take a wider view on what qualifies as good text — and we've basically looked at it all already. Models have seen the entire internet many times over at this point. There is not a whole lot more to be done on human data from the internet.</p>
+  <p class="tf-a">The next phase of data in my mind is model self-improvement through RL environment gyms. In fact, we don't even benefit from getting more random user interactions with AI. It used to be that the new type of data we cared about a lot was the interaction data from people using ChatGPT and giving signals on what they liked and didn't like. I like the argument now that the median model we serve is so much more advanced than a random human giving feedback, that the signal you get from unconditioned human preference is not actually worth anything anymore. You want expert human preference at this point.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>The model has outgrown everyday generic feedback.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Everyday Joe. Exactly. So the future of data to me is giving the model a hard verifiable task and letting it run in this gym where it's isolated and has a problem it can make progress on, and get measurement of whether it made progress or not. Coding problems are in this category. Math problems are also in this category. And increasingly we can just give the agent a computer and have it act like it's a human worker, and give it feedback on whether it's making progress towards the target outcome. That environment becomes the data. This is not a super differentiated take, but it's been really productive from what I've seen so far.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Does that go on for a really long time, or is it another block — like the internet was one big block, this is another big block that has its day in the sun and then we move on to something else?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I think it's actually more profound than that. The idea is that if you want artificial general intelligence, the best way to get there is to just keep stacking specialized intelligences until you have no more gaps to fill. And the only thing you need to make sure you do to make this work is make sure that your task is verifiable. You need to give the model a self-grading system. If you have that, you have the recipe for self-improvement on any task you like.</p>
+  <p class="tf-a">And I think you've seen this held up by the way frontier labs spend. They used to spend much more on data. Now they spend a lot more on RL environments. These environments absolutely capture that relationship of recursive self-improvement on a verifiable task.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Coming back to your task of making existing hardware more efficient by being more in control of what's going on at the hardware level through software — keep going on what you've done and what you want to do.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I mentioned kernels. It's surprising — people think kernels are done. There are great people like Tri Dao who write excellent kernels, and they form the bedrock of all our modern deep learning. Modern transformers are built on flash attention. But if you deviate from the happy path at all — if there's a new model that comes out with a slightly different way to embed positional information, like a change to the rope system — suddenly the kernel we had is not suitable for this new model, and we may have to patch it.</p>
+  <p class="tf-a">I wouldn't say we're in the phase where we have to invent new kernels from scratch, but having the ability to quickly modify existing GPU kernels matters. A kernel, by the way, is a general term for any program you run on the GPU. Historically, kernels tend to be put into a library where every kernel has a very scoped purpose. Typically you have a kernel for a matrix multiply. You have another kernel for even something as simple as addition — you want to add two tensors together, that's another kernel.</p>
+  <p class="tf-a">And increasingly we've started to fuse those kernels together. If I do a matrix multiply and then I want to add it to another matrix I've also multiplied, maybe those two become one kernel. Instead of writing the data out to DRAM and then reading it back in just to do the addition, maybe I can just do it directly.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Why are humans still doing this? It seems like the sort of thing AIs would be exceptionally good at — engineering more efficient kernels. If we aren't there yet, is that where we're going? Why is Tri Dao so well known?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I don't want to speak for Tri, but what he taught me was that you shouldn't necessarily write kernels by hand anymore. I like to say we write kernels on the whiteboard. We go to the whiteboard, we describe what we think the machine should be doing, then we succinctly describe that in natural language to a model. And then the model is able to do the execution of: okay, here is my input and output, here is the strategy for how we want to dispatch this work onto the GPU, I'm going to go implement this.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So you're doing the conceptual design.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Exactly. And I'm not sure exactly why models are not superb at doing this yet. I don't think this is remote or anything like that. I'm sure in six months' time we'll have much better models on kernel engineering, and I'm sure the labs would tell you they already do a lot of their kernel engineering in a fully automated way.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So software as an edge — maximally near-speed-of-light, efficient use of an underlying piece of hardware — is going to trend towards not being an advantage for a company like yours over time.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">That's right. The rising tide lifts all boats. It really does. I actually don't think there's a point in specializing to say we work on making the model better for just kernel engineering. That's not the most meaningful subset of coding in general. Maybe there's some privileged information you inject into the prompt that's a useful way to steer the model to be better at writing kernels, but broadly speaking, yes — we're all downstream of the frontier in terms of this capability.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>I love this from the history of energy — there's always this pendulum between the raw source, say coal, and then, if there's a certain amount of energy available inside a hunk of coal, what percent of it we can harness and use. A big part of the history of energy was getting that number from 10% to 95%. Where are we in that? If Blackwell is the piece of coal, what percent do you think we're at?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">There are a lot of different ways to analyze that. On some level we are really efficient at optimizing performance when the GPU is doing the thing it's most happy doing, which is a large-dimension matrix multiply. That operation runs at 70, 80% of peak utilization, and it's limited not by software but by power. The way Nvidia quotes peak flops is a little optimistic — you never hit that because of power throttling.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Because of heat.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Exactly, thermals. Let's say 70, 80% — it's saturated, it's pretty good. But in practice you don't spend the majority of your time in a transformer in that happy path where you're doing a large batch matrix multiply. So our job is to build the engine around the chip such that we are feeding the GPU these large batches of work at all times.</p>
+  <p class="tf-a">One of the most profound transitions we've had in the GPU world in the last year is this move where you don't program one GPU at a time anymore. You should think about the whole rack, and maybe you should think about the whole cluster, the entire data center at a time. With Nvidia again, they've started shipping not just a single GPU or a single motherboard, but the whole rack system. They call it NVL72 — their latest chip, the Grace Blackwell 300, ships as a rack of 72 units.</p>
+  <p class="tf-a">It's an open race to figure out who can program the whole rack-scale computer as efficiently as possible. My belief is that that shape of compute is the future of both efficiency and speed. In fact Nvidia does a great job: if you want the lowest possible latency, you should be using that chip. And if you want the highest possible throughput, you should probably also be using that chip as of right now.</p>
+</article>
+
+<article class="tf-chapter" id="ch6">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 06</div>
+    <h2>Chip scarcity and compute arbitrage</h2>
+    <p class="tf-dek">Why Nvidia rations rather than raises, what "there are no bad chips, only bad pricing" buys you, and where the investor anxiety is misplaced.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>One of the things you hear is that the market for the best chips is like a drug market right now — all sorts of fascinating things happening to get as many as possible, because everyone's so short. React to that analogy. And then talk about what the market is like for the not-bleeding-edge chips. If I'm willing to accept a moderately inferior chip, what's that market like?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">A couple of things. Number one: Nvidia has a long-term view on all their chips. They see this immense demand for the Blackwell chips, and they could do what other suppliers have done in the past, which is just crank prices — the supply and demand curves will correct, they'll intersect at some point, and everyone will be technically happier. But Nvidia sees that if they just let the deepest pockets buy all the chips, that maybe hurts them in the long term if that customer ends up accruing a lot more power. They understand that compute is power today, so they're quite strategic about how they allocate compute.</p>
+  <p class="tf-a">The second thought is that relationships matter a lot. Nobody wants a huge order of chip rental to come in from a new startup that says, oh yeah, I'm going to rent 10,000 Blackwells for three years or five years. The startup has only been operating for months, typically. Who knows if they're good for the money. The way you convince someone to give you access to compute is quite challenging these days, and requires either great relationships or incredible financial backing. And it's all because the scarcity is so high and demand is off the charts.</p>
+  <div class="tf-pull">For other chips, I wouldn't even call them inferior. I like to say there are no bad chips. There's really bad pricing. And I will make any chip work at the right price.</div>
+  <p class="tf-a">That's one of the ethoses of the company. Let's talk about AMD. AMD, I think, great chips overall. The challenge is that people don't understand how to program them very well. I've been talking to you about how we have such a great kernel team, how serious we are about squeezing performance out of the hardware. Nvidia is pretty good at doing that for their own chips — frankly, there's some alpha we can squeeze out, but there's a lot more to be done on other chips, because the vendor does a little bit less work than Nvidia does to make the best kernels out of the box.</p>
+  <p class="tf-a">Or even better for me: there is alpha in the fact that other people have this perception that AMD is not as good as Nvidia. That's music to my ears. I'm very happy for them to sleep on this chip and for me to buy as much as I can.</p>
+  <p class="tf-a">Now, I think that's not actually super true anymore. AMD is somewhat popular amongst some large buyers — publicly, Meta and OpenAI have bought a ton of AMD chips, so we're increasingly seeing that all the AMD supply is also being allocated. But there's a long tail of other companies popping up — net new companies like Etched, SambaNova, d-Matrix. The main challenge for them is scale: can they actually get enough wafer allocation from TSMC to pump out chips and make it into the market? Certainly if there's a new chip, I'd like to know about it as quickly as possible and evaluate whether we can buy a good fraction of that supply.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So it's fundamentally an arbitrage for you. If you can be much better at eking out performance from chips that have received less attention, you can resell that at a margin, and it could be a great business.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Exactly. And I don't think it's the case that everyone else just has a skill issue and can't make these chips work as well. I think we're quite competent in this — probably one of the best teams in the world to use multiple silicon architectures and be quite aggressive in chasing down performance in unlikely places. But it's also the speed at which we're willing to build our stack around a new chip. We don't have a huge amount of incumbency where our data center providers are stuck with one class of chip. We have some very creative data center partners who are willing to move very quickly.</p>
+  <p class="tf-a">And most importantly, we don't shy away from the challenge. Frankly a big part of this is just saying yes: we love TPUs, we're going to make TPUs work. Yes, we love Trainium, we're going to make Trainium work. And if it doesn't work easily, we're going to find a way to fit it into the heterogeneous serving system. It will have a place. Every chip has a comparative advantage. We have to find that advantage and then squeeze it in that direction.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>An interlude before hardware and energy. I'd love your perception of the investor class's worry. You look at memory stocks, or my current favorite — the chart that plots the percent of the S&amp;P 500 that's semiconductors. Historically 2, 3, 4%. Now it's 19, 20, 21%. If you're a student of market history, you get all these things through time that reach some crazy near-term peak and then collapse back to long-term norms.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">A lot of people made a lot of money in Micron and SK Hynix and companies like this, but everyone feels like — ah, in the long term compute's a commodity, and it will not represent a quarter or a fifth of the entire market capitalization of the world. And so they're scared. Everyone acknowledges there's a huge shortage, but everyone sort of feels like we'll figure it out and these things will revert back down to their normal place in capital markets.</p>
+  <p class="tf-a">One thing: I'm less of a student of history than a member of history. I was born in 1997, and my mom worked at Intel in the run-up to the year 2000 and the dot-com boom and crash. I remember the time when Cisco was the most valuable company in the world and Intel was close behind. I mostly draw parallels to that period of history from 25 years ago to today.</p>
+  <p class="tf-a">And I think the main difference is that a lot of the investment in networking equipment historically was speculative. We anticipated this future demand for users that never came. What's interesting about token consumption, or AI consumption broadly, is that it's no longer speculative. People buy tokens because they're immediately valuable to them. You don't hoard tokens, you use them immediately.</p>
+  <p class="tf-a">This is also different from what we had two years ago, when there was a supply crunch for Hopper generation chips in 2023, 2024. In that period it was all training-oriented spend, and training is inherently speculative. Now everyone is instituting caps on how much you can spend on Claude Code. It's a very different world to be talking about inference spend and predicting inference spend to go up. I do think inference spend monotonically increases. There's no speculation on inference spend.</p>
+</article>
+
+<article class="tf-chapter" id="ch7">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 07</div>
+    <h2>Reinventing the AI data center</h2>
+    <p class="tf-dek">Why gigawatts are impossible and megawatts are plentiful, what eight refrigerators can hold, and the case for buying 95% uptime.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Coming back to hardware. The unit level is interesting to me — chips, racks, clusters. Talk about the present and future of data centers as you see it.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">One of the themes in our conversation has come back to: what is training versus inference, what is the difference between these two categories? What was different about two years ago being training-oriented and today being inference-oriented?</p>
+  <p class="tf-a">The most conservative players in the entire AI stack have got to be the infra players — whether that's data centers, or even more conservative, TSMC and the chip infra people. Data centers historically were built for training. Training is the superset workload over inference: you can make any training cluster work for inference, but maybe not vice versa. The difference is networking — how much do you invest in bandwidth between chips, and how large of a cluster do you need?</p>
+  <p class="tf-a">There's actually a diseconomy of scale to data centers in some way. It's way more expensive and difficult to build 100,000 GPUs in one data center than to build 10,000, than to build 1,000. And now we just talk about how many megawatts or gigawatts do you have. There's basically no way to build a gigawatt data center in the United States easily anymore. Even 100 megawatts is increasingly hard — basically impossible unless you're a very special set of customers. Ten megawatts is probably on the edge of what's possible today, and one megawatt I would argue is plentiful.</p>
+  <p class="tf-a">So there's this incredible lore on the market where you can find lots of aggregate power, but it will not be concentrated. And that was not interesting to anyone building training data centers, because you just assume it'll all be in one spot — nobody wants to deal with cross-data-center training.</p>
+  <p class="tf-a">So the market has some lag in it. I think the market still assumes we have to go shake down those 100-megawatt and 10-megawatt data centers wherever we can find them — that's still the attitude I hear from a lot of data center developers. But increasingly we're seeing a few new thinkers realize that inference is going to be suitable for these distributed one-megawatt data centers. We're quite in agreement with that, and we are very happy to buy small pools of compute across the United States and use that as our inference fleet.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Give us a sense of the literal physical size of one megawatt versus ten.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">This got really wonky with the advent of liquid cooling. Now you can pack insane levels of power density into a single physical rack. A megawatt of compute — you'd imagine this massive data hall, like a huge warehouse basically. And now you can actually pack that into around eight racks worth of compute. Each rack is about the size of a refrigerator. You can just imagine eight of them lined up. That's a megawatt.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So your view is that the future you want to help build is a whole bunch of different chips that can be used together, that you buy as a buyer who eeks out the most per chip, and those chips get coupled in very small data centers to just do inference. And those two steps — a bunch of random compute, some of it cheaper than it should be, your ability to eke more out of it, and then small units of expression in a data center — equals way cheaper intelligence.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I certainly think so. There's a lot of ways to access cheaper flops if you're able to be creative with what you take. One of the ways I describe what we do is: we will buy any chip anywhere in the world for any duration of time. That is a level of flexibility and liquidity that I think no one else has right now. We're very aggressive about putting our money where our mouth is, and we will really take any capacity and find a way to make it work in our fleet.</p>
+  <p class="tf-a">That is a big part of our advantage today. Long term we have to create more of that advantage by investing in these data centers that other people are going to be skeptical of. Because what's going to happen when you set up this army of a thousand small data centers, versus the one big gigawatt data center? Well, a few things. You're not going to have power redundancy quite often. You're not going to have backup diesel generators on site — those are all very expensive. We cut all that overhead. We're not even going to have redundant networking in a lot of cases. We're going to put these in facilities where we have good access to a single source of power, and we're going to trench one line of fiber to these data centers — but not three lines of fiber with redundancy and failover and SLAs.</p>
+  <p class="tf-a">It's just going to go down sometimes. In fact, I won't be surprised if some of them get down to like 95% uptime.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Which is bad. Very bad. That's fatal, atrocious for anyone else. In a big gigawatt facility you'd have basically zero buyers for a data center that has 95% uptime.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I'm that first buyer. I will buy 95% uptime. Partially it's actually two things. One is that we have a really robust control plane that is going to be fine handling any single failure in any single data center, as long as it's not correlated with other data centers — I can just move the workload somewhere else. I'm cool with that. The failures happen at some rate, and I am basically linearly happy with a data center that's 95% uptime versus 98% versus 99%. It's just linearly good or bad for me.</p>
+  <p class="tf-a">Now, you do need that async piece I mentioned — we serve these long-horizon agents. Because what happens when a request fails is I'm going to have to go find a new GPU to put that request on. That means for that single turn of the agent's work — it's working for an hour, but then it hits a roadblock because its GPU got pulled away — at that moment, that agent is going to experience maybe an extra minute or two or three, maybe even ten, of latency.</p>
+  <div class="tf-pull">But my argument is that my customers don't care, because their agent was running for hours. They're sleeping.</div>
+  <p class="tf-a">So we tell our customers: look, our average throughput is going to be very competitive, but our P99 — our 99th percentile latency — is not going to be controlled. It cannot be. And in return, I'll give you unbeatable economics. I think that's the right fit for background agents.</p>
+</article>
+
+<article class="tf-chapter" id="ch8">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 08</div>
+    <h2>Power and the scavenger strategy</h2>
+    <p class="tf-dek">Solar, wind, and the luxury of tolerating a weeks-long outage — plus mini mills, the founder-CEO split, and where the real waste is.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Talk about power as a category. What are you seeing that's interesting, innovative — where does this go?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I said I want 95% uptime on my data centers. Could I even take 80% uptime at the right price? Probably. And what does that mean? Well, I'm a son of California. I love solar and wind. I think solar and wind power is way undertapped in the United States. The challenge has always been this intermittency — you'd even consider solar and wind unsuitable for data centers, because you have a persistent base load and an intermittent power source. What are you going to do?</p>
+  <p class="tf-a">I think we're actually not that far from solving that problem. I am totally capable of tolerating an outage for my data center that's measured in days or even weeks — which is the worst-case nightmare scenario for a data center. The wind isn't blowing, the clouds are in the sky, fog is hanging over the valley for some time. That's the worst case. It's in fact highly predictable, and I can just call in capacity somewhere else in the world whenever that happens. I'll model the weather, figure out when my data center is going to be offline, move my workload somewhere else, and it's fine.</p>
+  <p class="tf-a">The trick is that it's going to give me better access to power that no one else is going to touch, because it is so annoying to deal with that kind of outage. And if my chips are cheap enough — they're probably not going to be Nvidia racks — I don't mind the capital cost of having idle chips.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>I've heard you describe this entire system as a scavenger strategy. Unpack that.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">First we scavenge chips, and then we scavenge power for those chips. The idea is that in both cases I do not want to be bidding against Anthropic or OpenAI for compute capacity. I'm not going to win against them, and I don't want to. I want to be more creative and use the supply that they don't find legible today. Over time I amass enough aggregate supply. I'm never going to get concentrated supply — I will only get aggregate supply. And over time I build my aggregate factory that is unbeatable in economics.</p>
+  <div class="tf-pull">We're trying to build the best steel factory in the world. But it will come through mini mills, not through large monolithic steel plants.</div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>If I imagine the different versions of this — how vertically integrated you can be — one extreme is you own everything. Very capital intensive: you own the power source, you build the data centers, you design your own chips, you control the software that eats the most out of those chips, and you sell the finished token to the user. But you can imagine other permutations where you're incredibly capital-light, own nothing, and are just the coordination plane across all this stuff — the virtual scavenger. How do you think about which of these to be?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">There's actually two parts of me that receive that question. One is the CEO of a company that needs to work every day and grow as sustainably and as quickly as it possibly can. The other is the founder — and the founder is much more imaginative and just loves this stuff. The founder in me wants to do everything. This is my entire life. I spent my entire life thinking about chips, power, energy. All I care about is this stuff. So of course I want to be maximally ambitious. I don't want to stop ever. I will never stop until I have built the most efficient system from soup to nuts.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>You're doing real-life Factorio, basically.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Very much so. So that's the emotional answer. On the CEO side, I think we have to be more pragmatic. The capital we're looking at for owning everything is, like you said, insane. Software has high leverage, so we have to start with software. But ultimately — do we own power generation, or can we get great power purchase agreements with utilities? I'm more inclined to let other people specialize in the things that they're historically good at, and then see if we can get to the scale where I earn the right to take this under our wing.</p>
+  <p class="tf-a">I absolutely think there are efficiencies to be gained everywhere in the stack if you can break the assumptions that the people I'd be buying from made about who their customers would be. It's a pretty optimistic view. I think it's only possible because we're actually trying to underwrite the largest market for compute in the history of computing. We're going to build so many billions, trillions of dollars of investment into inference. Because of that focus, it makes sense to build a lot of things that are custom for inference. And it's my job to seek all the places where that's possible. As they become obvious to me and my partners, I will get my partners to build custom things for me. And if they can't do it for me, I will do it myself.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Zoom out on the entire system — software, hardware, energy — and stack-rank the places you think we are most inefficient today at producing useful intelligent tokens.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Compute scaling is actually very efficient. You give me more flops and I will use more flops, and we're already fairly judicious with our use of flops. If you look at a modern model, there are very few models that are more than 10% dense, meaning 10% of the possible number of experts you can activate are activated. The frontier models are closer to 1%. So fairly sparse already. I don't think we're wasting too much on the mixture-of-experts side — people have been working on that for quite some time and they're pretty good at squeezing it.</p>
+  <p class="tf-a">Where we are not good is attention and its use of memory. Specifically, the KV cache is quite uncompressed right now. If you look at the entropy in a KV cache, it's nowhere near earning its keep. We're storing many kilobytes of data in the KV cache per token, and that's probably off by an order of magnitude or two. I don't know what the frontier labs do, but DeepSeek certainly publishes really interesting work to compress that further and further, and they're making good progress. The fact that they're able to make order-of-magnitude progress here every year or so signals there's a lot more room to go.</p>
+  <p class="tf-a">That's all on the micro scale. If you zoom out further, I think we actually don't marshal our compute effectively at all. We have all this compute in the world. Nvidia is pumping out five million Blackwell chips this year. Where are they all going? Are they all being used all the time? I certainly doubt it. At some level we just need better orchestration of compute across the world. This is very difficult to do, because a lot of the compute disappears into private pools that will never see the light of day, and those GPUs sit very sadly idle.</p>
+  <div class="tf-pull">It actually pains me physically to see that those GPUs are just — you know, silicon and power went into that, and it's just sitting idle. I want to fix that.</div>
+  <p class="tf-a">We all make fun of xAI for having some challenges with total flop utilization on its clusters, but the reality for the rest of the world is far, far worse. A ton of GPUs just sit in warehouses, or sit in private pools allocated to a specific customer, and don't get utilized.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>What about fabs? What's the future of fabs themselves — will the memory companies, TSMC, Intel and others be able to expand capacity, and will we do it here in the US? If we could snap our fingers and have 100 times the chips, we'd probably have way cheaper tokens.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Everything grows in balance with each other. If we snap our fingers and double all those things, you might fix a TSMC bottleneck but you're just going to run into another bottleneck. You make 20% more chips, then you have another bottleneck immediately.</p>
+  <p class="tf-a">I will say though, it's interesting what they consider to be a must-deliver — what they consider an invariant that their customers will always want, versus what I think of as a more fluid relationship. If a fab exposes more of their trade-offs to me, I'm able to make more intelligent decisions.</p>
+  <p class="tf-a">One of the most interesting examples: any fab has a lot of spread between the worst chip that comes out of the production line and the best chip. There's a lot of variance in how chips are made. If you have a company like TSMC, they work very hard to tighten what we call these process corners. They want to keep the worst chip as close in characterization to the best chip. But that means they are adding a lot of controls in the process that maybe I don't need. Maybe I'm actually willing to find a place for that worst chip. You don't need to tighten the process control as much, which takes more time and cost. Maybe I'm willing to take a lot more rejects.</p>
+  <p class="tf-a">For us it's a more holistic optimization: the cost of the dies, the supply of the dies, and then the cost of power and the places we can put them. My whole goal is to so dramatically expand the supply of power across the United States that I have a home for a lot of chips that otherwise would not have earned their place in a data center.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Can we talk about how you designed the system of your own business? Bring me into the culture, and how you structure a team where this is the north star.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">There's a lot of in-the-limit thinking. We don't worry about the immediate nature of it — when we start working on a model the efficiency is not going to be very good, but we think about where we could end up in a month or six months or a year's time. We don't accept the state of the machines we work on as fixed. Even something like the Blackwell chip: if we think there's some bottleneck holding us back from achieving this performance, it's very important to me that we understand and characterize that very well and write it down, so we can tell Nvidia about it and also keep it in mind for future chips that we buy. We want to learn things that are essentially invariant for the company long term, and fold that into future decisions.</p>
+  <p class="tf-a">We're very collaborative. One of the most important traits we look for is people who are both good students and great teachers. A lot of our people were TAs in college and loved the experience of sharing knowledge in this way. We do whiteboard sessions all the time, and the collegial environment where everyone has something to teach and something to learn is extremely important for us.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>What are the attributes of people you'd want to hire that you think will be resilient three years from now, when more stuff is handled by machines?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Curiosity. It's 100% curiosity. The one thing I cannot teach is love for performance — love for digging into every microsecond that the machine is working and understanding what's happening on the machine at that time. That to me is the most important trait for a performance engineer, and it's what I look for. I don't look for lots of AI experience. I don't look for CUDA experience at all — that's actually a huge red herring. CUDA as a concept, or the GPU as a concept, has evolved so much in the last five years. There's no point asking for ten years of experience. I want to teach that. But I cannot teach the love for performance engineering. That is what I seek.</p>
+</article>
+
+<article class="tf-chapter" id="ch9">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 09</div>
+    <h2>Open vs. closed AI</h2>
+    <p class="tf-dek">Latent distillation, the shelf life of a six-month lead, and the contrarian view on what losing TSMC would actually cost us.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Can you give your assessment of the major labs, and the relationship of closed source as a category to open source — what's happening and what will happen?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I would say the labs pay an immense premium to be three to six months ahead of everything else. I think that's probably still worth it — it makes perfect sense for OpenAI and Anthropic to do what they do.</p>
+  <p class="tf-a">There's a sensitive topic around distillation, which is a very core piece of the relationship between the closed and open frontier. I'd like to offer an alternative view. There is the sense that distillation is theft — that you're taking something from the frontier models when you distill on their outputs. In fact, even if that's not your intent, even if you never try to scrape data from Anthropic, one thing I'll offer is that an increasingly large percentage of the artifacts we put out on the internet are AI-generated.</p>
+  <p class="tf-a">If you just look at GitHub alone, what percentage of repos created in the last year do we think were created by Claude Code? Do we consider that to be distillation? Because that's probably all we need. I would not be surprised if you could train a Fable-class model only on the outputs of code you consider good on GitHub that's open source. And certainly if we take the position that users own the outputs of their interaction with AI, and they choose to put that up on GitHub — which a lot of them do — we're going to have latent distillation for a long time.</p>
+  <p class="tf-a">It seems fundamentally impossible to prevent the diffusion of information or model capabilities. It will happen. The question is just how fast.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So then the question becomes: do scaling and improvement laws hold forever, or for a really long period? If they do, there's value to being three and six months ahead, and that will last as long as it lasts, and they can charge a huge premium for those tokens relative to a very cheap open source token. Is that the right way to think about it?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">It's possible. I don't know that the premium for being three to six months ahead is going to last that long. If you look at enterprise deployments, they don't move at three-to-six-month speed. A lot of enterprises are probably still on Opus 4.6 or Opus 4.7. They don't adopt the bleeding edge rapidly. There are a lot of questions people have around rolling out any change at all.</p>
+  <p class="tf-a">We're so early in scratching the surface that I don't think there's any way to call a winner in this race — and I don't even think this is a race that can be decided ever. It's a continual process. Fundamentally I don't think open source ever goes away. If there's a vacuum because one leader steps out, a new leader will step in. There's too much incentive, and there are a lot of tailwinds too. It just gets easier every day to train a frontier-class model.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So what do you hope the future looks like — what balance between closed and open, between model companies doing everything because they own the stack, and everyone else?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I want abundant tokens and diverse harnesses. I want everyone to build their own harness — every company, every user — make the agent your own. We're not that far away from that level of customization and capability. I want people to own their intelligence, and I want that intelligence to be customized, probably not through weight fine-tuning but through more in-context learning. That's a more technical detail. But the underlying input to this abundance future is basically cheap tokens.</p>
+  <div class="tf-pull">My job is to make the tokens as cheap as humanly possible. I will achieve that, and I will do it through every layer in the stack available to me. I love the supply side levers. I will use every chip. I'll use every source of power. And I will use every piece of land in the United States that's suitable for this.</div>
+  <p class="tf-a">In return, people will have the incentive to explore what it's like to have abundant intelligence. We still treat the agent as a person that is expensive to consult, someone you should ask when you have a hard question. That's not the way to think about intelligence. It's incredible that the machine can think, and we should try to get that into as many hands, as many people, as possible.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>You sit in such a unique seat. What are your most divergent views versus your friends who are really well informed? What ideas of yours make your friends look at you like you have three heads?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Most of the ideas on chips, I would say. When I talk about building custom chips and they ask, oh, so what's different? Basically it's about sidestepping the HBM shortage and focusing on more extreme offload to other forms of memory, such as flash. I'm quite passionate about that idea. Everyone on my team knows I keep banging the drum around: what would we have to change about the model architecture to make offloading KV cache to flash work at a much greater level? I'm whiteboarding that all the time.</p>
+  <p class="tf-a">In the community of inference people, we have some divergent views on what you can do if you design a system around serving at one to ten tokens per second, which is our whole north star.</p>
+  <p class="tf-a">More broadly, there's this larger question around how do people consume a trillion tokens per day. That's the world we want to create the capability for.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>What's a trillion tokens? Ground us in how much that is.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">At OpenAI pricing that's at least $5 million, at the very least. The dollars are probably the most useful metric. It's millions of dollars.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>So what's the world in which we consume what currently costs $5 million per person per day?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">We were asking for at least three to six orders of magnitude improvement in cost per token. Get that into $5,000 and you probably have some customers. In fact, I would argue that for some size of model we are approaching a trillion tokens being measured in tens of thousands of dollars. And that's something you can imagine running for a single job.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Are you at all worried that the average person just can't and won't do that — that there actually isn't that much demand for intelligence in the world?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I never will believe in that. There is always demand for intelligence in the world. The on-ramps to that intelligence are our challenge as a product community. I'm not a product person, so I cannot say I have the best vision there.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>You want to enable those people.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I want to enable those people. I want them to never be held back by the sense that my free tier users cannot use this, or I can't afford to give them this many tokens. I hear that from my customers all the time. We want to fix that.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>The inverse question — not what you think is craziest, but what consensus thing do you think is wrong?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">One of the things I keep coming back to is this question of Nvidia. I am bullish on Nvidia in the short term — you should never bet against them, they're always going to reinvent themselves. But fundamentally, one thing that surprises people is when I tell them that if you look at Hopper to Blackwell to Rubin and you compare like for like — what is the performance per watt of a bfloat16 multiply — it hasn't improved all that much. Or take that one step further, go to TSMC: if you look at 5 nanometer versus four versus three versus two, the performance per watt on these chips doesn't change a dramatic amount.</p>
+  <p class="tf-a">The consequence is that people lose their minds over geopolitics — what happens if we lost access to TSMC for any reason? My contrarian take is that it wouldn't be that bad. Supply would take a shock for sure, but the best processes we have in the West, like Intel, are not that far behind — at worst maybe 2x worse performance per watt. The gap is just far smaller than you would make it out to be if you follow the chip discourse.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>What else is happening in the AI world that is not in your path — not a component of this whole system — that interests you most?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">We're fully downstream of models. The model people get to decide how to design their architectures, and I don't have any input to OpenAI or Anthropic. I can only pray that they go in the direction that is amenable to me — or I have to do my best to predict where they're going and build my serving architecture accordingly, both software and hardware choices.</p>
+  <p class="tf-a">It's the most interesting game in some ways to play. Going back to the profundity of the machine thinking: how consequential it is to decide to use something like sparse attention versus dense attention, or how consequential it is to use a different data type. We were training in BF16, but now we can train in FP8 or FP4 — lower precision data types. That is just an arbitrary choice, it feels like, but it has profound implications for what chips I can use and how I should build my hardware.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>If you had 100 entrepreneurs in a room, all of whom wanted to create a new compute startup — hardware chips or systems or racks — what advice would you give them on how to orient their companies?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">It's all about the bottlenecks on supply chain. You need to first convince me, or convince an investor, that you understand the three to five bottlenecks that dictate modern chip supply. There's TSMC wafer capacity, there's HBM capacity, there's advanced packaging, and maybe a fourth would be power — where will you get the power, how will you build these racks? I want to hear a great answer to each of those four bottlenecks and how you're going to work around them, because it's all arbitrage at the end of the day.</p>
+  <p class="tf-a">You're building a chip because you think Nvidia has made some choices that are difficult for them to change, which is true. Nvidia makes a lot of choices that are difficult for them to change. They're not perfect. They're just really well balanced. So you want to be spiky. You want to pick something and say: I think they've underpriced the impact of how short we're going to be on HBM, and we're going to push really hard in this other direction instead. Which, as an aside, I do think is probably the thing to attack most.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Why?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">There's no easy way to bring on a lot more fabs of memory, and those guys have been burned before. The boys in Boise don't love huge capex for cyclical businesses. They've been burned on that many times.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>But conceivably, because of that shortage, the world is just going to route around it by making everything else in the system more efficient.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I think they're going to make everything else more expensive. I think iPhones will cut their memory, iPhones are going to go up in price, and we're just going to deal with it.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Why doesn't Nvidia go all the way to the end and sell tokens?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">I think Nvidia is really smart about this. They don't compete with their customers. Nvidia takes the long view on everything.</p>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Why don't they even start with the neocloud? Why don't they just sell compute out the back door?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Jensen is really good at making his friends billionaires. He's made CoreWeave a many-billion-dollar company. There's no need for him to destroy that goodwill. He wants to create a diverse community of neoclouds and inference providers who are all jockeying to create demand for Nvidia — such that if any one of them decides to vertically integrate, or go with AMD or any other option, he's got three more people hungry to fill that position. It's great to have competition amongst his buyers.</p>
+</article>
+
+<article class="tf-chapter" id="ch10">
+  <div class="tf-chapter-head">
+    <div class="tf-num">Chapter 10</div>
+    <h2>Closing</h2>
+    <p class="tf-dek">The show's standing final question — and an answer about an impatient sophomore and the advisor who slowed him down.</p>
+  </div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>My favorite closing question for everyone is: what is the kindest thing that anyone's ever done for you?</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">My immediate first thought is all the mentors I've had over the years. It's a rare person who takes a lot of time out of their schedule and makes it their personal interest to make sure that you understand something — or to teach you something, or to ingrain some value in you that they think you're on the cusp of understanding but just need pushing over the line for.</p>
+  <p class="tf-a">A lot of the people at Nvidia I mentioned earlier instilled that love of performance engineering in me. But also my professors in college. I remember my advisor in sophomore year — I was a very impatient student, so I'd show up at his office hours and say, I want to build AI chips, I know what I want to do, why am I wasting time taking all these other basic classes in networking and operating systems?</p>
+  <p class="tf-a">And he just looked at me and laid out the whole stack, and showed me the beauty of understanding every piece in the puzzle. He took my entire path of trying to focus on one piece of the system and said: it's so rare that someone can actually understand the entire stack, from the gate-level silicon all the way to building a great internet-scale service. You should aspire to be someone who, over the course of your lifetime, achieves that level of understanding.</p>
+  <div class="tf-pull">That level of expertise is so noble to chase. That stays with me quite a bit.</div>
+
+  <div class="tf-q"><span class="tf-who">Patrick</span>Neil, amazing conversation. Thanks so much for your time.</div>
+  <p class="tf-speaker-tag">Neil</p>
+  <p class="tf-a">Thank you so much for having me.</p>
+</article>
+
+    </div>
+  </div>
+</section>
+
+<section class="tf-pane" id="pane-c" role="tabpanel" aria-labelledby="tab-c" hidden>
+  <div class="tf-wrap">
+    <div class="tf-pane-intro">
+      <div class="tf-eyebrow">Analysis · What he believes</div>
+      <h2>Thirteen convictions, and what he leans on to hold them</h2>
+      <p>
+        Neil's argument is unusually load-bearing: nearly every claim below depends on
+        the one above it. If background agents don't take over, the throughput bet is
+        wrong; if the throughput bet is wrong, the cheap-chip arbitrage has no home; if
+        that fails, the scavenged megawatt is stranded. Tags mark where he is knowingly
+        offside from the market.
+      </p>
+    </div>
+
+    <div class="tf-claims">
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">01</span><span class="tf-tag tf-contrarian">Contrarian</span></div>
+        <h3>Inference is about to stop being a chat window</h3>
+        <p class="tf-body">The dominant shape of AI usage moves from interactive chatbot to proactive, long-running background agent — and that changes what hardware you should want.</p>
+        <div class="tf-evidence"><b>What he leans on</b>Test-time compute scaling was theorized two years ago but only became bettable in late 2025 with Opus 4.5, the first model he considered suitable for long-horizon work. Agents now run about an hour; he says it takes few points to draw the exponential. He puts the split at roughly 50/50 at year-end, heading to 90/10.</div>
+        <blockquote>The best latency is no latency at all. When you wake up in the morning, the work's already been done overnight.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">02</span><span class="tf-tag">Consensus mechanism, contrarian application</span></div>
+        <h3>Throughput and latency can never both be won</h3>
+        <p class="tf-body">Narrow-and-fast versus wide-and-slow is foundational, not an engineering gap waiting to close. Everyone optimized for latency because usage was chat-shaped. He builds the bus.</p>
+        <div class="tf-evidence"><b>What he leans on</b>Batching does net <em>more</em> total work; each request rides along with other people's traffic. NVLink can shard a matrix multiply across eight GPUs, but scaling is sublinear — 8x the hardware buys maybe 4–5x the speed, lost to communication overhead and smaller, less efficient tiles.</div>
+        <blockquote>NVLink is mandatory for low-latency inference. And I'm telling you that we don't really care that much about low-latency inference.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">03</span><span class="tf-tag tf-contrarian">Contrarian</span></div>
+        <h3>There are no bad chips, only bad pricing</h3>
+        <p class="tf-body">If you don't need NVLink, the whole ranking of silicon changes. He optimizes for flops per dollar per hour and finds a parallelism scheme to fit whatever he buys.</p>
+        <div class="tf-evidence"><b>What he leans on</b>His kernel team's ability to extract performance where vendors do less work than Nvidia does out of the box — plus the market's perception gap on AMD, which he calls "music to my ears." He names TPUs, Trainium, Etched, SambaNova and d-Matrix as things he'll make work, and concedes AMD supply is now being allocated too.</div>
+        <blockquote>I will buy any chip anywhere in the world for any duration of time.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">04</span><span class="tf-tag tf-contrarian">Contrarian</span></div>
+        <h3>Aggregate power beats concentrated power</h3>
+        <p class="tf-body">Gigawatt sites are effectively unbuildable in the US and 100 MW is close behind — but 1 MW is plentiful and nobody serious wants it. Inference, unlike training, doesn't need one campus.</p>
+        <div class="tf-evidence"><b>What he leans on</b>Liquid cooling collapsed a megawatt from a warehouse-sized data hall into eight refrigerator-sized racks. Training demanded co-location because nobody wants cross-data-center training; inference doesn't. He strips out diesel backup, redundant networking and multiple fiber lines as pure cost.</div>
+        <blockquote>We're trying to build the best steel factory in the world. But it will come through mini mills, not through large monolithic steel plants.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">05</span><span class="tf-tag tf-contrarian">Contrarian</span></div>
+        <h3>P99 latency is the right thing to sell off</h3>
+        <p class="tf-body">He will buy 95% uptime — possibly 80% at the right price — and pass the savings on. The trade he offers customers is explicit: competitive average throughput, uncontrolled tail latency, unbeatable economics.</p>
+        <div class="tf-evidence"><b>What he leans on</b>A control plane that re-homes a failed request to another GPU, so long as failures aren't correlated across sites. He describes himself as "linearly happy" from 95% to 99% uptime. A stranded agent turn costs minutes, against a job measured in hours.</div>
+        <blockquote>My customers don't care, because their agent was running for hours. They're sleeping.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">06</span><span class="tf-tag">His framing</span></div>
+        <h3>The transformer has an original sin</h3>
+        <p class="tf-body">Attention is memory-bound in the limit; the MLP is compute-bound at large batch. The architecture bolts them together, and no single chip is good at both.</p>
+        <div class="tf-evidence"><b>What he leans on</b>The memory hierarchy gap: Cerebras quotes 21 PB/s of SRAM bandwidth on Wafer Scale Engine 3, against roughly 10 TB/s of HBM on Blackwell — but Blackwell carries 288 GB against a logic die's ~500 MB of SRAM. His resolution is hybridization: weights on the wafer-scale part, attention and its unbounded KV cache on the GPU.</div>
+        <blockquote>The original sin of transformers is that you've taken this fundamentally memory-bound layer and juxtaposed it right next to a compute-bound layer.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">07</span><span class="tf-tag tf-contrarian">Contrarian</span></div>
+        <h3>The KV cache is the fattest target in the stack</h3>
+        <p class="tf-body">Compute scaling is already efficient and mixture-of-experts models are already sparse — under 10% dense, frontier models nearer 1%. The waste is in attention's use of memory.</p>
+        <div class="tf-evidence"><b>What he leans on</b>Kilobytes stored per token, which he estimates is off by one to two orders of magnitude on an entropy basis. DeepSeek's published compression work is making order-of-magnitude progress roughly yearly, which he reads as evidence the headroom is real rather than theoretical.</div>
+        <blockquote>If you look at the entropy in a KV cache, it's nowhere near earning its keep.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">08</span><span class="tf-tag tf-contrarian">Contrarian</span></div>
+        <h3>The world's compute is badly marshalled</h3>
+        <p class="tf-body">The shortage is partly an orchestration failure. Nvidia ships five million Blackwells this year and a great many of them are not working most of the time.</p>
+        <div class="tf-evidence"><b>What he leans on</b>Compute that disappears into private pools and never sees the light of day. He notes that xAI takes public criticism for cluster utilization while "the reality for the rest of the world is far, far worse."</div>
+        <blockquote>It actually pains me physically to see that those GPUs are just sitting idle. I want to fix that.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">09</span><span class="tf-tag">Consensus — he says so himself</span></div>
+        <h3>The internet was a one-time subsidy; environments are the next block</h3>
+        <p class="tf-body">Roughly 30 trillion tokens of high-quality text, 300 trillion on a looser definition, and models have been through all of it repeatedly. The next phase is self-improvement inside verifiable RL gyms.</p>
+        <div class="tf-evidence"><b>What he leans on</b>The spend shift at frontier labs from data acquisition to RL environments. And an argument that generic human preference data has been outgrown — the median served model now beats the median rater, so only expert preference carries signal. He calls this "not a super differentiated take."</div>
+        <blockquote>If you want artificial general intelligence, the best way to get there is to just keep stacking specialized intelligences until you have no more gaps to fill.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">10</span><span class="tf-tag tf-contrarian">Contrarian</span></div>
+        <h3>Distillation cannot be prevented, only delayed</h3>
+        <p class="tf-body">He reframes the theft debate: even with zero intent to scrape, capability diffuses, because a growing share of what humans publish was written by models.</p>
+        <div class="tf-evidence"><b>What he leans on</b>GitHub — what fraction of repos created in the last year came out of Claude Code? He suspects a Fable-class model could be trained on nothing but open-source code judged good, and notes users own their outputs and publish them freely. He calls the result "latent distillation."</div>
+        <blockquote>I don't think it's fundamentally possible to prevent the diffusion of information or model capabilities. It will happen. The question is just how fast.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">11</span><span class="tf-tag tf-contrarian">Contrarian</span></div>
+        <h3>Losing TSMC would hurt far less than people think</h3>
+        <p class="tf-body">The geopolitical panic assumes each process node is a large performance step. On the metric he cares about, it isn't.</p>
+        <div class="tf-evidence"><b>What he leans on</b>Performance per watt on a BF16 multiply has barely moved across Hopper, Blackwell and Rubin, and doesn't change dramatically from 5 nm to 4 to 3 to 2. He puts Western processes like Intel at worst around 2x behind — a supply shock, not a capability collapse.</div>
+        <blockquote>My contrarian take is that it wouldn't be that bad.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">12</span><span class="tf-tag">Contested</span></div>
+        <h3>This is not the dot-com build-out</h3>
+        <p class="tf-body">Semis have gone from 2–4% of the S&amp;P 500 to around 20%, and the market expects mean reversion. He thinks the analogy breaks on one point: what the spend is for.</p>
+        <div class="tf-evidence"><b>What he leans on</b>Networking capex in 2000 anticipated users who never arrived. The 2023–24 Hopper crunch was training spend, which is inherently speculative. Inference spend is not — companies are now capping how much engineers may spend on Claude Code, which is the opposite of a demand problem.</div>
+        <blockquote>You don't hoard tokens, you use them immediately.</blockquote>
+      </div>
+
+      <div class="tf-claim">
+        <div class="tf-claim-top"><span class="tf-idx">13</span><span class="tf-tag">Article of faith</span></div>
+        <h3>Demand for intelligence is unbounded</h3>
+        <p class="tf-body">The ceiling isn't appetite, it's on-ramps — and he's candid that solving on-ramps is somebody else's job.</p>
+        <div class="tf-evidence"><b>What he leans on</b>Less evidence than conviction, and he says as much. His supporting observation is a commercial one: customers repeatedly tell him they can't afford to give free-tier users enough tokens. He also concedes "I'm not a product person, so I cannot say I have the best vision."</div>
+        <blockquote>I never will believe in that. There is always demand for intelligence in the world.</blockquote>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="tf-pane" id="pane-m" role="tabpanel" aria-labelledby="tab-m" hidden>
+  <div class="tf-wrap">
+    <div class="tf-pane-intro">
+      <div class="tf-eyebrow">Analysis · What drives him</div>
+      <h2>A performance engineer who was taught to look at the whole stack</h2>
+      <p>
+        The convictions are downstream of a fairly short list of formative things. Neil
+        volunteers most of them unprompted, and they arrive in a consistent order:
+        someone showed him the machine, someone taught him to chase its limit, and
+        someone told him not to specialize too early.
+      </p>
+    </div>
+
+    <div class="tf-tl">
+      <div class="tf-tl-item">
+        <div class="tf-when">1997 · Born</div>
+        <h3>He watched the last cycle from inside a chip company's kitchen</h3>
+        <p>His mother worked at Intel through the run-up to 2000 and the crash that followed — the era when Cisco was the most valuable company in the world and Intel was close behind. It's the reference point he reaches for when asked about today's semiconductor share of the index.</p>
+        <blockquote>I'm less of a student of history than a member of history.</blockquote>
+      </div>
+
+      <div class="tf-tl-item tf-key">
+        <div class="tf-when">Sophomore year · The advisor</div>
+        <h3>Told to stop specializing, by the person he'd gone to for permission to specialize</h3>
+        <p>He turned up at office hours impatient — he knew he wanted to build AI chips, so why sit through networking and operating systems? Instead of agreeing, his advisor laid out the entire stack and made the case for understanding all of it. Asked at the end of the interview for the kindest thing anyone has ever done for him, this is the answer he gives.</p>
+        <blockquote>It's so rare that someone can actually understand the entire stack, from the gate-level silicon all the way to building a great internet-scale service.</blockquote>
+      </div>
+
+      <div class="tf-tl-item tf-key">
+        <div class="tf-when">2015–2016 · Nvidia, first job, still in college</div>
+        <h3>He was in the room when tensor cores had to earn their die area</h3>
+        <p>He read his managers' lab notebooks from ICML and NeurIPS, where they'd noted that grad students were training large models on gaming GPUs. He watched Jensen decide to commit silicon to it, and watched the team fight the graphics group for perhaps 5–10% of the die on the first generation — enough to accelerate the convolutions computer vision ran on.</p>
+      </div>
+
+      <div class="tf-tl-item tf-key">
+        <div class="tf-when">Nvidia · The software team</div>
+        <h3>"Speed of light" became the only metric he trusts</h3>
+        <p>The house ethos was to compute what the hardware could theoretically do and then go take it — absolute performance, never performance relative to a competitor. He still runs his own engineers this way, and it explains why his pitch is a cost floor rather than a comparison.</p>
+        <blockquote>I don't care about relative numbers versus the competition. I only care about absolute numbers.</blockquote>
+      </div>
+
+      <div class="tf-tl-item">
+        <div class="tf-when">Nvidia · The milk club</div>
+        <h3>A dollar a month, for Costco milk in the fridge</h3>
+        <p>Post-2008 the perks went. At Nvidia they went further — no free milk, so coffee drinkers paid into a club that stocked it. He tells the story as a joke and then makes it a point: it's a frugality that permeates the company, and he clearly took it with him even though Sail doesn't run a milk club.</p>
+      </div>
+
+      <div class="tf-tl-item">
+        <div class="tf-when">Today · Sail Research</div>
+        <h3>Hiring for the one thing he says can't be taught</h3>
+        <p>He explicitly rejects CUDA experience as a signal — the GPU has changed too much in five years for a decade of experience to mean much. What he screens for is the trait he recognizes in himself, and the team is built around people who were teaching assistants and still like the whiteboard.</p>
+        <blockquote>I cannot teach the love for performance engineering. That is what I seek.</blockquote>
+      </div>
+    </div>
+
+    <div class="tf-pane-intro" style="max-width:60ch">
+      <div class="tf-eyebrow">The four things underneath</div>
+    </div>
+    <div class="tf-drives">
+      <div class="tf-drive">
+        <div class="tf-k">Abundance</div>
+        <h4>Awe at the fact that it works at all</h4>
+        <p>He returns twice to the same phrase — that it is <em>profound</em>, <em>incredible</em>, that the machine can think. The company theme follows directly: if thinking is that remarkable, rationing it is the offence.</p>
+      </div>
+      <div class="tf-drive">
+        <div class="tf-k">Speed of light</div>
+        <h4>A limit is a target, not a constraint</h4>
+        <p>Inherited whole from Nvidia. It's why he treats the state of any machine as provisional, writes down every bottleneck he hits, and sends it back to the vendor.</p>
+      </div>
+      <div class="tf-drive">
+        <div class="tf-k">Waste</div>
+        <h4>Idle silicon reads to him as a moral problem</h4>
+        <p>Not a metaphor he reaches for casually — he says seeing unutilized GPUs pains him physically, because silicon and power went into them. The scavenger strategy is this instinct turned into a business model.</p>
+      </div>
+      <div class="tf-drive">
+        <div class="tf-k">Curiosity</div>
+        <h4>The trait he hires for is the trait he has</h4>
+        <p>Digging into every microsecond the machine is working. He is explicit that this is unteachable, which is another way of saying it's the thing he can't imagine operating without.</p>
+      </div>
+    </div>
+
+    <div class="tf-tension">
+      <div>
+        <div class="tf-k">The founder</div>
+        <h4>Wants the whole stack</h4>
+        <p>Own the power, build the data centers, design the chips, write the software, sell the token. Patrick calls it real-life Factorio and Neil doesn't argue. This is the half that says it will never stop.</p>
+        <blockquote style="border-left:2px solid var(--accent); padding-left:16px; margin:14px 0 0; font-weight:450;">I will never stop until I have built the most efficient system from soup to nuts.</blockquote>
+      </div>
+      <div>
+        <div class="tf-k">The CEO</div>
+        <h4>Knows the capital is insane</h4>
+        <p>Start where the leverage is — software — let specialists keep doing what they're historically good at, and get to the scale where owning more becomes defensible. The framing he uses is telling: not <em>when we can afford it</em>, but when he has earned the right.</p>
+        <blockquote style="border-left:2px solid var(--rule-strong); padding-left:16px; margin:14px 0 0; font-weight:450;">I want to get to the scale where I earn the right to take this under our wing.</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tf-pane" id="pane-h" role="tabpanel" aria-labelledby="tab-h" hidden>
+  <div class="tf-wrap">
+    <div class="tf-pane-intro">
+      <div class="tf-eyebrow">Analysis · What is still unsolved</div>
+      <h2>Twenty hard problems he names, and who is on the hook for each</h2>
+      <p>
+        Neil is unusually specific about where the walls are. Three he returns to
+        unprompted, more than once: the entropy sitting uncompressed in the KV cache,
+        what would have to change architecturally to offload that cache to flash, and
+        the fact that a large share of the world's GPUs are doing nothing right now.
+        Those are the ones he says he whiteboards. The rest he raises in passing —
+        several while explaining why something <em>else</em> works.
+      </p>
+    </div>
+
+    <div class="tf-layer">
+      <div class="tf-layer-head">
+        <div class="tf-k">Layer 01</div>
+        <h3>Architecture and intelligence</h3>
+        <p>The problems he cannot fix himself, because he sits downstream of whoever designs the model.</p>
+      </div>
+      <div class="tf-problems">
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">01</span><span class="tf-chip tf-open">Open</span><span class="tf-chip">Frontier labs</span></div>
+          <h4>The KV cache stores kilobytes per token and earns almost none of it</h4>
+          <p class="tf-body">He points at the entropy: measured against the information actually in it, the cache is off by an order of magnitude or two. It routinely grows larger than the model weights themselves, and it scales with users rather than with the model — so you cannot provision for it in advance.</p>
+          <div class="tf-hard"><b>Why it's hard</b>Unlike weights, the cache is dynamic and unbounded. It's the reason a wafer-scale part can hold a trillion-parameter model and still not be able to serve it — you can size the weights, you can't size the conversation. DeepSeek's published compression work is the evidence he cites that the headroom is real; the fact that it moves an order of magnitude a year is also the evidence that nobody has bottomed it out.</div>
+          <blockquote>If you look at the entropy in a KV cache, it's nowhere near earning its keep.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">02</span><span class="tf-chip tf-open">Open</span><span class="tf-chip">Sail — his own obsession</span></div>
+          <h4>What would have to change about the model to put the KV cache on flash?</h4>
+          <p class="tf-body">This is the idea he says makes well-informed friends look at him strangely, and the one he whiteboards constantly. Get the cache off HBM and onto a much cheaper, much slower tier of memory, and the entire HBM shortage stops being his problem.</p>
+          <div class="tf-hard"><b>Why it's hard</b>It isn't a systems change, it's an architecture change — flash is orders of magnitude slower than HBM, so the model itself would have to tolerate that access pattern. And he doesn't own the architecture. He needs a frontier lab to want the same thing, or the change has to come from the open-source side he serves.</div>
+          <blockquote>Everyone on my team knows I keep banging the drum around: what would we have to change about the model architecture to make offloading KV cache to flash work at a much greater level?</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">03</span><span class="tf-chip tf-open">Open</span><span class="tf-chip">Frontier labs</span></div>
+          <h4>Models are not as intelligent at 200,000 tokens as at 10,000</h4>
+          <p class="tf-body">The cache is an exact record of everything that came before, but the model was trained mostly on conversations of 8,000 or 16,000 tokens. Long context is real capacity without proportionate competence.</p>
+          <div class="tf-hard"><b>Why it's hard</b>He calls it a perennial battle rather than a bug — the training distribution and the serving distribution simply don't match, and stretching one to cover the other has resisted years of work. His own behaviour is the tell: million-token windows have existed for years and he still runs /compact in Claude Code well before he gets near the limit.</div>
+          <blockquote>I don't think it's actually great to hit the full length.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">04</span><span class="tf-chip tf-unsolvable">May be unsolvable</span><span class="tf-chip">Nobody</span></div>
+          <h4>Everything non-verifiable — starting with human taste</h4>
+          <p class="tf-body">His entire theory of progress runs through verifiability: give a model a hard task and a self-grading system, and you have a recipe for self-improvement on anything. The corollary is a category that recipe simply cannot reach.</p>
+          <div class="tf-hard"><b>Why it's hard</b>There is no grader. Software, formal proofs and much of scientific discovery are verifiable, so they're on the ramp. The quality of writing and the beauty of art have no self-grading system to hand the model, and he doesn't claim to see one coming — this is the single problem in the conversation he suggests may not be soluble in principle.</div>
+          <blockquote>We have not solved human taste yet, and I don't know that it fundamentally can be. I'm excited to be surprised here.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">05</span><span class="tf-chip">Structural constraint</span><span class="tf-chip">Frontier labs</span></div>
+          <h4>He has to guess the architecture before he can buy the hardware</h4>
+          <p class="tf-body">Sparse attention or dense. BF16, FP8 or FP4. Choices that look arbitrary from inside a lab determine which chips are viable for him and how he should build his serving stack — and he has no input into any of them.</p>
+          <div class="tf-hard"><b>Why it's hard</b>Hardware commitments run years; architecture choices land in months. He is fully downstream, buying long-lived physical capacity against decisions other people haven't made yet. His stated method is prediction, and his stated fallback is hope.</div>
+          <blockquote>I can only pray that they go in the direction that is amenable to me — or I have to do my best to predict where they're going and build my serving architecture accordingly.</blockquote>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tf-layer">
+      <div class="tf-layer-head">
+        <div class="tf-k">Layer 02</div>
+        <h3>Silicon and memory</h3>
+        <p>Where physics and the supply chain set limits that no amount of software will move.</p>
+      </div>
+      <div class="tf-problems">
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">06</span><span class="tf-chip tf-open">Open</span><span class="tf-chip">Chip vendors</span></div>
+          <h4>No single chip is good at both compute and memory</h4>
+          <p class="tf-body">The transformer's two halves want opposite machines. The MLP is compute-bound at large batch; attention in the limit is memory-bound. They sit adjacent in every layer, and you have to pick.</p>
+          <div class="tf-hard"><b>Why it's hard</b>The memory hierarchy forces the trade at the process level: SRAM is fast because it's on the logic die, and it's small for exactly the same reason — Blackwell's logic die carries maybe 500 MB against 288 GB of stacked HBM around it. Cerebras answers with 21 PB/s across a whole wafer and then can't hold a growing KV cache. His proposed fix is disaggregation across two kinds of silicon, which means somebody has to make them cooperate.</div>
+          <blockquote>It is very difficult to have a single chip that is good at both compute operations and memory operations.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">07</span><span class="tf-chip">Physical limit</span><span class="tf-chip">Everyone</span></div>
+          <h4>Splitting work across GPUs never scales the way you want</h4>
+          <p class="tf-body">Shard a matrix multiply across eight GPUs and you get four to five times the speed, not eight. The gap is communication overhead plus the fact that every GPU is less efficient on a small tile than a large one.</p>
+          <div class="tf-hard"><b>Why it's hard</b>It's the same wall as throughput-versus-latency, which he calls foundational to almost every system — narrow and fast or wide and slow, pick one. There is no version of this where more hardware buys proportionate speed, so the only real decision is which side of the trade your business sits on.</div>
+          <blockquote>You'll use eight times more hardware, but you won't get eight times the speed. You're not going to get strong scaling.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">08</span><span class="tf-chip">He has a route</span><span class="tf-chip">Sail</span></div>
+          <h4>Making chips work when they can't talk to each other</h4>
+          <p class="tf-body">NVLink is what makes low-latency inference possible, and he doesn't expect anyone else to replicate it soon. So every cheap chip he buys arrives with good compute and poor interconnect, and he has to find a parallelism scheme that tolerates that.</p>
+          <div class="tf-hard"><b>Why it's hard</b>Tensor parallelism is off the table without NVLink, so he's pushed to expert and pipeline parallelism and to hiding communication latency behind other work — techniques that only make sense because he's given up on the tail. Each new chip is a fresh instance of the problem, and the answer is different every time.</div>
+          <blockquote>It's my job to figure out what parallelism scheme is going to make this chip suitable for inference.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">09</span><span class="tf-chip tf-open">Open</span><span class="tf-chip">Fabs</span></div>
+          <h4>Memory capacity cannot be conjured, and the memory makers have been burned</h4>
+          <p class="tf-body">Asked what he'd attack if he were building silicon, he names HBM — and then explains why nobody will fix it quickly. There's no easy way to bring on a lot more memory fabs.</p>
+          <div class="tf-hard"><b>Why it's hard</b>It's a capital-cycle problem wearing a technical costume. DRAM makers have been punished repeatedly for large capex into a cyclical market, so they under-build on purpose. His expectation is that the shortage doesn't get routed around but passed on — phones lose memory, phones get more expensive, everyone absorbs it.</div>
+          <blockquote>The boys in Boise don't love huge capex for cyclical businesses. They've been burned on that many times.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">10</span><span class="tf-chip">Commercial, not technical</span><span class="tf-chip">Fabs</span></div>
+          <h4>Fabs sell uniformity he may not need</h4>
+          <p class="tf-body">Every production line has spread between its best and worst die. TSMC spends enormous effort tightening those process corners — controls that cost time and money to deliver a guarantee he'd happily trade away.</p>
+          <div class="tf-hard"><b>Why it's hard</b>It requires a supplier to expose its trade-offs to a customer, which is not how the most conservative layer of the stack operates. He'd take more rejects and worse corners for a better price, but there is no mechanism for him to ask.</div>
+          <blockquote>If a fab exposes more of their trade-offs to me, I'm able to make more intelligent decisions.</blockquote>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tf-layer">
+      <div class="tf-layer-head">
+        <div class="tf-k">Layer 03</div>
+        <h3>Systems and orchestration</h3>
+        <p>The layer he actually competes on — and the one where he is most willing to say the work isn't done.</p>
+      </div>
+      <div class="tf-problems">
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">11</span><span class="tf-chip tf-open">Open race</span><span class="tf-chip">Everyone</span></div>
+          <h4>Nobody yet knows how to program a whole rack as one computer</h4>
+          <p class="tf-body">The unit of compute moved. You no longer program a GPU, or a motherboard — Nvidia now ships NVL72, a rack of 72 units, and the right mental model is the rack, maybe the cluster, maybe the entire data center.</p>
+          <div class="tf-hard"><b>Why it's hard</b>He calls it an open race explicitly, which is notable given how confident he is elsewhere. Whoever programs rack-scale most efficiently wins both ends of the trade — Nvidia's part is currently the best answer for lowest latency <em>and</em> highest throughput, so there's no cheap way to sidestep the problem by picking a lane.</div>
+          <blockquote>It's an open race to figure out who can program the whole rack-scale computer as efficiently as possible.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">12</span><span class="tf-chip">He has a route</span><span class="tf-chip">Sail</span></div>
+          <h4>The GPU is only near its limit in a place you rarely are</h4>
+          <p class="tf-body">In its happy path — a large-dimension matrix multiply — a modern GPU runs at 70 to 80% of peak, and what stops it there isn't software but power and thermals. The problem is that a transformer doesn't spend most of its time in the happy path.</p>
+          <div class="tf-hard"><b>Why it's hard</b>The published peak flops number is already optimistic, since you throttle before you reach it. So the real work isn't making the fast case faster — it's building an engine around the chip that keeps large batches arriving continuously, which is a scheduling and batching problem rather than a kernel one.</div>
+          <blockquote>Our job is to build the engine around the chip such that we are feeding the GPU these large batches of work at all times.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">13</span><span class="tf-chip tf-open">Open</span><span class="tf-chip">The market</span></div>
+          <h4>The world's compute is not marshalled, and much of it is idle</h4>
+          <p class="tf-body">Nvidia ships five million Blackwells this year. He doubts they are all being used all the time, and thinks the shortage is partly an orchestration failure rather than a manufacturing one.</p>
+          <div class="tf-hard"><b>Why it's hard</b>The compute disappears into private pools that will never see the light of day — allocated to a customer, sitting in a warehouse, contractually invisible. It's a market-design problem more than a technical one, and he notes that xAI takes public criticism for utilization while the rest of the world is quietly far worse.</div>
+          <blockquote>At some level we just need better orchestration of compute across the world. This is very difficult to do.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">14</span><span class="tf-chip tf-open">Open</span><span class="tf-chip">Sail</span></div>
+          <h4>Correlated failure is the case his design doesn't cover</h4>
+          <p class="tf-body">His whole economic argument rests on buying 95% uptime cheaply and re-homing failed requests elsewhere. The control plane handles any single failure in any single data center — with one condition attached.</p>
+          <div class="tf-hard"><b>Why it's hard</b>The condition is that failures aren't correlated across sites, and the strategy deliberately concentrates exposure to things that correlate: weather over a solar fleet, a regional grid, a single class of scavenged hardware. He states the caveat plainly and doesn't say what happens when it's violated.</div>
+          <blockquote>It's going to be fine handling any single failure in any single data center, as long as it's not correlated with other data centers.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">15</span><span class="tf-chip tf-open">Open</span><span class="tf-chip">Sail + frontier labs</span></div>
+          <h4>Kernels break the moment a model leaves the happy path</h4>
+          <p class="tf-body">Modern transformers are built on flash attention. But change how positional information is embedded — a tweak to the rope system — and the kernel you had no longer fits the model you're serving.</p>
+          <div class="tf-hard"><b>Why it's hard</b>Two things compound. The work is unavoidable, because model architectures keep moving and he serves whatever ships. And the obvious escape — have models write the kernels — isn't fully there yet, which he flags without being able to explain why. He now designs kernels on a whiteboard and hands the strategy to a model to implement, and expects the labs are already further along.</div>
+          <blockquote>I'm not sure exactly why models are not superb at doing this.</blockquote>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tf-layer">
+      <div class="tf-layer-head">
+        <div class="tf-k">Layer 04</div>
+        <h3>Power and the physical world</h3>
+        <p>The constraints that no longer bend to engineering at all — only to where you're willing to put the building.</p>
+      </div>
+      <div class="tf-problems">
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">16</span><span class="tf-chip">Constraint he routes around</span><span class="tf-chip">The United States</span></div>
+          <h4>You can no longer build concentrated power in America</h4>
+          <p class="tf-body">A gigawatt data center is effectively impossible to build in the US now. A hundred megawatts is increasingly hard — basically impossible unless you are a very special set of customers. Ten megawatts is the edge of what's possible.</p>
+          <div class="tf-hard"><b>Why it's hard</b>There's a diseconomy of scale working against you: 100,000 GPUs in one place costs far more per unit than 10,000, which costs more than 1,000. And the industry's habits were formed by training, which assumed co-location because nobody wants cross-data-center training. The power exists — it just isn't in one place, and the market still hasn't repriced that.</div>
+          <blockquote>There's this incredible lore on the market where you can find lots of aggregate power, but it will not be concentrated.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">17</span><span class="tf-chip">He has a route</span><span class="tf-chip">Sail</span></div>
+          <h4>Intermittent power against a persistent base load</h4>
+          <p class="tf-body">Solar and wind are, in his view, badly undertapped in the US — and conventionally considered unsuitable for data centers for one reason. The load never stops; the supply does.</p>
+          <div class="tf-hard"><b>Why it's hard</b>The nightmare case for a data center is a long outage — fog over the valley for days, no wind for a week. His answer is that this is tolerable precisely because it's predictable: model the weather, know when the site goes dark, move the workload. That converts a physics problem into a forecasting-and-scheduling problem, and it only works because his customers are asleep.</div>
+          <blockquote>I am totally capable of tolerating an outage for my data center that's measured in days or even weeks.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">18</span><span class="tf-chip">His test for anyone else</span><span class="tf-chip">Chip startups</span></div>
+          <h4>Four bottlenecks, and you need an answer to all of them</h4>
+          <p class="tf-body">Asked what advice he'd give a room of would-be compute entrepreneurs, he doesn't talk about architecture. He asks whether they understand the three to five constraints that dictate modern chip supply: TSMC wafer capacity, HBM capacity, advanced packaging, and power.</p>
+          <div class="tf-hard"><b>Why it's hard</b>Relieving one bottleneck just exposes the next — make 20% more chips and something else binds immediately. So a new chip only makes sense as arbitrage against a choice Nvidia finds difficult to reverse. His framing: Nvidia isn't perfect, it's <em>well balanced</em>, so the only way through is to be deliberately spiky somewhere.</div>
+          <blockquote>You want to pick something and say: I think they've underpriced how short we're going to be on HBM.</blockquote>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="tf-layer">
+      <div class="tf-layer-head">
+        <div class="tf-k">Layer 05</div>
+        <h3>Beyond engineering</h3>
+        <p>Three he raises and then explicitly hands to somebody else.</p>
+      </div>
+      <div class="tf-problems">
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">19</span><span class="tf-chip">Constraint</span><span class="tf-chip">Nvidia</span></div>
+          <h4>Getting compute at all is a relationship problem, not a price problem</h4>
+          <p class="tf-body">Nvidia could clear the shortage by raising prices until supply and demand intersect. It deliberately doesn't, because letting the deepest pockets buy everything creates a customer who accrues too much power.</p>
+          <div class="tf-hard"><b>Why it's hard</b>It means allocation is discretionary, and a young company asking to rent ten thousand Blackwells for five years has months of operating history to point at. He says you need either exceptional relationships or extraordinary financial backing — neither of which is something you can engineer your way to.</div>
+          <blockquote>They understand that compute is power today, and so they're quite strategic about how they allocate compute.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">20</span><span class="tf-chip tf-open">Open</span><span class="tf-chip">Frontier labs</span></div>
+          <h4>The free data is gone and the cheap feedback is worthless</h4>
+          <p class="tf-body">The internet was a one-time subsidy — about 30 trillion tokens of high-quality text, 300 trillion on a looser definition, and models have been through all of it many times. Worse, the fallback has stopped working.</p>
+          <div class="tf-hard"><b>Why it's hard</b>Interaction data used to be the answer: people use a chatbot, they signal what they liked. But the median served model has now outgrown the median rater, so unconditioned human preference carries no signal — you need expert preference, which doesn't scale the same way. His replacement is RL environments, which is why lab spend has shifted there, and which only works where the task is verifiable.</div>
+          <blockquote>There is not a whole lot more to be done on human data from the internet.</blockquote>
+        </div>
+
+        <div class="tf-problem">
+          <div class="tf-problem-top"><span class="tf-pnum">21</span><span class="tf-chip">Not his to solve</span><span class="tf-chip">Product people</span></div>
+          <h4>On-ramps — and trusting a machine that reads everything</h4>
+          <p class="tf-body">He wants a proactive agent that has read all your email and messages and can surface your next action before you ask. He also concedes the hardest parts of that are outside his competence.</p>
+          <div class="tf-hard"><b>Why it's hard</b>Two gaps sit between cheap tokens and that product. Reliability and privacy have to hold simultaneously — the machine must be trustworthy in the sense of accurate <em>and</em> in the sense of private. And someone has to design the on-ramps that let ordinary people spend intelligence they've never had access to. He names both and steps back from both.</div>
+          <blockquote>I'm not a product person, so I cannot say I have the best vision.</blockquote>
+        </div>
+
+      </div>
+      <div class="tf-legend">
+        <span><b>Open</b> — he states no solution exists yet</span>
+        <span><b>He has a route</b> — he claims an approach, not a fix</span>
+        <span><b>May be unsolvable</b> — he doubts it can be done at all</span>
+        <span><b>Second chip</b> — who he says is on the hook</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="tf-wrap">
+    <p><strong>About this page.</strong> Chapter divisions follow the episode's own markers. The transcript has been re-paragraphed and attributed between Patrick O'Shaughnessy and Neil Movva, with filler and stage noise removed and sponsor reads cut. Obvious speech-to-text errors in proper nouns were corrected against context — Sail Research, Baseten, Cerebras, Groq, SK Hynix, Kimi, NeurIPS, Tri Dao, CoreWeave, Trainium, SambaNova, HBM, SRAM, KV cache, BF16, Rubin, NVL72.</p>
+    <p>Wording is otherwise the speakers' own. The Conviction and Motivation views are interpretation, not transcript — every quotation in them is drawn from the conversation, and the surrounding argument is editorial.</p>
+  </div>
+</footer>
+  </article>
+
+  <div id="site-footer-mount"></div>
+
+  <script defer src="js/site-chrome.js"></script>
+  <script>
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+
+      function select(tab) {
+        tabs.forEach(function (t) {
+          var pane = document.getElementById(t.getAttribute('aria-controls'));
+          var on = t === tab;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          if (pane) { pane.hidden = !on; }
+        });
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () { select(tab); });
+        tab.addEventListener('keydown', function (e) {
+          var i = tabs.indexOf(tab);
+          if (e.key === 'ArrowRight') { tabs[(i + 1) % tabs.length].focus(); }
+          if (e.key === 'ArrowLeft') { tabs[(i - 1 + tabs.length) % tabs.length].focus(); }
+        });
+      });
+
+      // Highlight the chapter currently in view.
+      var links = Array.prototype.slice.call(document.querySelectorAll('.tf-rail a'));
+      var chapters = links
+        .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+        .filter(Boolean);
+
+      if ('IntersectionObserver' in window && chapters.length) {
+        var seen = {};
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) { seen[entry.target.id] = entry.isIntersecting; });
+          var activeId = null;
+          chapters.forEach(function (c) { if (seen[c.id] && !activeId) { activeId = c.id; } });
+          links.forEach(function (a) {
+            a.classList.toggle('tf-active', a.getAttribute('href') === '#' + activeId);
+          });
+        }, { rootMargin: '-10% 0px -75% 0px' });
+        chapters.forEach(function (c) { observer.observe(c); });
+      }
+    })();
+  </script>
+</body>
+</html>
