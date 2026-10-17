@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-16",
+  "lastUpdated": "2026-10-17",
   "repos": {
     "CCKotlinNetworking": {
       "total": 296,
@@ -18,8 +18,8 @@
       "uniques": 65
     },
     "CCSwiftNetworking": {
-      "total": 69,
-      "uniques": 64
+      "total": 70,
+      "uniques": 65
     },
     "CCSwiftAPICache": {
       "total": 68,
@@ -38,8 +38,8 @@
       "uniques": 51
     },
     "cc-apis-demo-monorepo": {
-      "total": 46,
-      "uniques": 44
+      "total": 47,
+      "uniques": 45
     },
     "sam-framework": {
       "total": 201,
@@ -90,8 +90,8 @@
       "uniques": 48
     },
     "medreview": {
-      "total": 270,
-      "uniques": 151
+      "total": 271,
+      "uniques": 152
     },
     "myfamilytree": {
       "total": 51,
