@@ -787,6 +787,10 @@
     "2026-10-24": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -1577,6 +1581,10 @@
     "2026-10-24": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinFeatureConfig": {
@@ -2367,6 +2375,10 @@
     "2026-10-24": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -3939,6 +3951,10 @@
     "2026-10-24": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-25": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCSwiftAPICache": {
@@ -5511,6 +5527,10 @@
     "2026-10-24": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-10-25": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "CCSwiftLibsDemoApp": {
@@ -6291,6 +6311,10 @@
       "uniques": 0
     },
     "2026-10-24": {
+      "count": 1,
+      "uniques": 1
+    },
+    "2026-10-25": {
       "count": 1,
       "uniques": 1
     }
@@ -7083,6 +7107,10 @@
     "2026-10-24": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "cc-apis-demo-monorepo": {
@@ -7865,6 +7893,10 @@
     "2026-10-24": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "sam-framework": {
@@ -8655,6 +8687,10 @@
     "2026-10-24": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-25": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "MyCareerPulse": {
@@ -9437,6 +9473,10 @@
     "2026-10-24": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-api-web-proxy": {
@@ -10225,6 +10265,10 @@
       "uniques": 1
     },
     "2026-10-24": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-25": {
       "count": 0,
       "uniques": 0
     }
@@ -11799,6 +11843,10 @@
     "2026-10-24": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-habit-calendar": {
@@ -12579,6 +12627,10 @@
       "uniques": 0
     },
     "2026-10-24": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-25": {
       "count": 0,
       "uniques": 0
     }
@@ -13371,6 +13423,10 @@
     "2026-10-24": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-recipebook": {
@@ -14161,6 +14217,10 @@
     "2026-10-24": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-25": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-shareanyjson": {
@@ -14945,6 +15005,10 @@
       "uniques": 1
     },
     "2026-10-24": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-25": {
       "count": 0,
       "uniques": 0
     }
@@ -15737,6 +15801,10 @@
     "2026-10-24": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-vibecoding-appideas": {
@@ -16525,6 +16593,10 @@
       "uniques": 0
     },
     "2026-10-24": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-25": {
       "count": 0,
       "uniques": 0
     }
@@ -17317,6 +17389,10 @@
     "2026-10-24": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "medreview": {
@@ -18105,6 +18181,10 @@
       "uniques": 0
     },
     "2026-10-24": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-25": {
       "count": 0,
       "uniques": 0
     }
@@ -18897,6 +18977,10 @@
     "2026-10-24": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-25": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "dailywealth": {
@@ -19685,6 +19769,10 @@
       "uniques": 0
     },
     "2026-10-24": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-25": {
       "count": 0,
       "uniques": 0
     }
