@@ -799,6 +799,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinAPICache": {
@@ -1599,6 +1603,10 @@
       "uniques": 0
     },
     "2026-10-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-28": {
       "count": 0,
       "uniques": 0
     }
@@ -2403,6 +2411,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCKotlinLibsDemoApp": {
@@ -3195,6 +3207,10 @@
       "uniques": 0
     },
     "2026-10-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-28": {
       "count": 0,
       "uniques": 0
     }
@@ -3999,6 +4015,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftAPICache": {
@@ -4801,6 +4821,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftFeatureConfig": {
@@ -5595,6 +5619,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "CCSwiftLibsDemoApp": {
@@ -6387,6 +6415,10 @@
       "uniques": 0
     },
     "2026-10-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-28": {
       "count": 0,
       "uniques": 0
     }
@@ -7191,6 +7223,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "cc-apis-demo-monorepo": {
@@ -7983,6 +8019,10 @@
       "uniques": 0
     },
     "2026-10-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-28": {
       "count": 0,
       "uniques": 0
     }
@@ -8787,6 +8827,10 @@
     "2026-10-27": {
       "count": 2,
       "uniques": 2
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "MyCareerPulse": {
@@ -9579,6 +9623,10 @@
       "uniques": 0
     },
     "2026-10-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-28": {
       "count": 0,
       "uniques": 0
     }
@@ -10383,6 +10431,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-billpay-tracker": {
@@ -11177,6 +11229,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-filesync": {
@@ -11979,6 +12035,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-habit-calendar": {
@@ -12773,6 +12833,10 @@
     "2026-10-27": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-keywords-files-finder": {
@@ -13573,6 +13637,10 @@
       "uniques": 0
     },
     "2026-10-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-28": {
       "count": 0,
       "uniques": 0
     }
@@ -14377,6 +14445,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "local-shareanyjson": {
@@ -15175,6 +15247,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-trading-journal": {
@@ -15971,6 +16047,14 @@
       "uniques": 0
     },
     "2026-10-26": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-28": {
       "count": 0,
       "uniques": 0
     }
@@ -16775,6 +16859,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 1,
+      "uniques": 1
     }
   },
   "local-weekly-options-trade-plan": {
@@ -17575,6 +17663,10 @@
       "uniques": 0
     },
     "2026-10-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-28": {
       "count": 0,
       "uniques": 0
     }
@@ -18379,6 +18471,10 @@
     "2026-10-27": {
       "count": 1,
       "uniques": 1
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "myfamilytree": {
@@ -19181,6 +19277,10 @@
     "2026-10-27": {
       "count": 0,
       "uniques": 0
+    },
+    "2026-10-28": {
+      "count": 0,
+      "uniques": 0
     }
   },
   "dailywealth": {
@@ -19981,6 +20081,10 @@
       "uniques": 0
     },
     "2026-10-27": {
+      "count": 0,
+      "uniques": 0
+    },
+    "2026-10-28": {
       "count": 0,
       "uniques": 0
     }
