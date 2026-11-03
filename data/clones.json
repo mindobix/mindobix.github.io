@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-02",
+  "lastUpdated": "2026-11-03",
   "repos": {
     "CCKotlinNetworking": {
       "total": 303,
@@ -70,8 +70,8 @@
       "uniques": 67
     },
     "local-recipebook": {
-      "total": 54,
-      "uniques": 53
+      "total": 56,
+      "uniques": 54
     },
     "local-shareanyjson": {
       "total": 42,
@@ -90,8 +90,8 @@
       "uniques": 54
     },
     "medreview": {
-      "total": 276,
-      "uniques": 157
+      "total": 278,
+      "uniques": 158
     },
     "myfamilytree": {
       "total": 57,
