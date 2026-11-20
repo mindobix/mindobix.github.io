@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-19",
+  "lastUpdated": "2026-11-20",
   "repos": {
     "CCKotlinNetworking": {
       "total": 310,
@@ -34,8 +34,8 @@
       "uniques": 50
     },
     "cc-api-framework": {
-      "total": 60,
-      "uniques": 59
+      "total": 61,
+      "uniques": 60
     },
     "cc-apis-demo-monorepo": {
       "total": 54,
@@ -90,8 +90,8 @@
       "uniques": 59
     },
     "medreview": {
-      "total": 281,
-      "uniques": 161
+      "total": 282,
+      "uniques": 162
     },
     "myfamilytree": {
       "total": 63,
